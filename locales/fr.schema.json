@@ -1,0 +1,378 @@
+{
+  "theme_label": "Docs",
+  "theme_description": "Une documentation que vos utilisateurs lisent vraiment—architecture claire, recherche instantanée et réponses assistées par IA prêtes à l’emploi. Transformez votre base de connaissances en docs produit, guides API et centres d’aide soignés, sans reconstruire un site de documentation à la main.",
+  "recommendations": {
+    "fashion": {
+      "name": "Tendance"
+    },
+    "old_school": {
+      "name": "Rétro"
+    }
+  },
+  "templates": {
+    "index": {
+      "docs": {
+        "name": "Centre de documentation",
+        "description": "Manuel utilisateur produit idéal",
+        "settings": {
+          "hero_bg_type": {
+            "label": "Style d’arrière-plan Hero",
+            "info": "Une fois le style sélectionné, la couleur et l’image d’arrière-plan s’affichent en conséquence",
+            "choices": {
+              "none": "Aucun arrière-plan",
+              "color": "Arrière-plan coloré",
+              "image": "Arrière-plan image"
+            }
+          },
+          "hero_height": {
+            "label": "Hauteur de l’arrière-plan",
+            "info": "Hauteur recommandée : 360px"
+          },
+          "hero_image_url": {
+            "label": "Image d’arrière-plan",
+            "info": "L’image est automatiquement recadrée selon la largeur de la page et la hauteur d’arrière-plan"
+          },
+          "hero_bg_color": {
+            "label": "Couleur d’arrière-plan",
+            "info": "En arrière-plan coloré, la couleur sélectionnée est appliquée"
+          },
+          "hero_slogan": {
+            "label": "Slogan",
+            "info": "Le slogan s’affiche au-dessus de l’image d’arrière-plan",
+            "default": "👋 En quoi pouvons-nous vous aider ?"
+          },
+          "search_hot_tags": {
+            "label": "Tags populaires",
+            "info": "Une fois définis, les tags s’affichent sous la barre de recherche d’accueil"
+          },
+          "search_hot_keywords": {
+            "label": "Recherches populaires",
+            "info": "Une fois définis, les mots-clés s’affichent sous la barre de recherche. Plusieurs mots-clés séparés par retour à la ligne"
+          },
+          "show_channels_section": {
+            "label": "Première section",
+            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
+          },
+          "channels_section_title": {
+            "label": "Titre de la première section",
+            "default": "Pour commencer"
+          },
+          "show_topic_channel": {
+            "label": "Section « Thèmes en vedette »",
+            "info": "Si décoché, la section ne s’affiche pas ; cochez aussi « Est un thème en vedette » dans les réglages de page"
+          },
+          "topic_channel_title": {
+            "label": "Titre des thèmes en vedette",
+            "default": "Thèmes en vedette"
+          },
+          "show_newest_section": {
+            "label": "Section « Derniers articles »",
+            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
+          },
+          "newest_section_title": {
+            "label": "Titre des derniers articles",
+            "default": "Derniers articles"
+          },
+          "show_hottest_section": {
+            "label": "Section « Sujets populaires »",
+            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
+          },
+          "hottest_section_title": {
+            "label": "Titre des sujets populaires",
+            "default": "Sujets populaires"
+          }
+        }
+      },
+      "help_center": {
+        "name": "Centre d’aide",
+        "description": "Style de base de connaissances riche en fonctionnalités",
+        "settings": {
+          "hero_bg_type": {
+            "label": "Style d’arrière-plan Hero",
+            "info": "Une fois le style sélectionné, la couleur et l’image d’arrière-plan s’affichent en conséquence",
+            "choices": {
+              "none": "Aucun arrière-plan",
+              "color": "Arrière-plan coloré",
+              "image": "Arrière-plan image"
+            }
+          },
+          "hero_height": {
+            "label": "Hauteur de l’arrière-plan",
+            "info": "Hauteur recommandée : 360px"
+          },
+          "hero_image_url": {
+            "label": "Image d’arrière-plan",
+            "info": "L’image est automatiquement recadrée selon la largeur de la page et la hauteur d’arrière-plan"
+          },
+          "hero_bg_color": {
+            "label": "Couleur d’arrière-plan",
+            "info": "En arrière-plan coloré, la couleur sélectionnée est appliquée"
+          },
+          "hero_slogan": {
+            "label": "Slogan",
+            "info": "Le slogan s’affiche au-dessus de l’image d’arrière-plan",
+            "default": "👋 En quoi pouvons-nous vous aider ?"
+          },
+          "search_hot_tags": {
+            "label": "Tags populaires",
+            "info": "Une fois définis, les tags s’affichent sous la barre de recherche d’accueil"
+          },
+          "search_hot_keywords": {
+            "label": "Recherches populaires",
+            "info": "Une fois définis, les mots-clés s’affichent sous la barre de recherche. Plusieurs mots-clés séparés par retour à la ligne"
+          },
+          "show_channels_section": {
+            "label": "Section de navigation",
+            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
+          },
+          "channels_section_title": {
+            "label": "Titre de la section de navigation",
+            "default": "Navigation"
+          },
+          "show_newest_section": {
+            "label": "Section « Derniers articles »",
+            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
+          },
+          "newest_section_title": {
+            "label": "Titre des derniers articles",
+            "default": "Derniers articles"
+          },
+          "show_topic_channel": {
+            "label": "Section « Thèmes en vedette »",
+            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
+          },
+          "topic_channel_title": {
+            "label": "Titre des thèmes en vedette",
+            "default": "Thèmes en vedette"
+          },
+          "show_hottest_section": {
+            "label": "Section « Articles populaires »",
+            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
+          },
+          "hottest_section_title": {
+            "label": "Titre des articles populaires",
+            "default": "Articles populaires"
+          }
+        }
+      },
+      "list": {
+        "name": "Manuel produit",
+        "description": "Style liste-répertoire en page d’accueil"
+      },
+      "faqs": {
+        "name": "Centre FAQ",
+        "description": "Page d’accueil de type FAQ avec questions repliables et catégories",
+        "settings": {
+          "hero_height": {
+            "label": "Hauteur Hero"
+          },
+          "hero_pc_image_url": {
+            "label": "Arrière-plan Hero (Bureau)",
+            "info": "Taille recommandée : 1600×400 (ou supérieur, ratio 4:1) pour le bureau."
+          },
+          "hero_mobile_image_url": {
+            "label": "Arrière-plan Hero (Mobile)",
+            "info": "Taille recommandée : 1080×360 (ou supérieur, ratio 3:1) pour mobile. Prévoir une zone sûre haut/bas pour ne pas masquer le texte."
+          },
+          "hero_title": {
+            "label": "Titre Hero",
+            "default": "Questions fréquentes"
+          },
+          "hero_description": {
+            "label": "Description Hero",
+            "default": "Pour comprendre et résoudre rapidement les questions courantes"
+          },
+          "hero_title_color": {
+            "label": "Couleur du titre (mode clair)"
+          },
+          "hero_title_color_dark": {
+            "label": "Couleur du titre (mode sombre)"
+          },
+          "hero_description_color": {
+            "label": "Couleur de la description (mode clair)"
+          },
+          "hero_description_color_dark": {
+            "label": "Couleur de la description (mode sombre)"
+          }
+        }
+      }
+    },
+    "page": {
+      "name": "Modèle de page standard",
+      "description": "Modèle de page de contenu",
+      "settings": {
+        "show_list": {
+          "label": "Afficher la liste des sous-pages",
+          "info": "Si coché, la liste des sous-pages s’affiche sur la page"
+        },
+        "is_topic_channel": {
+          "label": "Est un thème en vedette",
+          "info": "Si oui, la page apparaît dans la liste des thèmes en vedette de l’accueil"
+        },
+        "title": {
+          "label": "Titre de la page",
+          "info": "Synchronisé depuis la base de connaissances, non modifiable"
+        },
+        "tags": {
+          "label": "Tags de la page"
+        },
+        "description": {
+          "label": "Description de la page"
+        },
+        "icon": {
+          "label": "Icône de la page",
+          "info": "Pour afficher l’icône de la page, ratio 1:1 recommandé"
+        },
+        "content": {
+          "label": "Contenu de la page",
+          "info": "Synchronisé depuis la source, non modifiable"
+        }
+      },
+      "video": {
+        "name": "Modèle vidéo",
+        "description": "Modèle de page vidéo, pour afficher du contenu vidéo",
+        "settings": {
+          "is_video_list": {
+            "label": "Est une liste vidéo",
+            "info": "La page de liste vidéo ne récupère que les sous-pages utilisant le modèle vidéo ; assurez-vous que les sous-pages utilisent ce modèle"
+          },
+          "video_url": {
+            "label": "URL vidéo",
+            "info": "Utilisée pour l’affichage dans la liste vidéo ; non requise sur la page de liste"
+          }
+        }
+      },
+      "export": {
+        "name": "Modèle de page d’export",
+        "description": "Souvent utilisé pour exporter directement le contenu d’une rubrique et de ses sous-pages dans le navigateur"
+      }
+    }
+  },
+  "generic": {
+    "name": "Réglages généraux",
+    "settings": {
+      "logo_url": {
+        "label": "Image du logo",
+        "info": "Si un logo est défini, il s’affiche dans l’en-tête ; sinon : icône du site + nom du site"
+      },
+      "company_name": {
+        "label": "Nom de l’entreprise",
+        "default": "Baklib.cn",
+        "info": "Affiché dans le pied de page en bas de la page"
+      },
+      "copyright_info": {
+        "label": "ICP / Informations de copyright",
+        "default": "ICP xxxxxx"
+      },
+      "screen_width": {
+        "label": "Largeur d’écran",
+        "choices": {
+          "narrow": "Étroite (1024px)",
+          "medium": "Moyenne (1280px)",
+          "wide": "Large (1536px)",
+          "full": "Plein écran"
+        }
+      },
+      "left_sidebar_width": {
+        "label": "Largeur de la barre latérale gauche (pages détaillées)",
+        "info": "Recommandé : 240px"
+      },
+      "right_sidebar_width": {
+        "label": "Largeur de la barre latérale droite (pages détaillées)",
+        "info": "Recommandé : 240px"
+      },
+      "header_type": {
+        "label": "Style de l’en-tête",
+        "info": "* Affecte la couleur de fond et de texte de la barre de navigation supérieure.\n* 0 - Style clair avec effet verre dépoli.\n* 1 - Couleurs personnalisées : choisissez ci-dessous le fond et le texte.",
+        "choices": {
+          "transparent": "Simple transparent",
+          "custom": "Couleur personnalisée"
+        }
+      },
+      "header_bg_color": {
+        "label": "Couleur de fond de l’en-tête"
+      },
+      "header_text_color": {
+        "label": "Couleur du texte de l’en-tête"
+      },
+      "show_published_at": {
+        "label": "Afficher la date de publication"
+      },
+      "show_author": {
+        "label": "Afficher l’auteur"
+      },
+      "show_card_icon": {
+        "label": "Afficher les icônes de section sur l’accueil",
+        "info": "Recommandé de configurer les icônes dans les réglages de page"
+      },
+      "ai_search_completed_text": {
+        "label": "Texte de fin IA",
+        "info": "Ajoute une phrase après la réponse de l’IA"
+      }
+    }
+  },
+  "page_config": {
+    "name": "Réglages de page",
+    "settings": {
+      "show_page_tools_dropdown": {
+        "label": "Afficher le menu d’outils de page"
+      }
+    }
+  },
+  "custom_html": {
+    "name": "Code HTML personnalisé",
+    "settings": {
+      "head_html": {
+        "label": "HTML personnalisé dans <head></head>",
+        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
+        "placeholder": "Souvent utilisé pour insérer des analytics, un bot de support, etc."
+      },
+      "header_menu_html": {
+        "label": "Insérer du HTML dans la zone de navigation supérieure",
+        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
+        "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
+      },
+      "footer_html": {
+        "label": "Insérer du HTML dans la zone de pied de page",
+        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS ; remplace complètement le pied de page par défaut",
+        "placeholder": "Si vous souhaitez conserver le pied de page par défaut, insérez le HTML dans footer_menu_html"
+      },
+      "footer_menu_html": {
+        "label": "Insérer du HTML en bas (à l’intérieur du footer)",
+        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
+        "placeholder": "Souvent utilisé pour les liens externes, liens d’amitié et liens d’optimisation SEO"
+      },
+      "features_one_html": {
+        "label": "Insérer du HTML dans la première section feature de l’accueil",
+        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
+        "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
+      },
+      "features_two_html": {
+        "label": "Insérer du HTML dans la deuxième section feature de l’accueil",
+        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
+        "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
+      }
+    }
+  },
+  "settings": {
+    "weixin_share": {
+      "title": "Configuration WeChat",
+      "weixin_app_id": {
+        "label": "ID développeur (AppID)",
+        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>Compte officiel WeChat / Paramètres & développement / Gestion des interfaces</a>"
+      },
+      "weixin_app_secret": {
+        "label": "Mot de passe développeur (AppSecret)",
+        "info": ""
+      },
+      "weixin_enabled": {
+        "label": "Activer le partage WeChat ?",
+        "info": "Permet de partager les pages du site sur WeChat.</br>Veuillez configurer la liste blanche d’IP (ip: ${service_ip}) dans le compte WeChat. Un délai de prise d’effet peut s’appliquer.</br>Vérifiez l’autorisation de partage WeChat dans Compte officiel / Paramètres & développement / Gestion des interfaces : <a href='https://mp.weixin.qq.com/cgi-bin/frame'>Service web / Interface de partage</a>."
+      },
+      "weixin_debug": {
+        "label": "Activer les invites de debug ?",
+        "info": "À activer uniquement pendant la configuration ; en cas d’activation, des messages d’erreur seront affichés si le partage WeChat n’est pas correctement configuré."
+      }
+    }
+  }
+}
