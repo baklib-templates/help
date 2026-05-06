@@ -1,5 +1,5 @@
 {
-  "theme_label": "Docs",
+  "theme_label": "Help Center",
   "theme_description": "Une documentation que vos utilisateurs lisent vraiment—architecture claire, recherche instantanée et réponses assistées par IA prêtes à l’emploi. Transformez votre base de connaissances en docs produit, guides API et centres d’aide soignés, sans reconstruire un site de documentation à la main.",
   "recommendations": {
     "fashion": {
@@ -11,78 +11,6 @@
   },
   "templates": {
     "index": {
-      "docs": {
-        "name": "Centre de documentation",
-        "description": "Manuel utilisateur produit idéal",
-        "settings": {
-          "hero_bg_type": {
-            "label": "Style d’arrière-plan Hero",
-            "info": "Une fois le style sélectionné, la couleur et l’image d’arrière-plan s’affichent en conséquence",
-            "choices": {
-              "none": "Aucun arrière-plan",
-              "color": "Arrière-plan coloré",
-              "image": "Arrière-plan image"
-            }
-          },
-          "hero_height": {
-            "label": "Hauteur de l’arrière-plan",
-            "info": "Hauteur recommandée : 360px"
-          },
-          "hero_image_url": {
-            "label": "Image d’arrière-plan",
-            "info": "L’image est automatiquement recadrée selon la largeur de la page et la hauteur d’arrière-plan"
-          },
-          "hero_bg_color": {
-            "label": "Couleur d’arrière-plan",
-            "info": "En arrière-plan coloré, la couleur sélectionnée est appliquée"
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Le slogan s’affiche au-dessus de l’image d’arrière-plan",
-            "default": "👋 En quoi pouvons-nous vous aider ?"
-          },
-          "search_hot_tags": {
-            "label": "Tags populaires",
-            "info": "Une fois définis, les tags s’affichent sous la barre de recherche d’accueil"
-          },
-          "search_hot_keywords": {
-            "label": "Recherches populaires",
-            "info": "Une fois définis, les mots-clés s’affichent sous la barre de recherche. Plusieurs mots-clés séparés par retour à la ligne"
-          },
-          "show_channels_section": {
-            "label": "Première section",
-            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
-          },
-          "channels_section_title": {
-            "label": "Titre de la première section",
-            "default": "Pour commencer"
-          },
-          "show_topic_channel": {
-            "label": "Section « Thèmes en vedette »",
-            "info": "Si décoché, la section ne s’affiche pas ; cochez aussi « Est un thème en vedette » dans les réglages de page"
-          },
-          "topic_channel_title": {
-            "label": "Titre des thèmes en vedette",
-            "default": "Thèmes en vedette"
-          },
-          "show_newest_section": {
-            "label": "Section « Derniers articles »",
-            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
-          },
-          "newest_section_title": {
-            "label": "Titre des derniers articles",
-            "default": "Derniers articles"
-          },
-          "show_hottest_section": {
-            "label": "Section « Sujets populaires »",
-            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
-          },
-          "hottest_section_title": {
-            "label": "Titre des sujets populaires",
-            "default": "Sujets populaires"
-          }
-        }
-      },
       "help_center": {
         "name": "Centre d’aide",
         "description": "Style de base de connaissances riche en fonctionnalités",
@@ -155,10 +83,6 @@
           }
         }
       },
-      "list": {
-        "name": "Manuel produit",
-        "description": "Style liste-répertoire en page d’accueil"
-      },
       "faqs": {
         "name": "Centre FAQ",
         "description": "Page d’accueil de type FAQ avec questions repliables et catégories",
@@ -193,6 +117,117 @@
           },
           "hero_description_color_dark": {
             "label": "Couleur de la description (mode sombre)"
+          }
+        }
+      },
+      "support": {
+        "name": "Accueil support",
+        "description": "Deux colonnes : sujets et contact à gauche, recherche et articles populaires à droite",
+        "settings": {
+          "hero_title": {
+            "label": "Titre du hero",
+            "default": "Comment pouvons-nous vous aider ?",
+            "info": "Laisser vide pour le nom du site."
+          },
+          "hero_subtitle": {
+            "label": "Sous-titre du hero",
+            "info": "Texte court sous le titre (facultatif)."
+          },
+          "hero_height": {
+            "label": "Hauteur du hero",
+            "info": "Espace au-dessus du champ de recherche."
+          },
+          "search_hot_tags": {
+            "label": "Tags populaires",
+            "info": "Sous la recherche."
+          },
+          "search_hot_keywords": {
+            "label": "Recherches populaires",
+            "info": "Un mot-clé par ligne."
+          },
+          "topics_section_title": {
+            "label": "Barre latérale : sujets",
+            "default": "Sujets fréquents"
+          },
+          "contact_section_title": {
+            "label": "Barre latérale : contact",
+            "default": "Contacter le support"
+          },
+          "show_popular_section": {
+            "label": "Articles populaires",
+            "info": "Triés par visites, sous la recherche."
+          },
+          "popular_section_title": {
+            "label": "Titre des populaires",
+            "default": "Articles populaires"
+          },
+          "popular_limit": {
+            "label": "Nombre max.",
+            "info": "Nombre de pages listées."
+          }
+        }
+      },
+      "card": {
+        "name": "Accueil cartes",
+        "description": "Grandes cartes de catégories avec aperçu d’articles (style Intercom)",
+        "settings": {
+          "hero_bg_type": {
+            "label": "Style de fond du hero",
+            "info": "Arrière-plan de la zone supérieure.",
+            "choices": {
+              "none": "Aucun",
+              "color": "Couleur",
+              "image": "Image"
+            }
+          },
+          "hero_height": {
+            "label": "Hauteur du fond",
+            "info": "Recommandé : 360px"
+          },
+          "hero_image_url": {
+            "label": "Image de fond",
+            "info": "Si fond image sélectionné."
+          },
+          "hero_bg_color": {
+            "label": "Couleur de fond",
+            "info": "Si fond couleur sélectionné."
+          },
+          "hero_slogan": {
+            "label": "Slogan",
+            "info": "Sous le nom du site.",
+            "default": "👋 Que recherchez-vous ?"
+          },
+          "search_hot_tags": {
+            "label": "Tags populaires",
+            "info": "Sous la barre de recherche."
+          },
+          "search_hot_keywords": {
+            "label": "Recherches populaires",
+            "info": "Une par ligne."
+          },
+          "show_channels_section": {
+            "label": "Afficher les cartes",
+            "info": "Grille pour chaque section racine."
+          },
+          "channels_section_title": {
+            "label": "Titre du bloc cartes",
+            "default": "Parcourir par thème"
+          },
+          "articles_per_card": {
+            "label": "Articles par carte",
+            "info": "Liens enfants affichés dans chaque carte."
+          },
+          "show_popular_section": {
+            "label": "Articles populaires",
+            "info": "Triés par visites."
+          },
+          "popular_section_title": {
+            "label": "Titre populaires",
+            "default": "Articles populaires"
+          },
+          "popular_limit": {
+            "label": "Limite populaires",
+            "info": "Nombre de pages listées."
           }
         }
       }
@@ -241,10 +276,6 @@
             "info": "Utilisée pour l’affichage dans la liste vidéo ; non requise sur la page de liste"
           }
         }
-      },
-      "export": {
-        "name": "Modèle de page d’export",
-        "description": "Souvent utilisé pour exporter directement le contenu d’une rubrique et de ses sous-pages dans le navigateur"
       }
     }
   },
@@ -351,6 +382,11 @@
         "label": "Insérer du HTML dans la deuxième section feature de l’accueil",
         "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
         "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
+      },
+      "contact_html": {
+        "label": "Contacter le support (HTML)",
+        "info": "Affiché dans la colonne gauche de l’accueil support.",
+        "placeholder": "Notre équipe support est à votre disposition."
       }
     }
   },

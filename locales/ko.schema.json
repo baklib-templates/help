@@ -1,80 +1,8 @@
 {
-  "theme_label": "Docs",
+  "theme_label": "Help Center",
   "theme_description": "사용자가 실제로 읽는 문서 경험을 제공합니다. 명확한 정보 구조, 빠른 검색, AI 기반 Q&A까지 지원합니다. 지식베이스를 제품 문서·API 가이드·헬프 센터로 바로 공개하고, 문서 사이트를 처음부터 만들 필요가 없습니다.",
   "templates": {
     "index": {
-      "docs": {
-        "name": "문서 센터",
-        "description": "이상적인 제품 사용자 매뉴얼",
-        "settings": {
-          "hero_bg_type": {
-            "label": "히어로 배경 스타일",
-            "info": "배경 스타일을 선택하면 배경색과 이미지가 선택한 내용에 따라 표시됩니다",
-            "choices": {
-              "none": "배경 없음",
-              "color": "색상 배경",
-              "image": "이미지 배경"
-            }
-          },
-          "hero_height": {
-            "label": "배경 높이",
-            "info": "권장 높이: 360px"
-          },
-          "hero_image_url": {
-            "label": "배경 이미지",
-            "info": "배경 이미지는 페이지 너비와 배경 높이에 따라 자동으로 잘립니다"
-          },
-          "hero_bg_color": {
-            "label": "배경색",
-            "info": "히어로 배경 스타일의 색상은 선택한 색상 값에 따라 처리됩니다（색상 배경）"
-          },
-          "hero_slogan": {
-            "label": "슬로건",
-            "info": "슬로건은 배경 이미지 위에 표시됩니다",
-            "default": "👋 What Can We Help?"
-          },
-          "search_hot_tags": {
-            "label": "인기 태그",
-            "info": "설정하면 태그 목록이 홈페이지 검색창 아래에 표시됩니다"
-          },
-          "search_hot_keywords": {
-            "label": "인기 검색어",
-            "info": "설정하면 검색창 아래에 인기 검색어가 표시됩니다. 줄바꿈으로 여러 키워드를 설정합니다"
-          },
-          "show_channels_section": {
-            "label": "첫 번째 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다"
-          },
-          "channels_section_title": {
-            "label": "첫 번째 섹션 제목",
-            "default": "시작하기"
-          },
-          "show_topic_channel": {
-            "label": "주제 추천 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다; 페이지 설정에서 '주제 채널 여부' 옵션을 체크하여 홈페이지에 표시되도록 합니다"
-          },
-          "topic_channel_title": {
-            "label": "주제 추천 섹션 제목",
-            "default": "주제 추천"
-          },
-          "show_newest_section": {
-            "label": "최신 글 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다"
-          },
-          "newest_section_title": {
-            "label": "최신 글 섹션 제목",
-            "default": "최신 글"
-          },
-          "show_hottest_section": {
-            "label": "인기 주제 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다"
-          },
-          "hottest_section_title": {
-            "label": "인기 주제 섹션 제목",
-            "default": "인기 주제"
-          }
-        }
-      },
       "help_center": {
         "name": "도움말 센터",
         "description": "기능이 풍부한 제품 지식베이스 스타일",
@@ -147,9 +75,116 @@
           }
         }
       },
-      "list": {
-        "name": "제품 매뉴얼",
-        "description": "홈페이지 디렉토리 목록 스타일"
+      "support": {
+        "name": "미니멀 지원 홈",
+        "description": "2단 레이아웃: 왼쪽 주제·문의, 오른쪽 검색·인기 글",
+        "settings": {
+          "hero_title": {
+            "label": "히어로 제목",
+            "default": "무엇을 도와드릴까요?",
+            "info": "비워 두면 사이트 이름을 표시합니다."
+          },
+          "hero_subtitle": {
+            "label": "히어로 부제목",
+            "info": "제목 아래 문구(선택)."
+          },
+          "hero_height": {
+            "label": "히어로 영역 높이",
+            "info": "검색창 위쪽 여백입니다."
+          },
+          "search_hot_tags": {
+            "label": "인기 태그",
+            "info": "검색창 아래에 표시."
+          },
+          "search_hot_keywords": {
+            "label": "인기 검색어",
+            "info": "한 줄에 하나."
+          },
+          "topics_section_title": {
+            "label": "사이드바: 주제 제목",
+            "default": "자주 찾는 주제"
+          },
+          "contact_section_title": {
+            "label": "사이드바: 문의 제목",
+            "default": "지원 문의"
+          },
+          "show_popular_section": {
+            "label": "인기 글 표시",
+            "info": "조회수 순. 검색 아래에 표시."
+          },
+          "popular_section_title": {
+            "label": "인기 글 제목",
+            "default": "인기 글"
+          },
+          "popular_limit": {
+            "label": "인기 글 개수",
+            "info": "목록 최대 개수."
+          }
+        }
+      },
+      "card": {
+        "name": "카드형 홈",
+        "description": "큰 카테고리 카드와 글 미리보기(Intercom 스타일)",
+        "settings": {
+          "hero_bg_type": {
+            "label": "히어로 배경 스타일",
+            "info": "상단 히어로 영역 배경.",
+            "choices": {
+              "none": "없음",
+              "color": "단색",
+              "image": "이미지"
+            }
+          },
+          "hero_height": {
+            "label": "배경 높이",
+            "info": "권장: 360px"
+          },
+          "hero_image_url": {
+            "label": "배경 이미지",
+            "info": "이미지 배경 선택 시 사용."
+          },
+          "hero_bg_color": {
+            "label": "배경색",
+            "info": "단색 배경 선택 시 사용."
+          },
+          "hero_slogan": {
+            "label": "슬로건",
+            "info": "사이트 이름 아래에 표시.",
+            "default": "👋 무엇을 찾고 계신가요?"
+          },
+          "search_hot_tags": {
+            "label": "인기 태그",
+            "info": "검색창 아래에 표시."
+          },
+          "search_hot_keywords": {
+            "label": "인기 검색어",
+            "info": "한 줄에 하나."
+          },
+          "show_channels_section": {
+            "label": "카테고리 카드 표시",
+            "info": "각 최상위 섹션을 카드로 표시."
+          },
+          "channels_section_title": {
+            "label": "카드 영역 제목",
+            "default": "주제별로 보기"
+          },
+          "articles_per_card": {
+            "label": "카드당 글 수",
+            "info": "카드 안에 넣을 하위 링크 수."
+          },
+          "show_popular_section": {
+            "label": "인기 글 표시",
+            "info": "조회수 기준."
+          },
+          "popular_section_title": {
+            "label": "인기 영역 제목",
+            "default": "인기 글"
+          },
+          "popular_limit": {
+            "label": "인기 글 개수",
+            "info": "목록에 표시할 페이지 수."
+          }
+        }
       }
     },
     "page": {
@@ -196,10 +231,6 @@
             "info": "비디오 목록 페이지에서 표시에 사용, 목록 페이지에서는 불필요"
           }
         }
-      },
-      "export": {
-        "name": "내보내기 페이지 템플릿",
-        "description": "브라우저에서 현재 섹션과 하위 페이지의 콘텐츠를 직접 내보내는 데 사용"
       }
     }
   },
@@ -292,6 +323,11 @@
         "label": "두 번째 기능 섹션에 HTML 코드 삽입",
         "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
         "placeholder": "일반적으로 회사의 두 번째 기능 섹션에 대한 HTML 코드를 삽입하는 데 사용"
+      },
+      "contact_html": {
+        "label": "지원 문의 (HTML)",
+        "info": "미니멀 지원 홈 왼쪽 사이드바에 표시됩니다.",
+        "placeholder": "지원팀이 도와드립니다."
       }
     }
   },

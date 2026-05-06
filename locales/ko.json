@@ -63,6 +63,9 @@
         "tab_all": "전체",
         "hero_title_default": "자주 묻는 질문",
         "hero_description_default": "자주 묻는 질문을 빠르게 이해하고 해결하도록 돕습니다"
+      },
+      "support": {
+        "search_placeholder": "도움말 검색..."
       }
     }
   },

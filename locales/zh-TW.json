@@ -63,6 +63,9 @@
         "tab_all": "全部",
         "hero_title_default": "常見問題",
         "hero_description_default": "幫助您快速了解與解決常見問題"
+      },
+      "support": {
+        "search_placeholder": "搜尋說明文章..."
       }
     }
   },

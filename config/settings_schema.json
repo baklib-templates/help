@@ -1,7 +1,7 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "docs",
+    "theme_name": "help",
     "theme_label": "t:schema.theme_label",
     "theme_description": "t:schema.theme_description",
     "theme_version": "2.1.2",
@@ -14,9 +14,9 @@
     "theme_preview_images": [
       "images/theme/${lang}/index.png",
       "images/theme/${lang}/index-help-center.png",
-      "images/theme/${lang}/index-list.png",
-      "images/theme/${lang}/index-docs.png",
       "images/theme/${lang}/index-faqs.png",
+      "images/theme/${lang}/index-card.png",
+      "images/theme/${lang}/index-support.png",
       "images/theme/${lang}/page.png"
     ],
     "theme_languages": [
@@ -276,6 +276,14 @@
         "info": "t:schema.custom_html.settings.features_two_html.info",
         "rows": 6,
         "placeholder": "t:schema.custom_html.settings.features_two_html.placeholder"
+      },
+      {
+        "id": "contact_html",
+        "type": "html",
+        "label": "t:schema.custom_html.settings.contact_html.label",
+        "info": "t:schema.custom_html.settings.contact_html.info",
+        "rows": 6,
+        "placeholder": "t:schema.custom_html.settings.contact_html.placeholder"
       }
     ]
   }

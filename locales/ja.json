@@ -63,6 +63,9 @@
         "tab_all": "すべて",
         "hero_title_default": "よくある質問",
         "hero_description_default": "よくある質問の理解と解決をすばやくサポートします"
+      },
+      "support": {
+        "search_placeholder": "ヘルプ記事を検索..."
       }
     }
   },

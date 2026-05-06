@@ -1,5 +1,5 @@
 {
-  "theme_label": "Docs",
+  "theme_label": "Help Center",
   "theme_description": "打造用户愿意阅读的文档体验：结构清晰、检索迅捷，并可接入 AI 问答。将知识库呈现为产品文档、API 指南与帮助中心，无需从零自建文档站。",
   "recommendations": {
     "fashion": {
@@ -11,78 +11,6 @@
   },
   "templates": {
     "index": {
-      "docs": {
-        "name": "文档中心",
-        "description": "理想的产品用户手册",
-        "settings": {
-          "hero_bg_type": {
-            "label": "首屏背景样式",
-            "info": "选择背景样式后，背景色和背景图会根据选择的内容进行展示",
-            "choices": {
-              "none": "无背景",
-              "color": "颜色背景",
-              "image": "图片背景"
-            }
-          },
-          "hero_height": {
-            "label": "背景高度",
-            "info": "建议高度：360px"
-          },
-          "hero_image_url": {
-            "label": "背景图",
-            "info": "背景图会根据页面宽度和背景高度自动裁剪"
-          },
-          "hero_bg_color": {
-            "label": "背景色",
-            "info": "首屏背景样式的颜色将依据选择的颜色值进行处理（颜色背景）"
-          },
-          "hero_slogan": {
-            "label": "标语",
-            "info": "标语会显示在背景图上方",
-            "default": "👋 What Can We Help?"
-          },
-          "search_hot_tags": {
-            "label": "热门标签",
-            "info": "设置以后，标签列表会显示在首页搜索栏下方"
-          },
-          "search_hot_keywords": {
-            "label": "热门搜索",
-            "info": "设置以后，搜索框下方会显示热门搜索。换行设置多个关键词"
-          },
-          "show_channels_section": {
-            "label": "第一个板块",
-            "info": "不勾选，首页将不会显示此板块"
-          },
-          "channels_section_title": {
-            "label": "第一个板块标题",
-            "default": "新手入门"
-          },
-          "show_topic_channel": {
-            "label": "专题推荐板块",
-            "info": "不勾选，首页将不会显示此板块; 请在页面设置勾选“是否为专题栏目”选项以显示在首页"
-          },
-          "topic_channel_title": {
-            "label": "专题推荐板块的标题",
-            "default": "专题推荐"
-          },
-          "show_newest_section": {
-            "label": "最新文章板块",
-            "info": "不勾选，首页将不会显示此板块"
-          },
-          "newest_section_title": {
-            "label": "最新文章板块标题",
-            "default": "最新文章"
-          },
-          "show_hottest_section": {
-            "label": "热门话题板块",
-            "info": "不勾选，首页将不会显示此板块"
-          },
-          "hottest_section_title": {
-            "label": "热门话题板块标题",
-            "default": "热门话题"
-          }
-        }
-      },
       "help_center": {
         "name": "帮助中心",
         "description": "功能丰富的产品知识库样式",
@@ -155,10 +83,6 @@
           }
         }
       },
-      "list": {
-        "name": "产品手册",
-        "description": "首页目录列表样式"
-      },
       "faqs": {
         "name": "常见问题中心",
         "description": "FAQ 风格的首页：可折叠的问题列表 + 分类标签",
@@ -193,6 +117,117 @@
           },
           "hero_description_color_dark": {
             "label": "描述字体颜色（暗色模式）"
+          }
+        }
+      },
+      "support": {
+        "name": "极简支持首页",
+        "description": "双栏布局：左侧常见主题与联系支持，右侧搜索与热门文章",
+        "settings": {
+          "hero_title": {
+            "label": "首屏标题",
+            "default": "有什么可以帮您？",
+            "info": "留空则显示站点名称。"
+          },
+          "hero_subtitle": {
+            "label": "首屏副标题",
+            "info": "显示在标题下方的简短说明（可选）。"
+          },
+          "hero_height": {
+            "label": "首屏区域高度",
+            "info": "搜索框上方预留的垂直空间。"
+          },
+          "search_hot_tags": {
+            "label": "热门标签",
+            "info": "显示在搜索框下方。"
+          },
+          "search_hot_keywords": {
+            "label": "热门搜索",
+            "info": "每行一个关键词。"
+          },
+          "topics_section_title": {
+            "label": "侧栏：常见主题标题",
+            "default": "常见主题"
+          },
+          "contact_section_title": {
+            "label": "侧栏：联系支持标题",
+            "default": "联系支持"
+          },
+          "show_popular_section": {
+            "label": "显示热门文章",
+            "info": "按访问量排序，显示在搜索框下方。"
+          },
+          "popular_section_title": {
+            "label": "热门文章标题",
+            "default": "热门文章"
+          },
+          "popular_limit": {
+            "label": "热门文章数量",
+            "info": "列表最多展示的篇数。"
+          }
+        }
+      },
+      "card": {
+        "name": "卡片式首页",
+        "description": "大卡片区展示栏目与文章预览（Intercom / Bonsai 风格）",
+        "settings": {
+          "hero_bg_type": {
+            "label": "首屏背景样式",
+            "info": "顶部首屏区域的背景。",
+            "choices": {
+              "none": "无背景",
+              "color": "纯色背景",
+              "image": "图片背景"
+            }
+          },
+          "hero_height": {
+            "label": "背景高度",
+            "info": "建议高度：360px"
+          },
+          "hero_image_url": {
+            "label": "背景图片",
+            "info": "选择图片背景时使用。"
+          },
+          "hero_bg_color": {
+            "label": "背景颜色",
+            "info": "选择纯色背景时使用。"
+          },
+          "hero_slogan": {
+            "label": "标语",
+            "info": "显示在站点名称下方。",
+            "default": "👋 需要查找什么？"
+          },
+          "search_hot_tags": {
+            "label": "热门标签",
+            "info": "显示在搜索框下方。"
+          },
+          "search_hot_keywords": {
+            "label": "热门搜索",
+            "info": "每行一个。"
+          },
+          "show_channels_section": {
+            "label": "显示栏目卡片",
+            "info": "为每个顶级栏目生成一张卡片。"
+          },
+          "channels_section_title": {
+            "label": "卡片区块标题",
+            "default": "按主题浏览"
+          },
+          "articles_per_card": {
+            "label": "每卡文章数",
+            "info": "每张卡片内展示的子页面链接数量。"
+          },
+          "show_popular_section": {
+            "label": "显示热门文章",
+            "info": "按访问量排序。"
+          },
+          "popular_section_title": {
+            "label": "热门区块标题",
+            "default": "热门文章"
+          },
+          "popular_limit": {
+            "label": "热门文章数量",
+            "info": "列表中展示的页面条数。"
           }
         }
       }
@@ -241,10 +276,6 @@
             "info": "用于呈现于视频列表页中, 列表页无需填写"
           }
         }
-      },
-      "export": {
-        "name": "导出页面模版",
-        "description": "常用于浏览器直接导出当前栏目及下级页面的内容"
       }
     }
   },
@@ -351,6 +382,11 @@
         "label": "首页底部功能区 HTML",
         "info": "支持HTML标签和有限的TailwindCSS样式代码",
         "placeholder": "通常在这里插入公司产品介绍、服务介绍等"
+      },
+      "contact_html": {
+        "label": "联系支持（HTML）",
+        "info": "显示在「极简支持首页」左侧栏，例如服务时间、邮箱、在线客服链接。",
+        "placeholder": "我们的支持团队提供全天候帮助。"
       }
     }
   },

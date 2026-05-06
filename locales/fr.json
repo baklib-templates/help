@@ -63,6 +63,9 @@
         "tab_all": "Toutes",
         "hero_title_default": "Questions fréquentes",
         "hero_description_default": "Pour comprendre et résoudre rapidement les questions courantes"
+      },
+      "support": {
+        "search_placeholder": "Rechercher dans l’aide..."
       }
     }
   },

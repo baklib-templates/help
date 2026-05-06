@@ -1,5 +1,5 @@
 {
-  "theme_label": "Docs",
+  "theme_label": "Help Center",
   "theme_description": "ユーザーが読みたくなるドキュメント体験を届けます。情報設計が明快で検索が速く、AI による回答にも対応。ナレッジベースを製品ドキュメント、API ガイド、ヘルプセンターとして公開でき、ゼロからドキュメントサイトを構築する必要はありません。",
   "recommendations": {
     "fashion": {
@@ -11,78 +11,6 @@
   },
   "templates": {
     "index": {
-      "docs": {
-        "name": "ドキュメントセンター",
-        "description": "理想的な製品ユーザーマニュアル",
-        "settings": {
-          "hero_bg_type": {
-            "label": "ヒーロー背景スタイル",
-            "info": "背景スタイルを選択すると、背景色と画像が選択した内容に応じて表示されます",
-            "choices": {
-              "none": "背景なし",
-              "color": "カラー背景",
-              "image": "画像背景"
-            }
-          },
-          "hero_height": {
-            "label": "背景の高さ",
-            "info": "推奨高さ：360px"
-          },
-          "hero_image_url": {
-            "label": "背景画像",
-            "info": "背景画像はページ幅と背景の高さに応じて自動的にトリミングされます"
-          },
-          "hero_bg_color": {
-            "label": "背景色",
-            "info": "ヒーロー背景スタイルの色は選択した色値に基づいて処理されます（カラー背景）"
-          },
-          "hero_slogan": {
-            "label": "スローガン",
-            "info": "スローガンは背景画像の上に表示されます",
-            "default": "👋 What Can We Help?"
-          },
-          "search_hot_tags": {
-            "label": "人気のタグ",
-            "info": "設定すると、タグリストがホームページの検索バーの下に表示されます"
-          },
-          "search_hot_keywords": {
-            "label": "人気の検索",
-            "info": "設定すると、検索ボックスの下に人気の検索が表示されます。改行で複数のキーワードを設定します"
-          },
-          "show_channels_section": {
-            "label": "最初のセクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません"
-          },
-          "channels_section_title": {
-            "label": "最初のセクションのタイトル",
-            "default": "はじめに"
-          },
-          "show_topic_channel": {
-            "label": "特集トピックセクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません; ページ設定で「特集トピックかどうか」をチェックして、ホームページに表示されるようにします"
-          },
-          "topic_channel_title": {
-            "label": "特集トピックセクションのタイトル",
-            "default": "特集トピック"
-          },
-          "show_newest_section": {
-            "label": "最新記事セクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません"
-          },
-          "newest_section_title": {
-            "label": "最新記事セクションのタイトル",
-            "default": "最新記事"
-          },
-          "show_hottest_section": {
-            "label": "人気トピックセクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません"
-          },
-          "hottest_section_title": {
-            "label": "人気トピックセクションのタイトル",
-            "default": "人気トピック"
-          }
-        }
-      },
       "help_center": {
         "name": "ヘルプセンター",
         "description": "機能豊富な製品ナレッジベーススタイル",
@@ -155,10 +83,6 @@
           }
         }
       },
-      "list": {
-        "name": "製品マニュアル",
-        "description": "ホームページディレクトリリストスタイル"
-      },
       "faqs": {
         "name": "FAQ センター",
         "description": "FAQ スタイルのホームページ：折りたたみ可能な質問とカテゴリタブ",
@@ -193,6 +117,117 @@
           },
           "hero_description_color_dark": {
             "label": "説明文字色（ダークモード）"
+          }
+        }
+      },
+      "support": {
+        "name": "サポート型ホーム",
+        "description": "2 カラム：左にトピックと連絡、右に検索と人気記事",
+        "settings": {
+          "hero_title": {
+            "label": "ヒーロータイトル",
+            "default": "お手伝いできることは？",
+            "info": "空欄の場合はサイト名を表示します。"
+          },
+          "hero_subtitle": {
+            "label": "ヒーローサブタイトル",
+            "info": "タイトル下の短文（任意）。"
+          },
+          "hero_height": {
+            "label": "ヒーロー領域の高さ",
+            "info": "検索ボックス上の余白です。"
+          },
+          "search_hot_tags": {
+            "label": "人気タグ",
+            "info": "検索ボックスの下に表示。"
+          },
+          "search_hot_keywords": {
+            "label": "人気検索",
+            "info": "1 行に 1 キーワード。"
+          },
+          "topics_section_title": {
+            "label": "サイドバー：トピック見出し",
+            "default": "よく見るトピック"
+          },
+          "contact_section_title": {
+            "label": "サイドバー：連絡見出し",
+            "default": "サポートに連絡"
+          },
+          "show_popular_section": {
+            "label": "人気記事を表示",
+            "info": "閲覧数順。検索の下に表示。"
+          },
+          "popular_section_title": {
+            "label": "人気記事の見出し",
+            "default": "人気の記事"
+          },
+          "popular_limit": {
+            "label": "人気記事の件数",
+            "info": "一覧の最大件数。"
+          }
+        }
+      },
+      "card": {
+        "name": "カード型ホーム",
+        "description": "大きなカテゴリカードと記事プレビュー（Intercom 風）",
+        "settings": {
+          "hero_bg_type": {
+            "label": "ヒーロー背景スタイル",
+            "info": "上部ヒーロー領域の背景。",
+            "choices": {
+              "none": "なし",
+              "color": "単色",
+              "image": "画像"
+            }
+          },
+          "hero_height": {
+            "label": "背景の高さ",
+            "info": "推奨：360px"
+          },
+          "hero_image_url": {
+            "label": "背景画像",
+            "info": "画像背景を選んだときに使用。"
+          },
+          "hero_bg_color": {
+            "label": "背景色",
+            "info": "単色背景を選んだときに使用。"
+          },
+          "hero_slogan": {
+            "label": "スローガン",
+            "info": "サイト名の下に表示。",
+            "default": "👋 何をお探しですか？"
+          },
+          "search_hot_tags": {
+            "label": "人気タグ",
+            "info": "検索バーの下に表示。"
+          },
+          "search_hot_keywords": {
+            "label": "人気検索",
+            "info": "1 行に 1 件。"
+          },
+          "show_channels_section": {
+            "label": "カテゴリカードを表示",
+            "info": "各トップレベルセクションをカードで表示。"
+          },
+          "channels_section_title": {
+            "label": "カード見出し",
+            "default": "トピックから探す"
+          },
+          "articles_per_card": {
+            "label": "カードあたりの記事数",
+            "info": "各カードに表示する子リンク数。"
+          },
+          "show_popular_section": {
+            "label": "人気記事を表示",
+            "info": "閲覧数に基づきます。"
+          },
+          "popular_section_title": {
+            "label": "人気セクション見出し",
+            "default": "人気の記事"
+          },
+          "popular_limit": {
+            "label": "人気記事の件数",
+            "info": "一覧に載せるページ数。"
           }
         }
       }
@@ -241,10 +276,6 @@
             "info": "ビデオリストページでの表示に使用、リストページでは不要"
           }
         }
-      },
-      "export": {
-        "name": "エクスポートページテンプレート",
-        "description": "ブラウザで現在のセクションとサブページのコンテンツを直接エクスポートするために使用"
       }
     }
   },
@@ -351,6 +382,11 @@
         "label": "ホームページの機能セクション2にHTMLコードを挿入",
         "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
         "placeholder": "通常、会社の他のウェブサイトへのナビゲーションリンクを挿入するために使用"
+      },
+      "contact_html": {
+        "label": "サポート連絡（HTML）",
+        "info": "サポート型ホームの左サイドバーに表示されます。",
+        "placeholder": "サポートチームが対応します。"
       }
     }
   },

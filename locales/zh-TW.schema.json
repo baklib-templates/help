@@ -1,80 +1,8 @@
 {
-  "theme_label": "Docs",
+  "theme_label": "Help Center",
   "theme_description": "打造使用者願意閱讀的文件體驗：架構清楚、搜尋迅速，並可接入 AI 問答。將知識庫呈現為產品文件、API 指南與幫助中心，無須從零自建文件站。",
   "templates": {
     "index": {
-      "docs": {
-        "name": "文檔中心",
-        "description": "理想的產品用戶手冊",
-        "settings": {
-          "hero_bg_type": {
-            "label": "首屏背景樣式",
-            "info": "選擇背景樣式後，背景色和背景圖會根據選擇的內容進行展示",
-            "choices": {
-              "none": "無背景",
-              "color": "顏色背景",
-              "image": "圖片背景"
-            }
-          },
-          "hero_height": {
-            "label": "背景高度",
-            "info": "建議高度：360px"
-          },
-          "hero_image_url": {
-            "label": "背景圖",
-            "info": "背景圖會根據頁面寬度和背景高度自動裁剪"
-          },
-          "hero_bg_color": {
-            "label": "背景色",
-            "info": "首屏背景樣式的顏色將依據選擇的顏色值進行處理（顏色背景）"
-          },
-          "hero_slogan": {
-            "label": "標語",
-            "info": "標語會顯示在背景圖上方",
-            "default": "👋 What Can We Help?"
-          },
-          "search_hot_tags": {
-            "label": "熱門標籤",
-            "info": "設置以後，標籤列表會顯示在首頁搜尋欄下方"
-          },
-          "search_hot_keywords": {
-            "label": "熱門搜尋",
-            "info": "設置以後，搜尋框下方會顯示熱門搜尋。換行設置多個關鍵詞"
-          },
-          "show_channels_section": {
-            "label": "第一個板塊",
-            "info": "不勾選，首頁將不會顯示此板塊"
-          },
-          "channels_section_title": {
-            "label": "第一個板塊標題",
-            "default": "新手入門"
-          },
-          "show_topic_channel": {
-            "label": "專題推薦板塊",
-            "info": "不勾選，首頁將不會顯示此板塊; 請在頁面設置勾選“是否為專題欄目”選項以顯示在首頁"
-          },
-          "topic_channel_title": {
-            "label": "專題推薦板塊的標題",
-            "default": "專題推薦"
-          },
-          "show_newest_section": {
-            "label": "最新文章板塊",
-            "info": "不勾選，首頁將不會顯示此板塊"
-          },
-          "newest_section_title": {
-            "label": "最新文章板塊標題",
-            "default": "最新文章"
-          },
-          "show_hottest_section": {
-            "label": "熱門話題板塊",
-            "info": "不勾選，首頁將不會顯示此板塊"
-          },
-          "hottest_section_title": {
-            "label": "熱門話題板塊標題",
-            "default": "熱門話題"
-          }
-        }
-      },
       "help_center": {
         "name": "幫助中心",
         "description": "功能豐富的產品知識庫樣式",
@@ -147,9 +75,116 @@
           }
         }
       },
-      "list": {
-        "name": "產品手冊",
-        "description": "首頁目錄列表樣式"
+      "support": {
+        "name": "極簡支援首頁",
+        "description": "雙欄版面：左側常見主題與聯絡支援，右側搜尋與熱門文章",
+        "settings": {
+          "hero_title": {
+            "label": "首屏標題",
+            "default": "有什麼可以幫您？",
+            "info": "留空則顯示網站名稱。"
+          },
+          "hero_subtitle": {
+            "label": "首屏副標題",
+            "info": "顯示在標題下方的簡短說明（選填）。"
+          },
+          "hero_height": {
+            "label": "首屏區域高度",
+            "info": "搜尋框上方保留的垂直空間。"
+          },
+          "search_hot_tags": {
+            "label": "熱門標籤",
+            "info": "顯示在搜尋框下方。"
+          },
+          "search_hot_keywords": {
+            "label": "熱門搜尋",
+            "info": "每行一個關鍵字。"
+          },
+          "topics_section_title": {
+            "label": "側欄：常見主題標題",
+            "default": "常見主題"
+          },
+          "contact_section_title": {
+            "label": "側欄：聯絡支援標題",
+            "default": "聯絡支援"
+          },
+          "show_popular_section": {
+            "label": "顯示熱門文章",
+            "info": "依造訪量排序，顯示在搜尋框下方。"
+          },
+          "popular_section_title": {
+            "label": "熱門文章標題",
+            "default": "熱門文章"
+          },
+          "popular_limit": {
+            "label": "熱門文章數量",
+            "info": "清單最多顯示的篇數。"
+          }
+        }
+      },
+      "card": {
+        "name": "卡片式首頁",
+        "description": "大型卡片區塊展示欄目與文章預覽（Intercom / Bonsai 風格）",
+        "settings": {
+          "hero_bg_type": {
+            "label": "首屏背景樣式",
+            "info": "頂部首屏區域的背景。",
+            "choices": {
+              "none": "無背景",
+              "color": "純色背景",
+              "image": "圖片背景"
+            }
+          },
+          "hero_height": {
+            "label": "背景高度",
+            "info": "建議高度：360px"
+          },
+          "hero_image_url": {
+            "label": "背景圖片",
+            "info": "選擇圖片背景時使用。"
+          },
+          "hero_bg_color": {
+            "label": "背景顏色",
+            "info": "選擇純色背景時使用。"
+          },
+          "hero_slogan": {
+            "label": "標語",
+            "info": "顯示在網站名稱下方。",
+            "default": "👋 需要查找什麼？"
+          },
+          "search_hot_tags": {
+            "label": "熱門標籤",
+            "info": "顯示在搜尋框下方。"
+          },
+          "search_hot_keywords": {
+            "label": "熱門搜尋",
+            "info": "每行一個。"
+          },
+          "show_channels_section": {
+            "label": "顯示欄目卡片",
+            "info": "為每個頂層欄目產生一張卡片。"
+          },
+          "channels_section_title": {
+            "label": "卡片區塊標題",
+            "default": "依主題瀏覽"
+          },
+          "articles_per_card": {
+            "label": "每卡文章數",
+            "info": "每張卡片內展示的子頁面連結數量。"
+          },
+          "show_popular_section": {
+            "label": "顯示熱門文章",
+            "info": "依造訪次數排序。"
+          },
+          "popular_section_title": {
+            "label": "熱門區塊標題",
+            "default": "熱門文章"
+          },
+          "popular_limit": {
+            "label": "熱門文章數量",
+            "info": "清單中顯示的頁面筆數。"
+          }
+        }
       }
     },
     "page": {
@@ -196,10 +231,6 @@
             "info": "用於呈現於視頻列表頁中, 列表頁無需填寫"
           }
         }
-      },
-      "export": {
-        "name": "導出頁面模版",
-        "description": "常用於瀏覽器直接導出當前欄目及下級頁面的內容"
       }
     }
   },
@@ -292,6 +323,11 @@
         "label": "首頁功能區域二插入 HTML 代碼",
         "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
         "placeholder": "通常在這裡插入公司其他網站的導航連結"
+      },
+      "contact_html": {
+        "label": "聯絡支援（HTML）",
+        "info": "顯示在「極簡支援首頁」左側欄。",
+        "placeholder": "我們的支援團隊提供全天候協助。"
       }
     }
   },

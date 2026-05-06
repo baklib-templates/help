@@ -1,5 +1,5 @@
 {
-  "theme_label": "Docs",
+  "theme_label": "Help Center",
   "theme_description": "Dokumentation, die Nutzer wirklich lesen—klare Informationsarchitektur, blitzschnelle Suche und KI-gestützte Antworten out of the box. Verwandeln Sie Ihre Wissensdatenbank in überzeugende Produkt-Docs, API-Guides und Hilfecenter, ohne eine eigene Doc-Site von Grund auf zu bauen.",
   "recommendations": {
     "fashion": {
@@ -11,78 +11,6 @@
   },
   "templates": {
     "index": {
-      "docs": {
-        "name": "Dokumentationszentrum",
-        "description": "Ideales Produkt-Benutzerhandbuch",
-        "settings": {
-          "hero_bg_type": {
-            "label": "Hero-Hintergrundstil",
-            "info": "Nach Auswahl des Stils werden Hintergrundfarbe und -bild entsprechend angezeigt",
-            "choices": {
-              "none": "Kein Hintergrund",
-              "color": "Farbiger Hintergrund",
-              "image": "Bildhintergrund"
-            }
-          },
-          "hero_height": {
-            "label": "Hintergrundhöhe",
-            "info": "Empfohlene Höhe: 360px"
-          },
-          "hero_image_url": {
-            "label": "Hintergrundbild",
-            "info": "Das Hintergrundbild wird automatisch auf Seitenbreite und Hintergrundhöhe zugeschnitten"
-          },
-          "hero_bg_color": {
-            "label": "Hintergrundfarbe",
-            "info": "Bei farbigem Hintergrund wird die Farbe gemäß ausgewähltem Wert verwendet"
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Der Slogan wird über dem Hintergrundbild angezeigt",
-            "default": "👋 Womit können wir helfen?"
-          },
-          "search_hot_tags": {
-            "label": "Beliebte Tags",
-            "info": "Nach dem Setzen wird die Tag-Liste unter der Startseiten-Suchleiste angezeigt"
-          },
-          "search_hot_keywords": {
-            "label": "Beliebte Suchen",
-            "info": "Nach dem Setzen werden beliebte Suchen unter dem Suchfeld angezeigt. Mehrere Stichwörter mit Zeilenumbruch trennen"
-          },
-          "show_channels_section": {
-            "label": "Erste Sektion",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt"
-          },
-          "channels_section_title": {
-            "label": "Titel der ersten Sektion",
-            "default": "Erste Schritte"
-          },
-          "show_topic_channel": {
-            "label": "Sektion „Empfohlene Themen“",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt; aktivieren Sie zudem in den Seiteneinstellungen „Ist empfohlenes Thema“"
-          },
-          "topic_channel_title": {
-            "label": "Titel der empfohlenen Themen",
-            "default": "Empfohlene Themen"
-          },
-          "show_newest_section": {
-            "label": "Sektion „Neueste Artikel“",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt"
-          },
-          "newest_section_title": {
-            "label": "Titel der neuesten Artikel",
-            "default": "Neueste Artikel"
-          },
-          "show_hottest_section": {
-            "label": "Sektion „Trend-Themen“",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt"
-          },
-          "hottest_section_title": {
-            "label": "Titel der Trend-Themen",
-            "default": "Trend-Themen"
-          }
-        }
-      },
       "help_center": {
         "name": "Hilfecenter",
         "description": "Funktionsreicher Wissensbasis-Stil",
@@ -155,10 +83,6 @@
           }
         }
       },
-      "list": {
-        "name": "Produkthandbuch",
-        "description": "Verzeichnislisten-Stil auf der Startseite"
-      },
       "faqs": {
         "name": "FAQ-Center",
         "description": "FAQ-Startseite mit zusammenklappbaren Fragen und Kategorien",
@@ -193,6 +117,117 @@
           },
           "hero_description_color_dark": {
             "label": "Beschreibungsfarbe (Dunkel)"
+          }
+        }
+      },
+      "support": {
+        "name": "Support-Startseite",
+        "description": "Zwei Spalten: links Themen & Kontakt, rechts Suche & beliebte Artikel",
+        "settings": {
+          "hero_title": {
+            "label": "Hero-Titel",
+            "default": "Womit können wir helfen?",
+            "info": "Leer lassen für den Site-Namen."
+          },
+          "hero_subtitle": {
+            "label": "Hero-Untertitel",
+            "info": "Optional unter dem Titel."
+          },
+          "hero_height": {
+            "label": "Höhe Hero-Bereich",
+            "info": "Abstand über der Suche."
+          },
+          "search_hot_tags": {
+            "label": "Beliebte Tags",
+            "info": "Unter dem Suchfeld."
+          },
+          "search_hot_keywords": {
+            "label": "Beliebte Suchbegriffe",
+            "info": "Ein Begriff pro Zeile."
+          },
+          "topics_section_title": {
+            "label": "Seitenleiste: Themen",
+            "default": "Häufige Themen"
+          },
+          "contact_section_title": {
+            "label": "Seitenleiste: Kontakt",
+            "default": "Support kontaktieren"
+          },
+          "show_popular_section": {
+            "label": "Beliebte Artikel",
+            "info": "Nach Aufrufen sortiert, unter der Suche."
+          },
+          "popular_section_title": {
+            "label": "Überschrift Beliebt",
+            "default": "Beliebte Artikel"
+          },
+          "popular_limit": {
+            "label": "Anzahl beliebte Artikel",
+            "info": "Maximale Einträge."
+          }
+        }
+      },
+      "card": {
+        "name": "Karten-Startseite",
+        "description": "Große Kategorie-Karten mit Artikelvorschau (Intercom-Stil)",
+        "settings": {
+          "hero_bg_type": {
+            "label": "Hero-Hintergrund",
+            "info": "Hintergrund für den oberen Bereich.",
+            "choices": {
+              "none": "Keiner",
+              "color": "Farbe",
+              "image": "Bild"
+            }
+          },
+          "hero_height": {
+            "label": "Hintergrundhöhe",
+            "info": "Empfohlen: 360px"
+          },
+          "hero_image_url": {
+            "label": "Hintergrundbild",
+            "info": "Bei Bild-Hintergrund."
+          },
+          "hero_bg_color": {
+            "label": "Hintergrundfarbe",
+            "info": "Bei Farb-Hintergrund."
+          },
+          "hero_slogan": {
+            "label": "Slogan",
+            "info": "Unter dem Site-Namen.",
+            "default": "👋 Wonach suchen Sie?"
+          },
+          "search_hot_tags": {
+            "label": "Beliebte Tags",
+            "info": "Unter der Suchleiste."
+          },
+          "search_hot_keywords": {
+            "label": "Beliebte Suchen",
+            "info": "Eine pro Zeile."
+          },
+          "show_channels_section": {
+            "label": "Kategorie-Karten anzeigen",
+            "info": "Raster für jeden Top-Level-Bereich."
+          },
+          "channels_section_title": {
+            "label": "Titel Kartenbereich",
+            "default": "Nach Thema stöbern"
+          },
+          "articles_per_card": {
+            "label": "Artikel pro Karte",
+            "info": "Anzahl Unterlinks pro Karte."
+          },
+          "show_popular_section": {
+            "label": "Beliebte Artikel",
+            "info": "Nach Aufrufen sortiert."
+          },
+          "popular_section_title": {
+            "label": "Titel Beliebt-Bereich",
+            "default": "Beliebte Artikel"
+          },
+          "popular_limit": {
+            "label": "Anzahl beliebte Artikel",
+            "info": "Listeneinträge."
           }
         }
       }
@@ -241,10 +276,6 @@
             "info": "Wird in der Videoliste angezeigt; auf der Listenseite nicht erforderlich"
           }
         }
-      },
-      "export": {
-        "name": "Export-Seitenvorlage",
-        "description": "Wird häufig verwendet, um den aktuellen Abschnitt und Unterseiten direkt im Browser zu exportieren"
       }
     }
   },
@@ -351,6 +382,11 @@
         "label": "HTML in der zweiten Feature-Sektion der Startseite einfügen",
         "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
         "placeholder": "Üblich für Navigationslinks zu anderen Firmenwebsites"
+      },
+      "contact_html": {
+        "label": "Support kontaktieren (HTML)",
+        "info": "Wird in der linken Spalte der Support-Startseite angezeigt.",
+        "placeholder": "Unser Support-Team hilft Ihnen gerne weiter."
       }
     }
   },

@@ -63,6 +63,9 @@
         "tab_all": "All",
         "hero_title_default": "Frequently Asked Questions",
         "hero_description_default": "Helping you quickly understand and resolve common questions"
+      },
+      "support": {
+        "search_placeholder": "Search help articles..."
       }
     }
   },

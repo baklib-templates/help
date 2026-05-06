@@ -63,6 +63,9 @@
         "tab_all": "Alle",
         "hero_title_default": "Häufig gestellte Fragen",
         "hero_description_default": "Schnelle Antworten und Lösungen zu häufigen Fragen"
+      },
+      "support": {
+        "search_placeholder": "Hilfeartikel durchsuchen..."
       }
     }
   },

@@ -59,9 +59,9 @@ assets/images/theme/<lang>/
 ├── thumb.png            # 主题卡缩略图
 ├── index.png            # 主预览图
 ├── index-help-center.png
-├── index-list.png
-├── index-docs.png
 ├── index-faqs.png
+├── index-card.png
+├── index-support.png
 └── page.png
 ```
 
@@ -72,9 +72,9 @@ assets/images/theme/<lang>/
 "theme_preview_images": [
   "images/theme/${lang}/index.png",
   "images/theme/${lang}/index-help-center.png",
-  "images/theme/${lang}/index-list.png",
-  "images/theme/${lang}/index-docs.png",
   "images/theme/${lang}/index-faqs.png",
+  "images/theme/${lang}/index-card.png",
+  "images/theme/${lang}/index-support.png",
   "images/theme/${lang}/page.png"
 ]
 ```

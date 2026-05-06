@@ -1,5 +1,5 @@
 {
-  "theme_label": "Docs",
+  "theme_label": "Help Center",
   "theme_description": "Ship documentation your users will actually read—clear information architecture, instant search, and AI-ready Q&A out of the box. Turn your knowledge base into polished product docs, API guides, and help centers without hand-rolling a separate doc site.",
   "recommendations": {
     "fashion": {
@@ -11,78 +11,6 @@
   },
   "templates": {
     "index": {
-      "docs": {
-        "name": "Documentation Center",
-        "description": "Ideal product user manual",
-        "settings": {
-          "hero_bg_type": {
-            "label": "Hero Background Style",
-            "info": "After selecting the background style, the background color and image will be displayed according to the selected content",
-            "choices": {
-              "none": "No Background",
-              "color": "Color Background",
-              "image": "Image Background"
-            }
-          },
-          "hero_height": {
-            "label": "Background Height",
-            "info": "Recommended height: 360px"
-          },
-          "hero_image_url": {
-            "label": "Background Image",
-            "info": "Background image will be automatically cropped according to page width and background height"
-          },
-          "hero_bg_color": {
-            "label": "Background Color",
-            "info": "The color of the hero background style will be processed according to the selected color value (color background)"
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Slogan will be displayed above the background image",
-            "default": "👋 What Can We Help?"
-          },
-          "search_hot_tags": {
-            "label": "Popular Tags",
-            "info": "After setting, the tag list will be displayed below the homepage search bar"
-          },
-          "search_hot_keywords": {
-            "label": "Popular Searches",
-            "info": "After setting, popular searches will be displayed below the search box. Use line breaks to set multiple keywords"
-          },
-          "show_channels_section": {
-            "label": "First Section",
-            "info": "If unchecked, this section will not be displayed on the homepage"
-          },
-          "channels_section_title": {
-            "label": "First Section Title",
-            "default": "Getting Started"
-          },
-          "show_topic_channel": {
-            "label": "Featured Topics Section",
-            "info": "If unchecked, this section will not be displayed on the homepage; please check the 'Is Featured Topic' option in page settings to display it on the homepage"
-          },
-          "topic_channel_title": {
-            "label": "Featured Topics Section Title",
-            "default": "Featured Topics"
-          },
-          "show_newest_section": {
-            "label": "Latest Articles Section",
-            "info": "If unchecked, this section will not be displayed on the homepage"
-          },
-          "newest_section_title": {
-            "label": "Latest Articles Section Title",
-            "default": "Latest Articles"
-          },
-          "show_hottest_section": {
-            "label": "Hot Topics Section",
-            "info": "If unchecked, this section will not be displayed on the homepage"
-          },
-          "hottest_section_title": {
-            "label": "Hot Topics Section Title",
-            "default": "Hot Topics"
-          }
-        }
-      },
       "help_center": {
         "name": "Help Center",
         "description": "Feature-rich product knowledge base style",
@@ -155,10 +83,6 @@
           }
         }
       },
-      "list": {
-        "name": "Product Manual",
-        "description": "Homepage directory list style"
-      },
       "faqs": {
         "name": "FAQ Center",
         "description": "FAQ-style homepage with collapsible questions and category tabs",
@@ -193,6 +117,117 @@
           },
           "hero_description_color_dark": {
             "label": "Description Color (Dark Mode)"
+          }
+        }
+      },
+      "support": {
+        "name": "Support Home",
+        "description": "Two-column layout: topics and contact (left), search and popular articles (right)",
+        "settings": {
+          "hero_title": {
+            "label": "Hero Title",
+            "default": "How can we help?",
+            "info": "Leave empty to use the site name instead."
+          },
+          "hero_subtitle": {
+            "label": "Hero Subtitle",
+            "info": "Optional short text below the title."
+          },
+          "hero_height": {
+            "label": "Hero Area Height",
+            "info": "Vertical space reserved above the search box."
+          },
+          "search_hot_tags": {
+            "label": "Popular Tags",
+            "info": "Shown below the search box."
+          },
+          "search_hot_keywords": {
+            "label": "Popular Searches",
+            "info": "One keyword per line."
+          },
+          "topics_section_title": {
+            "label": "Sidebar: Topics Heading",
+            "default": "Common topics"
+          },
+          "contact_section_title": {
+            "label": "Sidebar: Contact Heading",
+            "default": "Contact support"
+          },
+          "show_popular_section": {
+            "label": "Show Popular Articles",
+            "info": "Listed by visit count under the search box."
+          },
+          "popular_section_title": {
+            "label": "Popular Articles Heading",
+            "default": "Popular articles"
+          },
+          "popular_limit": {
+            "label": "Popular Articles Limit",
+            "info": "Maximum articles to list."
+          }
+        }
+      },
+      "card": {
+        "name": "Card Home",
+        "description": "Large category cards with article previews (Intercom-style)",
+        "settings": {
+          "hero_bg_type": {
+            "label": "Hero Background Style",
+            "info": "Background for the top hero area.",
+            "choices": {
+              "none": "No Background",
+              "color": "Color Background",
+              "image": "Image Background"
+            }
+          },
+          "hero_height": {
+            "label": "Background Height",
+            "info": "Recommended height: 360px"
+          },
+          "hero_image_url": {
+            "label": "Background Image",
+            "info": "Used when image background is selected."
+          },
+          "hero_bg_color": {
+            "label": "Background Color",
+            "info": "Used when color background is selected."
+          },
+          "hero_slogan": {
+            "label": "Slogan",
+            "info": "Shown under the site name.",
+            "default": "👋 What can we help you find?"
+          },
+          "search_hot_tags": {
+            "label": "Popular Tags",
+            "info": "Shown below the search bar."
+          },
+          "search_hot_keywords": {
+            "label": "Popular Searches",
+            "info": "One per line."
+          },
+          "show_channels_section": {
+            "label": "Show Category Cards",
+            "info": "Grid of cards for each top-level section."
+          },
+          "channels_section_title": {
+            "label": "Cards Section Title",
+            "default": "Browse by topic"
+          },
+          "articles_per_card": {
+            "label": "Articles per Card",
+            "info": "How many child links to show in each card."
+          },
+          "show_popular_section": {
+            "label": "Show Popular Articles",
+            "info": "Based on visit counts."
+          },
+          "popular_section_title": {
+            "label": "Popular Section Title",
+            "default": "Popular articles"
+          },
+          "popular_limit": {
+            "label": "Popular Articles Limit",
+            "info": "Number of pages to list."
           }
         }
       }
@@ -241,10 +276,6 @@
             "info": "Used for display in video list page, not needed for list page"
           }
         }
-      },
-      "export": {
-        "name": "Export Page Template",
-        "description": "Commonly used for directly exporting current section and sub-page content in browser"
       }
     }
   },
@@ -351,6 +382,11 @@
         "label": "Insert HTML code in second homepage feature section",
         "info": "Supports HTML tags and limited TailwindCSS style code",
         "placeholder": "Usually used to insert navigation links to company's other websites"
+      },
+      "contact_html": {
+        "label": "Contact support (HTML)",
+        "info": "Shown in the Support Home sidebar (e.g. hours, email, chat links).",
+        "placeholder": "Our support team is available 24/7."
       }
     }
   },
