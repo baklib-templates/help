@@ -1,8 +1,8 @@
-# Wiki Docs (`docs`)
+# Wiki Help Center (`help`)
 
 English | [简体中文](README.zh-CN.md)
 
-Baklib **Wiki** theme tailored for **product documentation, help centers, and FAQ portals**: a content-first layout with sidebar navigation, table of contents, AI search, share-to-LLM tools, and Turbo-powered page transitions.
+Baklib **Wiki** theme focused on **customer self-service and help centers** (with optional FAQ-style home): content-first layout, sidebar navigation, in-page TOC, AI search, share-to-LLM tools, and Turbo-powered transitions. It is a sibling of the Docs-oriented wiki theme, with documentation-centric index variants removed in favor of help-oriented layouts.
 
 ## Requirements
 
@@ -13,14 +13,29 @@ Baklib **Wiki** theme tailored for **product documentation, help centers, and FA
 
 | Path                          | Purpose                                                                 |
 | ----------------------------- | ----------------------------------------------------------------------- |
-| `config/settings_schema.json` | Theme metadata, languages, and editor settings                          |
+| `config/settings_schema.json` | Theme metadata (`theme_name`: `help`), languages, and editor settings   |
 | `layout/`                     | Base layouts                                                            |
-| `templates/`                  | Page templates (home, docs, help center, list, FAQs, page, search, …)   |
+| `templates/`                  | Page templates (see **Homepage templates** below), `page`, `search`, …  |
 | `snippets/`                   | Partials (header, footer, sidebar, page tools, feedback, …)             |
 | `locales/`                    | Runtime UI strings (`*.json`) and theme-editor labels (`*.schema.json`) |
 | `src/`                        | Source CSS/JS (Tailwind, esbuild)                                       |
 | `assets/`                     | Compiled stylesheets, scripts, and theme preview images                 |
 | `statics/`                    | Static custom HTML examples                                             |
+
+## Homepage (`index`) templates
+
+Choose one in the site editor as the wiki home:
+
+| Template                 | File                         | Summary |
+| ------------------------ | ---------------------------- | ------- |
+| **Help Center**          | `index.help_center.liquid`   | Hero + search, channel grid, optional featured topics / latest / popular blocks. |
+| **FAQ Center**           | `index.faqs.liquid`          | Tabbed categories + collapsible FAQ list. |
+| **Card Home**            | `index.card.liquid`          | Large category cards with article previews (Intercom-style). |
+| **Support Home**         | `index.support.liquid`       | Main column (left): headline, search, popular articles on white. Sticky right sidebar (light background): common topics + **Contact support** HTML from site settings (`contact_html`). |
+
+### Support Home sidebar: `contact_html`
+
+Under **Theme settings → Custom HTML**, set **Contact support (HTML)** (`contact_html`). It renders in the right sticky sidebar of **Support Home** under the “Contact support” heading (together with **Common topics** links above it).
 
 ## Supported locales
 
@@ -64,6 +79,8 @@ assets/images/theme/<lang>/
 ├── index-support.png
 └── page.png
 ```
+
+Schema thumbnails for the theme picker also live under `assets/images/schema/` (e.g. `index-support.png`).
 
 The `${lang}` placeholder used in `config/settings_schema.json` is resolved automatically:
 
