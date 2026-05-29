@@ -2,6 +2,9 @@
   "theme_label": "Help Center",
   "theme_description": "ユーザーが読みたくなるドキュメント体験を届けます。情報設計が明快で検索が速く、AI による回答にも対応。ナレッジベースを製品ドキュメント、API ガイド、ヘルプセンターとして公開でき、ゼロからドキュメントサイトを構築する必要はありません。",
   "recommendations": {
+    "baklib": {
+      "name": "Baklib"
+    },
     "fashion": {
       "name": "ファッション"
     },
@@ -311,6 +314,10 @@
       "right_sidebar_width": {
         "label": "右サイドバー幅（詳細ページ）",
         "info": "推奨：240px"
+      },
+      "header_height": {
+        "label": "ヘッダーの高さ",
+        "info": "固定ヘッダーの高さ。デフォルト: 68px。"
       },
       "header_type": {
         "label": "ヘッダースタイル",

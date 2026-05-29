@@ -2,6 +2,9 @@
   "theme_label": "Help Center",
   "theme_description": "打造用户愿意阅读的文档体验：结构清晰、检索迅捷，并可接入 AI 问答。将知识库呈现为产品文档、API 指南与帮助中心，无需从零自建文档站。",
   "recommendations": {
+    "baklib": {
+      "name": "Baklib"
+    },
     "fashion": {
       "name": "时尚"
     },
@@ -311,6 +314,10 @@
       "right_sidebar_width": {
         "label": "右侧边栏宽度(详细页面中)",
         "info": "建议：240px"
+      },
+      "header_height": {
+        "label": "页头高度",
+        "info": "顶部导航栏高度，默认 68px。"
       },
       "header_type": {
         "label": "顶部导航栏风格",

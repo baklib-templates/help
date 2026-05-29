@@ -2,6 +2,9 @@
   "theme_label": "Help Center",
   "theme_description": "Dokumentation, die Nutzer wirklich lesen—klare Informationsarchitektur, blitzschnelle Suche und KI-gestützte Antworten out of the box. Verwandeln Sie Ihre Wissensdatenbank in überzeugende Produkt-Docs, API-Guides und Hilfecenter, ohne eine eigene Doc-Site von Grund auf zu bauen.",
   "recommendations": {
+    "baklib": {
+      "name": "Baklib"
+    },
     "fashion": {
       "name": "Fashion"
     },
@@ -311,6 +314,10 @@
       "right_sidebar_width": {
         "label": "Rechte Seitenleisten-Breite (Detailseiten)",
         "info": "Empfohlen: 240px"
+      },
+      "header_height": {
+        "label": "Kopfzeilenhöhe",
+        "info": "Höhe der fixierten Kopfzeile. Standard: 68px."
       },
       "header_type": {
         "label": "Header-Stil",

@@ -1,29 +1,20 @@
-{% if site.settings.header_type.value == '0' %}
-{% else %}
-  {% assign header_bg_color = site.settings.header_bg_color | presence | default: '#fff' %}
-  {% assign header_text_color = site.settings.header_text_color | presence | default: '#000' %}
-{% endif %}
+{%- if site.settings.header_type.value == '0' -%}
+  {%- assign header_surface_class = 'bg-transparent text-base-content shadow-none' -%}
+{%- else -%}
+  {%- assign header_surface_class = 'border-b border-base-300 bg-base-100/95 text-base-content shadow-xs supports-[backdrop-filter]:bg-base-100/80' -%}
+{%- endif -%}
 
 <header
-  class="js--header sticky top-0 z-50 flex flex-col h-16 w-full px-4 [transform:translate3d(0,0,0)] justify-center backdrop-blur transition-shadow duration-100 print:hidden shadow-xs
-         bg-[var(--header-bg)] text-[var(--header-text)]
-         dark:bg-[var(--header-bg-dark)] dark:text-[var(--header-text-dark)]"
-  style="
-    --header-bg: {{ header_bg_color }};
-    --header-text: {{ header_text_color }};
-    --header-bg-dark: {{ site.settings.header_bg_color_dark | default: '--color-primary' }};
-    --header-text-dark: {{ site.settings.header_text_color_dark | default: '--color-primary-content' }};
-  "
+  class="js--header sticky top-0 z-50 flex min-h-[var(--header-height)] w-full flex-col justify-center px-4 [transform:translate3d(0,0,0)] backdrop-blur transition-shadow duration-100 print:hidden {{ header_surface_class }}"
 >
-  <nav class="navbar py-0 max-w-[var(--max-content-width)] mx-auto px-0 flex items-center justify-between w-full space-x-4">
-    <div class="flex items-center gap-2 lg:gap-4 min-w-0 flex-1">
+  <nav class="navbar mx-auto flex w-full max-w-[var(--max-content-width)] items-center justify-between space-x-4 px-0 py-0">
+    <div class="flex min-w-0 flex-1 items-center gap-2 lg:gap-4">
       {% render 'header_logo' %}
       {% render 'header_drawer' %}
       {% assign header_menu_html = site.settings.header_menu_html | presence %}
       {% if header_menu_html %}
-        {% comment %} 分割线 {% endcomment %}
-        <div class="hidden lg:block w-px h-4 bg-base-300"></div>
-        <div class="hidden lg:flex flex-1 justify-end min-w-0">
+        <div class="hidden h-4 w-px bg-base-300 lg:block"></div>
+        <div class="hidden min-w-0 flex-1 justify-end lg:flex">
           <div class="flex items-center gap-6">{{ header_menu_html }}</div>
         </div>
       {% endif %}
@@ -36,20 +27,16 @@
       data-controller="header-search"
       data-header-search-search-url-value="{{ site.search_path }}"
     >
-      <!-- 小屏：仅图标（外层 div 控制显隐，避免与表单同时出现） -->
       <div class="shrink-0 sm:hidden">
         <a
           href="{{ site.search_path }}"
           class="{{ header_icon_btn }}"
           aria-label="{{ search_input_placeholder | escape_once }}"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 text-base-content/60" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M16.5 10.5A6 6 0 1 1 10.5 4.5a6 6 0 0 1 6 6z" />
-          </svg>
+          {% render 'icon', name: 'search', class: 'size-4 text-base-content/60' %}
         </a>
       </div>
 
-      <!-- sm+：胶囊搜索框；Enter 提交；⌘/Ctrl+K 见 header-search controller -->
       {% if current_user %}
         {% assign header_search_wrap_class = 'hidden min-w-0 shrink-0 sm:block w-full max-w-[10.5rem] min-[400px]:max-w-[12rem] sm:max-w-[13rem] md:max-w-[14rem] lg:max-w-[16rem] xl:max-w-[18rem]' %}
       {% else %}
@@ -59,9 +46,7 @@
         {% form_tag 'search', class: 'w-full' %}
           <div class="relative flex w-full min-w-0 items-stretch rounded-lg border border-base-300 bg-base-100 transition-colors duration-150 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/25 dark:border-base-content/25 dark:bg-base-200/50 dark:focus-within:border-primary">
             <span class="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-base-content/60" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M16.5 10.5A6 6 0 1 1 10.5 4.5a6 6 0 0 1 6 6z" />
-              </svg>
+              {% render 'icon', name: 'search', class: 'size-4' %}
             </span>
             <label class="sr-only" for="header-search-input">{{ search_input_placeholder | escape_once }}</label>
             <input
@@ -91,15 +76,12 @@
               {% if current_user.image %}
                 <img src="{{ current_user.image }}" alt="" class="size-7 rounded-lg object-cover sm:size-8" width="32" height="32" />
               {% else %}
-                <svg class="size-4 text-base-content/60 sm:size-[1.125rem]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 20c0-4 8-4 8-4s8 0 8 4" />
-                </svg>
+                {% render 'icon', name: 'user', class: 'size-4 text-base-content/60 sm:size-[1.125rem]' %}
               {% endif %}
             </div>
-            <div tabindex="0" class="dropdown-content rounded-box mt-2 w-44 space-y-3 bg-base-100 px-3 py-2 shadow">
+            <div tabindex="0" class="dropdown-content mt-2 w-44 space-y-3 rounded-box bg-base-100 px-3 py-2 shadow">
               <div class="line-clamp-1 border-b border-base-200 pb-2 font-medium text-primary/80">{{ current_user.name }}</div>
-              <div class="text-gray-500">
+              <div class="text-base-content/60">
                 {% form_tag 'sign_out' %}
                   <button type="submit" class="h-5 w-full text-left hover:link">{{ 'generic.buttons.signout' | t }}</button>
                 {% endform_tag %}

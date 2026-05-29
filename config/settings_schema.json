@@ -51,6 +51,17 @@
     ],
     "recommendations": {
       "color_schemas": {
+        "baklib": {
+          "name": "t:schema.recommendations.baklib.name",
+          "colors": {
+            "--theme-color-primary": "#0F766E",
+            "--theme-color-secondary": "#C2410C",
+            "--theme-color-accent": "#0F172A",
+            "--theme-color-info": "#60A5FA",
+            "--theme-color-success": "#14B8A6",
+            "--theme-color-warning": "#FDBA74"
+          }
+        },
         "fashion": {
           "name": "t:schema.recommendations.fashion.name",
           "colors": {
@@ -132,6 +143,17 @@
         "step": 1,
         "default": 240,
         "info": "t:schema.generic.settings.right_sidebar_width.info"
+      },
+      {
+        "id": "header_height",
+        "type": "range",
+        "label": "t:schema.generic.settings.header_height.label",
+        "min": 48,
+        "max": 96,
+        "step": 1,
+        "default": 68,
+        "unit": "px",
+        "info": "t:schema.generic.settings.header_height.info"
       },
       {
         "id": "header_type",

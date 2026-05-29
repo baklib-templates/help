@@ -14,22 +14,22 @@
       {% paginate_tag tag.pages, as: 'items' %}
         <ul role="list" class="space-y-2">
           {% for item in items %}
-            <li class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
+            <li class="p-3 bg-base-200 rounded-lg hover:bg-base-200">
               <div class="flex gap-1">
                 <div>
                   <div class="flex space-x-2 items-start">
                     <div class="shrink-0 pt-[1px]">
-                      <span class="inline-flex justify-center items-center w-5 h-5 text-xs rounded-full bg-primary-100">{{ forloop.index }}</span>
+                      <span class="inline-flex justify-center items-center w-5 h-5 text-xs rounded-full bg-primary/15">{{ forloop.index }}</span>
                     </div>
                     <div class='flex-1'>
-                      <a class="block text-lg text-slate-800 search-highlight-block hover:underline" href="{{ item.url }}" data-turbo-frame="_top">
+                      <a class="block text-lg text-base-content search-highlight-block hover:underline" href="{{ item.url }}" data-turbo-frame="_top">
                         {{ item.link_text }}
                       </a>
-                      <a href="{{ item.url }}" data-turbo-frame="_top" class="block text-xs text-gray-500 font-inter">{{ item.url }}</a>
+                      <a href="{{ item.url }}" data-turbo-frame="_top" class="block text-xs text-base-content/60 font-inter">{{ item.url }}</a>
                       {% if item.settings.description | presence %}
-                        <p class="my-3 text-sm line-clamp-3 text-slate-400 search-highlight-block">{{ item.settings.description }}</p>
+                        <p class="my-3 text-sm line-clamp-3 text-base-content/50 search-highlight-block">{{ item.settings.description }}</p>
                       {% endif %}
-                      <div class="flex justify-between items-center text-gray-600">
+                      <div class="flex justify-between items-center text-base-content/70">
                         <div class="hidden overflow-x-auto text-sm md:block">
                           {% render 'breadcrumb', breadcrumb: item.breadcrumb %}
                         </div>

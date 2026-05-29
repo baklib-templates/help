@@ -5,31 +5,31 @@
 {% assign hero_height = page.settings.hero_height | default: 240 | plus: 0 %}
 {% assign popular_limit = page.settings.popular_limit | default: 8 | plus: 0 %}
 
-<div class="relative min-h-[60vh] bg-white dark:bg-slate-950">
+<div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
   {% assign features_one_html = site.settings.features_one_html | strip %}
   {% if features_one_html | present? %}
-    <section class="border-b border-slate-200/80 dark:border-slate-800">
+    <section class="border-b border-base-300 dark:border-base-300">
       {{ features_one_html }}
     </section>
   {% endif %}
 
-  <div class="mx-auto max-w-6xl bg-white px-4 pb-16 pt-8 md:pt-12 dark:bg-slate-950" data-controller="link-target">
+  <div class="mx-auto max-w-6xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,300px)] lg:items-start lg:gap-10 xl:gap-12">
       {% comment %} Main column: headline, search, popular {% endcomment %}
-      <main class="min-w-0 bg-white dark:bg-slate-950">
+      <main class="min-w-0 bg-base-100 dark:bg-base-100">
         <header>
           <div class="flex flex-col justify-end pt-2" style="min-height: {{ hero_height }}px;">
             {% if hero_title != blank %}
-              <h1 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 md:text-3xl lg:text-4xl">
+              <h1 class="text-2xl font-semibold tracking-tight text-base-content dark:text-base-content md:text-3xl lg:text-4xl">
                 {{ hero_title }}
               </h1>
             {% else %}
-              <h1 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 md:text-3xl lg:text-4xl">
+              <h1 class="text-2xl font-semibold tracking-tight text-base-content dark:text-base-content md:text-3xl lg:text-4xl">
                 {{ site.name }}
               </h1>
             {% endif %}
             {% if hero_subtitle != blank %}
-              <p class="mt-3 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 md:text-base">
+              <p class="mt-3 max-w-2xl text-sm leading-6 text-base-content/70 dark:text-base-content/50 md:text-base">
                 {{ hero_subtitle }}
               </p>
             {% endif %}
@@ -37,7 +37,7 @@
             <div class="mt-8 w-full max-w-3xl">
               {% form_tag 'search', class: 'w-full' %}
                 <div class="relative">
-                  <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                  <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-base-content/50">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
@@ -48,7 +48,7 @@
                     value="{{ search.keywords | escape_once }}"
                     placeholder="{{ 'templates.index.support.search_placeholder' | t }}"
                     autocomplete="off"
-                    class="block w-full rounded-lg border-2 border-primary/40 bg-white py-3 pl-10 pr-4 text-base text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/25 dark:border-primary/50 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+                    class="block w-full rounded-lg border-2 border-primary/40 bg-base-100 py-3 pl-10 pr-4 text-base text-base-content shadow-sm outline-none transition placeholder:text-base-content/50 focus:border-primary focus:ring-2 focus:ring-primary/25 dark:border-primary/50 dark:bg-base-300 dark:text-base-content dark:placeholder:text-base-content/60"
                   >
                 </div>
               {% endform_tag %}
@@ -56,7 +56,7 @@
               <div class="mt-4 space-y-2 text-sm">
                 {% assign search_hot_tags = page.settings.search_hot_tags %}
                 {% if search_hot_tags.size > 0 %}
-                  <div class="text-slate-600 dark:text-slate-400">
+                  <div class="text-base-content/70 dark:text-base-content/50">
                     <span class="mr-2 font-medium">{{ 'layout.theme.search_tags_label' | t }}:</span>
                     {% for tag in search_hot_tags %}
                       <a href="{{ tag.path }}" data-turbo-frame="_top" class="mr-2 inline-block text-primary hover:underline">
@@ -68,7 +68,7 @@
 
                 {% assign hot_keywords = page.settings.search_hot_keywords | reg_split: "/\n/" %}
                 {% if hot_keywords.size > 0 %}
-                  <div class="text-slate-600 dark:text-slate-400">
+                  <div class="text-base-content/70 dark:text-base-content/50">
                     <span class="mr-2 font-medium">{{ 'layout.theme.search_keywords_label' | t }}:</span>
                     {% for hot_keyword in hot_keywords %}
                       <a href="{{ site.index_path }}-/search?q={{ hot_keyword }}" class="mr-2 text-primary hover:underline">
@@ -84,14 +84,14 @@
 
         {% if page.settings.show_popular_section %}
           {% assign popular_pages = site.pages['/'].pages_in_list | order_by: '-visits_count' | limit: popular_limit %}
-          <section class="mt-12 border-t border-slate-200 pt-10 dark:border-slate-800">
-            <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+          <section class="mt-12 border-t border-base-300 pt-10 dark:border-base-300">
+            <h2 class="text-lg font-semibold text-base-content dark:text-base-content">
               {{ page.settings.popular_section_title }}
             </h2>
             <ul class="mt-6 flex flex-col gap-8">
               {% for pop_page in popular_pages %}
-                <li class="flex gap-4 border-b border-slate-100 pb-8 last:border-0 last:pb-0 dark:border-slate-800">
-                  <span class="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white" aria-hidden="true">?</span>
+                <li class="flex gap-4 border-b border-base-300 pb-8 last:border-0 last:pb-0 dark:border-base-300">
+                  <span class="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-content" aria-hidden="true">?</span>
                   <div class="min-w-0 flex-1">
                     <a href="{{ pop_page.path }}" class="text-base font-medium text-primary hover:underline md:text-lg">
                       {{ pop_page.link_text }}
@@ -101,7 +101,7 @@
                       {% assign excerpt = pop_page.settings.content | strip_html | truncate: 160 %}
                     {% endif %}
                     {% if excerpt != blank %}
-                      <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">{{ excerpt }}</p>
+                      <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-base-content/70 dark:text-base-content/50">{{ excerpt }}</p>
                     {% endif %}
 
                     {% assign tags = pop_page.settings.tags %}
@@ -111,7 +111,7 @@
                         {% for tag in tags %}
                           <a href="{{ tag.path }}" data-turbo-frame="_top" class="text-primary hover:underline">{{ tag.name }}</a>
                           {% unless forloop.last %}
-                            <span class="text-slate-400 dark:text-slate-500" aria-hidden="true">·</span>
+                            <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
                           {% endunless %}
                         {% endfor %}
                       </div>
@@ -121,7 +121,7 @@
                           {% unless forloop.last %}
                             <a href="{{ crumb.path }}" data-turbo-frame="_top" class="hover:underline">{{ crumb.link_text }}</a>
                             {% unless forloop.index == bc.size | minus: 1 %}
-                              <span class="text-slate-400 dark:text-slate-500" aria-hidden="true">·</span>
+                              <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
                             {% endunless %}
                           {% endunless %}
                         {% endfor %}
@@ -139,8 +139,8 @@
       <aside
         class="min-w-0 lg:sticky lg:top-[calc(var(--header-height,4rem)+1rem)] lg:z-10 lg:max-h-[calc(100vh-var(--header-height,4rem)-2rem)] lg:overflow-y-auto lg:self-start"
       >
-        <div class="rounded-xl border border-slate-200/90 bg-slate-100 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/95">
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">
+        <div class="rounded-xl border border-base-300 bg-base-200 p-6 shadow-sm dark:border-base-300 dark:bg-base-300/95">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
             {{ page.settings.topics_section_title }}
           </h2>
           <nav class="mt-4 flex flex-col gap-2 text-sm" aria-label="{{ page.settings.topics_section_title }}">
@@ -156,13 +156,13 @@
             {% endfor %}
           </nav>
 
-          <hr class="my-6 border-slate-200 dark:border-slate-600" />
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">
+          <hr class="my-6 border-base-300 dark:border-base-300" />
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
             {{ page.settings.contact_section_title }}
           </h2>
           {% assign contact_html = site.settings.contact_html | strip %}
           {% if contact_html | present? %}
-            <div class="support-contact-html mt-3 prose prose-sm max-w-none text-slate-600 dark:prose-invert dark:text-slate-400">
+            <div class="support-contact-html mt-3 prose prose-sm max-w-none text-base-content/70 dark:prose-invert dark:text-base-content/50">
               {{ contact_html }}
             </div>
           {% endif %}

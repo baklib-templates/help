@@ -1,6 +1,17 @@
 {
   "theme_label": "Help Center",
   "theme_description": "사용자가 실제로 읽는 문서 경험을 제공합니다. 명확한 정보 구조, 빠른 검색, AI 기반 Q&A까지 지원합니다. 지식베이스를 제품 문서·API 가이드·헬프 센터로 바로 공개하고, 문서 사이트를 처음부터 만들 필요가 없습니다.",
+  "recommendations": {
+    "baklib": {
+      "name": "Baklib"
+    },
+    "fashion": {
+      "name": "패션"
+    },
+    "old_school": {
+      "name": "레트로"
+    }
+  },
   "templates": {
     "index": {
       "help_center": {

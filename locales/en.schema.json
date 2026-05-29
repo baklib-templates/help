@@ -2,6 +2,9 @@
   "theme_label": "Help Center",
   "theme_description": "Ship documentation your users will actually read—clear information architecture, instant search, and AI-ready Q&A out of the box. Turn your knowledge base into polished product docs, API guides, and help centers without hand-rolling a separate doc site.",
   "recommendations": {
+    "baklib": {
+      "name": "Baklib"
+    },
     "fashion": {
       "name": "Fashion"
     },
@@ -311,6 +314,10 @@
       "right_sidebar_width": {
         "label": "Right Sidebar Width (in detail pages)",
         "info": "Recommended: 240px"
+      },
+      "header_height": {
+        "label": "Header Height",
+        "info": "Height of the sticky top navigation bar. Default: 68px."
       },
       "header_type": {
         "label": "Header Style",

@@ -15,14 +15,14 @@
   <div class="w-full max-w-[var(--max-content-width)] mx-auto pt-4">
     <section class="mx-auto w-full md:max-w-[60%]">
       {% form_tag 'search', data-turbo-frame: 'frame--search-results', data-turbo-action: 'advance' %}
-        <div class="relative text-gray-400 rounded-md group focus:text-gray-900 hover:text-gray-500">
+        <div class="relative text-base-content/50 rounded-md group focus:text-base-content hover:text-base-content/60">
           <button type="submit" class="flex absolute inset-y-0 right-0 items-center pr-3 pl-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
           </button>
-          <input type="text" autofocus name="{{form.keywords_field_name}}" value="{{ search.keywords | truncate: 10 | escape }}" placeholder="{{ search_placeholder }}" class="block pr-10 pl-3 w-full h-12 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500
-          bg-opacity-25 rounded-md transition duration-300 ease-in-out outline-1 focus-visible:outline-primary hover:outline-2 hover:outline-primary-300 sm:text-md focus:bg-opacity-60 ">
+          <input type="text" autofocus name="{{form.keywords_field_name}}" value="{{ search.keywords | truncate: 10 | escape }}" placeholder="{{ search_placeholder }}" class="block pr-10 pl-3 w-full h-12 bg-base-100 dark:bg-base-300 text-base-content dark:text-base-content placeholder:text-base-content/50 dark:placeholder:text-base-content/60
+          bg-opacity-25 rounded-md transition duration-300 ease-in-out outline-1 focus-visible:outline-primary hover:outline-2 hover:outline-primary/40 sm:text-md focus:bg-opacity-60 ">
         </div>
       {% endform_tag %}
 
@@ -32,7 +32,7 @@
         {% assign search_hot_tags = index_page.settings.search_hot_tags %}
         {% if search_hot_tags.size > 0 %}
           <div class="items-center justify-start w-full md:flex flex-wrap md:px-3">
-            <div class="inline-block text-sm text-gray-500 dark:text-gray-100">
+            <div class="inline-block text-sm text-base-content/60 dark:text-base-content">
               <span class="mr-2">{{ 'layout.theme.search_tags_label' | t }}:</span>
               {% for tag in search_hot_tags %}
                 <a
@@ -51,7 +51,7 @@
         {% assign hot_keywords = index_page.settings.search_hot_keywords | reg_split: "/\n/" %}
         {% if hot_keywords.size > 0 %}
           <div class="items-center justify-start w-full md:flex flex-wrap md:px-3">
-            <div class="inline-block text-sm text-gray-500 dark:text-gray-100">
+            <div class="inline-block text-sm text-base-content/60 dark:text-base-content">
               <span class="mr-2">{{ 'layout.theme.search_keywords_label' | t: '热门搜索' }}:</span>
               {% for hot_keyword in hot_keywords %}
                 <a
@@ -91,38 +91,38 @@
                   <ul class="space-y-3">
                     {% if search.page_number == 1 and extends_size > 0 %}
                       {% for link in search.extends %}
-                        <li class="p-3 rounded-lg bg-primary-50 hover:bg-primary-100 dark:bg-primary-800 dark:hover:bg-primary-700">
+                        <li class="p-3 rounded-lg bg-primary/10 hover:bg-primary/20 dark:bg-primary/30 dark:hover:bg-primary/40">
                           <div>
-                            <a class="text-lg text-slate-800 search-highlight-block" href="{{ link.url }}" data-turbo-frame="_top">{{ link.link_text }}</a>
+                            <a class="text-lg text-base-content search-highlight-block" href="{{ link.url }}" data-turbo-frame="_top">{{ link.link_text }}</a>
                           </div>
                           <div class="-mt-2">
-                            <a href="{{ link.url }}" data-turbo-frame="_top" class="text-xs text-gray-500 font-inter">{{ link.url }}</a>
+                            <a href="{{ link.url }}" data-turbo-frame="_top" class="text-xs text-base-content/60 font-inter">{{ link.url }}</a>
                           </div>
                         </li>
                       {% endfor %}
                     {% endif %}
                     {% for page in items %}
-                      <li class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-slate-700">
+                      <li class="p-3 bg-base-200 rounded-lg hover:bg-base-200 dark:bg-base-300 dark:hover:bg-base-300">
                         <div class="flex items-start space-x-2 ">
                           <div class="flex-0 pt-[1px]">
-                            <span class="inline-flex justify-center items-center w-5 h-5 text-xs rounded-full bg-primary-100">{{ forloop.index }}</span>
+                            <span class="inline-flex justify-center items-center w-5 h-5 text-xs rounded-full bg-primary/15">{{ forloop.index }}</span>
                           </div>
                           <div class='flex-1 group overflow-hidden min-w-0'>
-                            <a class="block text-lg text-slate-800 search-highlight-block group-hover:underline dark:text-slate-100 break-all" href="{{ page.path }}" data-turbo-frame="_top">
+                            <a class="block text-lg text-base-content search-highlight-block group-hover:underline dark:text-base-content break-all" href="{{ page.path }}" data-turbo-frame="_top">
                               {{ page.highlighted_search_title }}
                             </a>
                             <a
                               href="{{ page.path }}"
                               data-turbo-frame="_top"
-                              class="block text-xs text-gray-500 font-inter break-all"
+                              class="block text-xs text-base-content/60 font-inter break-all"
                               x-data
                               x-text="window.location.origin + '{{ page.path | escape }}'"
                             ></a>
                             {% unless page.highlighted_search_content == empty %}
-                              <p class="my-3 text-sm line-clamp-3 text-slate-400 search-highlight-block break-all" x-cloak>{{ page.highlighted_search_content }}
+                              <p class="my-3 text-sm line-clamp-3 text-base-content/50 search-highlight-block break-all" x-cloak>{{ page.highlighted_search_content }}
                               </p>
                             {% endunless %}
-                            <div class="w-full min-w-0 text-gray-600 overflow-x-auto">
+                            <div class="w-full min-w-0 text-base-content/70 overflow-x-auto">
                               <div class="hidden text-sm md:block">
                                 {% render 'breadcrumb', breadcrumb: page.breadcrumb %}
                               </div>
@@ -169,7 +169,7 @@
             {% if site.ai_search_enabled? %}
               <div class="hidden flex-grow-0 order-1 w-full md:order-2 md:w-96" id="js--ai-search-container">
                 <div
-                  class="py-4 rounded bg-primary-50 space-y-2 chat-container"
+                  class="py-4 rounded bg-primary/10 space-y-2 chat-container"
                   id="js--ai-search"
                   data-controller="ai-search"
                   md:data-controller="ai-search"
@@ -179,18 +179,18 @@
                   data-ai-search-auto-submit-value="true"
                 >
                   <div class="flex gap-1 items-center px-4 text-sm">
-                    <div class="overflow-hidden w-5 h-5 bg-gradient bg-gradient-to-r rounded-full from-secondary-500 to-primary-600">
+                    <div class="overflow-hidden w-5 h-5 bg-gradient bg-gradient-to-r rounded-full from-secondary to-primary">
                       <img src="{{ "images/ai-search-icon.png" | asset_url }}">
                     </div>
                     <span>{{ ai_search_title }}</span>
                   </div>
-                  <div data-ai-search-target="messages" class="ai-response prose p-4 gap-2 max-h-[50vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                  <div data-ai-search-target="messages" class="ai-response prose p-4 gap-2 max-h-[50vh] overflow-y-auto scrollbar-thin scrollbar-thumb-base-300 scrollbar-track-base-200">
                     <!-- 多轮消息将在这里显示 -->
                   </div>
                   <template data-ai-search-target="userMessageTemplate">
                     <div class="flex justify-end items-end mb-2">
                       <div class="flex flex-col items-end flex-1">
-                        <div class="bg-primary text-gray-50 px-3 py-2 rounded-2xl max-w-full break-words shadow">
+                        <div class="bg-primary text-primary-content px-3 py-2 rounded-2xl max-w-full break-words shadow">
                           <span class="text-sm ai-user-message"></span>
                         </div>
                       </div>
@@ -206,7 +206,7 @@
                   </template>
                   <template data-ai-search-target="assistantMessageTemplate">
                     <div class="flex justify-start items-end mb-2">
-                      <span class="w-8 h-8 mr-2 rounded-full shadow flex items-center justify-center bg-gradient-to-r from-secondary-500 to-primary-600">
+                      <span class="w-8 h-8 mr-2 rounded-full shadow flex items-center justify-center bg-gradient-to-r from-secondary to-primary">
                         <!-- AI SVG 头像 -->
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <circle cx="14" cy="14" r="14" fill="currentColor"/>
@@ -215,7 +215,7 @@
                         </svg>
                       </span>
                       <div class="flex flex-col items-start flex-1">
-                        <div class="bg-gray-100 text-gray-800 px-3 py-2 rounded-2xl max-w-full break-words shadow">
+                        <div class="bg-base-200 text-base-content px-3 py-2 rounded-2xl max-w-full break-words shadow">
                           <span class="text-sm ai-assistant-message"></span>
                         </div>
                       </div>
@@ -224,7 +224,7 @@
                   <div class="mt-4 flex gap-2 px-4">
                     <input
                       type="text"
-                      class="flex-1 p-2 border border-gray-100 rounded focus-visible:outline-primary"
+                      class="flex-1 p-2 border border-base-300 rounded focus-visible:outline-primary"
                       placeholder="{{ 'templates.search.ai_input_placeholder' | t }}"
                       id="js--ai-chat-input"
                       data-ai-search-target="input"

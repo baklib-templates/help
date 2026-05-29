@@ -8,7 +8,7 @@
 {% assign min_depth = min_depth | default: 1 %}
 {% assign depth = breadcrumb | size %}
 {% if depth > min_depth %}
-  <div class="breadcrumbs text-sm text-gray-500 dark:text-gray-400 no-scrollbar">
+  <div class="breadcrumbs text-sm text-base-content/60 dark:text-base-content/50 no-scrollbar">
     <ul>
       {% for crumb in breadcrumb %}
         <li>

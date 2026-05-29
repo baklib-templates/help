@@ -2,6 +2,9 @@
   "theme_label": "Help Center",
   "theme_description": "Une documentation que vos utilisateurs lisent vraiment—architecture claire, recherche instantanée et réponses assistées par IA prêtes à l’emploi. Transformez votre base de connaissances en docs produit, guides API et centres d’aide soignés, sans reconstruire un site de documentation à la main.",
   "recommendations": {
+    "baklib": {
+      "name": "Baklib"
+    },
     "fashion": {
       "name": "Tendance"
     },
@@ -311,6 +314,10 @@
       "right_sidebar_width": {
         "label": "Largeur de la barre latérale droite (pages détaillées)",
         "info": "Recommandé : 240px"
+      },
+      "header_height": {
+        "label": "Hauteur de l'en-tête",
+        "info": "Hauteur de la barre de navigation fixe. Par défaut : 68px."
       },
       "header_type": {
         "label": "Style de l’en-tête",

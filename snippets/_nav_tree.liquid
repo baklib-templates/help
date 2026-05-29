@@ -11,7 +11,7 @@
     {% if tree.children %}
       <li class='mt-1 w-full min-w-0'>
         <details class='w-full'>
-          <summary data-nav-tree-target="item" class="w-full hover:text-white">
+          <summary data-nav-tree-target="item" class="w-full hover:text-primary-content">
             <a data-turbo-frame="main-content-frame" data-turbo-action='advance' href="{{ tree.path }}" class='w-full inner-block line-clamp-2'>{{ tree.link_text }}</a>
           </summary>
           {% assign newDepth = depth | plus: 1 %}
@@ -20,7 +20,7 @@
       </li>
     {% else %}
       <li class='mt-1 w-full min-w-0'>
-        <a data-turbo-frame="main-content-frame" data-turbo-action='advance' class='w-full inner-block whitespace-pre-wrap break-words [line-break:loose] line-clamp-2 hover:text-white' data-nav-tree-target="item" href="{{ tree.path }}">{{ tree.link_text }}</a>
+        <a data-turbo-frame="main-content-frame" data-turbo-action='advance' class='w-full inner-block whitespace-pre-wrap break-words [line-break:loose] line-clamp-2 hover:text-primary-content' data-nav-tree-target="item" href="{{ tree.path }}">{{ tree.link_text }}</a>
       </li>
     {% endif %}
   {% endfor %}
