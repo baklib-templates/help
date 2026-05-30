@@ -7,14 +7,6 @@
     }
   },
   "snippets": {
-    "header": {
-      "light_mode": "Clair",
-      "dark_mode": "Sombre",
-      "auto_mode": "Automatique"
-    },
-    "footer": {
-      "copyright": "Tous droits réservés"
-    },
     "feedback_form": {
       "title": "Envoyer un commentaire",
       "message_label": "Message",
@@ -26,10 +18,6 @@
     "feedback_button": {
       "title_posted": "Merci pour votre retour",
       "title_unposted": "Envoyer un commentaire"
-    },
-    "page": {
-      "prev_page": "Précédent",
-      "next_page": "Suivant"
     },
     "page_tools": {
       "copy_page_label": "Copier la page",
@@ -43,6 +31,11 @@
       "connect_to_cursor_description": "Installer le serveur MCP dans Cursor",
       "connect_to_vscode": "Connecter à VS Code",
       "connect_to_vscode_description": "Installer le serveur MCP dans VS Code"
+    },
+    "aside_nav": {
+      "tags_title": "Tags",
+      "topics_title": "Sujets fréquents",
+      "contact_title": "Contacter le support"
     }
   },
   "templates": {
@@ -52,20 +45,26 @@
       "ai_input_placeholder": "Saisissez votre question…"
     },
     "page": {
-      "copy_success": "Lien copié",
-      "page_toc": "Table des matières",
       "llm_prompt_template": "Lis %{url} pour que je puisse poser des questions à son sujet.",
       "llm_copying": "Copie en cours…",
-      "llm_copied": "Copié"
+      "llm_copied": "Copié",
+      "pagination_status_prefix": "Affichage de ",
+      "pagination_status_middle": " sur ",
+      "pagination_status_suffix": "",
+      "pagination_prev": "Précédent",
+      "pagination_next": "Suivant",
+      "related_section_title": "Articles connexes"
     },
     "index": {
       "faqs": {
         "tab_all": "Toutes",
         "hero_title_default": "Questions fréquentes",
-        "hero_description_default": "Pour comprendre et résoudre rapidement les questions courantes"
+        "hero_description_default": "Pour comprendre et résoudre rapidement les questions courantes",
+        "open_in_new_page": "Ouvrir dans une nouvelle page"
       },
       "support": {
-        "search_placeholder": "Rechercher dans l’aide..."
+        "search_placeholder": "Rechercher dans l’aide...",
+        "popular_section_title": "Articles populaires"
       }
     }
   },
@@ -81,11 +80,7 @@
     "buttons": {
       "signout": "Se déconnecter"
     },
-    "read_more": "Voir plus",
-    "menu": ""
-  },
-  "search": {
-    "placeholder": "Rechercher…"
+    "read_more": "Voir plus"
   },
   "placeholders": {
     "search": ""

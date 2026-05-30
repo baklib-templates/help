@@ -1,875 +1,454 @@
-{% set_meta_title 'About Wiki' %}
-{% set_meta_description '这是一个Wiki静态页面样例' %}
-{% set_meta_keywords 'Baklib,Wiki' %}
+{% set_meta_title '关于 Help 主题' %}
+{% set_meta_description 'Baklib Wiki Help Center 主题使用说明：模板结构、站点配置项与开发注意事项。' %}
+{% set_meta_keywords 'Baklib,Theme,Help Center,Wiki' %}
 
-<!-- the custom static page example -->
-<!-- code from https://tailwindui.com/components/marketing/page-examples/landing-pages -->
+<div class="container mx-auto max-w-5xl px-4 py-10 md:py-14">
+  <article class="max-w-none text-base-content">
 
-<main class="isolate">
-  <!-- Hero section -->
-  <div class="relative pt-44">
-    <div class="absolute inset-x-0 overflow-hidden -top-40 -z-10 transform-gpu blur-3xl sm:-top-80" aria-hidden="true">
-      <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-    </div>
-    <div class="py-24 sm:py-32">
-      <div class="px-6 mx-auto max-w-7xl lg:px-8">
-        <div class="max-w-2xl mx-auto text-center">
-          <h1 class="text-3xl font-bold tracking-tight text-base-content sm:text-5xl">自定义 HTML块 </h1>
-          <p class="mt-6 text-lg leading-8 text-base-content/70">将下面的 HTML 块复制到对应的 features_one/features_two 属性中即可。</p>
-          <div class="flex items-center justify-center mt-10 gap-x-6">
-            <a href="https://help.baklib.cn/code/html" class="rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-primary-content shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">使用教程</a>
-            <a href="https://dev.baklib.cn/guide/forms" class="text-sm font-semibold leading-6 text-base-content">查看动态表单自定义 <span aria-hidden="true">→</span></a>
-          </div>
+    <header class="not-prose mb-10 rounded-xl border border-base-300 bg-base-200/60 p-6 md:p-8 dark:border-base-300 dark:bg-base-300/40">
+      <p class="text-sm font-medium uppercase tracking-wide text-primary">Baklib Wiki 主题</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight text-base-content md:text-4xl">Help Center（help）</h1>
+      <p class="mt-3 max-w-3xl text-base leading-7 text-base-content/70">
+        面向<strong>客户自助服务与帮助中心</strong>的 Wiki 主题：内容优先布局、侧边栏导航、页内目录、AI 搜索、分享至 LLM 工具，以及 Turbo 驱动的页面过渡。与 Docs 导向的 wiki 主题互为姊妹版，已移除文档站专用首页变体，聚焦帮助中心场景。
+      </p>
+      <dl class="mt-6 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-lg border border-base-300 bg-base-100 px-4 py-3 dark:border-base-300 dark:bg-base-100">
+          <dt class="text-base-content/60">主题标识</dt>
+          <dd class="mt-1 font-mono font-semibold text-base-content">help</dd>
         </div>
+        <div class="rounded-lg border border-base-300 bg-base-100 px-4 py-3 dark:border-base-300 dark:bg-base-100">
+          <dt class="text-base-content/60">当前版本</dt>
+          <dd class="mt-1 font-semibold text-base-content">2.1.2</dd>
+        </div>
+        <div class="rounded-lg border border-base-300 bg-base-100 px-4 py-3 dark:border-base-300 dark:bg-base-100">
+          <dt class="text-base-content/60">适用站点范围</dt>
+          <dd class="mt-1 font-semibold text-base-content">Wiki（<code class="text-sm">theme_scope: wiki</code>）</dd>
+        </div>
+        <div class="rounded-lg border border-base-300 bg-base-100 px-4 py-3 dark:border-base-300 dark:bg-base-100">
+          <dt class="text-base-content/60">语法版本</dt>
+          <dd class="mt-1 font-semibold text-base-content">v2</dd>
+        </div>
+      </dl>
+      <p class="mt-6 text-sm text-base-content/70">
+        源码仓库：<a href="https://github.com/baklib-templates/help" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">github.com/baklib-templates/help</a>
+        · 官方文档：<a href="https://help.baklib.cn/themes/docs" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">主题开发指南</a>
+        · 设置参考：<a href="https://help.baklib.cn/themes/docs/settings" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">主题设置说明</a>
+        · Git 工作流：<a href="https://dev.baklib.cn/guide/git" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">模板开发指南</a>
+      </p>
+    </header>
+
+    <nav class="not-prose mb-10 rounded-xl border border-base-300 bg-base-100 p-5 dark:border-base-300 dark:bg-base-100">
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/70">目录</h2>
+      <ol class="mt-3 list-decimal space-y-1 pl-5 text-sm leading-7 text-base-content/80">
+        <li><a href="#overview" class="text-primary hover:underline">模板名称与用途</a></li>
+        <li><a href="#structure" class="text-primary hover:underline">目录与 templates 结构</a></li>
+        <li><a href="#settings-site" class="text-primary hover:underline">站点主题设置</a></li>
+        <li><a href="#settings-index" class="text-primary hover:underline">各首页模板设置</a></li>
+        <li><a href="#settings-page" class="text-primary hover:underline">页面模板设置</a></li>
+        <li><a href="#notes" class="text-primary hover:underline">特殊注意事项</a></li>
+        <li><a href="#dev" class="text-primary hover:underline">本地开发与构建</a></li>
+      </ol>
+    </nav>
+
+    <section id="overview">
+      <h2 class="text-2xl font-semibold text-base-content mt-10 mb-4 pb-2 border-b border-base-300">1. 模板名称与用途</h2>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">
+        <strong>Help Center（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">help</code>）</strong>是 Baklib 为 Wiki 站点提供的帮助中心主题。它将知识库内容呈现为产品文档、FAQ 与操作指南，无需从零搭建文档站。核心能力包括：
+      </p>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li><strong>三种首页布局</strong>：卡片式、FAQ 折叠列表、极简支持首页，可按站点需求在后台切换。</li>
+        <li><strong>双栏内容页</strong>：主栏正文 + 右侧粘性侧栏（常见主题、标签云、联系支持）。</li>
+        <li><strong>搜索与 AI 问答</strong>：关键词搜索、热门标签/关键词引导；站点开启 AI 搜索后，搜索页侧栏展示 AI 问答面板。</li>
+        <li><strong>页面工具</strong>：复制 Markdown、在 ChatGPT/Claude 中打开、MCP 安装命令、连接 Cursor/VS Code。</li>
+        <li><strong>读者反馈</strong>：叶子页面底部提供「有帮助 / 无帮助」反馈入口。</li>
+        <li><strong>多语言</strong>：内置 7 种语言的运行时 UI 与主题编辑器文案。</li>
+        <li><strong>品牌可视化</strong>：静态页 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">/s/brand</code> 展示完整设计 token 与组件示例。</li>
+      </ul>
+    </section>
+
+    <section id="structure">
+      <h2 class="text-2xl font-semibold text-base-content mt-10 mb-4 pb-2 border-b border-base-300">2. 目录与 templates 结构</h2>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">主题采用标准 Baklib 主题目录。当前核心页面模板共 <strong>6 个</strong>（已移除旧版 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index.help_center</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">page.video</code> 等）。</p>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">仓库目录概览</h3>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">路径</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">config/settings_schema.json</td><td class="px-4 py-3 text-base-content/80">主题元数据、语言列表、站点级设置分组</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">layout/</td><td class="px-4 py-3 text-base-content/80">基础布局（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">theme.liquid</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">error.liquid</code>）</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">templates/</td><td class="px-4 py-3 text-base-content/80">页面模板（见下表）</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">snippets/</td><td class="px-4 py-3 text-base-content/80">可复用片段（页头、页脚、侧栏、搜索列表、AI 搜索、页面工具等）</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">locales/</td><td class="px-4 py-3 text-base-content/80">运行时 UI 文案（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">*.json</code>）与编辑器标签（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">*.schema.json</code>）</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">presets/</td><td class="px-4 py-3 text-base-content/80">HTML 预设：<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">header_menu_html.html</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">footer_menu_html.html</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">contact_html.html</code></td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">src/</td><td class="px-4 py-3 text-base-content/80">源码 CSS/JS（Tailwind v4、esbuild、Stimulus）</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">assets/</td><td class="px-4 py-3 text-base-content/80">编译产物、预览图（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">images/theme/&lt;lang&gt;/</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">images/schema/</code>）</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">statics/</td><td class="px-4 py-3 text-base-content/80">静态自定义页（本页 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">about.liquid</code>、品牌规范 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">brand.liquid</code> 等）</td></tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
-      <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-    </div>
-  </div>
-</main>
 
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 1：</h2>
-    <a href="https://www.uibak.com/sections/stats" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <section id="help-center-index" class="max-w-7xl mx-auto px-4 sm:px-6 py-4 -mt-8">
-      <div class="flex flex-wrap border-b border-base-300 py-6 bg-base-100 dark:bg-base-300 max-w-screen-xl mx-auto rounded-md">
-        <div
-          class="w-full sm:w-1/2 mb-4 md:mb-0 md:flex-1 px-4 xl:px-6 flex justify-between items-start md:max-w-xs border-b md:border-b-0 md:border-r border-base-300 pb-4">
-          <div>
-            <span class="font-medium block mb-1 text-sm text-base-content/70">Status</span>
-            <div class="text-xl font-medium">All online</div>
-          </div>
-          <div class="bg-green-500 w-6 h-6 rounded-full text-base-content/70 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-        </div>
-        <div
-          class="w-full sm:w-1/2 mb-4 md:mb-0 md:flex-1 px-4 xl:px-6 flex justify-between items-start md:max-w-xs border-b md:border-b-0 md:border-r border-base-300 pb-4">
-          <div><span class="font-medium block mb-1 text-sm text-base-content/70">Uptime</span>
-            <div class="text-xl font-medium">97.5%</div>
-          </div>
-          <div class="bg-green-500 w-6 h-6 rounded-full text-base-content/70 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-        </div>
-        <div
-          class="w-full sm:w-1/2 mb-4 md:mb-0 md:flex-1 px-4 xl:px-6 flex justify-between items-start md:max-w-xs border-b md:border-b-0 md:border-r border-base-300 pb-4">
-          <div><span class="font-medium block mb-1 text-sm text-base-content/70">Speed</span>
-            <div class="text-xl font-medium">222ms</div>
-          </div>
-          <div class="bg-green-500 w-6 h-6 rounded-full text-base-content/70 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-        </div>
-        <div
-          class="w-full sm:w-1/2 mb-4 sm:mb-0  pb-3 md:pb-0 md:flex-1 px-4 xl:px-6 flex justify-between items-start md:max-w-xs border-b sm:border-b-0 md:border-r border-base-300 pb-4">
-          <div><span class="font-medium block mb-1 text-sm text-base-content/70">Health</span>
-            <div class="text-xl font-medium">Issues</div>
-          </div>
-          <div class="bg-green-500 w-6 h-6 rounded-full text-base-content/70 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-        </div>
-        <div
-          class="w-full sm:w-1/2 mb-4 md:mb-0 md:flex-1 px-4 xl:px-6 flex justify-between items-start md:max-w-xs border-b md:border-b-0 md:border-r border-base-300 pb-4">
-          <div><span class="font-medium block mb-1 text-sm text-base-content/70">Number of sites</span>
-            <div class="text-xl font-medium">15/200</div>
-          </div>
-          <div class="bg-green-500 w-6 h-6 rounded-full text-base-content/70 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </div>
-        </div>
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">核心 templates（6 个）</h3>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[720px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">模板文件</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">用途摘要</th>
+              <th class="px-4 py-3 font-semibold text-base-content">模板级设置</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr>
+              <td class="px-4 py-3 font-mono text-xs">index.card.liquid</td>
+              <td class="px-4 py-3">首页</td>
+              <td class="px-4 py-3 text-base-content/80">Hero + 搜索 + 栏目卡片 + 热门文章 + 联系支持区块（Intercom / Bonsai 风格）</td>
+              <td class="px-4 py-3 text-base-content/80">有</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-mono text-xs">index.faqs.liquid</td>
+              <td class="px-4 py-3">首页</td>
+              <td class="px-4 py-3 text-base-content/80">Hero + 搜索 + 分类 Tab + 可折叠 FAQ 列表</td>
+              <td class="px-4 py-3 text-base-content/80">有</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-mono text-xs">index.support.liquid</td>
+              <td class="px-4 py-3">首页</td>
+              <td class="px-4 py-3 text-base-content/80">双栏：左侧标题/搜索/热门文章，右侧粘性侧栏（常见主题 + 联系支持）</td>
+              <td class="px-4 py-3 text-base-content/80">有</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-mono text-xs">page.liquid</td>
+              <td class="px-4 py-3">内容页</td>
+              <td class="px-4 py-3 text-base-content/80">文章正文、子页面列表、反馈、相关文章；侧栏复用 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_aside_nav</code></td>
+              <td class="px-4 py-3 text-base-content/80">有</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-mono text-xs">search.liquid</td>
+              <td class="px-4 py-3">系统页</td>
+              <td class="px-4 py-3 text-base-content/80">关键词/标签搜索、Turbo Frame 分页、AI 搜索侧栏（需站点开启）</td>
+              <td class="px-4 py-3 text-base-content/80">无（复用首页的热门标签/关键词设置）</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-mono text-xs">tag.liquid</td>
+              <td class="px-4 py-3">系统页</td>
+              <td class="px-4 py-3 text-base-content/80">按标签聚合文章列表，侧栏展示全站标签云</td>
+              <td class="px-4 py-3 text-base-content/80">无</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">辅助模板</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">feedback_turbo_stream.liquid</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">feedback_success_turbo_stream.liquid</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">feedback_error_turbo_stream.liquid</code> — 读者反馈的 Turbo Stream 响应。</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">首页模板选择</h3>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">在 Baklib 站点编辑器中，将 Wiki 首页（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index</code>）的模板切换为以下三者之一：</p>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li><strong>卡片式首页</strong>（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index.card</code>）— 适合按栏目分区展示、视觉层次丰富的产品帮助中心。</li>
+        <li><strong>常见问题中心</strong>（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index.faqs</code>）— 适合 FAQ 为主、按分类 Tab 浏览的场景。</li>
+        <li><strong>极简支持首页</strong>（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index.support</code>）— 适合 Stripe/Intercom 风格的简洁支持门户。</li>
+      </ul>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">三种首页均声明 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">sub_page_templates: ["page"]</code>，子页面统一使用 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">page.liquid</code>。</p>
+    </section>
+
+    <section id="settings-site">
+      <h2 class="text-2xl font-semibold text-base-content mt-10 mb-4 pb-2 border-b border-base-300">3. 站点主题设置</h2>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">以下设置在 Baklib 后台 <strong>主题设置</strong> 中配置，定义于 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">config/settings_schema.json</code>。站点创建并安装本主题后即可逐项填写。</p>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">3.1 通用设置（generic）</h3>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[720px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">设置 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+              <th class="px-4 py-3 font-semibold text-base-content">默认值</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">logo_url</td><td class="px-4 py-3">图片</td><td class="px-4 py-3 text-base-content/80">页头 Logo（3:1）。未设置时显示站点图标 + 名称</td><td class="px-4 py-3">—</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">company_name</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">公司名称，显示在页脚</td><td class="px-4 py-3">Baklib.cn</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">copyright_info</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">备案/版权信息</td><td class="px-4 py-3">All Rights Reserved</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">show_published_at</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否在内容页显示发布时间</td><td class="px-4 py-3">否</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">show_author</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否在内容页显示作者</td><td class="px-4 py-3">否</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">ai_search_completed_text</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">AI 回答结束后的附加说明（覆盖默认结束语）</td><td class="px-4 py-3">—</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">show_page_tools_dropdown</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否在内容页显示「页面工具」下拉菜单（复制 Markdown、LLM 分享、MCP 等）</td><td class="px-4 py-3">是</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">3.2 自定义 HTML（custom_html）</h3>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">支持 HTML 标签与有限的 Tailwind CSS 类名。三项均提供 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">presets/</code> 预设，新建站点会自动填入示例内容，可按需修改。</p>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[720px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">设置 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+              <th class="px-4 py-3 font-semibold text-base-content">预设文件</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">head_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">注入 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">&lt;head&gt;</code>，常用于统计代码、客服机器人等</td><td class="px-4 py-3">—</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">header_menu_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">页头顶部导航区域额外链接</td><td class="px-4 py-3 font-mono text-xs">preset:header_menu_html.html</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">footer_menu_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">页脚内导航/友情链接/SEO 链接</td><td class="px-4 py-3 font-mono text-xs">preset:footer_menu_html.html</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">contact_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">「联系支持」区块：在 <strong>卡片首页</strong>底部独立展示；在 <strong>支持首页</strong>、<strong>内容页</strong>、<strong>搜索页</strong>通过右侧侧栏 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_aside_nav</code> 展示</td><td class="px-4 py-3 font-mono text-xs">preset:contact_html.html</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">3.3 Lucide 图标（lucide_icons）</h3>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">设置 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="px-4 py-3 font-mono text-xs">lucide_icons</td>
+              <td class="px-4 py-3">多行文本</td>
+              <td class="px-4 py-3 text-base-content/80">允许的 Lucide 图标名称列表（每行一个 kebab-case 名称）。页面模板的「页面图标」下拉选项从此列表生成。图标须与主题 JS bundle（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">src/javascripts/lucide_icons.js</code>）一致；仅在此处添加名称而不更新 bundle 时，前台无法渲染。图标查找：<a href="https://lucide.dev/icons/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">lucide.dev/icons</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">3.4 推荐配色方案（color_schemas）</h3>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">在站点后台「主题色」中可一键选用内置配色。定义于 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">settings_schema.json → theme_info.recommendations.color_schemas</code>：</p>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[480px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">方案 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">名称</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">baklib</td><td class="px-4 py-3">Baklib</td><td class="px-4 py-3 text-base-content/80">品牌默认色（Teal 主色 + 暖灰底），与 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">/s/brand</code> 规范一致</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">fashion</td><td class="px-4 py-3">时尚</td><td class="px-4 py-3 text-base-content/80">蓝粉对比的备选配色</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">运行时颜色通过 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">snippets/_theme_runtime_colors.liquid</code> 注入为 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">--theme-color-*</code>，再映射为 Tailwind/DaisyUI 语义类（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">bg-base-100</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">text-primary</code> 等）。</p>
+    </section>
+
+    <section id="settings-index">
+      <h2 class="text-2xl font-semibold text-base-content mt-10 mb-4 pb-2 border-b border-base-300">4. 各首页模板设置</h2>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">以下设置在站点编辑器中切换对应首页模板后可见。搜索页（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">search.liquid</code>）会<strong>复用当前首页</strong>的 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">search_hot_tags</code> 与 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">search_hot_keywords</code> 配置。</p>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">4.1 卡片式首页（index.card）</h3>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[720px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">设置 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+              <th class="px-4 py-3 font-semibold text-base-content">默认值</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_height</td><td class="px-4 py-3">范围 200–600px</td><td class="px-4 py-3 text-base-content/80">Hero 区域高度</td><td class="px-4 py-3">400px</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_pc_image_url</td><td class="px-4 py-3">图片 4:1</td><td class="px-4 py-3 text-base-content/80">桌面端 Hero 背景（建议 1600×400 或同比例）</td><td class="px-4 py-3">assets/images/hero.png</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_mobile_image_url</td><td class="px-4 py-3">图片 3:2</td><td class="px-4 py-3 text-base-content/80">移动端 Hero 背景（建议 1080×360 或同比例）</td><td class="px-4 py-3">同 PC 图</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_title</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">Hero 标题；留空则使用站点名称</td><td class="px-4 py-3">—</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_description</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">Hero 描述</td><td class="px-4 py-3">👋 需要查找什么？</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_text_color</td><td class="px-4 py-3">颜色</td><td class="px-4 py-3 text-base-content/80">Hero 标题与描述文字颜色（同时应用于两者）</td><td class="px-4 py-3">#111827</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">search_hot_tags</td><td class="px-4 py-3">标签多选</td><td class="px-4 py-3 text-base-content/80">搜索框下方热门标签</td><td class="px-4 py-3">—</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">search_hot_keywords</td><td class="px-4 py-3">多行文本</td><td class="px-4 py-3 text-base-content/80">搜索框下方热门关键词（每行一个）</td><td class="px-4 py-3">—</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">show_channels_section</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否显示栏目卡片区块（每个顶级栏目一张卡片）</td><td class="px-4 py-3">是</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">channels_section_title</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">栏目卡片区块标题</td><td class="px-4 py-3">按主题浏览</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">popular_section_title</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">热门文章区块标题</td><td class="px-4 py-3">热门文章</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">4.2 常见问题中心（index.faqs）</h3>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[720px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">设置 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+              <th class="px-4 py-3 font-semibold text-base-content">默认值</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_height</td><td class="px-4 py-3">范围 200–600px</td><td class="px-4 py-3 text-base-content/80">Hero 区域高度</td><td class="px-4 py-3">400px</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_pc_image_url</td><td class="px-4 py-3">图片 4:1</td><td class="px-4 py-3 text-base-content/80">桌面端 Hero 背景</td><td class="px-4 py-3">assets/images/hero.png</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_mobile_image_url</td><td class="px-4 py-3">图片 3:2</td><td class="px-4 py-3 text-base-content/80">移动端 Hero 背景</td><td class="px-4 py-3">同 PC 图</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_title</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">Hero 标题</td><td class="px-4 py-3">常见问题</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_description</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">Hero 描述</td><td class="px-4 py-3">帮助您快速了解与解决常见问题</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_title_color</td><td class="px-4 py-3">颜色</td><td class="px-4 py-3 text-base-content/80">标题颜色（亮色模式）</td><td class="px-4 py-3">#111827</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_title_color_dark</td><td class="px-4 py-3">颜色</td><td class="px-4 py-3 text-base-content/80">标题颜色（暗色模式）</td><td class="px-4 py-3">#F8FAFC</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_description_color</td><td class="px-4 py-3">颜色</td><td class="px-4 py-3 text-base-content/80">描述颜色（亮色模式）</td><td class="px-4 py-3">#64748B</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_description_color_dark</td><td class="px-4 py-3">颜色</td><td class="px-4 py-3 text-base-content/80">描述颜色（暗色模式）</td><td class="px-4 py-3">#E2E8F0</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">4.3 极简支持首页（index.support）</h3>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[720px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">设置 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+              <th class="px-4 py-3 font-semibold text-base-content">默认值</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_title</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">首屏标题；留空则显示站点名称</td><td class="px-4 py-3">有什么可以帮您？</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">hero_subtitle</td><td class="px-4 py-3">多行文本</td><td class="px-4 py-3 text-base-content/80">首屏副标题（可选）</td><td class="px-4 py-3">您可以通过本支持页面浏览公司的 FAQ、常见问题、操作步骤、产品知识等信息。</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">search_hot_tags</td><td class="px-4 py-3">标签多选</td><td class="px-4 py-3 text-base-content/80">搜索框下方热门标签</td><td class="px-4 py-3">—</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">search_hot_keywords</td><td class="px-4 py-3">多行文本</td><td class="px-4 py-3 text-base-content/80">搜索框下方热门关键词（每行一个）</td><td class="px-4 py-3">—</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
-  </article>
-</section>
 
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 2：</h2>
-    <a href="https://www.uibak.com/sections/stats" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <section id="help-center-index" class="max-w-7xl mx-auto px-4 sm:px-6 py-4 -mt-8">
-      <div class="bg-base-200 text-base-content/70 px-6 lg:px-8 py-8 rounded-md">
-        <div class="max-w-screen-lg mx-auto text-center">
-          <p class="text-xl text-base-content/70 max-w-3xl mx-auto">World among the stalks, and grow familiar wibable forms of the insects and flies</p>
-        </div>
-        <div class="md:grid md:grid-cols-2 xl:grid-cols-4 md:gap-12 xl:gap-y-20 max-w-screen-xl mx-auto mt-4 space-y-12 md:space-y-0">
-
-          <div class="text-center bg-base-300 p-4 lg:p-8 rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 mx-auto mb-4">
-              <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path fill="#fff" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-            </svg>
-            <span class="block font-semibold text-4xl mb-2">221</span>
-            <span class="text-lg">Students</span>
-          </div>
-
-          <div class="text-center bg-base-300 p-4 lg:p-8 rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 mx-auto mb-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-            <span class="block font-semibold text-4xl mb-2">3000</span>
-            <span class="text-lg">Books</span>
-          </div>
-
-          <div class="text-center bg-base-300 p-4 lg:p-8 rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 mx-auto mb-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span class="block font-semibold text-4xl mb-2">12000</span>
-            <span class="text-lg">Hours of material</span>
-          </div>
-
-          <div class="text-center bg-base-300 p-4 lg:p-8 rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-12 mx-auto mb-4">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-            <span class="block font-semibold text-4xl mb-2">12</span>
-            <span class="text-lg">Locations</span>
-          </div>
-
-        </div>
+    <section id="settings-page">
+      <h2 class="text-2xl font-semibold text-base-content mt-10 mb-4 pb-2 border-b border-base-300">5. 页面模板设置（page.liquid）</h2>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">内容页字段大多与知识库数据源同步，编辑器中部分字段为只读。页面支持 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">to_markdown: true</code>，可导出 Markdown 网页供 LLM 使用。</p>
+      <div class="not-prose overflow-x-auto">
+        <table class="w-full min-w-[720px] border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-base-300 bg-base-200/80 dark:border-base-300 dark:bg-base-300/50">
+              <th class="px-4 py-3 font-semibold text-base-content">设置 ID</th>
+              <th class="px-4 py-3 font-semibold text-base-content">类型</th>
+              <th class="px-4 py-3 font-semibold text-base-content">说明</th>
+              <th class="px-4 py-3 font-semibold text-base-content">只读</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-300 dark:divide-base-300">
+            <tr><td class="px-4 py-3 font-mono text-xs">tags</td><td class="px-4 py-3">标签多选</td><td class="px-4 py-3 text-base-content/80">页面标签，用于标签页聚合与侧栏标签云</td><td class="px-4 py-3">否</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">icon</td><td class="px-4 py-3">下拉选择</td><td class="px-4 py-3 text-base-content/80">Lucide 图标，选项来自站点 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">lucide_icons</code> 列表</td><td class="px-4 py-3">否</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">title</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">页面标题（知识库同步）</td><td class="px-4 py-3">是</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">content</td><td class="px-4 py-3">富文本</td><td class="px-4 py-3 text-base-content/80">页面正文（知识库同步，ProseMirror 渲染）</td><td class="px-4 py-3">是</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
-  </article>
-</section>
 
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 3：</h2>
-    <a href="https://www.uibak.com/sections/features" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <section id="help-center-index" class="max-w-7xl mx-auto px-4 sm:px-6 py-4 -mt-8">
-      <div class="bg-base-200 text-base-content/70 px-6 lg:px-8 py-6 lg:py-8 rounded-md">
-        <div class="max-w-screen-xl mx-auto">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl text-base-content/80 font-medium text-center">Amazing Features</h2>
-          <p class="text-xl lg:text-2xl text-base-content/70 mt-2 text-center">We are mmitted to a unique, cutting-edge approach to that</p>
-        </div>
-        <div class="md:grid md:grid-cols-2 md:gap-8 max-w-screen-xl mx-auto mt-4 space-y-6 md:space-y-0">
-          <a href="#" class="block md:flex md:flex-row items-center md:space-x-6 bg-base-200 p-4 lg:p-8 rounded-lg border border-base-300">
-            <span class="w-10 h-10 text-base-content/70 hidden md:block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </span>
-            <div class="md:self-center md:flex-1">
-              <span class="text-xl font-semibold text-base-content/80 block">Doing your own business</span>
-              <p class="mt-2 text-lg">Doing business like this takes much more effort</p>
-            </div>
-            <span class="w-6 hidden md:inline-block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          </a>
+    <section id="notes">
+      <h2 class="text-2xl font-semibold text-base-content mt-10 mb-4 pb-2 border-b border-base-300">6. 特殊注意事项</h2>
 
-          <a href="#" class="block md:flex md:flex-row items-center md:space-x-6 bg-base-200 p-4 lg:p-8 rounded-lg border border-base-300">
-            <span class="w-10 h-10 text-base-content/70 hidden md:block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
-              </svg>
-            </span>
-            <div class="md:self-center md:flex-1">
-              <span class="text-xl font-semibold text-base-content/80 block">Shut his eyes so</span>
-              <p class="mt-2 text-lg">He must have tried it a hundred times, shut his e</p>
-            </div>
-            <span class="w-6 hidden md:inline-block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          </a>
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.1 支持的语言（7 种）</h3>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">运行时 UI 与主题编辑器均提供以下语言包：</p>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90"><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">en</code> · <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">zh-CN</code> · <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">zh-TW</code> · <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">ko</code> · <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">ja</code> · <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">de</code> · <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">fr</code></p>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">新增语言时须同时维护 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">locales/&lt;locale&gt;.json</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">locales/&lt;locale&gt;.schema.json</code>，并在 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">settings_schema.json → theme_info.theme_languages</code> 中注册。</p>
 
-          <a href="#" class="block md:flex md:flex-row items-center md:space-x-6 bg-base-200 p-4 lg:p-8 rounded-lg border border-base-300">
-            <span class="w-10 h-10 text-base-content/70 hidden md:block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </span>
-            <div class="md:self-center md:flex-1">
-              <span class="text-xl font-semibold text-base-content/80 block">Other travelling salesmen</span>
-              <p class="mt-2 text-lg">You've got to get enough sleep. Other travelling salesmen</p>
-            </div>
-            <span class="w-6 hidden md:inline-block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          </a>
-          <a href="#" class="block md:flex md:flex-row items-center md:space-x-6 bg-base-200 p-4 lg:p-8 rounded-lg border border-base-300">
-            <span class="w-10 h-10 text-base-content/70 hidden md:block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            </span>
-            <div class="md:self-center md:flex-1">
-              <span class="text-xl font-semibold text-base-content/80 block">The best support in town</span>
-              <p class="mt-2 text-lg">You've got to get enough sleep. Other travelling salesmen</p>
-            </div>
-            <span class="w-6 hidden md:inline-block">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-          </a>
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.2 翻译键规范：不嵌入变量</h3>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">翻译字符串<strong>不应内嵌 Liquid 变量或占位符片段</strong>。需要动态拼接的文案应拆分为多个键，在模板中组合。例如分页状态：</p>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">templates.page.pagination_status_prefix</code> — 「正在查看第 」</li>
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">templates.page.pagination_status_middle</code> — 「 条，共 」</li>
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">templates.page.pagination_status_suffix</code> — 「 条」</li>
+      </ul>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">带参数的翻译（如 LLM 提示词）使用 Baklib 的 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">| t, url: ...</code> 过滤器传参，而非在 JSON 中写 Liquid。</p>
 
-        </div>
-      </div>
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.3 AI 搜索</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li>需在 Baklib 站点层面开启 AI 搜索能力（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">site.ai_search_enabled?</code>）。</li>
+        <li>搜索页（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">search.liquid</code>）右侧侧栏渲染 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_support_ai_search</code> 片段；有搜索结果时自动展示并传入当前关键词。</li>
+        <li>站点设置 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">ai_search_completed_text</code> 可自定义 AI 回答结束语；否则使用 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">locales/*/ai.completed</code> 默认文案。</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.4 页面工具与 LLM 分享</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li>由站点设置 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">show_page_tools_dropdown</code> 控制是否显示。</li>
+        <li>提供：复制 Markdown、在 ChatGPT/Claude 中打开、复制 MCP 安装命令、连接 Cursor/VS Code。</li>
+        <li>实现于 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">snippets/_page_tools_dropdown.liquid</code>，依赖 Stimulus 控制器 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">copy-page</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">page-tools</code>。</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.5 读者反馈</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li>叶子页面（无子页面）底部展示反馈按钮（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_feedback_button</code>）。</li>
+        <li>提交后通过 Turbo Stream 模板异步更新 UI，无需整页刷新。</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.6 侧栏导航（_aside_nav）</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li>内容页、支持首页、搜索页共用右侧粘性侧栏。</li>
+        <li>包含：常见主题链接（顶级栏目）、当前页标签云（如有）、联系支持（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">contact_html</code>）。</li>
+        <li>卡片首页将 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">contact_html</code> 作为页面底部独立区块展示，而非侧栏。</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.7 设计系统与颜色</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li>模板样式使用 DaisyUI 语义类（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">bg-base-100</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">text-base-content</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">border-base-300</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">text-primary</code> 等），避免硬编码 Hex 或 Tailwind 具名色阶。</li>
+        <li>完整品牌 token 与组件示例见静态页 <a href="/s/brand" class="text-primary hover:underline">/s/brand</a>（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">statics/brand.liquid</code>）。</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.8 预览图与主题卡片</h3>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">按语言放置预览图至 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">assets/images/theme/&lt;lang&gt;/</code>：</p>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">thumb.png</code> — 主题选择器缩略图</li>
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index.png</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index-faqs.png</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index-card.png</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index-support.png</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">page.png</code> — 预览截图</li>
+      </ul>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">模板 schema 缩略图位于 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">assets/images/schema/</code>。<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">settings_schema.json</code> 中 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">${lang}</code> 占位符会自动解析为当前管理员 UI 语言。</p>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.9 已移除的旧模板</h3>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">当前版本不再包含以下模板与片段，请勿引用：</p>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">index.help_center.liquid</code> — 旧版帮助中心首页</li>
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">page.video.liquid</code> — 视频页面模板</li>
+        <li><code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_nav_tree.liquid</code>、<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_index_list_tree.liquid</code> 等旧导航树片段</li>
+      </ul>
     </section>
-  </article>
-</section>
 
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 4：</h2>
-    <a href="https://www.uibak.com/sections/features" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <div class="bg-base-200 text-base-content/70 px-6 lg:px-8 pt-12 pb-20">
-      <div class="md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-12 xl:gap-y-20 max-w-screen-xl mx-auto space-y-12 md:space-y-0">
-        <div class="text-left">
-          <div class="w-12 bg-base-300 rounded-lg p-2 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-lg mb-2">But who knows, would do it</h3>
-          <p>You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance.</p>
-        </div>
-        <div class="text-left">
-          <div class="w-12 bg-base-300 rounded-lg p-2 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-lg mb-2">His boss would certainly</h3>
-          <p>Well, there's still some hope; once I've got the money together to pay off my parents.</p>
-        </div>
-        <div class="text-left">
-          <div class="w-12 bg-base-300 rounded-lg p-2 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-lg mb-2">One morning, when Gregor Samsa</h3>
-          <p>And even if he did catch the train he would not avoid his boss's anger as the.</p>
-        </div>
-      </div>
-    </div>
-  </article>
-</section>
+    <section id="dev">
+      <h2 class="text-2xl font-semibold text-base-content mt-10 mb-4 pb-2 border-b border-base-300">7. 本地开发与构建</h2>
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">修改 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">src/</code> 下的 CSS 或 JS 后须重新构建，产物输出至 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">assets/</code>。</p>
 
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 5：</h2>
-    <a href="https://www.uibak.com/sections/footers" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <footer class="bg-base-200 text-base-content/70 px-6 lg:px-8 py-12">
-      <div class="max-w-screen-xl mx-auto mb-12 lg:mb-16  ">
-        <img class="h-8" src="{{ 'images/logo.png' |  asset_url }}" alt="UptimeMate logo">
-      </div>
-      <div class="max-w-screen-xl mx-auto ">
-        <div class="grid grid-cols-8 md:grid-cols-9  lg:grid-cols-8  divide-base-300 divide-y-2 md:divide-x-2 md:divide-y-0 md:-mx-8">
-          <div class="col-span-8 md:col-span-3 lg:col-span-2 md:px-8 py-4 md:py-0">
-            <h5 class="text-xl font-semibold text-base-content/80">Company</h5>
-            <nav class="mt-4">
-              <ul class="space-y-2">
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Landingpages</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Features</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Download brochure</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="col-span-8 md:col-span-3 lg:col-span-3 md:px-8 py-4 md:py-0">
-            <h5 class="text-xl font-semibold text-base-content/80">Industries</h5>
-            <nav class="mt-4">
-              <ul class="grid lg:grid-cols-2">
-                <li class="mb-2">
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Employment</a>
-                </li>
-                <li class="mb-2">
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Company</a>
-                </li>
-                <li class="mb-2">
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Childcare</a>
-                </li>
-                <li class="mb-2">
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Download brochure</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="col-span-8 md:col-span-3 lg:col-span-3 md:px-8 py-4 md:py-0">
-            <h5 class="text-xl font-semibold text-base-content/80">Follow us</h5>
-            <nav class="mt-4">
-              <ul class="grid lg:grid-cols-2">
-                <li class="mb-2">
-                  <a href="#" class="flex space-x-2 font-normal text-base hover:text-base-content/50">
-                    <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                    </svg>
-                    <span>
-                      Twitter
-                    </span>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a href="#" class="flex space-x-2  font-normal text-base hover:text-base-content/50">
-                    <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-                    </svg>
-                    <span>
-                      Instagram
-                    </span>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a href="#" class="flex space-x-2  font-normal text-base hover:text-base-content/50">
-                    <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                      <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
-                    </svg>
-                    <span>
-                      Facebook
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-      <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 mt-8 lg:mt-12 border-t-2 border-base-300 pt-8">
-        <nav class="flex flex-wrap justify-center space-x-6">
-          <a href="#" class="font-normal text-sm hover:text-base-content/50 mb-2">Cookie settings</a>
-        </nav>
-        <p class="text-sm text-center md:text-right">©2021 Company. All rights reserved. | All rights reserved</p>
-      </div>
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">环境要求</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li>Node.js（用于资源构建）</li>
+        <li>Baklib Wiki 站点并安装本主题</li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">常用命令</h3>
+      <pre class="mb-4 overflow-x-auto rounded-lg border border-base-300 bg-base-200/80 p-4 dark:bg-base-300/40"><code class="language-bash block font-mono text-sm leading-relaxed text-base-content">yarn install
+yarn build    # 生产构建（CSS + JS）
+yarn dev      # 开发模式，监听文件变更</code></pre>
+
+      <p class="mb-4 text-base leading-relaxed text-base-content/90">可选：安装 Ruby Guard 实现浏览器 LiveReload（需 livereload 浏览器扩展）：</p>
+      <pre class="mb-4 overflow-x-auto rounded-lg border border-base-300 bg-base-200/80 p-4 dark:bg-base-300/40"><code class="language-bash block font-mono text-sm leading-relaxed text-base-content">bundle install
+bundle exec guard</code></pre>
+
+      <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">技术栈摘要</h3>
+      <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
+        <li><strong>CSS</strong>：Tailwind CSS v4 + DaisyUI 5</li>
+        <li><strong>JS</strong>：esbuild 打包；Hotwired Turbo + Stimulus；Alpine.js（折叠等交互）；Lucide 图标</li>
+        <li><strong>模板</strong>：Liquid v2 语法；ProseMirror 友好 HTML 输出</li>
+      </ul>
+    </section>
+
+    <footer class="not-prose mt-12 rounded-xl border border-base-300 bg-base-200/60 p-6 text-sm text-base-content/70 dark:border-base-300 dark:bg-base-300/40">
+      <p>
+        本页为 Help 主题内置说明，访问路径 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">/s/about</code>。
+        源码：<a href="https://github.com/baklib-templates/help" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">github.com/baklib-templates/help</a>
+        · 文档：<a href="https://help.baklib.cn/themes/docs" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">help.baklib.cn/themes/docs</a>
+      </p>
     </footer>
-  </article>
-</section>
-
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 6：</h2>
-    <a href="https://www.uibak.com/sections/footers" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-24">
-    <!-- footer contact section -->
-    <footer class="bg-primary rounded-t-xl text-base-content/70">
-      <div class="px-6 lg:px-8 transform translate-y-12">
-        <div class="bg-base-200 max-w-screen-xl mx-auto rounded-lg py-12 shadow">
-          <div class="grid grid-cols-6 lg:divide-x-2 divide-base-300 text-center">
-            <div class="px-4 lg:px-8 py-2 col-span-6 md:col-span-3 lg:col-span-2">
-              <h4 class="text-xl font-semibold text-base-content/80">联系在线客服</h4>
-              <div class="inline-flex space-x-2 text-2xl font-semibold tracking-tighter mt-6 ">
-                <svg class="w-6 h-6 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-                <div>
-                  +86 19983277521
-                </div>
-              </div>
-              <div class="mt-4">
-                <span class="block font-semibold">或给我们发邮件:</span>
-                <a href="#" class="block hover:underline">support@baklib.vip</a>
-              </div>
-            </div>
-            <div class="px-4 lg:px-8 py-2 col-span-6 md:col-span-3 lg:col-span-2 md:border-l-2 border-base-300 lg:border-l-0 mt-6 md:mt-0">
-              <h4 class="text-xl font-semibold text-base-content/80">想要了解更多?</h4>
-              <a href="https://www.baklib.cn/" class="inline-flex bg-base-300 hover:bg-neutral font-semibold rounded-full py-3 px-4 lg:px-6 text-primary-content space-x-2 mt-6">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                <span>
-                  www.baklib.cn
-                </span>
-              </a>
-            </div>
-            <div class="px-4 lg:px-8 py-2 col-span-6 lg:col-span-2 mt-6 lg:mt-0">
-              <h4 class="text-xl font-semibold text-base-content/80">添加业务经理企微</h4>
-              <div class="flex items-center justify-center space-x-4 mt-6">
-                <a href="https://work.weixin.qq.com/ca/cawcde58d4b690dd60" target="_blank" class="hover:text-base-content/60">
-                  <span class="sr-only">AQian</span>
-                  <img class="h-16 w-16" src="https://tanmer.baklib.com/-/dam/assets/organization_pry3c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJpZCI6MzEwNTAsInBhdGgiOiJ1c2VyLWFxaWFuLnBuZyIsInRpbWVzdGFtcCI6IjIwMjQtMTEtMTYgMTE6MzY6MTYgKzA4MDAifSwiZXhwIjoiMjAyNS0wMS0xMVQxNTo1OTo1OS45OTlaIiwicHVyIjoib3JnYW5pemF0aW9uX3ByeTNjNSJ9fQ--e0cbddf356a331f9721fe0ec19270657f28faf4a73bf221d8e52a19933666685/user-aqian.png"/>
-                </a>
-                <a href="https://work.weixin.qq.com/ca/cawcde9bbf328c5fe7" target="_blank" class="hover:text-base-content/60">
-                  <span class="sr-only">Lisa</span>
-                  <img class="h-12 w-12" src="https://tanmer.baklib.com/-/dam/assets/organization_pry3c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJpZCI6MzEwNDgsInBhdGgiOiJ1ZXNyLWxpc2EucG5nIiwidGltZXN0YW1wIjoiMjAyNC0xMS0xNiAxMTozNjowMyArMDgwMCJ9LCJleHAiOiIyMDI1LTAxLTExVDE1OjU5OjU5Ljk5OVoiLCJwdXIiOiJvcmdhbml6YXRpb25fcHJ5M2M1In19--c7202f3b8cedef73ff7a7e0a65cf199f242dfc72cd21809516b72ddef9a6aa47/uesr-lisa.png"/>
-                </a>
-                <a href="https://work.weixin.qq.com/ca/cawcde62c865bb0630" target="_blank" class="hover:text-base-content/60">
-                  <span class="sr-only">Song</span>
-                  <img class="h-8 w-8" src="https://tanmer.baklib.com/-/dam/assets/organization_pry3c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJpZCI6MzU3MjgsInBhdGgiOiLlrabmsZ8ucG5nIiwidGltZXN0YW1wIjoiMjAyNC0xMi0wNyAyMzowMDo0MCArMDgwMCJ9LCJleHAiOiIyMDI1LTAxLTExVDE1OjU5OjU5Ljk5OVoiLCJwdXIiOiJvcmdhbml6YXRpb25fcHJ5M2M1In19--4f610137ab555f72030a9ac0732fa99c5069ec14a6cf076782c4076939fbc52a/%E5%AD%A6%E6%B1%9F.png"/>
-                </a>
-              </div>
-            </div>
-          </div>
-          <p class="text-center mt-6 lg:mt-10">找不到你想要的信息? <a href="https://community.baklib.cn/" target="_blank" class="font-semibold text-blue-600 hover:underline"> 去Baklib问答社区提问</a></p>
-        </div>
-      </div>
-    </footer>
-  </article>
-</section>
-
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative mb-12">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 7：</h2>
-    <a href="https://www.uibak.com/sections/footers" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <!-- footer section -->
-    <footer class="bg-base-200  text-base-content/70">
-      <div class="px-6 lg:px-8 transform translate-y-12">
-        <div class="bg-base-200 max-w-screen-xl mx-auto rounded-lg py-12 shadow">
-          <div class="grid grid-cols-6 lg:divide-x-2 divide-base-300 text-center">
-            <div class="px-4 lg:px-8 py-2 col-span-6 md:col-span-3 lg:col-span-2">
-              <h4 class="text-xl font-semibold text-base-content/80">Contact our professionals</h4>
-              <div class="inline-flex space-x-2 text-2xl font-semibold tracking-tighter mt-6 ">
-                <svg class="w-6 h-6 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-                <div>
-                  +31 50 - 810 10 10
-                </div>
-              </div>
-              <div class="mt-4">
-                <span class="block font-semibold">Or send us an email:</span>
-                <a href="#" class="block hover:underline">info@themes.dev</a>
-              </div>
-            </div>
-            <div class="px-4 lg:px-8 py-2 col-span-6 md:col-span-3 lg:col-span-2 md:border-l-2 border-base-300 lg:border-l-0 mt-6 md:mt-0">
-              <h4 class="text-xl font-semibold text-base-content/80">Looking for something specific?</h4>
-              <a href="#" class="inline-flex bg-base-300 hover:bg-neutral font-semibold rounded-full py-3 px-4 lg:px-6 text-primary-content space-x-2 mt-6">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                <span>
-                  Search in our website
-                </span>
-              </a>
-            </div>
-            <div class="px-4 lg:px-8 py-2 col-span-6 lg:col-span-2 mt-6 lg:mt-0">
-              <h4 class="text-xl font-semibold text-base-content/80">Follow us on Social Media</h4>
-              <div class="flex items-center justify-center space-x-4 mt-6">
-                <a href="#" class="hover:text-base-content/60">
-                  <span class="sr-only">Facebook</span>
-                  <svg class="h-8 w-8" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-                  </svg>
-                </a>
-                <a href="#" class="hover:text-base-content/60">
-                  <span class="sr-only">Instagram</span>
-                  <svg class="h-8 w-8" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
-                  </svg>
-                </a>
-                <a href="#" class="hover:text-base-content/60">
-                  <span class="sr-only">Twitter</span>
-                  <svg class="h-8 w-8" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <p class="text-center mt-6 lg:mt-10">Didn't find what you where looking for? <a href="" class="font-semibold hover:underline">Ask your question on the chat.</a></p>
-        </div>
-      </div>
-      <div class="bg-base-100 px-6 lg:px-8 pt-20 lg:pt-24 pb-12">
-        <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-x-8">
-          <div>
-            <h5 class="text-xl font-semibold text-base-content/80">Product</h5>
-            <nav class="mt-4">
-              <ul class="space-y-2">
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Landingpages</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Features</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Documentation</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Careers</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Blocks</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div>
-            <h5 class="text-xl font-semibold text-base-content/80">Industries</h5>
-            <nav class="mt-4">
-              <ul class="space-y-2">
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Employment</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Childcare</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Education</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Accountancy</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Wholesale</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div>
-            <h5 class="text-xl font-semibold text-base-content/80">About us</h5>
-            <nav class="mt-4">
-              <ul class="space-y-2">
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Company</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Download brochure</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Media Kit</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Accountancy</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div>
-            <h5 class="text-xl font-semibold text-base-content/80">Legal</h5>
-            <nav class="mt-4">
-              <ul class="space-y-2">
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Terms and conditions</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Security</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Privacy and Cookie Statement</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Processor Agreement</a>
-                </li>
-                <li>
-                  <a href="#" class="font-normal text-base hover:text-base-content/50">Sitemap</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div>
-            <h5 class="text-xl font-semibold text-base-content/80">Contact</h5>
-            <div class="space-y-4 md:space-y-6 mt-4">
-              <div class="flex items-start space-x-4">
-                <div>
-                  <svg class="w-6 h-6 mt-1 text-base-content/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <div class="flex-1">
-                  <address class="not-italic">
-                    Rorikstraat 159<br>
-                    Wijk bij Duurstede<br>
-                    The Netherlands
-                  </address>
-                </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <div>
-                  <svg class="w-6 h-6 mt-1 text-base-content/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                </div>
-                <div class="flex-1">
-                  <a href="#" class="hover:text-base-content/60">support@hello.com</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </article>
-</section>
-
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative mb-8">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 8：</h2>
-    <a href="https://preline.co/examples/card-sections.html" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 py-24">
-    <!-- Card Section -->
-    <div class="max-w-7xl px-4 pt-8 -mt-8 md:-mt-18 sm:px-6 lg:px-8 lg:pt-14 mx-auto">
-      <!-- Grid -->
-      <div class="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-        <!-- Card -->
-        <a class="group flex flex-col bg-base-100 border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition" href="#">
-          <div class="p-2 md:p-5">
-            <div class="flex gap-x-5">
-              <svg class="mt-1 shrink-0 size-5 text-base-content" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              <div class="grow">
-                <h3 class="group-hover:text-blue-600 font-semibold text-base-content">
-                  加入社区
-                </h3>
-                <p class="text-sm text-base-content/60 hidden sm:flex">
-                  发布问题和经验分享，参与讨论
-                </p>
-              </div>
-            </div>
-          </div>
-        </a>
-        <!-- End Card -->
-
-        <!-- Card -->
-        <a class="group flex flex-col bg-base-100 border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition" href="#">
-          <div class="p-2 md:p-5">
-            <div class="flex gap-x-5">
-              <svg class="mt-1 shrink-0 size-5 text-base-content" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-
-              <div class="grow">
-                <h3 class="group-hover:text-blue-600 font-semibold text-base-content">
-                  联系客服
-                </h3>
-                <p class="text-sm text-base-content/60 hidden sm:flex">
-                  您组织工作台有对应客服链接
-                </p>
-              </div>
-            </div>
-          </div>
-        </a>
-        <!-- End Card -->
-
-        <!-- Card -->
-        <a class="group flex flex-col bg-base-100 border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition" href="#">
-          <div class="p-2 md:p-5">
-            <div class="flex gap-x-5">
-              <svg class="mt-1 shrink-0 size-5 text-base-content" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"/><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"/></svg>
-
-              <div class="grow">
-                <h3 class="group-hover:text-blue-600 font-semibold text-base-content">
-                  发送邮件
-                </h3>
-                <p class="text-sm text-base-content/60 hidden sm:flex">
-                  to: support@baklib.vip
-                </p>
-              </div>
-            </div>
-          </div>
-        </a>
-        <!-- End Card -->
-      </div>
-      <!-- End Grid -->
-    </div>
-    <!-- End Card Section -->
-  </article>
-</section>
-
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative mb-12">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 9：</h2>
-    <a href="https://www.penguinui.com/components/" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-    <a href="https://preline.co/examples/hero-sections.html" target="_blank" class="text-blue-600 hover:underline">Video Button 源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <div class="mx-auto max-w-7xl px-4 mt-8 sm:px-6 bg-base-100 dark:bg-base-300 text-base-content dark:text-base-content rounded-xl">
-      <div class="pt-4 pb-4">
-        <div class="flex items-center h-8 mb-4 md:mb-8 text-xl md:text-2xl font-semibold text-base-content dark:text-base-content">
-          <div class="w-1 h-full mr-3 bg-primary"></div>
-          <span>视频教程</span>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <article class="group flex rounded-2xl max-w-sm flex-col overflow-hidden border border-base-300 bg-base-200 dark:bg-primary">
-            <div class="overflow-hidden relative">
-              <div class="absolute inset-0 size-full z-20">
-                <div class="flex flex-col justify-center items-center size-full">
-                  <a href="https://help.baklib.cn/get-started/install-kb-site" class="p-2 md:p-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm hover:bg-base-200 focus:outline-none focus:bg-base-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-primary dark:border-primary dark:text-primary-content dark:hover:bg-primary dark:focus:bg-primary" >
-                    <svg class="shrink-0 size-5 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  </a>
-                </div>
-              </div>
-              <img src="https://tanmer.baklib.com/-/dam/assets/organization_pry3c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJpZCI6NTIyMjAsInBhdGgiOiJ2aWRlby13aWtpLndlYnAiLCJ0aW1lc3RhbXAiOiIyMDI1LTAxLTEwIDIzOjI1OjA2ICswODAwIn0sImV4cCI6IjIwMjUtMDEtMTJUMTU6NTk6NTkuOTk5WiIsInB1ciI6Im9yZ2FuaXphdGlvbl9wcnkzYzUifX0--3680f4b509407f0cb2e610f26ac330a460620939684d51f2cfcad9bf856e2526/video-wiki.webp" class="object-cover transition duration-700 ease-out group-hover:scale-105" alt="a penguin robot talking with a human" />
-            </div>
-            <div class="flex p-2">
-              <a href="https://help.baklib.cn/get-started/install-kb-site" target="_blank" class="text-base">Wiki 知识库入门视频</a>
-            </div>
-          </article>
-          <article class="group flex rounded-2xl max-w-sm flex-col overflow-hidden border border-base-300 bg-base-200 dark:bg-primary">
-            <div class="overflow-hidden relative">
-              <div class="absolute inset-0 size-full z-20">
-                <div class="flex flex-col justify-center items-center size-full">
-                  <a href="https://help.baklib.cn/get-started/install-cms-site" class="p-2 md:p-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm hover:bg-base-200 focus:outline-none focus:bg-base-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-primary dark:border-primary dark:text-primary-content dark:hover:bg-primary dark:focus:bg-primary" >
-                    <svg class="shrink-0 size-5 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  </a>
-                </div>
-              </div>
-              <img src="https://tanmer.baklib.com/-/dam/assets/organization_pry3c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJpZCI6NTIyMTksInBhdGgiOiJ2aWRlby1jbXMud2VicCIsInRpbWVzdGFtcCI6IjIwMjUtMDEtMTAgMjM6MjQ6NDkgKzA4MDAifSwiZXhwIjoiMjAyNS0wMS0xMlQxNTo1OTo1OS45OTlaIiwicHVyIjoib3JnYW5pemF0aW9uX3ByeTNjNSJ9fQ--00ccf5ee228aa9835aa35bac18a41ccccb9547c8c1d2f7168eda8522e8a6dcb5/video-cms.webp" class="object-cover transition duration-700 ease-out group-hover:scale-105" alt="a penguin robot talking with a human" />
-            </div>
-            <div class="flex p-2">
-              <a href="https://help.baklib.cn/get-started/install-cms-site" target="_blank" class="text-base">CMS 系统构建入门视频</a>
-            </div>
-          </article>
-          <article class="group flex rounded-2xl max-w-sm flex-col overflow-hidden border border-base-300 bg-base-200">
-            <div class="overflow-hidden relative">
-              <div class="absolute inset-0 size-full z-20">
-                <div class="flex flex-col justify-center items-center size-full">
-                  <a href="https://help.baklib.cn/get-started/install-community" class="p-2 md:p-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm hover:bg-base-200 focus:outline-none focus:bg-base-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-primary dark:border-primary dark:text-primary-content dark:hover:bg-primary dark:focus:bg-primary" >
-                    <svg class="shrink-0 size-5 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  </a>
-                </div>
-              </div>
-              <img src="https://tanmer.baklib.com/-/dam/assets/organization_pry3c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJpZCI6NTIyMjEsInBhdGgiOiJ2aWRlby1jb21tdW5pdHkud2VicCIsInRpbWVzdGFtcCI6IjIwMjUtMDEtMTAgMjM6MjU6MjMgKzA4MDAifSwiZXhwIjoiMjAyNS0wMS0xMlQxNTo1OTo1OS45OTlaIiwicHVyIjoib3JnYW5pemF0aW9uX3ByeTNjNSJ9fQ--038e376d802ddbb978104480737e5fbe31a594c1c82bb49b9a8b6f30dfe2a3dd/video-community.webp" class="object-cover transition duration-700 ease-out group-hover:scale-105" alt="a penguin robot talking with a human" />
-            </div>
-            <div class="flex p-2">
-              <a href="https://help.baklib.cn/get-started/install-community" class="text-base">创建社区站点 5 分钟入门</a>
-            </div>
-          </article>
-          <article class="group flex rounded-2xl max-w-sm flex-col overflow-hidden border border-base-300 bg-base-200">
-            <div class="overflow-hidden relative">
-              <div class="absolute inset-0 size-full z-20">
-                <div class="flex flex-col justify-center items-center size-full">
-                  <a href="https://help.baklib.cn/get-started/low-code" class="p-2 md:p-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm hover:bg-base-200 focus:outline-none focus:bg-base-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-primary dark:border-primary dark:text-primary-content dark:hover:bg-primary dark:focus:bg-primary" >
-                    <svg class="shrink-0 size-5 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  </a>
-                </div>
-              </div>
-              <img src="https://tanmer.baklib.com/-/dam/assets/organization_pry3c5/eyJfcmFpbHMiOnsiZGF0YSI6eyJpZCI6NTIyMTgsInBhdGgiOiJ2aWRlby1sb3ctY29kZS53ZWJwIiwidGltZXN0YW1wIjoiMjAyNS0wMS0xMCAyMzoyNDoyOCArMDgwMCJ9LCJleHAiOiIyMDI1LTAxLTEyVDE1OjU5OjU5Ljk5OVoiLCJwdXIiOiJvcmdhbml6YXRpb25fcHJ5M2M1In19--12a366ab3a02794fff66cb4409da181b9f0b030eb0502d32ddfb49fe394bb779/video-low-code.webp" class="object-cover transition duration-700 ease-out group-hover:scale-105" alt="a penguin robot talking with a human" />
-            </div>
-            <div class="flex p-2">
-              <a href="https://help.baklib.cn/get-started/low-code" class="text-base">模板代码开发入门视频</a>
-            </div>
-          </article>
-          <article class="group flex rounded-2xl max-w-sm flex-col overflow-hidden border border-base-300 bg-base-200">
-            <div class="overflow-hidden relative">
-              <div class="absolute inset-0 size-full z-20">
-                <div class="flex flex-col justify-center items-center size-full">
-                  <a class="p-2 md:p-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-base-300 bg-base-100 text-base-content shadow-sm hover:bg-base-200 focus:outline-none focus:bg-base-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-primary dark:border-primary dark:text-primary-content dark:hover:bg-primary dark:focus:bg-primary" href="#">
-                    <svg class="shrink-0 size-5 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                  </a>
-                </div>
-              </div>
-              <img src="https://penguinui.s3.amazonaws.com/component-assets/card-img-1.webp" class="object-cover transition duration-700 ease-out group-hover:scale-105" alt="a penguin robot talking with a human" />
-            </div>
-            <div class="flex p-2">
-              <a href="#" class="text-base">Penguai can teach you Javascript</a>
-            </div>
-          </article>
-
-
-        </div>
-      </div>
-    </div>
-  </article>
-</section>
-
-<!-- Features One 1 -->
-<section id="features_one1" class="mx-auto max-w-7xl relative mb-12">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 10：</h2>
-    <a href="https://v1.tailwindcss.com/components/alerts" target="_blank" class="text-blue-600 hover:underline">查看源代码</a>
-  </div>
-  <article class="bg-base-200 p-12">
-    <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
-      <div class="flex">
-        <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-        <div>
-          <p class="font-bold">Our privacy policy has changed</p>
-          <p class="text-sm">Make sure you know how these changes affect you.</p>
-        </div>
-      </div>
-    </div>
-    <div class="flex items-center bg-info text-primary-content text-sm font-bold px-4 py-3" role="alert">
-      <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z"/></svg>
-      <p>Something happened that you should know about.</p>
-    </div>
-
-    <div class="bg-neutral text-center py-4 lg:px-4">
-      <div class="p-2 bg-neutral/90 items-center text-neutral-content leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-        <span class="flex rounded-full bg-primary uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
-        <span class="font-semibold mr-2 text-left flex-auto">Get the coolest t-shirts from our brand new store</span>
-        <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
-      </div>
-    </div>
-
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-      <strong class="font-bold">Holy smokes!</strong>
-      <span class="block sm:inline">Something seriously bad happened.</span>
-      <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-      </span>
-    </div>
 
   </article>
-</section>
-
-
-<section id="features_one1" class="mx-auto max-w-7xl relative mb-12">
-  <div class="flex justify-between bg-neutral p-2">
-    <h2 class="text-2xl">示例 11：</h2>
-    <p>单独添加一个搜索框到任何地方</p>
-  </div>
-  <article class="bg-base-200 p-12 mx-auto max-w-2xl">
-
-    <ul>
-      <li>
-        {% form_tag 'search', class: 'w-full' %}
-          <div class="relative">
-            <button type="submit" class="absolute inset-y-0 right-0 flex items-center pl-4 pr-3 sm:right-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" > <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /> </svg>
-            </button>
-            <input
-              type="text"
-              name="{{form.keywords_field_name}}" value="{{ params.q | escape_once }}"
-              placeholder="{{ "placeholders.search" | t }}"
-              autocomplete="off"
-              class="block w-full h-6 md:h-8 lg:h-10 pl-3 pr-10 transition duration-300 ease-in-out bg-base-100 bg-opacity-75 dark:text-primary border border-1 rounded-lg outline-none focus:ring-0 focus:border-primary sm:pl-12 sm:text-lg focus:bg-opacity-90"
-            >
-          </div>
-        {% endform_tag %}
-      </li>
-    </ul>
-  </article>
-  <p>代码</p>
-  <pre class="mx-auto max-w-7xl overflow-auto">
-    { % form_tag &#x27;search&#x27;, class: &#x27;w-full&#x27; % }
-      &lt;div class=&quot;relative&quot;&gt;
-        &lt;button type=&quot;submit&quot; class=&quot;absolute inset-y-0 right-0 flex items-center pl-4 pr-3 sm:right-auto&quot;&gt;
-          &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;w-5 h-5 text-primary&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot; &gt; &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z&quot; /&gt; &lt;/svg&gt;
-        &lt;/button&gt;
-        &lt;input
-          type=&quot;text&quot;
-          name=&quot;{{form.keywords_field_name}}&quot; value=&quot;{{ params.q | escape_once }}&quot;
-          placeholder=&quot;{{ &quot;placeholders.search&quot; | t }}&quot;
-          autocomplete=&quot;off&quot;
-          class=&quot;block w-full h-6 md:h-8 lg:h-10 pl-3 pr-10 transition duration-300 ease-in-out bg-base-100 bg-opacity-75 dark:text-primary border border-1 rounded-lg outline-none focus:ring-0 focus:border-primary sm:pl-12 sm:text-lg focus:bg-opacity-90&quot;
-        &gt;
-      &lt;/div&gt;
-    { % endform_tag % }
-  </pre>
-</section>
+</div>

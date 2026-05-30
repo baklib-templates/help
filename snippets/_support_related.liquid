@@ -1,0 +1,79 @@
+{%- comment -%}
+  Related articles: shared tags first, then sibling pages.
+  @param page {Object} current page (required)
+  @param limit {Number} max items (default 5)
+{%- endcomment -%}
+{% assign related_limit = limit | default: 5 | plus: 0 %}
+{% assign related_title = 'templates.page.related_section_title' | t %}
+{% assign seen_marker = '|' | append: page.path | append: '|' %}
+{% assign related_count = 0 %}
+
+{% capture related_list_markup %}
+  {% assign page_tags = page.settings.tags %}
+  {% assign page_tags_size = page_tags | size %}
+  {% if page_tags_size > 0 %}
+    {% for tag in page_tags limit: 3 %}
+      {% for candidate in tag.pages limit: 20 %}
+        {% if related_count < related_limit %}
+          {% assign candidate_marker = '|' | append: candidate.path | append: '|' %}
+          {% unless seen_marker contains candidate_marker %}
+            {% assign seen_marker = seen_marker | append: candidate.path | append: '|' %}
+            {% assign related_count = related_count | plus: 1 %}
+            <li class="flex gap-4 border-b border-base-300 pb-8 last:border-0 last:pb-0 dark:border-base-300">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-content" aria-hidden="true">
+                {% render 'page_icon', page: candidate, class: 'size-5' %}
+              </span>
+              <div class="min-w-0 flex-1">
+                <a href="{{ candidate.path }}" class="text-base font-medium text-primary hover:underline md:text-lg" data-turbo-frame="_top">
+                  {{ candidate.link_text }}
+                </a>
+                {% assign excerpt = candidate.settings.content | strip_html | truncate: 160 %}
+                {% if excerpt != blank %}
+                  <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-base-content/70 dark:text-base-content/50">{{ excerpt }}</p>
+                {% endif %}
+              </div>
+            </li>
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
+  {% if page.parent %}
+    {% for sibling in page.parent.children_in_list limit: 50 %}
+      {% if related_count < related_limit %}
+        {% assign sibling_marker = '|' | append: sibling.path | append: '|' %}
+        {% unless seen_marker contains sibling_marker %}
+          {% assign seen_marker = seen_marker | append: sibling.path | append: '|' %}
+          {% assign related_count = related_count | plus: 1 %}
+          <li class="flex gap-4 border-b border-base-300 pb-8 last:border-0 last:pb-0 dark:border-base-300">
+            <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-content" aria-hidden="true">
+              {% render 'page_icon', page: sibling, class: 'size-5' %}
+            </span>
+            <div class="min-w-0 flex-1">
+              <a href="{{ sibling.path }}" class="text-base font-medium text-primary hover:underline md:text-lg" data-turbo-frame="_top">
+                {{ sibling.link_text }}
+              </a>
+              {% assign excerpt = sibling.settings.content | strip_html | truncate: 160 %}
+              {% if excerpt != blank %}
+                <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-base-content/70 dark:text-base-content/50">{{ excerpt }}</p>
+              {% endif %}
+            </div>
+          </li>
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endcapture %}
+
+{% assign related_markup = related_list_markup | strip %}
+{% if related_markup != blank %}
+  <section class="mt-12 border-t border-base-300 pt-10 dark:border-base-300">
+    <h2 class="text-lg font-semibold text-base-content dark:text-base-content">
+      {{ related_title }}
+    </h2>
+    <ul class="mt-6 flex flex-col gap-8">
+      {{ related_markup }}
+    </ul>
+  </section>
+{% endif %}

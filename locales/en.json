@@ -7,14 +7,6 @@
     }
   },
   "snippets": {
-    "header": {
-      "light_mode": "light color",
-      "dark_mode": "dark color",
-      "auto_mode": "automatic"
-    },
-    "footer": {
-      "copyright": "All Rights Reserved"
-    },
     "feedback_form": {
       "title": "Submit Feedback",
       "message_label": "Message",
@@ -27,12 +19,8 @@
       "title_posted": "Thank you for your feedback",
       "title_unposted": "Submit Feedback"
     },
-    "page": {
-      "prev_page": "Previous",
-      "next_page": "Next"
-    },
     "page_tools": {
-      "copy_page_label": "Copy page",
+      "copy_page_label": "Copy as Markdown",
       "copy_page_description": "Copy this page as Markdown for LLMs",
       "open_in_chatgpt": "Open in ChatGPT",
       "open_in_claude": "Open in Claude",
@@ -43,6 +31,11 @@
       "connect_to_cursor_description": "Install MCP Server in Cursor",
       "connect_to_vscode": "Connect to VS Code",
       "connect_to_vscode_description": "Install MCP Server in VS Code"
+    },
+    "aside_nav": {
+      "tags_title": "Tags",
+      "topics_title": "Common topics",
+      "contact_title": "Contact support"
     }
   },
   "templates": {
@@ -52,20 +45,26 @@
       "ai_input_placeholder": "Type your question…"
     },
     "page": {
-      "copy_success": "Link copied",
-      "page_toc": "Table of Contents",
       "llm_prompt_template": "Read from %{url} so I can ask questions about it.",
       "llm_copying": "Copying...",
-      "llm_copied": "Copied"
+      "llm_copied": "Copied",
+      "pagination_status_prefix": "Viewing ",
+      "pagination_status_middle": " of ",
+      "pagination_status_suffix": "",
+      "pagination_prev": "Previous",
+      "pagination_next": "Next",
+      "related_section_title": "Related articles"
     },
     "index": {
       "faqs": {
         "tab_all": "All",
         "hero_title_default": "Frequently Asked Questions",
-        "hero_description_default": "Helping you quickly understand and resolve common questions"
+        "hero_description_default": "Helping you quickly understand and resolve common questions",
+        "open_in_new_page": "Open in new page"
       },
       "support": {
-        "search_placeholder": "Search help articles..."
+        "search_placeholder": "Search help articles...",
+        "popular_section_title": "Popular articles"
       }
     }
   },
@@ -81,11 +80,7 @@
     "buttons": {
       "signout": "Sign Out"
     },
-    "read_more": "View more",
-    "menu": ""
-  },
-  "search": {
-    "placeholder": "Search .."
+    "read_more": "View more"
   },
   "placeholders": {
     "search": ""

@@ -1,108 +1,105 @@
-{% assign default_icon = 'images/icon.svg' | asset_url %}
-{% assign channel_pages = site.pages['/'].children_in_list %}
-{% assign articles_per_card = page.settings.articles_per_card | default: 5 | plus: 0 %}
-{% assign popular_limit = page.settings.popular_limit | default: 8 | plus: 0 %}
+{% assign channel_pages = site.pages['/'].children_in_nav_menu %}
+{% assign hero_title = page.settings.hero_title | presence | default: site.name %}
+{% assign hero_description = page.settings.hero_description | presence %}
+{% assign hero_height = page.settings.hero_height | default: 400 | plus: 0 %}
 
-<div class="relative">
-  {% if page.settings.hero_bg_type.value == '1' %}
-    <div class="absolute inset-x-0 overflow-hidden -top-10 -z-10 transform-gpu blur-3xl sm:-top-80" aria-hidden="true">
+<div class="relative isolate">
+  <style>
+    .index-faqs-hero-bg {
+      height: clamp(220px, var(--hero-height), 600px);
+      background-image: var(--hero-bg-image-mobile);
+      background-position: center;
+      background-size: cover;
+    }
+    @media (min-width: 768px) {
+      .index-faqs-hero-bg {
+        height: clamp(260px, var(--hero-height), 600px);
+        background-image: var(--hero-bg-image-pc);
+      }
+    }
+  </style>
+
+  {% assign default_hero_image = 'images/hero.png' | asset_url %}
+  {% assign hero_pc_image_url = page.settings.hero_pc_image_url | presence | default: default_hero_image | escape_once %}
+  {% assign hero_mobile_image_url = page.settings.hero_mobile_image_url | presence | default: hero_pc_image_url | escape_once %}
+  <div
+    class="index-faqs-hero-bg absolute inset-x-0 top-0 z-0 bg-center bg-cover"
+    style="
+      --hero-height: {{ hero_height }}px;
+      --hero-bg-image-pc: linear-gradient(to bottom, transparent 0%, var(--color-base-100) 100%), url('{{ hero_pc_image_url }}');
+      --hero-bg-image-mobile: linear-gradient(to bottom, transparent 0%, var(--color-base-100) 100%), url('{{ hero_mobile_image_url }}');
+    "
+  ></div>
+
+  <div class="relative z-10 px-4">
+    <section class="mx-auto max-w-6xl">
       <div
-        class="relative left-[calc(50%-11rem)] aspect-[1200/800] w-[80w] -translate-x-1/2 rotate-[30deg] opacity-30 sm:left-[calc(50%-20rem)] sm:w-[82.1875rem]"
-        style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%); background-color: {{ page.settings.hero_bg_color }}">
+        class="relative pt-10 md:pt-24"
+        style="--hero-text-color: {{ page.settings.hero_text_color | default: '#111827' }};"
+      >
+        <h1 class="text-center text-2xl font-bold text-[color:var(--hero-text-color)] md:text-4xl">
+          {{ hero_title }}
+        </h1>
+        {% if hero_description != blank %}
+          <p class="mt-3 text-center text-sm leading-6 text-[color:var(--hero-text-color)] md:text-base">
+            {{ hero_description }}
+          </p>
+        {% endif %}
       </div>
-    </div>
-  {% elsif page.settings.hero_bg_type.value == '2' %}
-    {% assign default_hero_image = 'images/hero.jpg' | asset_url %}
-    {% assign bg_image_url = page.settings.hero_image_url | escape_once | default: default_hero_image %}
-    <div class="absolute w-full bg-center bg-cover -z-10" style="height: {{ page.settings.hero_height }}px; background-image: url('{{ bg_image_url }}')"></div>
-  {% else %}
-    <div class="absolute w-full bg-center bg-cover -z-10 bg-base-200 pt-10 dark:bg-base-300" style="height: {{ page.settings.hero_height }}px;"></div>
-  {% endif %}
 
-  <div>
-    {% assign features_one_html = site.settings.features_one_html | strip %}
-    {% if features_one_html | present? %}
-      <section>
-        {{ features_one_html }}
-      </section>
-    {% endif %}
-
-    <div class="container m-auto flex h-full flex-col" style="height: {{ page.settings.hero_height }}px;">
-      <div class="mx-4 flex flex-grow flex-col items-center justify-center">
-        {% assign hero_slogan = page.settings.hero_slogan %}
-        <div class="{% if page.settings.hero_bg_type.value == '2' %} text-primary-content {% endif %}">
-          <h1 class="py-2 text-center text-2xl font-bold transition duration-500 text-shadow md:mt-0 md:text-4xl">
-            {{ site.name }}
-          </h1>
-          {% if hero_slogan %}
-            <p class="py-2 text-center text-base transition duration-500 text-shadow">{{ hero_slogan }}</p>
-          {% endif %}
-        </div>
-
-        <div class="z-0 flex w-full flex-col items-center justify-center md:w-2/3">
-          {% form_tag 'search', class: 'w-full' %}
-            <div class="relative">
-              <button type="button" class="pointer-events-none absolute inset-y-0 right-0 flex items-center pl-5 pr-3 sm:right-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </button>
-              <input
-                type="search"
-                name="{{ form.keywords_field_name }}"
-                value="{{ search.keywords | escape_once }}"
-                placeholder="{{ 'layout.theme.search_input_placeholder' | t }}"
-                autocomplete="off"
-                class="block h-14 w-full rounded-full bg-base-100 bg-opacity-75 pr-6 pl-12 text-lg outline-none transition duration-300 ease-in-out placeholder:text-base-content/40 focus:bg-opacity-90 dark:bg-base-300
-                  {% if page.settings.hero_bg_type.value == '0' %}
-                    border border-base-300 hover:bg-primary/10 hover:ring-4 hover:ring-primary dark:border-base-300 dark:hover:bg-base-300 dark:hover:ring-base-content/30
-                  {% else %}
-                    border-none hover:ring-4 hover:ring-primary
-                  {% endif %}
-                "
-              >
-            </div>
-          {% endform_tag %}
-
-          <div class="mt-2 w-full space-y-1">
-            {% assign search_hot_tags = page.settings.search_hot_tags %}
-            {% if search_hot_tags.size > 0 %}
-              <div class="items-center justify-start w-full md:flex md:flex-wrap md:px-5">
-                <div class="inline-block text-sm {% if page.settings.hero_bg_type.value == '2' %} text-primary-content {% else %} text-base-content/60 {% endif %} dark:text-base-content">
-                  <span class="mr-2">{{ 'layout.theme.search_tags_label' | t }}:</span>
-                  {% for tag in search_hot_tags %}
-                    <a href="{{ tag.path }}" data-turbo-frame="_top" class="mr-2 min-w-12 hover:-translate-y-[2px] hover:text-primary focus:ring">
-                      {{ tag.name }}
-                    </a>
-                  {% endfor %}
-                </div>
+      <div class="relative -mt-12 pb-10 pt-10 md:pt-12">
+        <div class="my-8 flex justify-center">
+          <div class="w-full md:w-1/2">
+            {% form_tag 'search', class: 'w-full' %}
+              <div class="relative rounded-full border border-base-300 bg-base-100/95 shadow-lg backdrop-blur dark:border-base-300/70 dark:bg-base-300/90">
+                <button type="button" class="pointer-events-none absolute inset-y-0 right-0 flex items-center pl-5 pr-3 sm:right-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-base-content/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+                <input
+                  type="search"
+                  name="{{ form.keywords_field_name }}"
+                  value="{{ search.keywords | escape_once }}"
+                  placeholder="{{ 'layout.theme.search_input_placeholder' | t }}"
+                  autocomplete="off"
+                  class="block h-12 w-full rounded-full bg-transparent pr-4 pl-11 text-base outline-none transition duration-300 ease-in-out placeholder:text-base-content/40 hover:bg-primary/5 hover:ring-4 hover:ring-primary focus:bg-transparent md:h-12 md:pr-6 md:pl-12 dark:hover:bg-base-300/40 dark:hover:ring-base-content/30"
+                >
               </div>
-            {% endif %}
+            {% endform_tag %}
 
+            {% assign search_hot_tags = page.settings.search_hot_tags %}
             {% assign hot_keywords = page.settings.search_hot_keywords | reg_split: "/\n/" %}
-            {% if hot_keywords.size > 0 %}
-              <div class="items-center justify-start w-full md:flex md:flex-wrap md:px-5">
-                <div class="inline-block text-sm {% if page.settings.hero_bg_type.value == '2' %} text-primary-content {% else %} text-base-content/60 {% endif %} dark:text-base-content">
-                  <span class="mr-2">{{ 'layout.theme.search_keywords_label' | t }}:</span>
-                  {% for hot_keyword in hot_keywords %}
-                    <a href="{{ site.index_path }}-/search?q={{ hot_keyword }}" class="mr-2 underline hover:-translate-y-[2px] hover:text-primary focus:ring">
-                      {{ hot_keyword }}
-                    </a>
-                  {% endfor %}
-                </div>
+            {% if search_hot_tags.size > 0 or hot_keywords.size > 0 %}
+              <div class="mt-4 space-y-2 text-sm">
+                {% if search_hot_tags.size > 0 %}
+                  <div class="text-base-content/70 dark:text-base-content/50">
+                    <span class="mr-2 font-medium">{{ 'layout.theme.search_tags_label' | t }}:</span>
+                    {% for tag in search_hot_tags %}
+                      <a href="{{ tag.path }}" data-turbo-frame="_top" class="mr-2 text-primary hover:underline">{{ tag.name }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                {% if hot_keywords.size > 0 %}
+                  <div class="text-base-content/70 dark:text-base-content/50">
+                    <span class="mr-2 font-medium">{{ 'layout.theme.search_keywords_label' | t }}:</span>
+                    {% for hot_keyword in hot_keywords %}
+                      <a href="{{ site.index_path }}-/search?q={{ hot_keyword }}" class="mr-2 text-primary hover:underline">{{ hot_keyword }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
               </div>
             {% endif %}
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="bg-base-200 px-4 py-8 md:py-12 dark:bg-base-300" data-controller="link-target">
-      <div class="mx-auto max-w-[var(--max-content-width)] space-y-12">
+    <div class="pb-12" data-controller="link-target">
+      <div class="mx-auto max-w-6xl space-y-12">
         {% if page.settings.show_channels_section %}
           <section>
-            <div class="mb-6 flex items-center text-xl font-bold text-base-content dark:text-base-content md:text-2xl">
-              <div class="mr-3 h-8 w-1 bg-primary"></div>
+            <div class="mb-6 text-center text-xl font-bold text-base-content dark:text-base-content md:text-2xl">
               {{ page.settings.channels_section_title }}
             </div>
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -111,31 +108,18 @@
                   <div class="flex flex-1 flex-col p-6">
                     <a href="{{ channel_page.path }}" class="group block outline-none">
                       <div class="flex items-start gap-4">
-                        {% if channel_page.settings.icon %}
-                          <span class="shrink-0">
-                            <img src="{{ channel_page.settings.icon | default: default_icon }}" alt="" class="h-11 w-11 rounded-lg object-cover" loading="lazy" />
-                          </span>
-                        {% else %}
-                          <span class="shrink-0 text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-11 w-11">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0019.5 9v.878m0 0a2.246 2.246 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0021 12v6a2.25 2.25 01-2.25 2.25H5.25A2.25 2.25 013 18v-6c0-.98.626-1.813 1.5-2.122" />
-                            </svg>
-                          </span>
-                        {% endif %}
+                        <span class="shrink-0 text-primary">
+                          {% render 'icon', name: channel_page.settings.icon, class: 'size-11' %}
+                        </span>
                         <div class="min-w-0 flex-1">
                           <h3 class="text-lg font-semibold text-base-content transition group-hover:text-primary dark:text-base-content">
                             {{ channel_page.link_text }}
                           </h3>
-                          {% assign card_desc = channel_page.settings.description | strip %}
-                          {% if card_desc != blank %}
-                            <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-base-content/70 dark:text-base-content/50">{{ card_desc }}</p>
-                          {% endif %}
                         </div>
                       </div>
                     </a>
 
-                    {% assign card_children = channel_page.children_in_list | limit: articles_per_card %}
-                    {% if card_children.size > 0 %}
+                    {% assign card_children = channel_page.children_in_list | limit: 5 %}
                       <ul class="mt-5 flex-1 space-y-2 border-t border-base-300 pt-4 dark:border-base-300">
                         {% for sub_page in card_children %}
                           <li class="truncate">
@@ -145,7 +129,6 @@
                           </li>
                         {% endfor %}
                       </ul>
-                    {% endif %}
 
                     <div class="mt-5 border-t border-base-300 pt-4 dark:border-base-300">
                       <a href="{{ channel_page.path }}" class="text-sm font-medium text-primary hover:underline">
@@ -159,37 +142,42 @@
           </section>
         {% endif %}
 
-        {% if page.settings.show_popular_section %}
-          {% assign popular_pages = site.pages['/'].pages_in_list | order_by: '-visits_count' | limit: popular_limit %}
-          <section>
-            <div class="mb-6 flex items-center text-xl font-bold text-base-content dark:text-base-content md:text-2xl">
-              <div class="mr-3 h-8 w-1 bg-primary"></div>
-              <span>{{ page.settings.popular_section_title }}</span>
-            </div>
-            <div class="grid grid-cols-1 gap-3 rounded-xl border border-base-300 bg-base-100 p-4 dark:border-base-300 dark:bg-base-300 md:grid-cols-2">
-              {% for pop_page in popular_pages %}
-                <a class="group flex items-center justify-between rounded-lg px-2 py-2 transition hover:bg-base-200 dark:hover:bg-base-300/50" href="{{ pop_page.path }}">
-                  <div class="flex min-w-0 items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-base-content/50 transition group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                    <span class="truncate text-base-content/80 transition group-hover:text-primary dark:text-base-content">{{ pop_page.link_text }}</span>
-                  </div>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-5 w-5 flex-shrink-0 text-base-content/50 transition group-hover:translate-x-1 group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        {% assign popular_pages = site.pages['/'].pages_in_list | order_by: '-visits_count' | limit: 8 %}
+        <section>
+          <div class="mb-6 text-center text-xl font-bold text-base-content dark:text-base-content md:text-2xl">
+            <span>{{ page.settings.popular_section_title }}</span>
+          </div>
+          <div class="grid grid-cols-1 gap-3 rounded-xl border border-base-300 bg-base-100 p-4 dark:border-base-300 dark:bg-base-300 md:grid-cols-2">
+            {% for pop_page in popular_pages %}
+              <a class="group flex items-center justify-between rounded-lg px-2 py-2 transition hover:bg-base-200 dark:hover:bg-base-300/50" href="{{ pop_page.path }}">
+                <div class="flex min-w-0 items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 text-base-content/50 transition group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
-                </a>
-              {% endfor %}
+                  <span class="truncate text-base-content/80 transition group-hover:text-primary dark:text-base-content">{{ pop_page.link_text }}</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-1 h-5 w-5 flex-shrink-0 text-base-content/50 transition group-hover:translate-x-1 group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            {% endfor %}
+          </div>
+        </section>
+
+        {% assign contact_html = site.settings.contact_html | strip %}
+        {% if contact_html | present? %}
+          <section>
+            <div class="mb-6 text-center text-xl font-bold text-base-content dark:text-base-content md:text-2xl">
+              <span>{{ 'snippets.aside_nav.contact_title' | t }}</span>
+            </div>
+            <div class="rounded-xl border border-base-300 bg-base-100 p-6 dark:border-base-300 dark:bg-base-300">
+              <div class="support-contact-html prose prose-sm max-w-none text-base-content dark:prose-invert">
+                {{ contact_html }}
+              </div>
             </div>
           </section>
         {% endif %}
 
-        {% assign features_two_html = site.settings.features_two_html | strip %}
-        {% if features_two_html | present? %}
-          <section>
-            {{ features_two_html }}
-          </section>
-        {% endif %}
       </div>
     </div>
   </div>
@@ -206,49 +194,49 @@
     "sub_page_templates": ["page"],
     "settings": [
       {
-        "id": "hero_bg_type",
-        "type": "radio",
-        "label": "t:schema.templates.index.card.settings.hero_bg_type.label",
-        "choices": [
-          { "label": "t:schema.templates.index.card.settings.hero_bg_type.choices.none", "value": "0" },
-          { "label": "t:schema.templates.index.card.settings.hero_bg_type.choices.color", "value": "1" },
-          { "label": "t:schema.templates.index.card.settings.hero_bg_type.choices.image", "value": "2" }
-        ],
-        "default": "2",
-        "info": "t:schema.templates.index.card.settings.hero_bg_type.info"
-      },
-      {
         "id": "hero_height",
         "type": "range",
-        "label": "t:schema.templates.index.card.settings.hero_height.label",
-        "info": "t:schema.templates.index.card.settings.hero_height.info",
-        "min": 100,
+        "label": "t:schema.templates.index.faqs.settings.hero_height.label",
+        "min": 200,
         "max": 600,
         "step": 10,
         "unit": "px",
-        "default": 360
+        "default": 400
       },
       {
-        "id": "hero_image_url",
+        "id": "hero_pc_image_url",
         "type": "image_picker",
         "ratio": "4:1",
-        "width": 900,
-        "label": "t:schema.templates.index.card.settings.hero_image_url.label",
-        "info": "t:schema.templates.index.card.settings.hero_image_url.info"
+        "width": 400,
+        "label": "t:schema.templates.index.faqs.settings.hero_pc_image_url.label",
+        "info": "t:schema.templates.index.faqs.settings.hero_pc_image_url.info"
       },
       {
-        "id": "hero_bg_color",
-        "type": "color",
-        "label": "t:schema.templates.index.card.settings.hero_bg_color.label",
-        "info": "t:schema.templates.index.card.settings.hero_bg_color.info",
-        "default": "#20466D"
+        "id": "hero_mobile_image_url",
+        "type": "image_picker",
+        "ratio": "3:2",
+        "width": 200,
+        "label": "t:schema.templates.index.faqs.settings.hero_mobile_image_url.label",
+        "info": "t:schema.templates.index.faqs.settings.hero_mobile_image_url.info"
       },
       {
-        "id": "hero_slogan",
+        "id": "hero_title",
         "type": "text",
-        "default": "t:schema.templates.index.card.settings.hero_slogan.default",
-        "label": "t:schema.templates.index.card.settings.hero_slogan.label",
-        "info": "t:schema.templates.index.card.settings.hero_slogan.info"
+        "label": "t:schema.templates.index.faqs.settings.hero_title.label",
+        "info": "t:schema.templates.index.card.settings.hero_title.info"
+      },
+      {
+        "id": "hero_description",
+        "type": "text",
+        "label": "t:schema.templates.index.faqs.settings.hero_description.label",
+        "default": "t:schema.templates.index.card.settings.hero_description.default"
+      },
+      {
+        "id": "hero_text_color",
+        "type": "color",
+        "label": "t:schema.templates.index.card.settings.hero_text_color.label",
+        "info": "t:schema.templates.index.card.settings.hero_text_color.info",
+        "default": "#111827"
       },
       {
         "id": "search_hot_tags",
@@ -277,37 +265,10 @@
         "default": "t:schema.templates.index.card.settings.channels_section_title.default"
       },
       {
-        "id": "articles_per_card",
-        "type": "range",
-        "label": "t:schema.templates.index.card.settings.articles_per_card.label",
-        "info": "t:schema.templates.index.card.settings.articles_per_card.info",
-        "min": 3,
-        "max": 12,
-        "step": 1,
-        "default": 5
-      },
-      {
-        "id": "show_popular_section",
-        "type": "checkbox",
-        "label": "t:schema.templates.index.card.settings.show_popular_section.label",
-        "info": "t:schema.templates.index.card.settings.show_popular_section.info",
-        "default": true
-      },
-      {
         "id": "popular_section_title",
         "type": "text",
         "label": "t:schema.templates.index.card.settings.popular_section_title.label",
         "default": "t:schema.templates.index.card.settings.popular_section_title.default"
-      },
-      {
-        "id": "popular_limit",
-        "type": "range",
-        "label": "t:schema.templates.index.card.settings.popular_limit.label",
-        "info": "t:schema.templates.index.card.settings.popular_limit.info",
-        "min": 3,
-        "max": 16,
-        "step": 1,
-        "default": 8
       }
     ]
   }

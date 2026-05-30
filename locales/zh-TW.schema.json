@@ -7,82 +7,44 @@
     },
     "fashion": {
       "name": "時尚"
-    },
-    "old_school": {
-      "name": "復古"
     }
   },
   "templates": {
     "index": {
-      "help_center": {
-        "name": "幫助中心",
-        "description": "功能豐富的產品知識庫樣式",
+      "faqs": {
+        "name": "常見問題中心",
+        "description": "FAQ 風格的首頁：可摺疊的問題列表 + 分類標籤",
         "settings": {
-          "hero_bg_type": {
-            "label": "首屏背景樣式",
-            "info": "選擇背景樣式後，背景色和背景圖會根據選擇的內容進行展示",
-            "choices": {
-              "none": "無背景",
-              "color": "顏色背景",
-              "image": "圖片背景"
-            }
-          },
           "hero_height": {
-            "label": "背景高度",
-            "info": "建議高度：360px"
+            "label": "Hero 高度"
           },
-          "hero_image_url": {
-            "label": "背景圖",
-            "info": "背景圖會根據頁面寬度和背景高度自動裁剪"
+          "hero_pc_image_url": {
+            "label": "PC 背景圖片",
+            "info": "建議尺寸：1600×400（或更大，同 4:1 比例），用於桌面端。"
           },
-          "hero_bg_color": {
-            "label": "背景色",
-            "info": "選擇背景色後，背景色會根據選擇的內容進行展示"
+          "hero_mobile_image_url": {
+            "label": "行動端背景圖片",
+            "info": "建議尺寸：1080×360（或更大，同 3:1 比例），用於手機端。留足上下安全區以避免文字遮擋。"
           },
-          "hero_slogan": {
-            "label": "標語",
-            "info": "標語會顯示在背景圖上方",
-            "default": "👋 What Can We Help?"
+          "hero_title": {
+            "label": "Hero 標題",
+            "default": "常見問題"
           },
-          "search_hot_tags": {
-            "label": "熱門標籤",
-            "info": "設置以後，標籤列表會顯示在首頁搜尋欄下方"
+          "hero_description": {
+            "label": "Hero 描述",
+            "default": "幫助您快速了解與解決常見問題"
           },
-          "search_hot_keywords": {
-            "label": "熱門搜尋",
-            "info": "設置以後，搜尋框下方會顯示熱門搜尋。換行設置多個關鍵詞"
+          "hero_title_color": {
+            "label": "標題字體顏色（亮色模式）"
           },
-          "show_channels_section": {
-            "label": "欄目導覽板塊",
-            "info": "不勾選，首頁將不會顯示此板塊"
+          "hero_title_color_dark": {
+            "label": "標題字體顏色（暗色模式）"
           },
-          "channels_section_title": {
-            "label": "欄目導覽板塊標題",
-            "default": "欄目導覽"
+          "hero_description_color": {
+            "label": "描述字體顏色（亮色模式）"
           },
-          "show_newest_section": {
-            "label": "最新文章板塊",
-            "info": "不勾選，首頁將不會顯示此板塊"
-          },
-          "newest_section_title": {
-            "label": "最新文章板塊標題",
-            "default": "最新文章"
-          },
-          "show_topic_channel": {
-            "label": "專題推薦板塊",
-            "info": "不勾選，首頁將不會顯示此板塊"
-          },
-          "topic_channel_title": {
-            "label": "專題推薦板塊的標題",
-            "default": "專題推薦"
-          },
-          "show_hottest_section": {
-            "label": "熱門文章板塊",
-            "info": "不勾選，首頁將不會顯示此板塊"
-          },
-          "hottest_section_title": {
-            "label": "熱門文章板塊標題",
-            "default": "熱門文章"
+          "hero_description_color_dark": {
+            "label": "描述字體顏色（暗色模式）"
           }
         }
       },
@@ -97,11 +59,8 @@
           },
           "hero_subtitle": {
             "label": "首屏副標題",
+            "default": "您可以透過本支援頁面瀏覽公司的 FAQ、常見問題、操作步驟、產品知識等資訊。",
             "info": "顯示在標題下方的簡短說明（選填）。"
-          },
-          "hero_height": {
-            "label": "首屏區域高度",
-            "info": "搜尋框上方保留的垂直空間。"
           },
           "search_hot_tags": {
             "label": "熱門標籤",
@@ -110,26 +69,6 @@
           "search_hot_keywords": {
             "label": "熱門搜尋",
             "info": "每行一個關鍵字。"
-          },
-          "topics_section_title": {
-            "label": "側欄：常見主題標題",
-            "default": "常見主題"
-          },
-          "contact_section_title": {
-            "label": "側欄：聯絡支援標題",
-            "default": "聯絡支援"
-          },
-          "show_popular_section": {
-            "label": "顯示熱門文章",
-            "info": "依造訪量排序，顯示在搜尋框下方。"
-          },
-          "popular_section_title": {
-            "label": "熱門文章標題",
-            "default": "熱門文章"
-          },
-          "popular_limit": {
-            "label": "熱門文章數量",
-            "info": "清單最多顯示的篇數。"
           }
         }
       },
@@ -137,31 +76,15 @@
         "name": "卡片式首頁",
         "description": "大型卡片區塊展示欄目與文章預覽（Intercom / Bonsai 風格）",
         "settings": {
-          "hero_bg_type": {
-            "label": "首屏背景樣式",
-            "info": "頂部首屏區域的背景。",
-            "choices": {
-              "none": "無背景",
-              "color": "純色背景",
-              "image": "圖片背景"
-            }
+          "hero_title": {
+            "info": "留空則使用網站名稱。"
           },
-          "hero_height": {
-            "label": "背景高度",
-            "info": "建議高度：360px"
-          },
-          "hero_image_url": {
-            "label": "背景圖片",
-            "info": "選擇圖片背景時使用。"
-          },
-          "hero_bg_color": {
-            "label": "背景顏色",
-            "info": "選擇純色背景時使用。"
-          },
-          "hero_slogan": {
-            "label": "標語",
-            "info": "顯示在網站名稱下方。",
+          "hero_description": {
             "default": "👋 需要查找什麼？"
+          },
+          "hero_text_color": {
+            "label": "首屏文字顏色",
+            "info": "同時套用於標題與描述。"
           },
           "search_hot_tags": {
             "label": "熱門標籤",
@@ -179,21 +102,9 @@
             "label": "卡片區塊標題",
             "default": "依主題瀏覽"
           },
-          "articles_per_card": {
-            "label": "每卡文章數",
-            "info": "每張卡片內展示的子頁面連結數量。"
-          },
-          "show_popular_section": {
-            "label": "顯示熱門文章",
-            "info": "依造訪次數排序。"
-          },
           "popular_section_title": {
             "label": "熱門區塊標題",
             "default": "熱門文章"
-          },
-          "popular_limit": {
-            "label": "熱門文章數量",
-            "info": "清單中顯示的頁面筆數。"
           }
         }
       }
@@ -222,25 +133,11 @@
         },
         "icon": {
           "label": "頁面圖標",
-          "info": "用於顯示頁面圖標，建議1:1比例"
+          "info": "在列表與卡片中顯示的 Lucide 圖標。選項來自站點設定 → Lucide 圖標。圖標名稱查找：<a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
         },
         "content": {
           "label": "頁面內容",
           "info": "同步自數據源，不可編輯"
-        }
-      },
-      "video": {
-        "name": "視頻模版",
-        "description": "視頻頁面模版, 用於展示視頻內容",
-        "settings": {
-          "is_video_list": {
-            "label": "是否為視頻列表",
-            "info": "視頻列表頁，僅獲取下級為視頻模版頁面; 請確保下級頁面的模版為視頻模版"
-          },
-          "video_url": {
-            "label": "視頻地址",
-            "info": "用於呈現於視頻列表頁中, 列表頁無需填寫"
-          }
         }
       }
     }
@@ -261,32 +158,11 @@
         "label": "備案/版權信息",
         "default": "蜀ICP備xxxx號"
       },
-      "screen_width": {
-        "label": "頁面寬度",
-        "choices": {
-          "narrow": "窄（1024像素）",
-          "medium": "適中（1280像素）",
-          "wide": "寬（1536像素）",
-          "full": "滿屏"
-        }
-      },
-      "left_sidebar_width": {
-        "label": "左側邊欄寬度(詳細頁面中)",
-        "info": "建議：240px"
-      },
-      "right_sidebar_width": {
-        "label": "右側邊欄寬度(詳細頁面中)",
-        "info": "建議：240px"
-      },
       "show_published_at": {
         "label": "顯示發布時間"
       },
       "show_author": {
         "label": "顯示作者"
-      },
-      "show_card_icon": {
-        "label": "首頁是否顯示欄目ICON圖標",
-        "info": "建議自行在頁面設置中配置圖標"
       },
       "ai_search_completed_text": {
         "label": "AI回答結束語",
@@ -315,25 +191,10 @@
         "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
         "placeholder": "通常在這裡插入公司其他網站的導航連結"
       },
-      "footer_html": {
-        "label": "頁腳區域插入 HTML 代碼",
-        "info": "支持HTML標籤和有限的TailwindCSS樣式代碼; 將完全替換默認頁腳內容",
-        "placeholder": "若需要保留默認頁腳內容，請在 footer_menu_html 中插入 HTML 代碼"
-      },
       "footer_menu_html": {
         "label": "底部區域插入 HTML 代碼(footer 內，footer_menu_html)",
         "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
         "placeholder": "通常在這裡插入公司其他網站的外部導航連結、友情連結、SEO 優化連結等"
-      },
-      "features_one_html": {
-        "label": "首頁功能區域一插入 HTML 代碼",
-        "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
-        "placeholder": "通常在這裡插入公司其他網站的導航連結"
-      },
-      "features_two_html": {
-        "label": "首頁功能區域二插入 HTML 代碼",
-        "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
-        "placeholder": "通常在這裡插入公司其他網站的導航連結"
       },
       "contact_html": {
         "label": "聯絡支援（HTML）",
@@ -342,24 +203,12 @@
       }
     }
   },
-  "settings": {
-    "weixin_share": {
-      "title": "微信配寘",
-      "weixin_app_id": {
-        "label": "開發者ID（AppID）",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>微信公眾號/設定與開發/開發介面管理</a>中獲取"
-      },
-      "weixin_app_secret": {
-        "label": "開發者密碼（AppSecret）",
-        "info": ""
-      },
-      "weixin_enabled": {
-        "label": "是否啟用微信分享",
-        "info": "提供網站頁面微信分享的能力</br>1.請在微信公眾號中配寘ip白名單（ip: ${service_ip}），配寘後將有一段時間的生效延遲。 </br>2.檢查是否開啟微信分享許可權，微信公眾號/設定與開發/開發介面管理：<a href='https://mp.weixin.qq.com/cgi-bin/frame'>網頁服務/分享介面</a>。</br>3.分享連結是否為卡片：從卡片形式進入分享卡片形式，連結形式進入分享連結形式； 網頁初始連結分享可由公司的服務號中或收藏後進行卡片分享（此規則為微信分享限制）。"
-      },
-      "weixin_debug": {
-        "label": "是否開啟debug提示",
-        "info": "請僅在配寘階段開啟此選項； 開啟後在訪問前端網站時若未正確配寘微信分享將自動提示錯誤資訊"
+  "lucide_icons": {
+    "name": "Lucide 圖標",
+    "settings": {
+      "lucide_icons": {
+        "label": "允許的 Lucide 圖標名稱",
+        "info": "每行一個 kebab-case 圖標名（如 help-circle、package）。圖標名稱查找：<a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>。頁面模板從此列表生成圖標下拉選項。圖標須與主題 JS bundle 一致；僅在此處添加名稱而不更新 bundle 時，前台無法渲染。"
       }
     }
   }

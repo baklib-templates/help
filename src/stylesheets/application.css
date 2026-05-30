@@ -69,6 +69,71 @@
   .index-faqs-tab.is-active {
     @apply bg-primary text-primary-content;
   }
+
+  /* index.faqs Accordion items (aligned with index-card / brand.liquid) */
+  .index-faqs-item {
+    @apply overflow-hidden rounded-box border border-base-300/50 bg-base-100 transition-[background-color,border-color] duration-200;
+    @apply dark:border-base-300/40 dark:bg-base-100;
+
+    &:hover {
+      @apply border-primary/30 bg-base-200/70 dark:bg-base-200/40;
+    }
+
+    &[open] {
+      @apply border-primary/40 bg-base-200 dark:bg-base-200/60;
+    }
+  }
+
+  .index-faqs-item__summary {
+    @apply flex cursor-pointer list-none items-start justify-between gap-3 px-4 py-4 transition-colors duration-200 md:px-6;
+    @apply hover:bg-base-300/30;
+
+    &:focus-visible {
+      @apply outline-none ring-2 ring-primary/30 ring-offset-2 ring-offset-base-100;
+    }
+  }
+
+  .index-faqs-item[open] .index-faqs-item__summary {
+    @apply bg-primary/5;
+  }
+
+  .index-faqs-item__marker {
+    @apply mt-1 h-6 w-1 shrink-0 rounded bg-primary/30 transition-[background-color,width] duration-200;
+  }
+
+  .index-faqs-item:hover .index-faqs-item__marker,
+  .index-faqs-item[open] .index-faqs-item__marker {
+    @apply w-1.5 bg-primary;
+  }
+
+  .index-faqs-item__title {
+    @apply line-clamp-2 text-base font-semibold text-base-content transition-colors duration-200 md:text-lg;
+  }
+
+  .index-faqs-item:hover .index-faqs-item__title,
+  .index-faqs-item[open] .index-faqs-item__title {
+    @apply text-accent;
+  }
+
+  .index-faqs-item__chevron {
+    @apply mt-1 shrink-0 text-base-content/40 transition-[transform,color] duration-200;
+  }
+
+  .index-faqs-item:hover .index-faqs-item__chevron {
+    @apply text-primary/70;
+  }
+
+  .index-faqs-item[open] .index-faqs-item__chevron {
+    @apply rotate-180 text-primary;
+  }
+
+  .index-faqs-item__content {
+    @apply border-t border-transparent bg-base-100 px-4 pb-4 pt-4 md:px-6 md:pb-6 dark:bg-base-100;
+  }
+
+  .index-faqs-item[open] .index-faqs-item__content {
+    @apply border-base-300/50;
+  }
 }
 
 .menu {

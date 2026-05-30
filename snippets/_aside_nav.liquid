@@ -1,0 +1,53 @@
+{%- comment -%}
+  Sidebar: topic navigation, optional tags cloud, contact block (Stripe Support layout).
+  @param nav_page {Object} home/index page for section titles (default: site index page)
+  @param page {Object} optional current page for tags cloud
+{%- endcomment -%}
+{%- if nav_page == blank -%}
+  {%- assign nav_page = site.pages[site.index_path] -%}
+{%- endif -%}
+{%- assign root_page = site.pages['/'] -%}
+{%- assign channel_pages = site.pages['/'].children_in_list -%}
+
+<div class="rounded-xl border border-base-300 bg-base-200 p-6 shadow-sm dark:border-base-300 dark:bg-base-300/95">
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
+    {{ 'snippets.aside_nav.topics_title' | t }}
+  </h2>
+  <nav class="mt-4 flex flex-col gap-2 text-sm" aria-label="{{ 'snippets.aside_nav.topics_title' | t }}">
+    {% if root_page %}
+      <a href="{{ site.index_path }}" class="text-primary hover:underline dark:text-primary">
+        {{ root_page.link_text | default: site.name }}
+      </a>
+    {% else %}
+      <a href="{{ site.index_path }}" class="text-primary hover:underline dark:text-primary">{{ site.name }}</a>
+    {% endif %}
+    {% for ch in channel_pages %}
+      <a href="{{ ch.path }}" class="text-primary hover:underline dark:text-primary">{{ ch.link_text }}</a>
+    {% endfor %}
+  </nav>
+
+  {% assign page_tags = page.settings.tags %}
+  {% assign page_tags_size = page_tags | size %}
+  {% if page_tags_size > 0 %}
+    <hr class="my-6 border-base-300 dark:border-base-300" />
+    <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
+      {{ 'snippets.aside_nav.tags_title' | t }}
+    </h2>
+    <div class="mt-4 flex flex-wrap gap-2" aria-label="{{ 'snippets.aside_nav.tags_title' | t }}">
+      {% for tag in page_tags %}
+        {% render 'tag', tag: tag %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <hr class="my-6 border-base-300 dark:border-base-300" />
+  <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
+    {{ 'snippets.aside_nav.contact_title' | t }}
+  </h2>
+  {%- assign contact_html = site.settings.contact_html | strip -%}
+  {% if contact_html | present? %}
+    <div class="support-contact-html mt-3 prose prose-sm max-w-none text-base-content/70 dark:prose-invert dark:text-base-content/50">
+      {{ contact_html }}
+    </div>
+  {% endif %}
+</div>

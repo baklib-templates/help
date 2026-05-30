@@ -7,82 +7,44 @@
     },
     "fashion": {
       "name": "패션"
-    },
-    "old_school": {
-      "name": "레트로"
     }
   },
   "templates": {
     "index": {
-      "help_center": {
-        "name": "도움말 센터",
-        "description": "기능이 풍부한 제품 지식베이스 스타일",
+      "faqs": {
+        "name": "FAQ 센터",
+        "description": "FAQ 스타일 홈: 접을 수 있는 질문 목록과 카테고리 탭",
         "settings": {
-          "hero_bg_type": {
-            "label": "히어로 배경 스타일",
-            "info": "배경 스타일을 선택하면 배경색과 이미지가 선택한 내용에 따라 표시됩니다",
-            "choices": {
-              "none": "배경 없음",
-              "color": "색상 배경",
-              "image": "이미지 배경"
-            }
-          },
           "hero_height": {
-            "label": "배경 높이",
-            "info": "권장 높이: 360px"
+            "label": "히어로 높이"
           },
-          "hero_image_url": {
-            "label": "배경 이미지",
-            "info": "배경 이미지는 페이지 너비와 배경 높이에 따라 자동으로 잘립니다"
+          "hero_pc_image_url": {
+            "label": "히어로 배경(데스크톱)",
+            "info": "권장 크기: 1600×400(또는 4:1 비율). 데스크톱용."
           },
-          "hero_bg_color": {
-            "label": "배경색",
-            "info": "히어로 배경 스타일의 색상은 선택한 색상 값에 따라 처리됩니다（색상 배경）"
+          "hero_mobile_image_url": {
+            "label": "히어로 배경(모바일)",
+            "info": "권장 크기: 1080×360(또는 3:1 비율). 모바일용. 텍스트가 가려지지 않도록 상하 여백을 확보하세요."
           },
-          "hero_slogan": {
-            "label": "슬로건",
-            "info": "슬로건은 배경 이미지 위에 표시됩니다",
-            "default": "👋 What Can We Help?"
+          "hero_title": {
+            "label": "히어로 제목",
+            "default": "자주 묻는 질문"
           },
-          "search_hot_tags": {
-            "label": "인기 태그",
-            "info": "설정하면 태그 목록이 홈페이지 검색창 아래에 표시됩니다"
+          "hero_description": {
+            "label": "히어로 설명",
+            "default": "자주 묻는 질문을 빠르게 이해하고 해결하도록 돕습니다"
           },
-          "search_hot_keywords": {
-            "label": "인기 검색어",
-            "info": "설정하면 검색창 아래에 인기 검색어가 표시됩니다. 줄바꿈으로 여러 키워드를 설정합니다"
+          "hero_title_color": {
+            "label": "제목 글자색(라이트 모드)"
           },
-          "show_channels_section": {
-            "label": "네비게이션 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다"
+          "hero_title_color_dark": {
+            "label": "제목 글자색(다크 모드)"
           },
-          "channels_section_title": {
-            "label": "네비게이션 섹션 제목",
-            "default": "네비게이션"
+          "hero_description_color": {
+            "label": "설명 글자색(라이트 모드)"
           },
-          "show_newest_section": {
-            "label": "최신 글 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다"
-          },
-          "newest_section_title": {
-            "label": "최신 글 섹션 제목",
-            "default": "최신 글"
-          },
-          "show_topic_channel": {
-            "label": "주제 추천 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다"
-          },
-          "topic_channel_title": {
-            "label": "주제 추천 섹션 제목",
-            "default": "주제 추천"
-          },
-          "show_hottest_section": {
-            "label": "인기 글 섹션",
-            "info": "체크를 해제하면 이 섹션은 홈페이지에 표시되지 않습니다"
-          },
-          "hottest_section_title": {
-            "label": "인기 글 섹션 제목",
-            "default": "인기 글"
+          "hero_description_color_dark": {
+            "label": "설명 글자색(다크 모드)"
           }
         }
       },
@@ -97,11 +59,8 @@
           },
           "hero_subtitle": {
             "label": "히어로 부제목",
+            "default": "이 지원 페이지에서 FAQ, 자주 묻는 질문, 사용 방법, 제품 지식 등을 찾아보세요.",
             "info": "제목 아래 문구(선택)."
-          },
-          "hero_height": {
-            "label": "히어로 영역 높이",
-            "info": "검색창 위쪽 여백입니다."
           },
           "search_hot_tags": {
             "label": "인기 태그",
@@ -110,26 +69,6 @@
           "search_hot_keywords": {
             "label": "인기 검색어",
             "info": "한 줄에 하나."
-          },
-          "topics_section_title": {
-            "label": "사이드바: 주제 제목",
-            "default": "자주 찾는 주제"
-          },
-          "contact_section_title": {
-            "label": "사이드바: 문의 제목",
-            "default": "지원 문의"
-          },
-          "show_popular_section": {
-            "label": "인기 글 표시",
-            "info": "조회수 순. 검색 아래에 표시."
-          },
-          "popular_section_title": {
-            "label": "인기 글 제목",
-            "default": "인기 글"
-          },
-          "popular_limit": {
-            "label": "인기 글 개수",
-            "info": "목록 최대 개수."
           }
         }
       },
@@ -137,31 +76,15 @@
         "name": "카드형 홈",
         "description": "큰 카테고리 카드와 글 미리보기(Intercom 스타일)",
         "settings": {
-          "hero_bg_type": {
-            "label": "히어로 배경 스타일",
-            "info": "상단 히어로 영역 배경.",
-            "choices": {
-              "none": "없음",
-              "color": "단색",
-              "image": "이미지"
-            }
+          "hero_title": {
+            "info": "비워 두면 사이트 이름을 사용합니다."
           },
-          "hero_height": {
-            "label": "배경 높이",
-            "info": "권장: 360px"
-          },
-          "hero_image_url": {
-            "label": "배경 이미지",
-            "info": "이미지 배경 선택 시 사용."
-          },
-          "hero_bg_color": {
-            "label": "배경색",
-            "info": "단색 배경 선택 시 사용."
-          },
-          "hero_slogan": {
-            "label": "슬로건",
-            "info": "사이트 이름 아래에 표시.",
+          "hero_description": {
             "default": "👋 무엇을 찾고 계신가요?"
+          },
+          "hero_text_color": {
+            "label": "히어로 텍스트 색상",
+            "info": "제목과 설명에 모두 적용됩니다."
           },
           "search_hot_tags": {
             "label": "인기 태그",
@@ -179,21 +102,9 @@
             "label": "카드 영역 제목",
             "default": "주제별로 보기"
           },
-          "articles_per_card": {
-            "label": "카드당 글 수",
-            "info": "카드 안에 넣을 하위 링크 수."
-          },
-          "show_popular_section": {
-            "label": "인기 글 표시",
-            "info": "조회수 기준."
-          },
           "popular_section_title": {
             "label": "인기 영역 제목",
             "default": "인기 글"
-          },
-          "popular_limit": {
-            "label": "인기 글 개수",
-            "info": "목록에 표시할 페이지 수."
           }
         }
       }
@@ -222,25 +133,11 @@
         },
         "icon": {
           "label": "페이지 아이콘",
-          "info": "페이지 아이콘 표시에 사용, 권장 비율 1:1"
+          "info": "목록 및 카드에 표시되는 Lucide 아이콘입니다. 옵션은 사이트 설정 → Lucide 아이콘에서 가져옵니다. 아이콘 이름 검색: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
         },
         "content": {
           "label": "페이지 콘텐츠",
           "info": "데이터 소스에서 동기화, 편집 불가"
-        }
-      },
-      "video": {
-        "name": "비디오 템플릿",
-        "description": "비디오 페이지 템플릿, 비디오 콘텐츠 표시에 사용",
-        "settings": {
-          "is_video_list": {
-            "label": "비디오 목록 여부",
-            "info": "비디오 목록 페이지, 비디오 템플릿의 하위 페이지만 가져옴; 하위 페이지가 비디오 템플릿을 사용하는지 확인하세요"
-          },
-          "video_url": {
-            "label": "비디오 URL",
-            "info": "비디오 목록 페이지에서 표시에 사용, 목록 페이지에서는 불필요"
-          }
         }
       }
     }
@@ -261,32 +158,11 @@
         "label": "ICP/저작권 정보",
         "default": "ICP xxxxxx"
       },
-      "screen_width": {
-        "label": "페이지 너비",
-        "choices": {
-          "narrow": "좁음（1024픽셀）",
-          "medium": "중간（1280픽셀）",
-          "wide": "넓음（1536픽셀）",
-          "full": "전체 화면"
-        }
-      },
-      "left_sidebar_width": {
-        "label": "좌측 사이드바 너비(상세 페이지)",
-        "info": "권장: 240px"
-      },
-      "right_sidebar_width": {
-        "label": "우측 사이드바 너비(상세 페이지)",
-        "info": "권장: 240px"
-      },
       "show_published_at": {
         "label": "게시일 표시"
       },
       "show_author": {
         "label": "작성자 표시"
-      },
-      "show_card_icon": {
-        "label": "홈페이지에 섹션 아이콘 표시",
-        "info": "페이지 설정에서 아이콘을 설정하는 것을 권장"
       },
       "ai_search_completed_text": {
         "label": "AI 답변 종료 문구",
@@ -315,25 +191,10 @@
         "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
         "placeholder": "일반적으로 회사의 다른 웹사이트로의 네비게이션 링크를 삽입하는 데 사용"
       },
-      "footer_html": {
-        "label": "푸터 영역에 HTML 코드 삽입",
-        "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원; 기본 푸터 내용을 완전히 대체합니다",
-        "placeholder": "기본 푸터 내용을 유지하려면 footer_menu_html에 HTML 코드를 삽입하세요"
-      },
       "footer_menu_html": {
         "label": "하단 영역에 HTML 코드 삽입(footer 내, footer_menu_html)",
         "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
         "placeholder": "일반적으로 회사의 다른 웹사이트로의 외부 네비게이션 링크, 친구 링크, SEO 최적화 링크 등을 삽입하는 데 사용"
-      },
-      "features_one_html": {
-        "label": "첫 번째 기능 섹션에 HTML 코드 삽입",
-        "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
-        "placeholder": "일반적으로 회사의 첫 번째 기능 섹션에 대한 HTML 코드를 삽입하는 데 사용"
-      },
-      "features_two_html": {
-        "label": "두 번째 기능 섹션에 HTML 코드 삽입",
-        "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
-        "placeholder": "일반적으로 회사의 두 번째 기능 섹션에 대한 HTML 코드를 삽입하는 데 사용"
       },
       "contact_html": {
         "label": "지원 문의 (HTML)",
@@ -342,24 +203,12 @@
       }
     }
   },
-  "settings": {
-    "weixin_share": {
-      "title": "위챗 설정",
-      "weixin_app_id": {
-        "label": "개발자 ID(AppID)",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'> 위챗 대중번호/설정 및 개발/개발 인터페이스 관리 </a> 에서 획득"
-      },
-      "weixin_app_secret": {
-        "label": "개발자 암호(AppSecret)",
-        "info": ""
-      },
-      "weixin_enabled": {
-        "label": "위챗 공유 사용 여부",
-        "info": "사이트 페이지 위챗 공유 능력 제공 </br>위챗 대중번호에 ip 화이트리스트 (ip: ${service_ip}) 를 설정하십시오. 설정 후 일정 기간 효력이 지연됩니다.</br>2.위챗 공유 권한 설정 여부, 위챗 대중번호/설정 및 개발/개발 인터페이스 관리: <a href='https://mp.weixin.qq.com/cgi-bin/frame'> 웹 서비스 / 공유 인터페이스 </a>. </br>공유 링크가 카드인지 여부: 카드 형식에서 공유 카드 형식으로, 링크 형식에서 공유 링크 형식으로,웹 페이지의 초기 링크 공유는 회사의 서비스 번호나 소장 후에 카드 공유를 진행할 수 있습니다 (이 규칙은 위챗 공유 제한입니다)."
-      },
-      "weixin_debug": {
-        "label": "debug 프롬프트 설정 여부",
-        "info": "구성 단계에서만 이 옵션을 켜십시오.오픈 후 프런트엔드 사이트에 액세스할 때 위챗 공유를 제대로 구성하지 않으면 오류 메시지가 자동으로 표시됩니다."
+  "lucide_icons": {
+    "name": "Lucide 아이콘",
+    "settings": {
+      "lucide_icons": {
+        "label": "허용된 Lucide 아이콘 이름",
+        "info": "한 줄에 kebab-case 아이콘 이름 하나(예: help-circle, package). 아이콘 이름 검색: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>. 페이지 템플릿 아이콘 드롭다운은 이 목록에서 생성됩니다. 아이콘은 테마 JS bundle과 일치해야 하며, bundle을 업데이트하지 않고 여기에만 이름을 추가하면 사이트에 표시되지 않습니다."
       }
     }
   }

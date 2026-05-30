@@ -7,85 +7,10 @@
     },
     "fashion": {
       "name": "Fashion"
-    },
-    "old_school": {
-      "name": "Retro"
     }
   },
   "templates": {
     "index": {
-      "help_center": {
-        "name": "Help Center",
-        "description": "Feature-rich product knowledge base style",
-        "settings": {
-          "hero_bg_type": {
-            "label": "Hero Background Style",
-            "info": "After selecting the background style, the background color and image will be displayed according to the selected content",
-            "choices": {
-              "none": "No Background",
-              "color": "Color Background",
-              "image": "Image Background"
-            }
-          },
-          "hero_height": {
-            "label": "Background Height",
-            "info": "Recommended height: 360px"
-          },
-          "hero_image_url": {
-            "label": "Background Image",
-            "info": "Background image will be automatically cropped according to page width and background height"
-          },
-          "hero_bg_color": {
-            "label": "Background Color",
-            "info": "The color of the hero background style will be processed according to the selected color value (color background)"
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Slogan will be displayed above the background image",
-            "default": "👋 What Can We Help?"
-          },
-          "search_hot_tags": {
-            "label": "Popular Tags",
-            "info": "After setting, the tag list will be displayed below the homepage search bar"
-          },
-          "search_hot_keywords": {
-            "label": "Popular Searches",
-            "info": "After setting, popular searches will be displayed below the search box. Use line breaks to set multiple keywords"
-          },
-          "show_channels_section": {
-            "label": "Navigation Section",
-            "info": "If unchecked, this section will not be displayed on the homepage"
-          },
-          "channels_section_title": {
-            "label": "Navigation Section Title",
-            "default": "Navigation"
-          },
-          "show_newest_section": {
-            "label": "Latest Articles Section",
-            "info": "If unchecked, this section will not be displayed on the homepage"
-          },
-          "newest_section_title": {
-            "label": "Latest Articles Section Title",
-            "default": "Latest Articles"
-          },
-          "show_topic_channel": {
-            "label": "Featured Topics Section",
-            "info": "If unchecked, this section will not be displayed on the homepage"
-          },
-          "topic_channel_title": {
-            "label": "Featured Topics Section Title",
-            "default": "Featured Topics"
-          },
-          "show_hottest_section": {
-            "label": "Popular Articles Section",
-            "info": "If unchecked, this section will not be displayed on the homepage"
-          },
-          "hottest_section_title": {
-            "label": "Popular Articles Section Title",
-            "default": "Popular Articles"
-          }
-        }
-      },
       "faqs": {
         "name": "FAQ Center",
         "description": "FAQ-style homepage with collapsible questions and category tabs",
@@ -134,11 +59,8 @@
           },
           "hero_subtitle": {
             "label": "Hero Subtitle",
+            "default": "Browse FAQs, common questions, how-to guides, and product knowledge on this support page.",
             "info": "Optional short text below the title."
-          },
-          "hero_height": {
-            "label": "Hero Area Height",
-            "info": "Vertical space reserved above the search box."
           },
           "search_hot_tags": {
             "label": "Popular Tags",
@@ -147,26 +69,6 @@
           "search_hot_keywords": {
             "label": "Popular Searches",
             "info": "One keyword per line."
-          },
-          "topics_section_title": {
-            "label": "Sidebar: Topics Heading",
-            "default": "Common topics"
-          },
-          "contact_section_title": {
-            "label": "Sidebar: Contact Heading",
-            "default": "Contact support"
-          },
-          "show_popular_section": {
-            "label": "Show Popular Articles",
-            "info": "Listed by visit count under the search box."
-          },
-          "popular_section_title": {
-            "label": "Popular Articles Heading",
-            "default": "Popular articles"
-          },
-          "popular_limit": {
-            "label": "Popular Articles Limit",
-            "info": "Maximum articles to list."
           }
         }
       },
@@ -174,31 +76,15 @@
         "name": "Card Home",
         "description": "Large category cards with article previews (Intercom-style)",
         "settings": {
-          "hero_bg_type": {
-            "label": "Hero Background Style",
-            "info": "Background for the top hero area.",
-            "choices": {
-              "none": "No Background",
-              "color": "Color Background",
-              "image": "Image Background"
-            }
+          "hero_title": {
+            "info": "Leave empty to use the site name."
           },
-          "hero_height": {
-            "label": "Background Height",
-            "info": "Recommended height: 360px"
-          },
-          "hero_image_url": {
-            "label": "Background Image",
-            "info": "Used when image background is selected."
-          },
-          "hero_bg_color": {
-            "label": "Background Color",
-            "info": "Used when color background is selected."
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Shown under the site name.",
+          "hero_description": {
             "default": "👋 What can we help you find?"
+          },
+          "hero_text_color": {
+            "label": "Hero Text Color",
+            "info": "Applies to both the title and description."
           },
           "search_hot_tags": {
             "label": "Popular Tags",
@@ -216,21 +102,9 @@
             "label": "Cards Section Title",
             "default": "Browse by topic"
           },
-          "articles_per_card": {
-            "label": "Articles per Card",
-            "info": "How many child links to show in each card."
-          },
-          "show_popular_section": {
-            "label": "Show Popular Articles",
-            "info": "Based on visit counts."
-          },
           "popular_section_title": {
             "label": "Popular Section Title",
             "default": "Popular articles"
-          },
-          "popular_limit": {
-            "label": "Popular Articles Limit",
-            "info": "Number of pages to list."
           }
         }
       }
@@ -239,14 +113,6 @@
       "name": "Basic Page Template",
       "description": "Content page template",
       "settings": {
-        "show_list": {
-          "label": "Show Sub-page List",
-          "info": "If checked, the sub-page list will be displayed on the page"
-        },
-        "is_topic_channel": {
-          "label": "Is Featured Topic",
-          "info": "If it's a featured topic, the page will be displayed in the featured topics list on the homepage"
-        },
         "title": {
           "label": "Page Title",
           "info": "Synced from knowledge base, not editable"
@@ -254,30 +120,13 @@
         "tags": {
           "label": "Page Tags"
         },
-        "description": {
-          "label": "Page Description"
-        },
         "icon": {
           "label": "Page Icon",
-          "info": "Used to display page icon, recommended 1:1 ratio"
+          "info": "Lucide icon shown in lists and cards. Options come from site settings → Lucide icons. Look up icon names: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
         },
         "content": {
           "label": "Page Content",
           "info": "Synced from data source, not editable"
-        }
-      },
-      "video": {
-        "name": "Video Template",
-        "description": "Video page template, used for displaying video content",
-        "settings": {
-          "is_video_list": {
-            "label": "Is Video List",
-            "info": "Video list page, only gets sub-pages with video template; please ensure sub-pages use video template"
-          },
-          "video_url": {
-            "label": "Video URL",
-            "info": "Used for display in video list page, not needed for list page"
-          }
         }
       }
     }
@@ -291,57 +140,18 @@
       },
       "company_name": {
         "label": "Company Name",
-        "default": "Baklib.cn",
+        "default": "Baklib & AI Limited",
         "info": "Displayed in footer position at bottom of page"
       },
       "copyright_info": {
-        "label": "ICP/Copyright Information",
-        "default": "ICP xxxxxx"
-      },
-      "screen_width": {
-        "label": "Screen Width",
-        "choices": {
-          "narrow": "Narrow (1024px)",
-          "medium": "Medium (1280px)",
-          "wide": "Wide (1536px)",
-          "full": "Full Screen"
-        }
-      },
-      "left_sidebar_width": {
-        "label": "Left Sidebar Width (in detail pages)",
-        "info": "Recommended: 240px"
-      },
-      "right_sidebar_width": {
-        "label": "Right Sidebar Width (in detail pages)",
-        "info": "Recommended: 240px"
-      },
-      "header_height": {
-        "label": "Header Height",
-        "info": "Height of the sticky top navigation bar. Default: 68px."
-      },
-      "header_type": {
-        "label": "Header Style",
-        "info": "* Affects the background and text color of the top navigation bar.\n* 0 - Light style with frosted glass appearance.\n* 1 - Custom color, please choose background and text color below.",
-        "choices": {
-          "transparent": "Simple Transparent",
-          "custom": "Custom Color"
-        }
-      },
-      "header_bg_color": {
-        "label": "Header Background Color"
-      },
-      "header_text_color": {
-        "label": "Header Text Color"
+        "label": "Copyright Information",
+        "default": "All Rights Reserved"
       },
       "show_published_at": {
         "label": "Show Publication Time"
       },
       "show_author": {
         "label": "Show Author"
-      },
-      "show_card_icon": {
-        "label": "Show Section Icons on Homepage",
-        "info": "Recommended to configure icons in page settings"
       },
       "ai_search_completed_text": {
         "label": "AI Completion Text",
@@ -370,25 +180,10 @@
         "info": "Supports HTML tags and limited TailwindCSS style code",
         "placeholder": "Usually used to insert navigation links to company's other websites"
       },
-      "footer_html": {
-        "label": "Insert HTML code in footer area",
-        "info": "Supports HTML tags and limited TailwindCSS style code; will completely replace the default footer content",
-        "placeholder": "If you need to keep the default footer content, please insert HTML code in footer_menu_html"
-      },
       "footer_menu_html": {
         "label": "Insert HTML code in bottom area (inside footer, footer_menu_html)",
         "info": "Supports HTML tags and limited TailwindCSS style code",
         "placeholder": "Usually used to insert external navigation links, friendly links, SEO optimization links to company's other websites"
-      },
-      "features_one_html": {
-        "label": "Insert HTML code in first homepage feature section",
-        "info": "Supports HTML tags and limited TailwindCSS style code",
-        "placeholder": "Usually used to insert navigation links to company's other websites"
-      },
-      "features_two_html": {
-        "label": "Insert HTML code in second homepage feature section",
-        "info": "Supports HTML tags and limited TailwindCSS style code",
-        "placeholder": "Usually used to insert navigation links to company's other websites"
       },
       "contact_html": {
         "label": "Contact support (HTML)",
@@ -397,24 +192,12 @@
       }
     }
   },
-  "settings": {
-    "weixin_share": {
-      "title": "WeChat configuration",
-      "weixin_app_id": {
-        "label": "Developer ID (AppID)",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat official account/setting and development/development interface management</a>"
-      },
-      "weixin_app_secret": {
-        "label": "Developer Password (AppSecret)",
-        "info": ""
-      },
-      "weixin_enabled": {
-        "label": "Do you want to enable WeChat sharing",
-        "info": "Provide the ability to share site pages on WeChat</br>Please configure the IP whitelist (ip: ${service_ip}) in the WeChat official account. After configuration, there will be a period of delay in effectiveness. </br>Check whether WeChat sharing permission is enabled, WeChat official account/setting and development/development interface management:<a href='https://mp.weixin.qq.com/cgi-bin/frame> Web service/sharing interface</a>.</br>Whether the sharing link is a card: enter the sharing card form from the card form, and enter the sharing link form from the link form; The initial link sharing on the webpage can be done through the company's service account or by bookmarking and sharing cards (this rule is a WeChat sharing restriction)."
-      },
-      "weixin_debug": {
-        "label": "Do you want to enable debug prompt",
-        "info": "Please only enable this option during the configuration phase; If WeChat sharing is not configured correctly when accessing the front-end site after activation, an error message will be automatically prompted"
+  "lucide_icons": {
+    "name": "Lucide icons",
+    "settings": {
+      "lucide_icons": {
+        "label": "Allowed Lucide icon names",
+        "info": "One kebab-case icon name per line (e.g. help-circle, package). Look up icon names: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>. Page templates use this list for the icon dropdown. Icons must match the theme JS bundle; adding names here without updating the bundle will not render on the site."
       }
     }
   }

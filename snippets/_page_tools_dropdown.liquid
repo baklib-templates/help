@@ -1,8 +1,8 @@
 <div
   class="join shrink-0 rounded-md border border-base-300 bg-base-100"
   data-controller="copy-page page-tools"
-  data-copy-page-copying-text-value="{{ "templates.page.llm_copying"  | t: '复制中...'  }}"
-  data-copy-page-success-text-value="{{ 'templates.page.llm_copied' | t: '已复制' }}"
+  data-copy-page-copying-text-value="{{ "templates.page.llm_copying"  | t: 'Copying...'  }}"
+  data-copy-page-success-text-value="{{ 'templates.page.llm_copied' | t: 'Copied' }}"
   data-copy-page-markdown-url-value="{{ page.markdown_url }}"
   data-page-tools-markdown-url-value="{{ page.markdown_url }}"
   data-page-tools-llm-prompt-value="{{ 'templates.page.llm_prompt_template' | t, url: page.markdown_url }}"
@@ -15,7 +15,7 @@
       <rect x="9" y="9" width="13" height="13" rx="2"></rect>
       <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
     </svg>
-    <span data-copy-page-target="buttonLabel">{{ 'snippets.page_tools.copy_page_label' | t }}</span>
+    <span data-copy-page-target="buttonLabel">{{ 'snippets.page_tools.copy_page_label' | t | default: 'Copy' }}</span>
   </button>
   <div class="dropdown dropdown-end join-item">
     <div tabindex="0" role="button"

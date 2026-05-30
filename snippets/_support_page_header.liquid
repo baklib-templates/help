@@ -1,0 +1,56 @@
+{%- comment -%}
+  Stripe-style page hero: title, breadcrumb, optional tools.
+  @param page {Object} current page (required)
+{%- endcomment -%}
+<header class="pt-2">
+  <div class="flex items-start justify-between gap-3">
+    <div class="min-w-0 flex-1">
+      <h1 class="text-2xl font-semibold tracking-tight text-base-content md:text-3xl lg:text-4xl">
+        {{ page.link_text }}
+      </h1>
+
+      {% assign bc = page.breadcrumb %}
+      {% assign bc_size = bc | size %}
+      {% if bc_size > 1 %}
+        <div class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-primary">
+          {% for crumb in bc %}
+            {% unless forloop.last %}
+              {% if forloop.index > 1 %}
+                <span class="text-base-content/50" aria-hidden="true">·</span>
+              {% endif %}
+              <a href="{{ crumb.path }}" data-turbo-frame="_top" class="hover:underline">{{ crumb.link_text }}</a>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if site.settings.show_author or site.settings.show_published_at %}
+        <div class="mt-3">
+          {% if site.settings.show_author and site.settings.show_published_at %}
+            <div class="flex items-center gap-2">
+              {% render 'avatar', url: page.author.avatar_url, name: page.author.name %}
+              <div class="flex flex-col gap-0.5 text-sm">
+                {% if page.author.name | present? %}
+                  <span class="text-base-content">{{ page.author.name }}</span>
+                {% endif %}
+                {% if page.published_at | present? %}
+                  <span class="text-base-content/60">{{ 'generic.published_at' | t }}: {{ page.published_at | date: '%Y-%m-%d' }}</span>
+                {% endif %}
+              </div>
+            </div>
+          {% elsif site.settings.show_author %}
+            {% render 'avatar_with_name', url: page.author.avatar_url, name: page.author.name %}
+          {% elsif site.settings.show_published_at and page.published_at | present? %}
+            <p class="text-sm text-base-content/60">{{ 'generic.published_at' | t }}: {{ page.published_at | date: '%Y-%m-%d' }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if site.settings.show_page_tools_dropdown %}
+      <div class="shrink-0 print:hidden">
+        {% render 'page_tools_dropdown', page: page %}
+      </div>
+    {% endif %}
+  </div>
+</header>

@@ -7,14 +7,6 @@
     }
   },
   "snippets": {
-    "header": {
-      "light_mode": "Hell",
-      "dark_mode": "Dunkel",
-      "auto_mode": "Automatisch"
-    },
-    "footer": {
-      "copyright": "Alle Rechte vorbehalten"
-    },
     "feedback_form": {
       "title": "Feedback senden",
       "message_label": "Nachricht",
@@ -26,10 +18,6 @@
     "feedback_button": {
       "title_posted": "Vielen Dank für Ihr Feedback",
       "title_unposted": "Feedback senden"
-    },
-    "page": {
-      "prev_page": "Zurück",
-      "next_page": "Weiter"
     },
     "page_tools": {
       "copy_page_label": "Seite kopieren",
@@ -43,6 +31,11 @@
       "connect_to_cursor_description": "MCP Server in Cursor installieren",
       "connect_to_vscode": "Mit VS Code verbinden",
       "connect_to_vscode_description": "MCP Server in VS Code installieren"
+    },
+    "aside_nav": {
+      "tags_title": "Tags",
+      "topics_title": "Häufige Themen",
+      "contact_title": "Support kontaktieren"
     }
   },
   "templates": {
@@ -52,20 +45,26 @@
       "ai_input_placeholder": "Geben Sie Ihre Frage ein…"
     },
     "page": {
-      "copy_success": "Link kopiert",
-      "page_toc": "Inhaltsverzeichnis",
       "llm_prompt_template": "Lies %{url}, damit ich Fragen dazu stellen kann.",
       "llm_copying": "Kopieren…",
-      "llm_copied": "Kopiert"
+      "llm_copied": "Kopiert",
+      "pagination_status_prefix": "Anzeige ",
+      "pagination_status_middle": " von ",
+      "pagination_status_suffix": "",
+      "pagination_prev": "Zurück",
+      "pagination_next": "Weiter",
+      "related_section_title": "Verwandte Artikel"
     },
     "index": {
       "faqs": {
         "tab_all": "Alle",
         "hero_title_default": "Häufig gestellte Fragen",
-        "hero_description_default": "Schnelle Antworten und Lösungen zu häufigen Fragen"
+        "hero_description_default": "Schnelle Antworten und Lösungen zu häufigen Fragen",
+        "open_in_new_page": "Auf neuer Seite öffnen"
       },
       "support": {
-        "search_placeholder": "Hilfeartikel durchsuchen..."
+        "search_placeholder": "Hilfeartikel durchsuchen...",
+        "popular_section_title": "Beliebte Artikel"
       }
     }
   },
@@ -81,11 +80,7 @@
     "buttons": {
       "signout": "Abmelden"
     },
-    "read_more": "Mehr ansehen",
-    "menu": ""
-  },
-  "search": {
-    "placeholder": "Suchen…"
+    "read_more": "Mehr ansehen"
   },
   "placeholders": {
     "search": ""

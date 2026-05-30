@@ -7,85 +7,10 @@
     },
     "fashion": {
       "name": "Tendance"
-    },
-    "old_school": {
-      "name": "Rétro"
     }
   },
   "templates": {
     "index": {
-      "help_center": {
-        "name": "Centre d’aide",
-        "description": "Style de base de connaissances riche en fonctionnalités",
-        "settings": {
-          "hero_bg_type": {
-            "label": "Style d’arrière-plan Hero",
-            "info": "Une fois le style sélectionné, la couleur et l’image d’arrière-plan s’affichent en conséquence",
-            "choices": {
-              "none": "Aucun arrière-plan",
-              "color": "Arrière-plan coloré",
-              "image": "Arrière-plan image"
-            }
-          },
-          "hero_height": {
-            "label": "Hauteur de l’arrière-plan",
-            "info": "Hauteur recommandée : 360px"
-          },
-          "hero_image_url": {
-            "label": "Image d’arrière-plan",
-            "info": "L’image est automatiquement recadrée selon la largeur de la page et la hauteur d’arrière-plan"
-          },
-          "hero_bg_color": {
-            "label": "Couleur d’arrière-plan",
-            "info": "En arrière-plan coloré, la couleur sélectionnée est appliquée"
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Le slogan s’affiche au-dessus de l’image d’arrière-plan",
-            "default": "👋 En quoi pouvons-nous vous aider ?"
-          },
-          "search_hot_tags": {
-            "label": "Tags populaires",
-            "info": "Une fois définis, les tags s’affichent sous la barre de recherche d’accueil"
-          },
-          "search_hot_keywords": {
-            "label": "Recherches populaires",
-            "info": "Une fois définis, les mots-clés s’affichent sous la barre de recherche. Plusieurs mots-clés séparés par retour à la ligne"
-          },
-          "show_channels_section": {
-            "label": "Section de navigation",
-            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
-          },
-          "channels_section_title": {
-            "label": "Titre de la section de navigation",
-            "default": "Navigation"
-          },
-          "show_newest_section": {
-            "label": "Section « Derniers articles »",
-            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
-          },
-          "newest_section_title": {
-            "label": "Titre des derniers articles",
-            "default": "Derniers articles"
-          },
-          "show_topic_channel": {
-            "label": "Section « Thèmes en vedette »",
-            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
-          },
-          "topic_channel_title": {
-            "label": "Titre des thèmes en vedette",
-            "default": "Thèmes en vedette"
-          },
-          "show_hottest_section": {
-            "label": "Section « Articles populaires »",
-            "info": "Si décoché, la section ne s’affiche pas sur la page d’accueil"
-          },
-          "hottest_section_title": {
-            "label": "Titre des articles populaires",
-            "default": "Articles populaires"
-          }
-        }
-      },
       "faqs": {
         "name": "Centre FAQ",
         "description": "Page d’accueil de type FAQ avec questions repliables et catégories",
@@ -134,11 +59,8 @@
           },
           "hero_subtitle": {
             "label": "Sous-titre du hero",
+            "default": "Parcourez les FAQ, questions fréquentes, guides pas à pas et connaissances produit sur cette page support.",
             "info": "Texte court sous le titre (facultatif)."
-          },
-          "hero_height": {
-            "label": "Hauteur du hero",
-            "info": "Espace au-dessus du champ de recherche."
           },
           "search_hot_tags": {
             "label": "Tags populaires",
@@ -147,26 +69,6 @@
           "search_hot_keywords": {
             "label": "Recherches populaires",
             "info": "Un mot-clé par ligne."
-          },
-          "topics_section_title": {
-            "label": "Barre latérale : sujets",
-            "default": "Sujets fréquents"
-          },
-          "contact_section_title": {
-            "label": "Barre latérale : contact",
-            "default": "Contacter le support"
-          },
-          "show_popular_section": {
-            "label": "Articles populaires",
-            "info": "Triés par visites, sous la recherche."
-          },
-          "popular_section_title": {
-            "label": "Titre des populaires",
-            "default": "Articles populaires"
-          },
-          "popular_limit": {
-            "label": "Nombre max.",
-            "info": "Nombre de pages listées."
           }
         }
       },
@@ -174,31 +76,15 @@
         "name": "Accueil cartes",
         "description": "Grandes cartes de catégories avec aperçu d’articles (style Intercom)",
         "settings": {
-          "hero_bg_type": {
-            "label": "Style de fond du hero",
-            "info": "Arrière-plan de la zone supérieure.",
-            "choices": {
-              "none": "Aucun",
-              "color": "Couleur",
-              "image": "Image"
-            }
+          "hero_title": {
+            "info": "Laisser vide pour utiliser le nom du site."
           },
-          "hero_height": {
-            "label": "Hauteur du fond",
-            "info": "Recommandé : 360px"
-          },
-          "hero_image_url": {
-            "label": "Image de fond",
-            "info": "Si fond image sélectionné."
-          },
-          "hero_bg_color": {
-            "label": "Couleur de fond",
-            "info": "Si fond couleur sélectionné."
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Sous le nom du site.",
+          "hero_description": {
             "default": "👋 Que recherchez-vous ?"
+          },
+          "hero_text_color": {
+            "label": "Couleur du texte hero",
+            "info": "S’applique au titre et à la description."
           },
           "search_hot_tags": {
             "label": "Tags populaires",
@@ -216,21 +102,9 @@
             "label": "Titre du bloc cartes",
             "default": "Parcourir par thème"
           },
-          "articles_per_card": {
-            "label": "Articles par carte",
-            "info": "Liens enfants affichés dans chaque carte."
-          },
-          "show_popular_section": {
-            "label": "Articles populaires",
-            "info": "Triés par visites."
-          },
           "popular_section_title": {
             "label": "Titre populaires",
             "default": "Articles populaires"
-          },
-          "popular_limit": {
-            "label": "Limite populaires",
-            "info": "Nombre de pages listées."
           }
         }
       }
@@ -259,25 +133,11 @@
         },
         "icon": {
           "label": "Icône de la page",
-          "info": "Pour afficher l’icône de la page, ratio 1:1 recommandé"
+          "info": "Icône Lucide affichée dans les listes et cartes. Les options proviennent des paramètres du site → Icônes Lucide. Rechercher un nom d’icône : <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
         },
         "content": {
           "label": "Contenu de la page",
           "info": "Synchronisé depuis la source, non modifiable"
-        }
-      },
-      "video": {
-        "name": "Modèle vidéo",
-        "description": "Modèle de page vidéo, pour afficher du contenu vidéo",
-        "settings": {
-          "is_video_list": {
-            "label": "Est une liste vidéo",
-            "info": "La page de liste vidéo ne récupère que les sous-pages utilisant le modèle vidéo ; assurez-vous que les sous-pages utilisent ce modèle"
-          },
-          "video_url": {
-            "label": "URL vidéo",
-            "info": "Utilisée pour l’affichage dans la liste vidéo ; non requise sur la page de liste"
-          }
         }
       }
     }
@@ -298,50 +158,11 @@
         "label": "ICP / Informations de copyright",
         "default": "ICP xxxxxx"
       },
-      "screen_width": {
-        "label": "Largeur d’écran",
-        "choices": {
-          "narrow": "Étroite (1024px)",
-          "medium": "Moyenne (1280px)",
-          "wide": "Large (1536px)",
-          "full": "Plein écran"
-        }
-      },
-      "left_sidebar_width": {
-        "label": "Largeur de la barre latérale gauche (pages détaillées)",
-        "info": "Recommandé : 240px"
-      },
-      "right_sidebar_width": {
-        "label": "Largeur de la barre latérale droite (pages détaillées)",
-        "info": "Recommandé : 240px"
-      },
-      "header_height": {
-        "label": "Hauteur de l'en-tête",
-        "info": "Hauteur de la barre de navigation fixe. Par défaut : 68px."
-      },
-      "header_type": {
-        "label": "Style de l’en-tête",
-        "info": "* Affecte la couleur de fond et de texte de la barre de navigation supérieure.\n* 0 - Style clair avec effet verre dépoli.\n* 1 - Couleurs personnalisées : choisissez ci-dessous le fond et le texte.",
-        "choices": {
-          "transparent": "Simple transparent",
-          "custom": "Couleur personnalisée"
-        }
-      },
-      "header_bg_color": {
-        "label": "Couleur de fond de l’en-tête"
-      },
-      "header_text_color": {
-        "label": "Couleur du texte de l’en-tête"
-      },
       "show_published_at": {
         "label": "Afficher la date de publication"
       },
       "show_author": {
         "label": "Afficher l’auteur"
-      },
-      "show_card_icon": {
-        "label": "Afficher les icônes de section sur l’accueil",
-        "info": "Recommandé de configurer les icônes dans les réglages de page"
       },
       "ai_search_completed_text": {
         "label": "Texte de fin IA",
@@ -370,25 +191,10 @@
         "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
         "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
       },
-      "footer_html": {
-        "label": "Insérer du HTML dans la zone de pied de page",
-        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS ; remplace complètement le pied de page par défaut",
-        "placeholder": "Si vous souhaitez conserver le pied de page par défaut, insérez le HTML dans footer_menu_html"
-      },
       "footer_menu_html": {
         "label": "Insérer du HTML en bas (à l’intérieur du footer)",
         "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
         "placeholder": "Souvent utilisé pour les liens externes, liens d’amitié et liens d’optimisation SEO"
-      },
-      "features_one_html": {
-        "label": "Insérer du HTML dans la première section feature de l’accueil",
-        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
-        "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
-      },
-      "features_two_html": {
-        "label": "Insérer du HTML dans la deuxième section feature de l’accueil",
-        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
-        "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
       },
       "contact_html": {
         "label": "Contacter le support (HTML)",
@@ -397,24 +203,12 @@
       }
     }
   },
-  "settings": {
-    "weixin_share": {
-      "title": "Configuration WeChat",
-      "weixin_app_id": {
-        "label": "ID développeur (AppID)",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>Compte officiel WeChat / Paramètres & développement / Gestion des interfaces</a>"
-      },
-      "weixin_app_secret": {
-        "label": "Mot de passe développeur (AppSecret)",
-        "info": ""
-      },
-      "weixin_enabled": {
-        "label": "Activer le partage WeChat ?",
-        "info": "Permet de partager les pages du site sur WeChat.</br>Veuillez configurer la liste blanche d’IP (ip: ${service_ip}) dans le compte WeChat. Un délai de prise d’effet peut s’appliquer.</br>Vérifiez l’autorisation de partage WeChat dans Compte officiel / Paramètres & développement / Gestion des interfaces : <a href='https://mp.weixin.qq.com/cgi-bin/frame'>Service web / Interface de partage</a>."
-      },
-      "weixin_debug": {
-        "label": "Activer les invites de debug ?",
-        "info": "À activer uniquement pendant la configuration ; en cas d’activation, des messages d’erreur seront affichés si le partage WeChat n’est pas correctement configuré."
+  "lucide_icons": {
+    "name": "Icônes Lucide",
+    "settings": {
+      "lucide_icons": {
+        "label": "Noms d’icônes Lucide autorisés",
+        "info": "Un nom d’icône kebab-case par ligne (ex. help-circle, package). Rechercher un nom d’icône : <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>. Les modèles de page utilisent cette liste pour le menu déroulant. Les icônes doivent correspondre au bundle JS du thème ; ajouter des noms ici sans mettre à jour le bundle ne les affichera pas sur le site."
       }
     }
   }

@@ -1,54 +1,52 @@
-<main class="px-4">
-  <div class="w-full max-w-[var(--max-content-width)] mx-auto pt-4">
-    <!-- tag name -->
-    <div class="rounded-lg shadow mb-4" style="--bg-color: hsl({{ tag.color_hls[0] }}, {{ tag.color_hls[1] }}%, 95%); --color: {{ tag.color }}">
-      <div class="h-5 rounded-t-lg bg-[var(--color)]"></div>
-      <div class="px-3 py-6 text-xl rounded-b-lg bg-[var(--bg-color)]">
-        <span class="flex-grow w-0 break-words font-semibold text-[--color]"> # {{ tag.name }}</span>
-      </div>
+{% assign tag_pages = tag.pages %}
+{% assign tag_pages_size = tag_pages | size %}
+
+<div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
+  <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,300px)] lg:items-start lg:gap-10 xl:gap-12">
+      <main class="min-w-0 bg-base-100 dark:bg-base-100">
+        <header class="pt-2">
+          <h1 class="text-2xl font-semibold tracking-tight text-base-content md:text-3xl lg:text-4xl">
+            # {{ tag.name }}
+          </h1>
+        </header>
+
+        {% if tag_pages_size > 0 %}
+          <section class="mt-8">
+            {% render 'support_article_list', collection: tag.pages, per_page: 12 %}
+          </section>
+        {% else %}
+          <section class="mt-8">
+            {% assign message = 'templates.search.no_results' | t %}
+            {% render 'empty', message: message %}
+          </section>
+        {% endif %}
+      </main>
+
+      <aside
+        class="min-w-0 lg:sticky lg:top-4 lg:z-10 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:self-start"
+      >
+          <div class="rounded-xl border border-base-300 bg-base-200 p-6 shadow-sm dark:border-base-300 dark:bg-base-300/95">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
+              {{ 'snippets.aside_nav.tags_title' | t }}
+            </h2>
+            <div class="mt-4 flex flex-wrap gap-2" aria-label="{{ 'snippets.aside_nav.tags_title' | t }}">
+              {% for cloud_tag in site.tags %}
+                {% if cloud_tag.path == tag.path %}
+                  <span
+                    class="rounded border border-primary bg-primary px-1 py-0.5 text-xs text-primary-content"
+                    aria-current="page"
+                  >
+                    # {{ cloud_tag.name }}
+                  </span>
+                {% else %}
+                  {% render 'tag', tag: cloud_tag %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+      </aside>
     </div>
-
-    <!-- filters by tag name -->
-    {% assign total_size = tag.pages | size %}
-    {% if total_size > 0 %}
-      {% paginate_tag tag.pages, as: 'items' %}
-        <ul role="list" class="space-y-2">
-          {% for item in items %}
-            <li class="p-3 bg-base-200 rounded-lg hover:bg-base-200">
-              <div class="flex gap-1">
-                <div>
-                  <div class="flex space-x-2 items-start">
-                    <div class="shrink-0 pt-[1px]">
-                      <span class="inline-flex justify-center items-center w-5 h-5 text-xs rounded-full bg-primary/15">{{ forloop.index }}</span>
-                    </div>
-                    <div class='flex-1'>
-                      <a class="block text-lg text-base-content search-highlight-block hover:underline" href="{{ item.url }}" data-turbo-frame="_top">
-                        {{ item.link_text }}
-                      </a>
-                      <a href="{{ item.url }}" data-turbo-frame="_top" class="block text-xs text-base-content/60 font-inter">{{ item.url }}</a>
-                      {% if item.settings.description | presence %}
-                        <p class="my-3 text-sm line-clamp-3 text-base-content/50 search-highlight-block">{{ item.settings.description }}</p>
-                      {% endif %}
-                      <div class="flex justify-between items-center text-base-content/70">
-                        <div class="hidden overflow-x-auto text-sm md:block">
-                          {% render 'breadcrumb', breadcrumb: item.breadcrumb %}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          {% endfor %}
-          {% render 'paginate', paginate: paginate %}
-        </ul>
-      {% endpaginate_tag %}
-    {% else %}
-      <div class='flex items-center justify-center p-4'>
-        {% assign message = "templates.search.no_results" | t: '没有搜索到内容' %}
-        {% render 'empty', message: message %}
-      </div>
-    {% endif %}
-
   </div>
-</main>
+</div>

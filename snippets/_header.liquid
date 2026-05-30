@@ -1,86 +1,82 @@
-{%- if site.settings.header_type.value == '0' -%}
-  {%- assign header_surface_class = 'bg-transparent text-base-content shadow-none' -%}
-{%- else -%}
-  {%- assign header_surface_class = 'border-b border-base-300 bg-base-100/95 text-base-content shadow-xs supports-[backdrop-filter]:bg-base-100/80' -%}
-{%- endif -%}
+<header class="bg-neutral text-neutral-content print:hidden">
+  {% assign header_menu_html = site.settings.header_menu_html | presence %}
+  {% assign search_input_placeholder = 'layout.theme.search_input_placeholder' | t %}
+  {% assign header_icon_btn = 'inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-field p-1 text-neutral-content/70 hover:bg-neutral-content/10 hover:text-neutral-content' %}
+  {% assign is_home_page = false %}
+  {% if page.path == site.index_path %}
+    {% assign is_home_page = true %}
+  {% endif %}
 
-<header
-  class="js--header sticky top-0 z-50 flex min-h-[var(--header-height)] w-full flex-col justify-center px-4 [transform:translate3d(0,0,0)] backdrop-blur transition-shadow duration-100 print:hidden {{ header_surface_class }}"
->
-  <nav class="navbar mx-auto flex w-full max-w-[var(--max-content-width)] items-center justify-between space-x-4 px-0 py-0">
-    <div class="flex min-w-0 flex-1 items-center gap-2 lg:gap-4">
+  <nav
+    class="navbar mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-3 sm:px-6"
+    data-controller="header-search"
+    data-header-search-search-url-value="{{ site.search_path }}"
+  >
+    <div class="flex min-w-0 shrink-0 items-center gap-2 lg:gap-4">
       {% render 'header_logo' %}
       {% render 'header_drawer' %}
-      {% assign header_menu_html = site.settings.header_menu_html | presence %}
-      {% if header_menu_html %}
-        <div class="hidden h-4 w-px bg-base-300 lg:block"></div>
-        <div class="hidden min-w-0 flex-1 justify-end lg:flex">
-          <div class="flex items-center gap-6">{{ header_menu_html }}</div>
-        </div>
-      {% endif %}
     </div>
 
-    {% assign search_input_placeholder = 'layout.theme.search_input_placeholder' | t %}
-    {% assign header_icon_btn = 'inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg p-1 hover:bg-base-200 hover:text-base-content' %}
-    <div
-      class="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3"
-      data-controller="header-search"
-      data-header-search-search-url-value="{{ site.search_path }}"
-    >
+    {% unless is_home_page %}
+      <div class="flex min-w-0 flex-1 justify-center px-2 sm:px-4">
+        <div class="hidden w-full min-w-0 max-w-xs sm:block lg:max-w-sm">
+          {% form_tag 'search', class: 'w-full' %}
+            <label class="flex w-full min-w-0 items-center gap-2 rounded-field bg-neutral-content/10 py-2 pl-3 pr-3">
+              <span class="pointer-events-none shrink-0 text-neutral-content/60" aria-hidden="true">
+                {% render 'icon', name: 'search', class: 'size-4' %}
+              </span>
+              <span class="sr-only">{{ search_input_placeholder | escape_once }}</span>
+              <input
+                id="header-search-input"
+                type="search"
+                name="{{ form.keywords_field_name }}"
+                value=""
+                placeholder="{{ search_input_placeholder | escape_once }}"
+                autocomplete="off"
+                class="min-w-0 grow border-0 bg-transparent p-0 text-sm leading-tight text-neutral-content placeholder:text-neutral-content/50 focus:outline-none"
+                data-header-search-target="input"
+              >
+              <div class="pointer-events-none hidden shrink-0 items-center gap-0.5 text-xs text-neutral-content/50 md:flex" aria-hidden="true">
+                <span data-header-search-target="metaKeyEl">⌘</span>
+                <span>K</span>
+              </div>
+            </label>
+          {% endform_tag %}
+        </div>
+      </div>
+    {% endunless %}
+
+    <div class="ml-auto flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
+      {% if header_menu_html %}
+        <div class="hidden h-4 w-px bg-neutral-content/20 lg:block" aria-hidden="true"></div>
+        <div class="hidden items-center lg:flex">
+          <div class="flex items-center gap-1">{{ header_menu_html }}</div>
+        </div>
+      {% endif %}
+
       <div class="shrink-0 sm:hidden">
         <a
           href="{{ site.search_path }}"
           class="{{ header_icon_btn }}"
           aria-label="{{ search_input_placeholder | escape_once }}"
         >
-          {% render 'icon', name: 'search', class: 'size-4 text-base-content/60' %}
+          {% render 'icon', name: 'search', class: 'size-4' %}
         </a>
       </div>
 
       {% if current_user %}
-        {% assign header_search_wrap_class = 'hidden min-w-0 shrink-0 sm:block w-full max-w-[10.5rem] min-[400px]:max-w-[12rem] sm:max-w-[13rem] md:max-w-[14rem] lg:max-w-[16rem] xl:max-w-[18rem]' %}
-      {% else %}
-        {% assign header_search_wrap_class = 'hidden min-w-0 shrink-0 sm:block w-full max-w-[12rem] min-[400px]:max-w-[14rem] sm:max-w-[16rem] md:max-w-[18rem] lg:max-w-[20rem] xl:max-w-[22rem]' %}
-      {% endif %}
-      <div class="{{ header_search_wrap_class }}">
-        {% form_tag 'search', class: 'w-full' %}
-          <div class="relative flex w-full min-w-0 items-stretch rounded-lg border border-base-300 bg-base-100 transition-colors duration-150 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary/25 dark:border-base-content/25 dark:bg-base-200/50 dark:focus-within:border-primary">
-            <span class="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-base-content/60" aria-hidden="true">
-              {% render 'icon', name: 'search', class: 'size-4' %}
-            </span>
-            <label class="sr-only" for="header-search-input">{{ search_input_placeholder | escape_once }}</label>
-            <input
-              id="header-search-input"
-              type="search"
-              name="{{ form.keywords_field_name }}"
-              value=""
-              placeholder="{{ search_input_placeholder | escape_once }}"
-              autocomplete="off"
-              class="min-h-9 w-full min-w-0 rounded-lg border-0 bg-transparent py-2 pl-9 pr-3 text-sm leading-tight text-base-content outline-none placeholder:text-base-content/45 focus:ring-0 md:min-h-10 md:py-2 md:pl-9 md:pr-[3.25rem]"
-              data-header-search-target="input"
-            >
-            {% assign header_search_keychip = 'box-border inline-flex h-5 min-h-5 min-w-[1.25rem] shrink-0 items-center justify-center rounded border border-base-300 bg-base-200 px-1 font-sans text-[0.65rem] font-medium leading-none text-base-content/70 shadow-none dark:border-base-content/20 dark:bg-base-300/80' %}
-            <div class="pointer-events-none absolute right-2 top-1/2 hidden -translate-y-1/2 items-center gap-0.5 md:flex" aria-hidden="true">
-              <span class="{{ header_search_keychip }}" data-header-search-target="metaKeyEl">⌘</span>
-              <span class="{{ header_search_keychip }}">K</span>
-            </div>
-          </div>
-        {% endform_tag %}
-      </div>
-
-      {% if current_user %}
-        <span class="hidden h-6 w-px shrink-0 bg-base-300 sm:block dark:bg-base-content/15" aria-hidden="true"></span>
+        <span class="hidden h-6 w-px shrink-0 bg-neutral-content/20 sm:block" aria-hidden="true"></span>
         <div class="flex shrink-0 items-center">
           <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="{{ header_icon_btn }}" aria-label="{{ current_user.name | escape_once }}">
               {% if current_user.image %}
-                <img src="{{ current_user.image }}" alt="" class="size-7 rounded-lg object-cover sm:size-8" width="32" height="32" />
+                <img src="{{ current_user.image }}" alt="" class="size-7 rounded-field object-cover sm:size-8" width="32" height="32" />
               {% else %}
-                {% render 'icon', name: 'user', class: 'size-4 text-base-content/60 sm:size-[1.125rem]' %}
+                {% render 'icon', name: 'user', class: 'size-4 sm:size-[1.125rem]' %}
               {% endif %}
             </div>
-            <div tabindex="0" class="dropdown-content mt-2 w-44 space-y-3 rounded-box bg-base-100 px-3 py-2 shadow">
-              <div class="line-clamp-1 border-b border-base-200 pb-2 font-medium text-primary/80">{{ current_user.name }}</div>
+            <div tabindex="0" class="dropdown-content mt-2 w-44 space-y-3 rounded-box border border-base-300 bg-base-100 px-3 py-2 shadow-sm">
+              <div class="line-clamp-1 border-b border-base-200 pb-2 font-medium text-accent">{{ current_user.name }}</div>
               <div class="text-base-content/60">
                 {% form_tag 'sign_out' %}
                   <button type="submit" class="h-5 w-full text-left hover:link">{{ 'generic.buttons.signout' | t }}</button>

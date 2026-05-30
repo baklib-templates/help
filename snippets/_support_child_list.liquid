@@ -1,0 +1,11 @@
+{%- comment -%}
+  Paginated child pages list (channel layout).
+  @param page {Object} parent page (required)
+  @param per_page {Number} items per page (default 12)
+{%- endcomment -%}
+{% assign per_page = per_page | default: 12 | plus: 0 %}
+
+{% assign parent_intro = page.settings.content | strip %}
+<section class="{% if parent_intro != blank %}mt-10{% else %}mt-8{% endif %}">
+  {% render 'support_article_list', collection: page.children_in_list, per_page: per_page %}
+</section>

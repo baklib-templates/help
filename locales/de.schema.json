@@ -7,85 +7,10 @@
     },
     "fashion": {
       "name": "Fashion"
-    },
-    "old_school": {
-      "name": "Retro"
     }
   },
   "templates": {
     "index": {
-      "help_center": {
-        "name": "Hilfecenter",
-        "description": "Funktionsreicher Wissensbasis-Stil",
-        "settings": {
-          "hero_bg_type": {
-            "label": "Hero-Hintergrundstil",
-            "info": "Nach Auswahl des Stils werden Hintergrundfarbe und -bild entsprechend angezeigt",
-            "choices": {
-              "none": "Kein Hintergrund",
-              "color": "Farbiger Hintergrund",
-              "image": "Bildhintergrund"
-            }
-          },
-          "hero_height": {
-            "label": "Hintergrundhöhe",
-            "info": "Empfohlene Höhe: 360px"
-          },
-          "hero_image_url": {
-            "label": "Hintergrundbild",
-            "info": "Das Hintergrundbild wird automatisch auf Seitenbreite und Hintergrundhöhe zugeschnitten"
-          },
-          "hero_bg_color": {
-            "label": "Hintergrundfarbe",
-            "info": "Bei farbigem Hintergrund wird die Farbe gemäß ausgewähltem Wert verwendet"
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Der Slogan wird über dem Hintergrundbild angezeigt",
-            "default": "👋 Womit können wir helfen?"
-          },
-          "search_hot_tags": {
-            "label": "Beliebte Tags",
-            "info": "Nach dem Setzen wird die Tag-Liste unter der Startseiten-Suchleiste angezeigt"
-          },
-          "search_hot_keywords": {
-            "label": "Beliebte Suchen",
-            "info": "Nach dem Setzen werden beliebte Suchen unter dem Suchfeld angezeigt. Mehrere Stichwörter mit Zeilenumbruch trennen"
-          },
-          "show_channels_section": {
-            "label": "Navigationssektion",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt"
-          },
-          "channels_section_title": {
-            "label": "Titel der Navigationssektion",
-            "default": "Navigation"
-          },
-          "show_newest_section": {
-            "label": "Sektion „Neueste Artikel“",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt"
-          },
-          "newest_section_title": {
-            "label": "Titel der neuesten Artikel",
-            "default": "Neueste Artikel"
-          },
-          "show_topic_channel": {
-            "label": "Sektion „Empfohlene Themen“",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt"
-          },
-          "topic_channel_title": {
-            "label": "Titel der empfohlenen Themen",
-            "default": "Empfohlene Themen"
-          },
-          "show_hottest_section": {
-            "label": "Sektion „Beliebte Artikel“",
-            "info": "Wenn nicht ausgewählt, wird diese Sektion auf der Startseite nicht angezeigt"
-          },
-          "hottest_section_title": {
-            "label": "Titel der beliebten Artikel",
-            "default": "Beliebte Artikel"
-          }
-        }
-      },
       "faqs": {
         "name": "FAQ-Center",
         "description": "FAQ-Startseite mit zusammenklappbaren Fragen und Kategorien",
@@ -134,11 +59,8 @@
           },
           "hero_subtitle": {
             "label": "Hero-Untertitel",
+            "default": "Durchsuchen Sie FAQs, häufige Fragen, Anleitungen und Produktwissen auf dieser Support-Seite.",
             "info": "Optional unter dem Titel."
-          },
-          "hero_height": {
-            "label": "Höhe Hero-Bereich",
-            "info": "Abstand über der Suche."
           },
           "search_hot_tags": {
             "label": "Beliebte Tags",
@@ -147,26 +69,6 @@
           "search_hot_keywords": {
             "label": "Beliebte Suchbegriffe",
             "info": "Ein Begriff pro Zeile."
-          },
-          "topics_section_title": {
-            "label": "Seitenleiste: Themen",
-            "default": "Häufige Themen"
-          },
-          "contact_section_title": {
-            "label": "Seitenleiste: Kontakt",
-            "default": "Support kontaktieren"
-          },
-          "show_popular_section": {
-            "label": "Beliebte Artikel",
-            "info": "Nach Aufrufen sortiert, unter der Suche."
-          },
-          "popular_section_title": {
-            "label": "Überschrift Beliebt",
-            "default": "Beliebte Artikel"
-          },
-          "popular_limit": {
-            "label": "Anzahl beliebte Artikel",
-            "info": "Maximale Einträge."
           }
         }
       },
@@ -174,31 +76,15 @@
         "name": "Karten-Startseite",
         "description": "Große Kategorie-Karten mit Artikelvorschau (Intercom-Stil)",
         "settings": {
-          "hero_bg_type": {
-            "label": "Hero-Hintergrund",
-            "info": "Hintergrund für den oberen Bereich.",
-            "choices": {
-              "none": "Keiner",
-              "color": "Farbe",
-              "image": "Bild"
-            }
+          "hero_title": {
+            "info": "Leer lassen, um den Site-Namen zu verwenden."
           },
-          "hero_height": {
-            "label": "Hintergrundhöhe",
-            "info": "Empfohlen: 360px"
-          },
-          "hero_image_url": {
-            "label": "Hintergrundbild",
-            "info": "Bei Bild-Hintergrund."
-          },
-          "hero_bg_color": {
-            "label": "Hintergrundfarbe",
-            "info": "Bei Farb-Hintergrund."
-          },
-          "hero_slogan": {
-            "label": "Slogan",
-            "info": "Unter dem Site-Namen.",
+          "hero_description": {
             "default": "👋 Wonach suchen Sie?"
+          },
+          "hero_text_color": {
+            "label": "Hero-Textfarbe",
+            "info": "Gilt für Titel und Beschreibung."
           },
           "search_hot_tags": {
             "label": "Beliebte Tags",
@@ -216,21 +102,9 @@
             "label": "Titel Kartenbereich",
             "default": "Nach Thema stöbern"
           },
-          "articles_per_card": {
-            "label": "Artikel pro Karte",
-            "info": "Anzahl Unterlinks pro Karte."
-          },
-          "show_popular_section": {
-            "label": "Beliebte Artikel",
-            "info": "Nach Aufrufen sortiert."
-          },
           "popular_section_title": {
             "label": "Titel Beliebt-Bereich",
             "default": "Beliebte Artikel"
-          },
-          "popular_limit": {
-            "label": "Anzahl beliebte Artikel",
-            "info": "Listeneinträge."
           }
         }
       }
@@ -259,25 +133,11 @@
         },
         "icon": {
           "label": "Seitensymbol",
-          "info": "Zur Anzeige des Seitensymbols, empfohlenes Verhältnis 1:1"
+          "info": "Lucide-Symbol für Listen und Karten. Optionen stammen aus Site-Einstellungen → Lucide-Symbole. Symbolnamen nachschlagen: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
         },
         "content": {
           "label": "Seiteninhalt",
           "info": "Aus der Datenquelle synchronisiert, nicht editierbar"
-        }
-      },
-      "video": {
-        "name": "Video-Vorlage",
-        "description": "Vorlage für Videoseiten",
-        "settings": {
-          "is_video_list": {
-            "label": "Ist Videoliste",
-            "info": "Videolisten-Seite zeigt nur Unterseiten mit Video-Vorlage; bitte stellen Sie sicher, dass Unterseiten die Video-Vorlage verwenden"
-          },
-          "video_url": {
-            "label": "Video-URL",
-            "info": "Wird in der Videoliste angezeigt; auf der Listenseite nicht erforderlich"
-          }
         }
       }
     }
@@ -298,50 +158,11 @@
         "label": "ICP/Copyright-Information",
         "default": "ICP xxxxxx"
       },
-      "screen_width": {
-        "label": "Seitenbreite",
-        "choices": {
-          "narrow": "Schmal (1024px)",
-          "medium": "Mittel (1280px)",
-          "wide": "Breit (1536px)",
-          "full": "Vollbild"
-        }
-      },
-      "left_sidebar_width": {
-        "label": "Linke Seitenleisten-Breite (Detailseiten)",
-        "info": "Empfohlen: 240px"
-      },
-      "right_sidebar_width": {
-        "label": "Rechte Seitenleisten-Breite (Detailseiten)",
-        "info": "Empfohlen: 240px"
-      },
-      "header_height": {
-        "label": "Kopfzeilenhöhe",
-        "info": "Höhe der fixierten Kopfzeile. Standard: 68px."
-      },
-      "header_type": {
-        "label": "Header-Stil",
-        "info": "* Beeinflusst Hintergrund- und Textfarbe der oberen Navigation.\n* 0 - Heller Stil mit Frosted-Glass-Optik.\n* 1 - Eigene Farben, bitte unten Hintergrund- und Textfarbe wählen.",
-        "choices": {
-          "transparent": "Einfach transparent",
-          "custom": "Eigene Farbe"
-        }
-      },
-      "header_bg_color": {
-        "label": "Header-Hintergrundfarbe"
-      },
-      "header_text_color": {
-        "label": "Header-Textfarbe"
-      },
       "show_published_at": {
         "label": "Veröffentlichungszeit anzeigen"
       },
       "show_author": {
         "label": "Autor anzeigen"
-      },
-      "show_card_icon": {
-        "label": "Sektions-Symbole auf der Startseite anzeigen",
-        "info": "Empfohlen, Symbole in den Seiteneinstellungen zu konfigurieren"
       },
       "ai_search_completed_text": {
         "label": "KI-Abschlusstext",
@@ -370,25 +191,10 @@
         "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
         "placeholder": "Üblich für Navigationslinks zu anderen Firmenwebsites"
       },
-      "footer_html": {
-        "label": "HTML im Footer-Bereich einfügen",
-        "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen; ersetzt den Standard-Footer komplett",
-        "placeholder": "Wenn der Standard-Footer erhalten bleiben soll, bitte HTML in footer_menu_html einfügen"
-      },
       "footer_menu_html": {
         "label": "HTML im unteren Bereich einfügen (innerhalb des Footers)",
         "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
         "placeholder": "Üblich für externe Navigation, Partner-Links und SEO-Links"
-      },
-      "features_one_html": {
-        "label": "HTML in der ersten Feature-Sektion der Startseite einfügen",
-        "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
-        "placeholder": "Üblich für Navigationslinks zu anderen Firmenwebsites"
-      },
-      "features_two_html": {
-        "label": "HTML in der zweiten Feature-Sektion der Startseite einfügen",
-        "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
-        "placeholder": "Üblich für Navigationslinks zu anderen Firmenwebsites"
       },
       "contact_html": {
         "label": "Support kontaktieren (HTML)",
@@ -397,24 +203,12 @@
       }
     }
   },
-  "settings": {
-    "weixin_share": {
-      "title": "WeChat-Konfiguration",
-      "weixin_app_id": {
-        "label": "Entwickler-ID (AppID)",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat-Konto / Einstellungen & Entwicklung / Entwicklungsschnittstelle</a>"
-      },
-      "weixin_app_secret": {
-        "label": "Entwicklerschlüssel (AppSecret)",
-        "info": ""
-      },
-      "weixin_enabled": {
-        "label": "WeChat-Sharing aktivieren?",
-        "info": "Stellt die Möglichkeit bereit, Seiten in WeChat zu teilen.</br>Bitte tragen Sie die IP-Whitelist (ip: ${service_ip}) im WeChat-Konto ein. Änderungen können verzögert wirksam werden.</br>Prüfen Sie die Sharing-Berechtigung im WeChat-Konto / Einstellungen & Entwicklung / Entwicklungsschnittstelle: <a href='https://mp.weixin.qq.com/cgi-bin/frame'>Webdienst / Sharing-Schnittstelle</a>."
-      },
-      "weixin_debug": {
-        "label": "Debug-Hinweise aktivieren?",
-        "info": "Bitte nur während der Konfigurationsphase aktivieren; bei aktivierter Debug-Anzeige werden Konfigurationsfehler beim Aufruf der Seite gemeldet."
+  "lucide_icons": {
+    "name": "Lucide-Symbole",
+    "settings": {
+      "lucide_icons": {
+        "label": "Erlaubte Lucide-Symbolnamen",
+        "info": "Ein kebab-case-Symbolname pro Zeile (z. B. help-circle, package). Symbolnamen nachschlagen: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>. Seitenvorlagen nutzen diese Liste für das Symbol-Dropdown. Symbole müssen zum Theme-JS-Bundle passen; ohne Bundle-Update werden neue Namen nicht gerendert."
       }
     }
   }

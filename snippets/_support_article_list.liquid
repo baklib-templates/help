@@ -1,0 +1,120 @@
+{%- comment -%}
+  Stripe-style article list (popular / children / related).
+  @param items {Array} pages to list (no pagination; use collection for paginated lists)
+  @param collection {Array|Drop} paginatable source (optional)
+  @param section_title {String} optional section heading; omit for list-only
+  @param per_page {Number} items per page when using collection (default 12)
+  @param turbo_frame {String} turbo-frame target for pagination links (default: _top)
+{%- endcomment -%}
+{% assign list_per_page = per_page | default: 12 | plus: 0 %}
+{% unless collection %}
+  {% assign list_items = items %}
+{% endunless %}
+{% assign list_ul_class = 'flex flex-col gap-8' %}
+{% if section_title != blank %}
+  {% assign list_ul_class = list_ul_class | append: ' mt-6' %}
+{% endif %}
+
+{% if section_title != blank %}
+  <section class="mt-12 border-t border-base-300 pt-10 dark:border-base-300">
+    <h2 class="text-lg font-semibold text-base-content dark:text-base-content">
+      {{ 'templates.index.support.popular_section_title' | t }}
+    </h2>
+{% endif %}
+
+{% if collection %}
+  {% paginate_tag collection, as: 'list_items', per: list_per_page %}
+    <ul class="{{ list_ul_class }}">
+      {% for item in list_items %}
+        <li class="flex gap-4 border-b border-base-300 pb-8 last:border-0 last:pb-0 dark:border-base-300">
+          <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-content" aria-hidden="true">
+            {% render 'page_icon', page: item, class: 'size-5' %}
+          </span>
+          <div class="min-w-0 flex-1">
+            <a href="{{ item.path }}" class="text-base font-medium text-primary hover:underline md:text-lg" data-turbo-frame="_top">
+              {{ item.link_text }}
+            </a>
+            {% assign excerpt = item.settings.content | strip_html | truncate: 160 %}
+            {% if excerpt != blank %}
+              <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-base-content/70 dark:text-base-content/50">{{ excerpt }}</p>
+            {% endif %}
+
+            {% assign item_tags = item.settings.tags %}
+            {% assign item_tags_size = item_tags | size %}
+            {% assign bc = item.breadcrumb %}
+            {% if item_tags_size > 0 %}
+              <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+                {% for tag in item_tags %}
+                  <a href="{{ tag.path }}" data-turbo-frame="_top" class="text-primary hover:underline">{{ tag.name }}</a>
+                  {% unless forloop.last %}
+                    <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            {% elsif bc and bc.size > 1 %}
+              <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-primary">
+                {% for crumb in bc %}
+                  {% unless forloop.last %}
+                    <a href="{{ crumb.path }}" data-turbo-frame="_top" class="hover:underline">{{ crumb.link_text }}</a>
+                    {% unless forloop.index == bc.size | minus: 1 %}
+                      <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
+                    {% endunless %}
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    {% render 'support_paginate', paginate: paginate, turbo_frame: turbo_frame %}
+  {% endpaginate_tag %}
+{% else %}
+  <ul class="{{ list_ul_class }}">
+    {% for item in list_items %}
+      <li class="flex gap-4 border-b border-base-300 pb-8 last:border-0 last:pb-0 dark:border-base-300">
+        <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-content" aria-hidden="true">
+          {% render 'page_icon', page: item, class: 'size-5' %}
+        </span>
+        <div class="min-w-0 flex-1">
+          <a href="{{ item.path }}" class="text-base font-medium text-primary hover:underline md:text-lg" data-turbo-frame="_top">
+            {{ item.link_text }}
+          </a>
+          {% assign excerpt = item.settings.content | strip_html | truncate: 160 %}
+          {% if excerpt != blank %}
+            <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-base-content/70 dark:text-base-content/50">{{ excerpt }}</p>
+          {% endif %}
+
+          {% assign item_tags = item.settings.tags %}
+          {% assign item_tags_size = item_tags | size %}
+          {% assign bc = item.breadcrumb %}
+          {% if item_tags_size > 0 %}
+            <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+              {% for tag in item_tags %}
+                <a href="{{ tag.path }}" data-turbo-frame="_top" class="text-primary hover:underline">{{ tag.name }}</a>
+                {% unless forloop.last %}
+                  <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
+                {% endunless %}
+              {% endfor %}
+            </div>
+          {% elsif bc and bc.size > 1 %}
+            <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-primary">
+              {% for crumb in bc %}
+                {% unless forloop.last %}
+                  <a href="{{ crumb.path }}" data-turbo-frame="_top" class="hover:underline">{{ crumb.link_text }}</a>
+                  {% unless forloop.index == bc.size | minus: 1 %}
+                    <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
+                  {% endunless %}
+                {% endunless %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if section_title != blank %}
+  </section>
+{% endif %}

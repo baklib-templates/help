@@ -7,85 +7,10 @@
     },
     "fashion": {
       "name": "ファッション"
-    },
-    "old_school": {
-      "name": "レトロ"
     }
   },
   "templates": {
     "index": {
-      "help_center": {
-        "name": "ヘルプセンター",
-        "description": "機能豊富な製品ナレッジベーススタイル",
-        "settings": {
-          "hero_bg_type": {
-            "label": "ヒーロー背景スタイル",
-            "info": "背景スタイルを選択すると、背景色と画像が選択した内容に応じて表示されます",
-            "choices": {
-              "none": "背景なし",
-              "color": "カラー背景",
-              "image": "画像背景"
-            }
-          },
-          "hero_height": {
-            "label": "背景の高さ",
-            "info": "推奨高さ：360px"
-          },
-          "hero_image_url": {
-            "label": "背景画像",
-            "info": "背景画像はページ幅と背景の高さに応じて自動的にトリミングされます"
-          },
-          "hero_bg_color": {
-            "label": "背景色",
-            "info": "ヒーロー背景スタイルの色は選択した色値に基づいて処理されます（カラー背景）"
-          },
-          "hero_slogan": {
-            "label": "スローガン",
-            "info": "スローガンは背景画像の上に表示されます",
-            "default": "👋 What Can We Help?"
-          },
-          "search_hot_tags": {
-            "label": "人気のタグ",
-            "info": "設定すると、タグリストがホームページの検索バーの下に表示されます"
-          },
-          "search_hot_keywords": {
-            "label": "人気の検索",
-            "info": "設定すると、検索ボックスの下に人気の検索が表示されます。改行で複数のキーワードを設定します"
-          },
-          "show_channels_section": {
-            "label": "ナビゲーションセクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません"
-          },
-          "channels_section_title": {
-            "label": "ナビゲーションセクションのタイトル",
-            "default": "ナビゲーション"
-          },
-          "show_newest_section": {
-            "label": "最新記事セクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません"
-          },
-          "newest_section_title": {
-            "label": "最新記事セクションのタイトル",
-            "default": "最新記事"
-          },
-          "show_topic_channel": {
-            "label": "特集トピックセクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません"
-          },
-          "topic_channel_title": {
-            "label": "特集トピックセクションのタイトル",
-            "default": "特集トピック"
-          },
-          "show_hottest_section": {
-            "label": "人気記事セクション",
-            "info": "チェックを外すと、このセクションはホームページに表示されません"
-          },
-          "hottest_section_title": {
-            "label": "人気記事セクションのタイトル",
-            "default": "人気記事"
-          }
-        }
-      },
       "faqs": {
         "name": "FAQ センター",
         "description": "FAQ スタイルのホームページ：折りたたみ可能な質問とカテゴリタブ",
@@ -134,11 +59,8 @@
           },
           "hero_subtitle": {
             "label": "ヒーローサブタイトル",
+            "default": "このサポートページで FAQ、よくある質問、操作手順、製品ナレッジなどを閲覧できます。",
             "info": "タイトル下の短文（任意）。"
-          },
-          "hero_height": {
-            "label": "ヒーロー領域の高さ",
-            "info": "検索ボックス上の余白です。"
           },
           "search_hot_tags": {
             "label": "人気タグ",
@@ -147,26 +69,6 @@
           "search_hot_keywords": {
             "label": "人気検索",
             "info": "1 行に 1 キーワード。"
-          },
-          "topics_section_title": {
-            "label": "サイドバー：トピック見出し",
-            "default": "よく見るトピック"
-          },
-          "contact_section_title": {
-            "label": "サイドバー：連絡見出し",
-            "default": "サポートに連絡"
-          },
-          "show_popular_section": {
-            "label": "人気記事を表示",
-            "info": "閲覧数順。検索の下に表示。"
-          },
-          "popular_section_title": {
-            "label": "人気記事の見出し",
-            "default": "人気の記事"
-          },
-          "popular_limit": {
-            "label": "人気記事の件数",
-            "info": "一覧の最大件数。"
           }
         }
       },
@@ -174,31 +76,15 @@
         "name": "カード型ホーム",
         "description": "大きなカテゴリカードと記事プレビュー（Intercom 風）",
         "settings": {
-          "hero_bg_type": {
-            "label": "ヒーロー背景スタイル",
-            "info": "上部ヒーロー領域の背景。",
-            "choices": {
-              "none": "なし",
-              "color": "単色",
-              "image": "画像"
-            }
+          "hero_title": {
+            "info": "空欄の場合はサイト名を使用します。"
           },
-          "hero_height": {
-            "label": "背景の高さ",
-            "info": "推奨：360px"
-          },
-          "hero_image_url": {
-            "label": "背景画像",
-            "info": "画像背景を選んだときに使用。"
-          },
-          "hero_bg_color": {
-            "label": "背景色",
-            "info": "単色背景を選んだときに使用。"
-          },
-          "hero_slogan": {
-            "label": "スローガン",
-            "info": "サイト名の下に表示。",
+          "hero_description": {
             "default": "👋 何をお探しですか？"
+          },
+          "hero_text_color": {
+            "label": "ヒーローテキスト色",
+            "info": "タイトルと説明文の両方に適用されます。"
           },
           "search_hot_tags": {
             "label": "人気タグ",
@@ -216,21 +102,9 @@
             "label": "カード見出し",
             "default": "トピックから探す"
           },
-          "articles_per_card": {
-            "label": "カードあたりの記事数",
-            "info": "各カードに表示する子リンク数。"
-          },
-          "show_popular_section": {
-            "label": "人気記事を表示",
-            "info": "閲覧数に基づきます。"
-          },
           "popular_section_title": {
             "label": "人気セクション見出し",
             "default": "人気の記事"
-          },
-          "popular_limit": {
-            "label": "人気記事の件数",
-            "info": "一覧に載せるページ数。"
           }
         }
       }
@@ -259,25 +133,11 @@
         },
         "icon": {
           "label": "ページアイコン",
-          "info": "ページアイコンの表示に使用、推奨比率1:1"
+          "info": "リストやカードに表示する Lucide アイコン。選択肢はサイト設定 → Lucide アイコンから取得します。アイコン名の検索：<a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
         },
         "content": {
           "label": "ページコンテンツ",
           "info": "データソースから同期、編集不可"
-        }
-      },
-      "video": {
-        "name": "ビデオテンプレート",
-        "description": "ビデオページテンプレート、ビデオコンテンツの表示に使用",
-        "settings": {
-          "is_video_list": {
-            "label": "ビデオリストかどうか",
-            "info": "ビデオリストページ、ビデオテンプレートのサブページのみを取得; サブページがビデオテンプレートを使用していることを確認してください"
-          },
-          "video_url": {
-            "label": "ビデオURL",
-            "info": "ビデオリストページでの表示に使用、リストページでは不要"
-          }
         }
       }
     }
@@ -298,50 +158,11 @@
         "label": "著作権情報",
         "default": "ICP xxxxx"
       },
-      "screen_width": {
-        "label": "画面幅",
-        "choices": {
-          "narrow": "狭い（1024px）",
-          "medium": "中（1280px）",
-          "wide": "広い（1536px）",
-          "full": "全画面"
-        }
-      },
-      "left_sidebar_width": {
-        "label": "左サイドバー幅（詳細ページ）",
-        "info": "推奨：240px"
-      },
-      "right_sidebar_width": {
-        "label": "右サイドバー幅（詳細ページ）",
-        "info": "推奨：240px"
-      },
-      "header_height": {
-        "label": "ヘッダーの高さ",
-        "info": "固定ヘッダーの高さ。デフォルト: 68px。"
-      },
-      "header_type": {
-        "label": "ヘッダースタイル",
-        "info": "* ヘッダーナビゲーションバーの背景色とテキスト色に影響します。\n* 0 - フロストグラス風のライトスタイル。\n* 1 - カスタムカラー。下で背景色とテキスト色を選択してください。",
-        "choices": {
-          "transparent": "シンプル透明",
-          "custom": "カスタムカラー"
-        }
-      },
-      "header_bg_color": {
-        "label": "ヘッダー背景色"
-      },
-      "header_text_color": {
-        "label": "ヘッダーテキスト色"
-      },
       "show_published_at": {
         "label": "公開時間を表示"
       },
       "show_author": {
         "label": "著者を表示"
-      },
-      "show_card_icon": {
-        "label": "ホームページにセクションアイコンを表示",
-        "info": "ページ設定でアイコンを設定することを推奨"
       },
       "ai_search_completed_text": {
         "label": "AI回答終了文",
@@ -370,25 +191,10 @@
         "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
         "placeholder": "通常、会社の他のウェブサイトへのナビゲーションリンクを挿入するために使用"
       },
-      "footer_html": {
-        "label": "フッター領域にHTMLコードを挿入",
-        "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート; デフォルトのフッターコンテンツを完全に置き換えます",
-        "placeholder": "デフォルトのフッターコンテンツを保持したい場合は、footer_menu_htmlにHTMLコードを挿入してください"
-      },
       "footer_menu_html": {
         "label": "フッター領域内にHTMLコードを挿入(footer内、footer_menu_html)",
         "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
         "placeholder": "通常、会社の他のウェブサイトへの外部リンク、相互リンク、SEO最適化リンクなどを挿入するために使用"
-      },
-      "features_one_html": {
-        "label": "ホームページの機能セクション1にHTMLコードを挿入",
-        "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
-        "placeholder": "通常、会社の他のウェブサイトへのナビゲーションリンクを挿入するために使用"
-      },
-      "features_two_html": {
-        "label": "ホームページの機能セクション2にHTMLコードを挿入",
-        "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
-        "placeholder": "通常、会社の他のウェブサイトへのナビゲーションリンクを挿入するために使用"
       },
       "contact_html": {
         "label": "サポート連絡（HTML）",
@@ -397,24 +203,12 @@
       }
     }
   },
-  "settings": {
-    "weixin_share": {
-      "title": "ウィーチャット構成",
-      "weixin_app_id": {
-        "label": "開発者ID（AppID）",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat公衆番号/設定と開発/開発インタフェース管理</a>で取得"
-      },
-      "weixin_app_secret": {
-        "label": "開発者パスワード（AppSecret）",
-        "info": ""
-      },
-      "weixin_enabled": {
-        "label": "ウィチャット共有を有効にするかどうか",
-        "info": "サイトページの微信共有を提供する能力</br>1.微信公衆番号にipホワイトリスト（ip:${service _ ip}）を設定してください。設定後に有効化が遅れる時間があります。</br>2.ウィーチャット共有権限がオンになっているかどうかをチェックし、ウィーチャット公式アカウント/設定と開発/開発インタフェース管理：<a href='https://mp.weixin.qq.com/cgi-bin/frame'>ウェブサービス/共有インターフェース</a>。</br>3.共有リンクがカードかどうか：カード形式から共有カード形式に入り、リンク形式から共有リンク形式に入る、ウェブページの初期リンク共有は、会社のサービス番号またはコレクション後にカード共有することができます（この規則は微信共有制限です）。"
-      },
-      "weixin_debug": {
-        "label": "debugプロンプトをオンにするかどうか",
-        "info": "このオプションは構成段階でのみ有効にしてください。オンにすると、フロントエンドサイトにアクセスする際に微信共有が正しく構成されていない場合、エラーメッセージが自動的に表示されます"
+  "lucide_icons": {
+    "name": "Lucide アイコン",
+    "settings": {
+      "lucide_icons": {
+        "label": "許可された Lucide アイコン名",
+        "info": "1行に1つの kebab-case アイコン名（例: help-circle、package）。アイコン名の検索：<a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>。ページテンプレートのアイコン選択肢はこのリストから生成されます。アイコンはテーマ JS bundle と一致している必要があります。ここに名前を追加するだけでは bundle を更新しない限りサイト上で表示されません。"
       }
     }
   }

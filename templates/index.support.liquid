@@ -1,24 +1,14 @@
-{% assign channel_pages = site.pages['/'].children_in_list %}
-{% assign root_page = site.pages['/'] %}
+{% assign home_page = site.pages[site.index_path] %}
 {% assign hero_title = page.settings.hero_title | strip %}
 {% assign hero_subtitle = page.settings.hero_subtitle | strip %}
-{% assign hero_height = page.settings.hero_height | default: 240 | plus: 0 %}
-{% assign popular_limit = page.settings.popular_limit | default: 8 | plus: 0 %}
 
 <div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
-  {% assign features_one_html = site.settings.features_one_html | strip %}
-  {% if features_one_html | present? %}
-    <section class="border-b border-base-300 dark:border-base-300">
-      {{ features_one_html }}
-    </section>
-  {% endif %}
-
-  <div class="mx-auto max-w-6xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
+  <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,300px)] lg:items-start lg:gap-10 xl:gap-12">
       {% comment %} Main column: headline, search, popular {% endcomment %}
       <main class="min-w-0 bg-base-100 dark:bg-base-100">
         <header>
-          <div class="flex flex-col justify-end pt-2" style="min-height: {{ hero_height }}px;">
+          <div class="flex flex-col pt-6 md:pt-12 pb-3">
             {% if hero_title != blank %}
               <h1 class="text-2xl font-semibold tracking-tight text-base-content dark:text-base-content md:text-3xl lg:text-4xl">
                 {{ hero_title }}
@@ -82,91 +72,15 @@
           </div>
         </header>
 
-        {% if page.settings.show_popular_section %}
-          {% assign popular_pages = site.pages['/'].pages_in_list | order_by: '-visits_count' | limit: popular_limit %}
-          <section class="mt-12 border-t border-base-300 pt-10 dark:border-base-300">
-            <h2 class="text-lg font-semibold text-base-content dark:text-base-content">
-              {{ page.settings.popular_section_title }}
-            </h2>
-            <ul class="mt-6 flex flex-col gap-8">
-              {% for pop_page in popular_pages %}
-                <li class="flex gap-4 border-b border-base-300 pb-8 last:border-0 last:pb-0 dark:border-base-300">
-                  <span class="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-content" aria-hidden="true">?</span>
-                  <div class="min-w-0 flex-1">
-                    <a href="{{ pop_page.path }}" class="text-base font-medium text-primary hover:underline md:text-lg">
-                      {{ pop_page.link_text }}
-                    </a>
-                    {% assign excerpt = pop_page.settings.description | strip %}
-                    {% if excerpt == blank %}
-                      {% assign excerpt = pop_page.settings.content | strip_html | truncate: 160 %}
-                    {% endif %}
-                    {% if excerpt != blank %}
-                      <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-base-content/70 dark:text-base-content/50">{{ excerpt }}</p>
-                    {% endif %}
-
-                    {% assign tags = pop_page.settings.tags %}
-                    {% assign bc = pop_page.breadcrumb %}
-                    {% if tags and tags.size > 0 %}
-                      <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
-                        {% for tag in tags %}
-                          <a href="{{ tag.path }}" data-turbo-frame="_top" class="text-primary hover:underline">{{ tag.name }}</a>
-                          {% unless forloop.last %}
-                            <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
-                          {% endunless %}
-                        {% endfor %}
-                      </div>
-                    {% elsif bc and bc.size > 1 %}
-                      <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-primary">
-                        {% for crumb in bc %}
-                          {% unless forloop.last %}
-                            <a href="{{ crumb.path }}" data-turbo-frame="_top" class="hover:underline">{{ crumb.link_text }}</a>
-                            {% unless forloop.index == bc.size | minus: 1 %}
-                              <span class="text-base-content/50 dark:text-base-content/60" aria-hidden="true">·</span>
-                            {% endunless %}
-                          {% endunless %}
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-                  </div>
-                </li>
-              {% endfor %}
-            </ul>
-          </section>
-        {% endif %}
+        {% assign popular_collection = site.pages['/'].pages_in_list | order_by: '-visits_count' %}
+        {% render 'support_article_list', collection: popular_collection, per_page: 12 %}
       </main>
 
       {% comment %} Right sidebar: topics + contact (sticky on large screens) {% endcomment %}
       <aside
-        class="min-w-0 lg:sticky lg:top-[calc(var(--header-height,4rem)+1rem)] lg:z-10 lg:max-h-[calc(100vh-var(--header-height,4rem)-2rem)] lg:overflow-y-auto lg:self-start"
+        class="min-w-0 lg:sticky lg:top-4 lg:z-10 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:self-start"
       >
-        <div class="rounded-xl border border-base-300 bg-base-200 p-6 shadow-sm dark:border-base-300 dark:bg-base-300/95">
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
-            {{ page.settings.topics_section_title }}
-          </h2>
-          <nav class="mt-4 flex flex-col gap-2 text-sm" aria-label="{{ page.settings.topics_section_title }}">
-            {% if root_page %}
-              <a href="{{ site.index_path }}" class="text-primary hover:underline dark:text-primary">
-                {{ root_page.link_text | default: site.name }}
-              </a>
-            {% else %}
-              <a href="{{ site.index_path }}" class="text-primary hover:underline dark:text-primary">{{ site.name }}</a>
-            {% endif %}
-            {% for ch in channel_pages %}
-              <a href="{{ ch.path }}" class="text-primary hover:underline dark:text-primary">{{ ch.link_text }}</a>
-            {% endfor %}
-          </nav>
-
-          <hr class="my-6 border-base-300 dark:border-base-300" />
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
-            {{ page.settings.contact_section_title }}
-          </h2>
-          {% assign contact_html = site.settings.contact_html | strip %}
-          {% if contact_html | present? %}
-            <div class="support-contact-html mt-3 prose prose-sm max-w-none text-base-content/70 dark:prose-invert dark:text-base-content/50">
-              {{ contact_html }}
-            </div>
-          {% endif %}
-        </div>
+        {% render 'aside_nav', nav_page: home_page, page: page %}
       </aside>
     </div>
   </div>
@@ -193,19 +107,9 @@
         "id": "hero_subtitle",
         "type": "textarea",
         "label": "t:schema.templates.index.support.settings.hero_subtitle.label",
+        "default": "t:schema.templates.index.support.settings.hero_subtitle.default",
         "info": "t:schema.templates.index.support.settings.hero_subtitle.info",
         "rows": 2
-      },
-      {
-        "id": "hero_height",
-        "type": "range",
-        "label": "t:schema.templates.index.support.settings.hero_height.label",
-        "info": "t:schema.templates.index.support.settings.hero_height.info",
-        "min": 120,
-        "max": 420,
-        "step": 10,
-        "unit": "px",
-        "default": 240
       },
       {
         "id": "search_hot_tags",
@@ -219,41 +123,6 @@
         "type": "textarea",
         "label": "t:schema.templates.index.support.settings.search_hot_keywords.label",
         "info": "t:schema.templates.index.support.settings.search_hot_keywords.info"
-      },
-      {
-        "id": "topics_section_title",
-        "type": "text",
-        "label": "t:schema.templates.index.support.settings.topics_section_title.label",
-        "default": "t:schema.templates.index.support.settings.topics_section_title.default"
-      },
-      {
-        "id": "contact_section_title",
-        "type": "text",
-        "label": "t:schema.templates.index.support.settings.contact_section_title.label",
-        "default": "t:schema.templates.index.support.settings.contact_section_title.default"
-      },
-      {
-        "id": "show_popular_section",
-        "type": "checkbox",
-        "label": "t:schema.templates.index.support.settings.show_popular_section.label",
-        "info": "t:schema.templates.index.support.settings.show_popular_section.info",
-        "default": true
-      },
-      {
-        "id": "popular_section_title",
-        "type": "text",
-        "label": "t:schema.templates.index.support.settings.popular_section_title.label",
-        "default": "t:schema.templates.index.support.settings.popular_section_title.default"
-      },
-      {
-        "id": "popular_limit",
-        "type": "range",
-        "label": "t:schema.templates.index.support.settings.popular_limit.label",
-        "info": "t:schema.templates.index.support.settings.popular_limit.info",
-        "min": 3,
-        "max": 24,
-        "step": 1,
-        "default": 8
       }
     ]
   }

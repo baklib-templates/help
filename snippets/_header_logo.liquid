@@ -1,5 +1,5 @@
 {% assign default_logo = 'images/logo.png' | asset_url %}
-<div class="flex items-center max-w-[var(--left-sidebar-width)]">
+<div class="flex max-w-60 items-center">
 	<a href="{{site.index_path}}" class="flex items-center gap-2">
 		{% assign logo_url = site.settings.logo_url | presence %}
 		{% if logo_url %}

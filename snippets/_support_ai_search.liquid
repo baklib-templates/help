@@ -1,0 +1,99 @@
+{%- comment -%}
+  AI search chat panel for search page aside.
+  @param keywords {String} current search keywords for auto-submit (optional)
+{%- endcomment -%}
+{% assign ai_search_title = 'ai.title' | t %}
+{% assign ai_search_thinking_text = 'ai.thinking' | t %}
+{% assign ai_search_canceled_text = 'ai.canceled' | t %}
+{% assign ai_search_completed_text = site.settings.ai_search_completed_text | strip %}
+{% unless ai_search_completed_text | present? %}
+  {% assign ai_search_completed_text = 'ai.completed' | t %}
+{% endunless %}
+
+<div
+  class="hidden rounded-xl border border-base-300 bg-base-200 p-6 shadow-sm dark:border-base-300 dark:bg-base-300/95"
+  id="js--ai-search-container"
+>
+  <div
+    id="js--ai-search"
+    class="space-y-3"
+    data-controller="ai-search"
+    data-ai-search-hidden-class="hidden opacity-0"
+    data-ai-search-messages-value='{"thinking":"{{ ai_search_thinking_text | escape_once }}","completed":"{{ ai_search_completed_text | escape_once }}","canceled":"{{ ai_search_canceled_text | escape_once }}"}'
+    data-ai-search-url-value="/-/ai-search-completion"
+    data-ai-search-auto-submit-value="true"
+    {% if keywords | present? %}
+      data-ai-search-message-value="{{ keywords | escape_once }}"
+    {% endif %}
+  >
+    <div class="flex items-center gap-2 text-sm font-semibold text-base-content">
+      <div class="h-5 w-5 overflow-hidden rounded-full bg-gradient-to-r from-secondary to-primary">
+        <img src="{{ 'images/ai-search-icon.png' | asset_url }}" alt="" width="20" height="20">
+      </div>
+      <span>{{ ai_search_title }}</span>
+    </div>
+
+    <div
+      data-ai-search-target="messages"
+      class="ai-response prose max-h-[calc(100vh-12rem)] overflow-y-auto rounded-box border border-base-300 bg-base-100 p-3 prose-sm dark:prose-invert"
+    ></div>
+
+    <template data-ai-search-target="userMessageTemplate">
+      <div class="mb-2 flex items-end justify-end">
+        <div class="flex flex-1 flex-col items-end">
+          <div class="max-w-full rounded-2xl bg-primary px-3 py-2 text-primary-content shadow break-words">
+            <span class="ai-user-message text-sm"></span>
+          </div>
+        </div>
+        <span class="ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-secondary shadow">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="14" r="14" fill="currentColor"/>
+            <circle cx="14" cy="11" r="5" fill="white"/>
+            <ellipse cx="14" cy="21" rx="7" ry="4" fill="white"/>
+          </svg>
+        </span>
+      </div>
+    </template>
+
+    <template data-ai-search-target="assistantMessageTemplate">
+      <div class="mb-2 flex items-end justify-start">
+        <span class="mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-secondary to-primary shadow">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="14" cy="14" r="14" fill="currentColor"/>
+            <rect x="8" y="8" width="12" height="12" rx="6" fill="white"/>
+            <circle cx="14" cy="14" r="3" fill="currentColor"/>
+          </svg>
+        </span>
+        <div class="flex flex-1 flex-col items-start">
+          <div class="max-w-full rounded-2xl bg-base-100 px-3 py-2 text-base-content shadow break-words dark:bg-base-300">
+            <span class="ai-assistant-message text-sm"></span>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div class="flex gap-2">
+      <input
+        type="text"
+        class="flex-1 rounded-lg border border-base-300 bg-base-100 p-2 text-sm text-base-content focus-visible:outline-primary dark:bg-base-100"
+        placeholder="{{ 'templates.search.ai_input_placeholder' | t }}"
+        id="js--ai-chat-input"
+        data-ai-search-target="input"
+        autocomplete="off"
+      >
+      <button
+        class="flex h-8 w-8 items-center justify-center rounded-full text-primary"
+        id="js--ai-chat-send"
+        data-ai-search-target="send"
+        type="button"
+        aria-label="{{ 'templates.search.ai_input_placeholder' | t }}"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-full" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2ZM13 12H16L12 8L8 12H11V16H13V12Z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div data-ai-search-target="error" class="hidden text-sm text-error opacity-100 transition-opacity duration-300"></div>
+  </div>
+</div>

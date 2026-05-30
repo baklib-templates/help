@@ -24,16 +24,6 @@
     --color-warning-content: hsl(var(--theme-color-warning-content));
     --color-error: hsl(var(--theme-color-error));
     --color-error-content: hsl(var(--theme-color-error-content));
-
-    {%- assign header_height_setting = site.settings.header_height.value | default: site.settings.header_height -%}
-    {%- if header_height_setting == blank -%}
-      {%- assign header_height_css = '68px' -%}
-    {%- elsif header_height_setting contains 'px' -%}
-      {%- assign header_height_css = header_height_setting -%}
-    {%- else -%}
-      {%- assign header_height_css = header_height_setting | append: 'px' -%}
-    {%- endif -%}
-    --header-height: {{ header_height_css }};
   }
 
   :root:has(input.theme-controller[value=dark]:checked),

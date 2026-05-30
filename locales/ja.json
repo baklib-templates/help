@@ -7,14 +7,6 @@
     }
   },
   "snippets": {
-    "header": {
-      "light_mode": "明るい色",
-      "dark_mode": "ダークカラー",
-      "auto_mode": "自動"
-    },
-    "footer": {
-      "copyright": "All Rights Reserved"
-    },
     "feedback_form": {
       "title": "フィードバックを送信",
       "message_label": "メッセージ",
@@ -26,10 +18,6 @@
     "feedback_button": {
       "title_posted": "フィードバックありがとうございます",
       "title_unposted": "フィードバックを送信"
-    },
-    "page": {
-      "prev_page": "前へ",
-      "next_page": "次へ"
     },
     "page_tools": {
       "copy_page_label": "ページをコピー",
@@ -43,6 +31,11 @@
       "connect_to_cursor_description": "Cursor に MCP Server をインストール",
       "connect_to_vscode": "VS Code に接続",
       "connect_to_vscode_description": "VS Code に MCP Server をインストール"
+    },
+    "aside_nav": {
+      "tags_title": "タグ",
+      "topics_title": "よく見るトピック",
+      "contact_title": "サポートに連絡"
     }
   },
   "templates": {
@@ -52,20 +45,26 @@
       "ai_input_placeholder": "質問を入力してください…"
     },
     "page": {
-      "copy_success": "リンクをコピーしました",
-      "page_toc": "目次",
       "llm_prompt_template": "読み込み %{url} の内容, 私はそれについて質問することができます。",
       "llm_copying": "コピー中...",
-      "llm_copied": "コピーされました"
+      "llm_copied": "コピーされました",
+      "pagination_status_prefix": "",
+      "pagination_status_middle": " 件を表示（全 ",
+      "pagination_status_suffix": " 件）",
+      "pagination_prev": "前へ",
+      "pagination_next": "次へ",
+      "related_section_title": "関連記事"
     },
     "index": {
       "faqs": {
         "tab_all": "すべて",
         "hero_title_default": "よくある質問",
-        "hero_description_default": "よくある質問の理解と解決をすばやくサポートします"
+        "hero_description_default": "よくある質問の理解と解決をすばやくサポートします",
+        "open_in_new_page": "新しいページで開く"
       },
       "support": {
-        "search_placeholder": "ヘルプ記事を検索..."
+        "search_placeholder": "ヘルプ記事を検索...",
+        "popular_section_title": "人気の記事"
       }
     }
   },
@@ -81,11 +80,7 @@
     "buttons": {
       "signout": "ログアウト"
     },
-    "read_more": "詳細を表示",
-    "menu": ""
-  },
-  "search": {
-    "placeholder": "検索.."
+    "read_more": "詳細を表示"
   },
   "placeholders": {
     "search": ""
