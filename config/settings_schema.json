@@ -12,11 +12,10 @@
     "theme_support_url": "https://help.baklib.cn/themes/docs/settings",
     "theme_thumb_url": "images/theme/${lang}/thumb.png",
     "theme_preview_images": [
-      "images/theme/${lang}/index.png",
+      "images/theme/${lang}/cover.png",
       "images/theme/${lang}/index-faqs.png",
       "images/theme/${lang}/index-card.png",
-      "images/theme/${lang}/index-support.png",
-      "images/theme/${lang}/page.png"
+      "images/theme/${lang}/index-support.png"
     ],
     "theme_languages": [
       {

@@ -80,9 +80,7 @@ assets/images/theme/<lang>/
 └── page.png
 ```
 
-主题编辑器里各首页变体的缩略图还可放在 `assets/images/schema/`（如 `index-support.png`）。
-
-`config/settings_schema.json` 中的 `${lang}` 占位会被自动替换：
+模板 schema 中的 `thumb_url`、`preview_image_urls` 与 `config/settings_schema.json` 中的主题预览图均使用 `images/theme/${lang}/`。`${lang}` 占位会被自动替换：
 
 ```json
 "theme_thumb_url": "images/theme/${lang}/thumb.png",

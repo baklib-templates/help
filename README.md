@@ -80,9 +80,7 @@ assets/images/theme/<lang>/
 └── page.png
 ```
 
-Schema thumbnails for the theme picker also live under `assets/images/schema/` (e.g. `index-support.png`).
-
-The `${lang}` placeholder used in `config/settings_schema.json` is resolved automatically:
+Template `thumb_url` / `preview_image_urls` and theme preview paths in `config/settings_schema.json` all use `images/theme/${lang}/`. The `${lang}` placeholder is resolved automatically:
 
 ```json
 "theme_thumb_url": "images/theme/${lang}/thumb.png",
