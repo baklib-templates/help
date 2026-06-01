@@ -1,5 +1,5 @@
 {
-  "theme_label": "Help Center",
+  "theme_label": "Help",
   "theme_description": "打造使用者願意閱讀的文件體驗：架構清楚、搜尋迅速，並可接入 AI 問答。將知識庫呈現為產品文件、API 指南與幫助中心，無須從零自建文件站。",
   "recommendations": {
     "baklib": {
