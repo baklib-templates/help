@@ -1,0 +1,52 @@
+{
+  "copy": {
+    "en": {
+      "title": "Help",
+      "subtitle": "Ship documentation your users will actually read—clear information architecture, instant search, and AI-ready Q&A out of the box. Turn your knowledge base into polished product docs, API guides, and help centers without hand-rolling a separate doc site."
+    },
+    "zh-CN": {
+      "title": "帮助中心",
+      "subtitle": "打造用户愿意阅读的文档体验：结构清晰、检索迅捷，并可接入 AI 问答。将知识库呈现为产品文档、API 指南与帮助中心，无需从零自建文档站。"
+    },
+    "zh-TW": {
+      "title": "Help",
+      "subtitle": "打造使用者願意閱讀的文件體驗：架構清楚、搜尋迅速，並可接入 AI 問答。將知識庫呈現為產品文件、API 指南與幫助中心，無須從零自建文件站。"
+    },
+    "ja": {
+      "title": "Help Center",
+      "subtitle": "ユーザーが読みたくなるドキュメント体験を届けます。情報設計が明快で検索が速く、AI による回答にも対応。ナレッジベースを製品ドキュメント、API ガイド、ヘルプセンターとして公開でき、ゼロからドキュメントサイトを構築する必要はありません。"
+    },
+    "ko": {
+      "title": "Help Center",
+      "subtitle": "사용자가 실제로 읽는 문서 경험을 제공합니다. 명확한 정보 구조, 빠른 검색, AI 기반 Q&A까지 지원합니다. 지식베이스를 제품 문서·API 가이드·헬프 센터로 바로 공개하고, 문서 사이트를 처음부터 만들 필요가 없습니다."
+    },
+    "de": {
+      "title": "Help",
+      "subtitle": "Dokumentation, die Nutzer wirklich lesen—klare Informationsarchitektur, blitzschnelle Suche und KI-gestützte Antworten out of the box. Verwandeln Sie Ihre Wissensdatenbank in überzeugende Produkt-Docs, API-Guides und Hilfecenter, ohne eine eigene Doc-Site von Grund auf zu bauen."
+    },
+    "fr": {
+      "title": "Help Center",
+      "subtitle": "Une documentation que vos utilisateurs lisent vraiment—architecture claire, recherche instantanée et réponses assistées par IA prêtes à l’emploi. Transformez votre base de connaissances en docs produit, guides API et centres d’aide soignés, sans reconstruire un site de documentation à la main."
+    }
+  },
+  "keywords": {
+    "en": ["Product docs", "FAQ", "Help center", "AI Q&A", "Search"],
+    "zh-CN": ["产品文档", "FAQ", "帮助中心", "AI 问答", "全文检索"],
+    "zh-TW": ["產品文件", "FAQ", "幫助中心", "AI 問答", "全文檢索"],
+    "ja": ["製品ドキュメント", "FAQ", "ヘルプセンター", "AI Q&A", "検索"],
+    "ko": ["제품 문서", "FAQ", "헬프 센터", "AI Q&A", "검색"],
+    "de": ["Produktdocs", "FAQ", "Hilfecenter", "KI-Q&A", "Suche"],
+    "fr": ["Docs produit", "FAQ", "Centre d'aide", "IA Q&R", "Recherche"]
+  },
+  "cover": {
+    "gradient_left": [[242, 252, 249], [224, 242, 235]],
+    "gradient_right": [[255, 248, 242], [248, 232, 220]],
+    "blob_palette": [[13, 148, 136], [20, 184, 166], [45, 212, 191], [234, 88, 12], [251, 146, 60], [253, 186, 116]],
+    "liquid_glass": {
+      "blobs": 6,
+      "blob_alpha": 30,
+      "blob_blur": 120,
+      "grain_amount": 0.025
+    }
+  }
+}
