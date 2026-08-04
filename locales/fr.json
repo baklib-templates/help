@@ -42,7 +42,7 @@
     "search": {
       "placeholder": "Rechercher…",
       "no_results": "Aucun résultat trouvé",
-      "ai_input_placeholder": "Saisissez votre question…"
+      "ai_input_placeholder": "Discuter avec l’IA…"
     },
     "page": {
       "llm_prompt_template": "Lis %{url} pour que je puisse poser des questions à son sujet.",
@@ -69,10 +69,15 @@
     }
   },
   "ai": {
-    "title": "Recherche IA",
+    "title": "Assistant IA",
     "thinking": "Réflexion…",
     "completed": "Réponse de l’IA terminée.",
-    "canceled": "Annulé"
+    "canceled": "Annulé",
+    "disclaimer": "Contenu généré par l’IA, des erreurs sont possibles. Veuillez vérifier.",
+    "widen": "Élargir le panneau",
+    "narrow": "Réduire le panneau",
+    "collapse": "Replier le panneau",
+    "expand": "Ouvrir l’assistant IA"
   },
   "generic": {
     "published_at": "Publié le",

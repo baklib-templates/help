@@ -177,10 +177,9 @@
           </thead>
           <tbody class="divide-y divide-base-300 dark:divide-base-300">
             <tr><td class="px-4 py-3 font-mono text-xs">logo_url</td><td class="px-4 py-3">图片</td><td class="px-4 py-3 text-base-content/80">页头 Logo（3:1）。未设置时显示站点图标 + 名称</td><td class="px-4 py-3">—</td></tr>
-            <tr><td class="px-4 py-3 font-mono text-xs">company_name</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">公司名称，显示在页脚</td><td class="px-4 py-3">Baklib.cn</td></tr>
-            <tr><td class="px-4 py-3 font-mono text-xs">copyright_info</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">备案/版权信息</td><td class="px-4 py-3">All Rights Reserved</td></tr>
             <tr><td class="px-4 py-3 font-mono text-xs">show_published_at</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否在内容页显示发布时间</td><td class="px-4 py-3">否</td></tr>
             <tr><td class="px-4 py-3 font-mono text-xs">show_author</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否在内容页显示作者</td><td class="px-4 py-3">否</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">enable_ai_chat_search</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否在搜索页提供 AI Chat 助手（仍需站点已开通 AI 搜索）</td><td class="px-4 py-3">是</td></tr>
             <tr><td class="px-4 py-3 font-mono text-xs">ai_search_completed_text</td><td class="px-4 py-3">文本</td><td class="px-4 py-3 text-base-content/80">AI 回答结束后的附加说明（覆盖默认结束语）</td><td class="px-4 py-3">—</td></tr>
             <tr><td class="px-4 py-3 font-mono text-xs">show_page_tools_dropdown</td><td class="px-4 py-3">复选框</td><td class="px-4 py-3 text-base-content/80">是否在内容页显示「页面工具」下拉菜单（复制 Markdown、LLM 分享、MCP 等）</td><td class="px-4 py-3">是</td></tr>
           </tbody>
@@ -202,7 +201,7 @@
           <tbody class="divide-y divide-base-300 dark:divide-base-300">
             <tr><td class="px-4 py-3 font-mono text-xs">head_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">注入 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">&lt;head&gt;</code>，常用于统计代码、客服机器人等</td><td class="px-4 py-3">—</td></tr>
             <tr><td class="px-4 py-3 font-mono text-xs">header_menu_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">页头顶部导航区域额外链接</td><td class="px-4 py-3 font-mono text-xs">preset:header_menu_html.html</td></tr>
-            <tr><td class="px-4 py-3 font-mono text-xs">footer_menu_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">页脚内导航/友情链接/SEO 链接</td><td class="px-4 py-3 font-mono text-xs">preset:footer_menu_html.html</td></tr>
+            <tr><td class="px-4 py-3 font-mono text-xs">footer_menu_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">页脚全部内容（导航、版权、备案等均由此填充）</td><td class="px-4 py-3 font-mono text-xs">preset:footer_menu_html.html</td></tr>
             <tr><td class="px-4 py-3 font-mono text-xs">contact_html</td><td class="px-4 py-3">HTML</td><td class="px-4 py-3 text-base-content/80">「联系支持」区块：在 <strong>卡片首页</strong>底部独立展示；在 <strong>支持首页</strong>、<strong>内容页</strong>、<strong>搜索页</strong>通过右侧侧栏 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_aside_nav</code> 展示</td><td class="px-4 py-3 font-mono text-xs">preset:contact_html.html</td></tr>
           </tbody>
         </table>
@@ -367,7 +366,7 @@
 
       <h3 class="text-lg font-semibold text-base-content mt-6 mb-3">6.3 AI 搜索</h3>
       <ul class="mb-4 list-disc space-y-2 pl-6 text-base leading-relaxed text-base-content/90">
-        <li>需在 Baklib 站点层面开启 AI 搜索能力（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">site.ai_search_enabled?</code>）。</li>
+        <li>需在 Baklib 站点层面开启 AI 搜索能力（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">site.ai_search_enabled?</code>），且主题公共设置 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">enable_ai_chat_search</code> 勾选（默认开启）。</li>
         <li>搜索页（<code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">search.liquid</code>）右侧侧栏渲染 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">_support_ai_search</code> 片段；有搜索结果时自动展示并传入当前关键词。</li>
         <li>站点设置 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">ai_search_completed_text</code> 可自定义 AI 回答结束语；否则使用 <code class="rounded bg-base-200 px-1.5 py-0.5 font-mono text-sm text-base-content dark:bg-base-300/50">locales/*/ai.completed</code> 默认文案。</li>
       </ul>

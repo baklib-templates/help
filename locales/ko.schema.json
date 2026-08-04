@@ -149,30 +149,20 @@
         "label": "로고 이미지",
         "info": "로고가 설정된 경우 헤더에 로고가 표시됩니다. 그렇지 않은 경우: 웹사이트 아이콘+사이트 이름"
       },
-      "company_name": {
-        "label": "회사명",
-        "default": "Baklib.cn",
-        "info": "페이지 하단의 푸터 위치에 표시"
-      },
-      "copyright_info": {
-        "label": "ICP/저작권 정보",
-        "default": "ICP xxxxxx"
-      },
       "show_published_at": {
         "label": "게시일 표시"
       },
       "show_author": {
         "label": "작성자 표시"
       },
+      "enable_ai_chat_search": {
+        "label": "AI Chat 검색 사용",
+        "info": "켜면 검색 페이지 오른쪽에 AI 어시스턴트가 표시됩니다. 끄면 제공하지 않습니다. 사이트 AI 검색 기능도 켜져 있어야 합니다."
+      },
       "ai_search_completed_text": {
         "label": "AI 답변 종료 문구",
         "info": "AI 답변이 끝난 후 문장을 추가합니다."
-      }
-    }
-  },
-  "page_config": {
-    "name": "페이지 설정",
-    "settings": {
+      },
       "show_page_tools_dropdown": {
         "label": "페이지 도구 드롭다운 표시"
       }
@@ -209,6 +199,27 @@
       "lucide_icons": {
         "label": "허용된 Lucide 아이콘 이름",
         "info": "한 줄에 kebab-case 아이콘 이름 하나(예: help-circle, package). 아이콘 이름 검색: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>. 페이지 템플릿 아이콘 드롭다운은 이 목록에서 생성됩니다. 아이콘은 테마 JS bundle과 일치해야 하며, bundle을 업데이트하지 않고 여기에만 이름을 추가하면 사이트에 표시되지 않습니다."
+      }
+    }
+  },
+  "settings": {
+    "weixin_share": {
+      "title": "위챗 설정",
+      "weixin_app_id": {
+        "label": "개발자 ID(AppID)",
+        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'> 위챗 대중번호/설정 및 개발/개발 인터페이스 관리 </a> 에서 획득"
+      },
+      "weixin_app_secret": {
+        "label": "개발자 암호(AppSecret)",
+        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat 공식 계정/설정 및 개발/개발 인터페이스 관리</a>에서 획득"
+      },
+      "weixin_enabled": {
+        "label": "위챗 공유 사용 여부",
+        "info": "사이트 페이지 위챗 공유 능력 제공 </br>위챗 대중번호에 ip 화이트리스트 (ip: ${service_ip}) 를 설정하십시오. 설정 후 일정 기간 효력이 지연됩니다.</br>2.위챗 공유 권한 설정 여부, 위챗 대중번호/설정 및 개발/개발 인터페이스 관리: <a href='https://mp.weixin.qq.com/cgi-bin/frame'> 웹 서비스 / 공유 인터페이스 </a>. </br>공유 링크가 카드인지 여부: 카드 형식에서 공유 카드 형식으로, 링크 형식에서 공유 링크 형식으로,웹 페이지의 초기 링크 공유는 회사의 서비스 번호나 소장 후에 카드 공유를 진행할 수 있습니다 (이 규칙은 위챗 공유 제한입니다)."
+      },
+      "weixin_debug": {
+        "label": "debug 프롬프트 설정 여부",
+        "info": "구성 단계에서만 이 옵션을 켜십시오.오픈 후 프런트엔드 사이트에 액세스할 때 위챗 공유를 제대로 구성하지 않으면 오류 메시지가 자동으로 표시됩니다."
       }
     }
   }

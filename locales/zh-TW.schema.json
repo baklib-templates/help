@@ -149,30 +149,20 @@
         "label": "Logo 圖片",
         "info": "若設置了logo，則頁頭顯示 logo，否則顯示：網站圖標+站點名稱"
       },
-      "company_name": {
-        "label": "公司名稱",
-        "default": "Baklib.cn",
-        "info": "顯示在頁面底部頁腳位置"
-      },
-      "copyright_info": {
-        "label": "備案/版權信息",
-        "default": "蜀ICP備xxxx號"
-      },
       "show_published_at": {
         "label": "顯示發布時間"
       },
       "show_author": {
         "label": "顯示作者"
       },
+      "enable_ai_chat_search": {
+        "label": "啟用 AI Chat 搜尋",
+        "info": "開啟後，搜尋頁右側顯示 AI 助手對話框；取消勾選則不提供該功能。仍需站點已開通 AI 搜尋能力。"
+      },
       "ai_search_completed_text": {
         "label": "AI回答結束語",
         "info": "AI回答結束後添加一句話"
-      }
-    }
-  },
-  "page_config": {
-    "name": "頁面配置",
-    "settings": {
+      },
       "show_page_tools_dropdown": {
         "label": "顯示頁面工具下拉選單"
       }
@@ -209,6 +199,27 @@
       "lucide_icons": {
         "label": "允許的 Lucide 圖標名稱",
         "info": "每行一個 kebab-case 圖標名（如 help-circle、package）。圖標名稱查找：<a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>。頁面模板從此列表生成圖標下拉選項。圖標須與主題 JS bundle 一致；僅在此處添加名稱而不更新 bundle 時，前台無法渲染。"
+      }
+    }
+  },
+  "settings": {
+    "weixin_share": {
+      "title": "微信配寘",
+      "weixin_app_id": {
+        "label": "開發者ID（AppID）",
+        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>微信公眾號/設定與開發/開發介面管理</a>中獲取"
+      },
+      "weixin_app_secret": {
+        "label": "開發者密碼（AppSecret）",
+        "info": "在<a href='https://mp.weixin.qq.com/cgi-bin/frame'>微信公眾號/設定與開發/開發介面管理</a>取得"
+      },
+      "weixin_enabled": {
+        "label": "是否啟用微信分享",
+        "info": "提供網站頁面微信分享的能力</br>1.請在微信公眾號中配寘ip白名單（ip: ${service_ip}），配寘後將有一段時間的生效延遲。 </br>2.檢查是否開啟微信分享許可權，微信公眾號/設定與開發/開發介面管理：<a href='https://mp.weixin.qq.com/cgi-bin/frame'>網頁服務/分享介面</a>。</br>3.分享連結是否為卡片：從卡片形式進入分享卡片形式，連結形式進入分享連結形式； 網頁初始連結分享可由公司的服務號中或收藏後進行卡片分享（此規則為微信分享限制）。"
+      },
+      "weixin_debug": {
+        "label": "是否開啟debug提示",
+        "info": "請僅在配寘階段開啟此選項； 開啟後在訪問前端網站時若未正確配寘微信分享將自動提示錯誤資訊"
       }
     }
   }

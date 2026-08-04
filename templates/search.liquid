@@ -3,11 +3,15 @@
 {% assign empty_message = 'templates.search.no_results' | t %}
 {% assign search_hot_tags = index_page.settings.search_hot_tags %}
 {% assign hot_keywords = index_page.settings.search_hot_keywords | reg_split: "/\n/" %}
+{% assign show_ai_chat = false %}
+{% if site.ai_search_enabled? and site.settings.enable_ai_chat_search %}
+  {% assign show_ai_chat = true %}
+{% endif %}
 
 <div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
   <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,300px)] lg:items-start lg:gap-10 xl:gap-12">
-      <main class="min-w-0 bg-base-100 dark:bg-base-100">
+    <div class="help-layout-with-aside{% if show_ai_chat %} is-ai-layout{% endif %}">
+      <main class="help-layout-main min-w-0 bg-base-100 dark:bg-base-100">
         <header class="pt-2">
           <div class="w-full max-w-3xl">
             {% form_tag 'search', class: 'w-full', data-turbo-frame: 'frame--search-results', data-turbo-action: 'advance' %}
@@ -110,13 +114,11 @@
         </turbo-frame>
       </main>
 
-      <aside
-        class="min-w-0 lg:sticky lg:top-4 lg:z-10 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:self-start"
-      >
-        {% if site.ai_search_enabled? %}
+      {% if show_ai_chat %}
+        <aside class="help-layout-aside">
           {% render 'support_ai_search', keywords: search.keywords %}
-        {% endif %}
-      </aside>
+        </aside>
+      {% endif %}
     </div>
   </div>
 </div>

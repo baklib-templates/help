@@ -4,9 +4,9 @@
 
 <div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
   <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,300px)] lg:items-start lg:gap-10 xl:gap-12">
+    <div class="help-layout-with-aside">
       {% comment %} Main column: headline, search, popular {% endcomment %}
-      <main class="min-w-0 bg-base-100 dark:bg-base-100">
+      <main class="help-layout-main min-w-0 bg-base-100 dark:bg-base-100">
         <header>
           <div class="flex flex-col pt-6 md:pt-12 pb-3">
             {% if hero_title != blank %}
@@ -77,9 +77,7 @@
       </main>
 
       {% comment %} Right sidebar: topics + contact (sticky on large screens) {% endcomment %}
-      <aside
-        class="min-w-0 lg:sticky lg:top-4 lg:z-10 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:self-start"
-      >
+      <aside class="help-layout-aside">
         {% render 'aside_nav', nav_page: home_page, page: page %}
       </aside>
     </div>

@@ -42,7 +42,7 @@
     "search": {
       "placeholder": "Suchen…",
       "no_results": "Keine Ergebnisse gefunden",
-      "ai_input_placeholder": "Geben Sie Ihre Frage ein…"
+      "ai_input_placeholder": "Mit KI chatten…"
     },
     "page": {
       "llm_prompt_template": "Lies %{url}, damit ich Fragen dazu stellen kann.",
@@ -69,10 +69,15 @@
     }
   },
   "ai": {
-    "title": "KI-Suche",
+    "title": "KI-Assistent",
     "thinking": "Denkt nach…",
     "completed": "KI-Antwort abgeschlossen.",
-    "canceled": "Abgebrochen"
+    "canceled": "Abgebrochen",
+    "disclaimer": "Inhalt von KI erzeugt, kann Fehler enthalten. Bitte prüfen.",
+    "widen": "Panel verbreitern",
+    "narrow": "Panel verschmälern",
+    "collapse": "Panel einklappen",
+    "expand": "KI-Assistent öffnen"
   },
   "generic": {
     "published_at": "Veröffentlicht am",

@@ -149,30 +149,20 @@
         "label": "Logo-Bild",
         "info": "Wenn ein Logo gesetzt ist, wird es im Header angezeigt; sonst: Website-Symbol + Site-Name"
       },
-      "company_name": {
-        "label": "Firmenname",
-        "default": "Baklib.cn",
-        "info": "Wird im Footer am Seitenende angezeigt"
-      },
-      "copyright_info": {
-        "label": "ICP/Copyright-Information",
-        "default": "ICP xxxxxx"
-      },
       "show_published_at": {
         "label": "Veröffentlichungszeit anzeigen"
       },
       "show_author": {
         "label": "Autor anzeigen"
       },
+      "enable_ai_chat_search": {
+        "label": "AI-Chat-Suche aktivieren",
+        "info": "Zeigt den KI-Assistenten auf der Suchseite. Deaktivieren, um ihn auszublenden. Die KI-Suche der Site muss ebenfalls aktiviert sein."
+      },
       "ai_search_completed_text": {
         "label": "KI-Abschlusstext",
         "info": "Fügt nach der KI-Antwort einen Satz hinzu"
-      }
-    }
-  },
-  "page_config": {
-    "name": "Seiteneinstellungen",
-    "settings": {
+      },
       "show_page_tools_dropdown": {
         "label": "Seiten-Tools-Dropdown anzeigen"
       }
@@ -209,6 +199,27 @@
       "lucide_icons": {
         "label": "Erlaubte Lucide-Symbolnamen",
         "info": "Ein kebab-case-Symbolname pro Zeile (z. B. help-circle, package). Symbolnamen nachschlagen: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>. Seitenvorlagen nutzen diese Liste für das Symbol-Dropdown. Symbole müssen zum Theme-JS-Bundle passen; ohne Bundle-Update werden neue Namen nicht gerendert."
+      }
+    }
+  },
+  "settings": {
+    "weixin_share": {
+      "title": "WeChat-Konfiguration",
+      "weixin_app_id": {
+        "label": "Entwickler-ID (AppID)",
+        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat-Konto / Einstellungen & Entwicklung / Entwicklungsschnittstelle</a>"
+      },
+      "weixin_app_secret": {
+        "label": "Entwicklerschlüssel (AppSecret)",
+        "info": "Erhältlich unter <a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat Official Account / Einstellungen & Entwicklung / Entwicklungsschnittstellen</a>"
+      },
+      "weixin_enabled": {
+        "label": "WeChat-Sharing aktivieren?",
+        "info": "Stellt die Möglichkeit bereit, Seiten in WeChat zu teilen.</br>Bitte tragen Sie die IP-Whitelist (ip: ${service_ip}) im WeChat-Konto ein. Änderungen können verzögert wirksam werden.</br>Prüfen Sie die Sharing-Berechtigung im WeChat-Konto / Einstellungen & Entwicklung / Entwicklungsschnittstelle: <a href='https://mp.weixin.qq.com/cgi-bin/frame'>Webdienst / Sharing-Schnittstelle</a>."
+      },
+      "weixin_debug": {
+        "label": "Debug-Hinweise aktivieren?",
+        "info": "Bitte nur während der Konfigurationsphase aktivieren; bei aktivierter Debug-Anzeige werden Konfigurationsfehler beim Aufruf der Seite gemeldet."
       }
     }
   }

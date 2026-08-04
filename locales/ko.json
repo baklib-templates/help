@@ -42,7 +42,7 @@
     "search": {
       "placeholder": "검색...",
       "no_results": "검색 결과가 없습니다",
-      "ai_input_placeholder": "질문을 입력하세요…"
+      "ai_input_placeholder": "AI와 대화하기…"
     },
     "page": {
       "llm_prompt_template": "읽기 %{url} 의 내용, 나는 그것에 대해 질문할 수 있습니다.",
@@ -69,10 +69,15 @@
     }
   },
   "ai": {
-    "title": "AI 검색",
+    "title": "AI 어시스턴트",
     "thinking": "생각 중...",
     "completed": "AI 응답 완료.",
-    "canceled": "취소됨"
+    "canceled": "취소됨",
+    "disclaimer": "내용은 AI가 생성했으며 오류가 있을 수 있습니다. 직접 확인해 주세요.",
+    "widen": "패널 넓히기",
+    "narrow": "패널 좁히기",
+    "collapse": "패널 접기",
+    "expand": "AI 어시스턴트 열기"
   },
   "generic": {
     "published_at": "게시일",

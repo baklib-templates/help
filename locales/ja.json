@@ -42,7 +42,7 @@
     "search": {
       "placeholder": "検索...",
       "no_results": "検索結果が見つかりません",
-      "ai_input_placeholder": "質問を入力してください…"
+      "ai_input_placeholder": "AI に聞いてみる…"
     },
     "page": {
       "llm_prompt_template": "読み込み %{url} の内容, 私はそれについて質問することができます。",
@@ -69,10 +69,15 @@
     }
   },
   "ai": {
-    "title": "AI 検索",
+    "title": "AI アシスタント",
     "thinking": "思考中...",
     "completed": "AI 応答完了.",
-    "canceled": "キャンセルされました"
+    "canceled": "キャンセルされました",
+    "disclaimer": "内容は AI により生成されており、誤りが含まれる可能性があります。ご確認ください。",
+    "widen": "パネルを広げる",
+    "narrow": "パネルを狭める",
+    "collapse": "パネルを折りたたむ",
+    "expand": "AI アシスタントを開く"
   },
   "generic": {
     "published_at": "公開日時",

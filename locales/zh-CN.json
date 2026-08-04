@@ -42,7 +42,7 @@
     "search": {
       "placeholder": "搜索...",
       "no_results": "没有找到相关结果",
-      "ai_input_placeholder": "请输入你的问题…"
+      "ai_input_placeholder": "跟 AI 聊聊…"
     },
     "page": {
       "llm_prompt_template": "读取 %{url} 的内容，以便我可以询问关于它的问题。",
@@ -69,10 +69,15 @@
     }
   },
   "ai": {
-    "title": "AI 搜索",
+    "title": "AI 助手",
     "thinking": "正在思考...",
     "completed": "AI 回答完毕.",
-    "canceled": "已取消回答"
+    "canceled": "已取消回答",
+    "disclaimer": "内容由 AI 生成，可能存在错误，请自行核实。",
+    "widen": "加宽对话框",
+    "narrow": "收窄对话框",
+    "collapse": "折叠对话框",
+    "expand": "展开 AI 助手"
   },
   "generic": {
     "published_at": "发布时间",

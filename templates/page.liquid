@@ -5,8 +5,8 @@
 
 <div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
   <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,300px)] lg:items-start lg:gap-10 xl:gap-12">
-      <main class="min-w-0 bg-base-100 dark:bg-base-100">
+    <div class="help-layout-with-aside">
+      <main class="help-layout-main min-w-0 bg-base-100 dark:bg-base-100">
         {% render 'support_page_header', page: page %}
 
         {% assign page_content = page.settings.content %}
@@ -31,9 +31,7 @@
         {% endif %}
       </main>
 
-      <aside
-        class="min-w-0 lg:sticky lg:top-4 lg:z-10 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:self-start"
-      >
+      <aside class="help-layout-aside">
         {% render 'aside_nav', nav_page: home_page, page: page %}
       </aside>
     </div>

@@ -42,7 +42,7 @@
     "search": {
       "placeholder": "Search...",
       "no_results": "No results found",
-      "ai_input_placeholder": "Type your question…"
+      "ai_input_placeholder": "Chat with AI…"
     },
     "page": {
       "llm_prompt_template": "Read from %{url} so I can ask questions about it.",
@@ -69,10 +69,15 @@
     }
   },
   "ai": {
-    "title": "AI Search",
+    "title": "AI Assistant",
     "thinking": "Thinking...",
     "completed": "AI response completed.",
-    "canceled": "Canceled"
+    "canceled": "Response canceled",
+    "disclaimer": "Content is AI-generated and may contain errors. Please verify.",
+    "widen": "Widen panel",
+    "narrow": "Narrow panel",
+    "collapse": "Collapse panel",
+    "expand": "Open AI Assistant"
   },
   "generic": {
     "published_at": "Published at",

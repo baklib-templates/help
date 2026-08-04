@@ -310,3 +310,161 @@ summary:has(.menu-active) {
 * {
   scrollbar-width: thin;
 }
+
+/**
+ * Low-end browser layout shims.
+ * Tailwind v4 emits `@media (width >= …)` which IE / some Huawei WebViews ignore,
+ * so `lg:` / `md:` utilities never apply and two-column layouts collapse to stacked.
+ * These classes use classic min/max-width queries and desktop-first defaults.
+ */
+.help-layout-with-aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.help-layout-with-aside > .help-layout-main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0%;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.help-layout-with-aside > .help-layout-aside {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 280px;
+  flex: 0 0 280px;
+  width: 280px;
+  max-width: 300px;
+  margin-left: 2.5rem;
+  min-width: 0;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
+  max-height: calc(100vh - 2rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media (max-width: 1023.98px) {
+  .help-layout-with-aside {
+    display: block;
+  }
+
+  .help-layout-with-aside > .help-layout-aside {
+    width: auto;
+    max-width: none;
+    margin-left: 0;
+    margin-top: 2.5rem;
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+/* Mobile drawer: hide by default so unknown/old engines keep desktop chrome clean */
+.help-drawer-mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 767.98px) {
+  .help-drawer-mobile-only {
+    display: block !important;
+  }
+}
+
+/**
+ * Search page AI chat panel layout (classic media queries for low-end browsers).
+ * Default wider than generic aside; `.is-ai-wide` expands further; `.is-ai-collapsed`
+ * collapses aside footprint and leaves a fixed reopen FAB.
+ */
+.help-layout-with-aside.is-ai-layout > .help-layout-aside {
+  -ms-flex: 0 0 400px;
+  flex: 0 0 400px;
+  width: 400px;
+  max-width: 440px;
+  overflow: visible;
+}
+
+.help-layout-with-aside.is-ai-layout.is-ai-wide > .help-layout-aside {
+  -ms-flex: 0 0 520px;
+  flex: 0 0 520px;
+  width: 520px;
+  max-width: 560px;
+}
+
+.help-layout-with-aside.is-ai-layout.is-ai-collapsed > .help-layout-aside {
+  -ms-flex: 0 0 0px;
+  flex: 0 0 0;
+  width: 0;
+  max-width: 0;
+  margin-left: 0;
+  overflow: visible;
+  max-height: none;
+  position: static;
+}
+
+.help-layout-with-aside.is-ai-layout.is-ai-collapsed > .help-layout-main {
+  max-width: 100%;
+}
+
+.ai-chat-dialog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: calc(100vh - 6rem);
+  max-height: calc(100vh - 6rem);
+  min-height: 28rem;
+  overflow: hidden;
+}
+
+.ai-chat-messages:not(:empty) ~ .ai-chat-empty-hint {
+  display: none;
+}
+
+.ai-chat-fab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 40;
+}
+
+@media (max-width: 1023.98px) {
+  .help-layout-with-aside.is-ai-layout > .help-layout-aside,
+  .help-layout-with-aside.is-ai-layout.is-ai-wide > .help-layout-aside {
+    -ms-flex: none;
+    flex: none;
+    width: auto;
+    max-width: none;
+  }
+
+  .help-layout-with-aside.is-ai-layout.is-ai-collapsed > .help-layout-aside {
+    width: 0;
+    max-width: 0;
+    margin-top: 0;
+  }
+
+  .ai-chat-dialog {
+    height: min(70vh, 36rem);
+    max-height: min(70vh, 36rem);
+    min-height: 24rem;
+  }
+
+  .ai-chat-width-toggle {
+    display: none !important;
+  }
+}
