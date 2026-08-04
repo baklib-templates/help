@@ -9,7 +9,10 @@
 {% endif %}
 
 <div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
-  <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
+  <div
+    class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100"
+    data-controller="link-target{% if show_ai_chat %} search-page{% endif %}"
+  >
     <div class="help-layout-with-aside{% if show_ai_chat %} is-ai-layout{% endif %}">
       <main class="help-layout-main min-w-0 bg-base-100 dark:bg-base-100">
         <header class="pt-2">
@@ -49,7 +52,12 @@
                 <div class="text-base-content/70 dark:text-base-content/50">
                   <span class="mr-2 font-medium">{{ 'layout.theme.search_keywords_label' | t }}:</span>
                   {% for hot_keyword in hot_keywords %}
-                    <a href="{{ site.index_path }}-/search?q={{ hot_keyword }}" class="mr-2 text-primary hover:underline">
+                    <a
+                      href="{{ site.index_path }}-/search?q={{ hot_keyword }}"
+                      data-turbo-frame="frame--search-results"
+                      data-turbo-action="advance"
+                      class="mr-2 text-primary hover:underline"
+                    >
                       {{ hot_keyword }}
                     </a>
                   {% endfor %}
@@ -59,54 +67,53 @@
           </div>
         </header>
 
-        <turbo-frame id="frame--search-results" class="mt-8 block">
-          {% if search.tag %}
-            <div class="mb-4">
-              <span class="rounded px-2 py-1 text-sm text-base-content" style="background-color: {{ search.tag.color }}">
-                {{ search.tag.name }}
-              </span>
-            </div>
-          {% endif %}
-
+        <turbo-frame
+          id="frame--search-results"
+          class="mt-8 block"
+          {% if show_ai_chat %}data-action="turbo:frame-load->search-page#frameLoaded"{% endif %}
+        >
+          {% assign frame_has_results = false %}
           {% if search.keywords or search.tag %}
             {% paginate_tag search.pages, as: 'items', per: 20 %}
               {% assign extends_size = search.extends | size %}
               {% assign items_size = items | size %}
               {% assign total_size = extends_size | plus: items_size %}
               {% assign show_extends = search.page_number == 1 %}
-
               {% if total_size > 0 %}
+                {% assign frame_has_results = true %}
+              {% endif %}
+
+              {% if show_ai_chat %}
+                <div
+                  data-search-page-target="resultsMeta"
+                  data-keywords="{{ search.keywords | escape_once }}"
+                  data-has-results="{% if frame_has_results %}true{% else %}false{% endif %}"
+                  class="hidden"
+                  hidden
+                  aria-hidden="true"
+                ></div>
+              {% endif %}
+
+              {% if frame_has_results %}
                 {% render 'support_search_list', items: items, extends: search.extends, show_extends: show_extends %}
-                {% render 'support_paginate', paginate: paginate, turbo_frame: 'frame--search-results' %}
-                <script>
-                  (function () {
-                    setTimeout(function () {
-                      var container = document.getElementById('js--ai-search-container');
-                      var aiSearch = document.getElementById('js--ai-search');
-                      if (container && aiSearch) {
-                        container.classList.remove('hidden');
-                        aiSearch.dataset.aiSearchMessageValue = "{{ search.keywords | escape_once }}";
-                      } else if (container) {
-                        container.classList.add('hidden');
-                      }
-                    }, 10);
-                  })();
-                </script>
+                {% render 'support_paginate', paginate: paginate, turbo_frame: 'frame--search-results', turbo_action: 'advance' %}
               {% else %}
                 <div class="py-8">
                   {% render 'empty', message: empty_message %}
                 </div>
-                <script>
-                  (function () {
-                    setTimeout(function () {
-                      var container = document.getElementById('js--ai-search-container');
-                      if (container) container.classList.add('hidden');
-                    }, 10);
-                  })();
-                </script>
               {% endif %}
             {% endpaginate_tag %}
           {% else %}
+            {% if show_ai_chat %}
+              <div
+                data-search-page-target="resultsMeta"
+                data-keywords=""
+                data-has-results="false"
+                class="hidden"
+                hidden
+                aria-hidden="true"
+              ></div>
+            {% endif %}
             <div class="py-8">
               {% render 'empty', message: empty_message %}
             </div>
@@ -116,7 +123,7 @@
 
       {% if show_ai_chat %}
         <aside class="help-layout-aside">
-          {% render 'support_ai_search', keywords: search.keywords %}
+          {% render 'support_ai_search' %}
         </aside>
       {% endif %}
     </div>

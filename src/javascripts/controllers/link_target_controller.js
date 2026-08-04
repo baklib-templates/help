@@ -28,7 +28,12 @@ export default class extends Controller {
   connect() {
     const anchors = this.element.querySelectorAll("a[href]");
     anchors.forEach(a => {
-      if (this.disableTurboLinkValue) {
+      // Keep Turbo Frame / explicit turbo opt-in (e.g. search pagination)
+      if (
+        this.disableTurboLinkValue &&
+        !a.hasAttribute("data-turbo-frame") &&
+        a.getAttribute("data-turbo") !== "true"
+      ) {
         a.setAttribute("data-turbo", "false");
       }
 

@@ -2,8 +2,10 @@
   Stripe-style prev/next pagination with range status.
   @param paginate {Object} paginate drop from paginate_tag (required)
   @param turbo_frame {String} turbo-frame target for pagination links (default: _top)
+  @param turbo_action {String} optional turbo action (e.g. advance)
 {%- endcomment -%}
 {% assign frame_target = turbo_frame | default: '_top' %}
+{% assign frame_action = turbo_action | default: '' %}
 {% if paginate.total_pages > 1 %}
   <div class="mt-10 flex flex-col gap-4 border-t border-base-300 pt-6 sm:flex-row sm:items-center sm:justify-between dark:border-base-300">
     <p class="text-sm text-base-content/70 dark:text-base-content/50">
@@ -15,6 +17,7 @@
           href="{{ paginate.url_for[paginate.prev_page] }}"
           class="btn btn-outline btn-sm border-base-300 text-base-content hover:bg-base-200"
           data-turbo-frame="{{ frame_target }}"
+          {% if frame_action != blank %}data-turbo-action="{{ frame_action }}"{% endif %}
         >
           {{ 'templates.page.pagination_prev' | t }}
         </a>
@@ -26,6 +29,7 @@
           href="{{ paginate.url_for[paginate.next_page] }}"
           class="btn btn-outline btn-sm border-base-300 text-base-content hover:bg-base-200"
           data-turbo-frame="{{ frame_target }}"
+          {% if frame_action != blank %}data-turbo-action="{{ frame_action }}"{% endif %}
         >
           {{ 'templates.page.pagination_next' | t }}
         </a>

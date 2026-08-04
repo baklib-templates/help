@@ -385,25 +385,46 @@ summary:has(.menu-active) {
 
 /**
  * Search page AI chat panel layout (classic media queries for low-end browsers).
- * Default wider than generic aside; `.is-ai-wide` expands further; `.is-ai-collapsed`
- * collapses aside footprint and leaves a fixed reopen FAB.
+ * Desktop ratios vs main column: default AI 1/3 (flex 1) · wide AI 2/3 (flex 2).
+ * Mobile: AI panel ordered above the search list.
  */
+.help-layout-with-aside.is-ai-layout {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.help-layout-with-aside.is-ai-layout > .help-layout-main {
+  -webkit-box-flex: 2;
+  -ms-flex: 2 1 0%;
+  flex: 2 1 0%;
+  min-width: 0;
+}
+
 .help-layout-with-aside.is-ai-layout > .help-layout-aside {
-  -ms-flex: 0 0 400px;
-  flex: 0 0 400px;
-  width: 400px;
-  max-width: 440px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0%;
+  flex: 1 1 0%;
+  width: auto;
+  max-width: none;
+  margin-left: 2rem;
   overflow: visible;
 }
 
+.help-layout-with-aside.is-ai-layout.is-ai-wide > .help-layout-main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0%;
+  flex: 1 1 0%;
+}
+
 .help-layout-with-aside.is-ai-layout.is-ai-wide > .help-layout-aside {
-  -ms-flex: 0 0 520px;
-  flex: 0 0 520px;
-  width: 520px;
-  max-width: 560px;
+  -webkit-box-flex: 2;
+  -ms-flex: 2 1 0%;
+  flex: 2 1 0%;
 }
 
 .help-layout-with-aside.is-ai-layout.is-ai-collapsed > .help-layout-aside {
+  -webkit-box-flex: 0;
   -ms-flex: 0 0 0px;
   flex: 0 0 0;
   width: 0;
@@ -415,6 +436,9 @@ summary:has(.menu-active) {
 }
 
 .help-layout-with-aside.is-ai-layout.is-ai-collapsed > .help-layout-main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0%;
+  flex: 1 1 0%;
   max-width: 100%;
 }
 
@@ -444,24 +468,54 @@ summary:has(.menu-active) {
 }
 
 @media (max-width: 1023.98px) {
+  .help-layout-with-aside.is-ai-layout {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .help-layout-with-aside.is-ai-layout > .help-layout-main {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    width: 100%;
+  }
+
   .help-layout-with-aside.is-ai-layout > .help-layout-aside,
   .help-layout-with-aside.is-ai-layout.is-ai-wide > .help-layout-aside {
-    -ms-flex: none;
-    flex: none;
-    width: auto;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    width: 100%;
     max-width: none;
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    position: static;
+    max-height: none;
   }
 
   .help-layout-with-aside.is-ai-layout.is-ai-collapsed > .help-layout-aside {
     width: 0;
     max-width: 0;
+    margin-bottom: 0;
     margin-top: 0;
   }
 
   .ai-chat-dialog {
-    height: min(70vh, 36rem);
-    max-height: min(70vh, 36rem);
-    min-height: 24rem;
+    height: min(60vh, 28rem);
+    max-height: min(60vh, 28rem);
+    min-height: 18rem;
   }
 
   .ai-chat-width-toggle {

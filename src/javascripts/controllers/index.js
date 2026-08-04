@@ -4,6 +4,7 @@ import TurboNavTreeController from "./turbo_nav_tree_controller"
 import LinkTargetController from "./link_target_controller"
 import AiSearchCompletionController from './ai_search_completion_controller'
 import AiSearchPanelController from './ai_search_panel_controller'
+import SearchPageController from './search_page_controller'
 import CopyPageController from "./copy_page_controller"
 import PageToolsController from "./page_tools_controller"
 import HeaderSearchController from "./header_search_controller"
@@ -18,6 +19,7 @@ application.register('turbo-nav-tree', TurboNavTreeController)
 application.register('link-target', LinkTargetController)
 application.register('ai-search', AiSearchCompletionController)
 application.register('ai-search-panel', AiSearchPanelController)
+application.register('search-page', SearchPageController)
 application.register("copy-page", CopyPageController)
 application.register("page-tools", PageToolsController)
 application.register("header-search", HeaderSearchController)

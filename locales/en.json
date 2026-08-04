@@ -74,8 +74,8 @@
     "completed": "AI response completed.",
     "canceled": "Response canceled",
     "disclaimer": "Content is AI-generated and may contain errors. Please verify.",
-    "widen": "Widen panel",
-    "narrow": "Narrow panel",
+    "widen": "Widen panel (2/3)",
+    "narrow": "Narrow panel (1/3)",
     "collapse": "Collapse panel",
     "expand": "Open AI Assistant"
   },
