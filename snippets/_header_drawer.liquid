@@ -35,6 +35,52 @@
             </div>
           </turbo-frame>
         </div>
+
+        <div class="flex-none border-t border-base-300 px-4 py-3">
+          {% comment %} Drawer uses base surface; reuse docs-style tones via inline classes in a compact footer {% endcomment %}
+          {% assign can_baklib_login = site.baklib_login_enabled %}
+          {% assign can_sso_login = site.sso_login_enabled %}
+          {% if current_user %}
+            <div class="flex items-center gap-3">
+              {% if current_user.image %}
+                <img src="{{ current_user.image }}" alt="" class="size-8 rounded-field object-cover" width="32" height="32">
+              {% else %}
+                <span class="flex size-8 items-center justify-center rounded-field bg-base-200 text-base-content/60">
+                  {% render 'icon', name: 'user', class: 'size-4' %}
+                </span>
+              {% endif %}
+              <div class="min-w-0 flex-1">
+                <div class="truncate text-sm font-medium">{{ current_user.name }}</div>
+                <a href="{{ current_user.profile_url }}" class="text-xs text-base-content/60 hover:text-primary">{{ 'snippets.header_user_account.profile' | t: '个人信息' }}</a>
+              </div>
+              {% form_tag 'sign_out' %}
+                <button type="submit" class="btn btn-ghost btn-sm" data-disable-with='{{ "snippets.header_user_account.signout_loading" | t: "退出中..." }}'>
+                  {{ 'generic.buttons.signout' | t: '退出登录' }}
+                </button>
+              {% endform_tag %}
+            </div>
+          {% elsif can_baklib_login %}
+            <div class="flex items-center justify-between gap-2">
+              {% form_tag 'sign_in_with_baklib', class: 'min-w-0' %}
+                <input type="hidden" name="sign_up" value="true">
+                <button type="submit" class="btn btn-ghost btn-sm h-9 min-h-9 px-2 font-normal text-base-content/70" data-disable-with='{{ "snippets.header_user_account.signin_loading" | t: "登录中..." }}'>
+                  {{ 'snippets.header_user_account.create_account' | t: '创建账户' }}
+                </button>
+              {% endform_tag %}
+              {% form_tag 'sign_in_with_baklib', class: 'shrink-0' %}
+                <button type="submit" class="btn btn-outline btn-sm h-9 min-h-9 border-base-content/20 px-4 font-normal text-base-content/80" data-disable-with='{{ "snippets.header_user_account.signin_loading" | t: "登录中..." }}'>
+                  {{ 'snippets.header_user_account.signin' | t: '登录' }}
+                </button>
+              {% endform_tag %}
+            </div>
+          {% elsif can_sso_login %}
+            {% form_tag 'sign_in_with_sso', class: 'w-full' %}
+              <button type="submit" class="btn btn-outline btn-sm h-9 min-h-9 w-full border-base-content/20 font-normal text-base-content/80" data-disable-with='{{ "snippets.header_user_account.signin_loading" | t: "登录中..." }}'>
+                {{ 'snippets.header_user_account.signin' | t: '登录' }}
+              </button>
+            {% endform_tag %}
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>

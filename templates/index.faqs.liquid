@@ -108,7 +108,7 @@
             <div class="space-y-3 md:space-y-4 mt-2">
               {% paginate_tag faqs, as: 'faq_items', per: 20 %}
                 {% for faq_page in faq_items %}
-                  <details class="index-faqs-item">
+                  <details class="index-faqs-item" data-controller="faq-item">
                     <summary class="index-faqs-item__summary">
                       <div class="min-w-0">
                         <div class="flex items-start gap-3">
@@ -127,8 +127,13 @@
                       </div>
                     </summary>
 
-                    <div class="index-faqs-item__content">
-                      <div class="text-sm md:text-base leading-7 text-base-content/70 dark:text-base-content">
+                    <div class="index-faqs-item__content" data-faq-item-target="panel">
+                      {%- comment -%}
+                        Keep answer HTML inert until the item is opened so collapsed FAQs
+                        do not request images (preview KB often has Rails-guide relative srcs).
+                      {%- endcomment -%}
+                      <template data-faq-item-target="source">
+                        <div class="text-sm md:text-base leading-7 text-base-content/70 dark:text-base-content">
                           <div class="ProseMirror">
                             {{ faq_page.settings.content }}
                           </div>
@@ -153,7 +158,8 @@
                               {% render 'icon', name: 'arrow-right', class: 'size-4' %}
                             </a>
                           </div>
-                      </div>
+                        </div>
+                      </template>
                     </div>
                   </details>
                 {% endfor %}

@@ -7,6 +7,14 @@
     }
   },
   "snippets": {
+    "header_user_account": {
+      "user_center": "个人中心",
+      "profile": "个人信息",
+      "signout_loading": "退出中...",
+      "signin_loading": "登录中...",
+      "signin": "登录",
+      "create_account": "创建账户"
+    },
     "feedback_form": {
       "title": "提交反馈",
       "message_label": "留言",

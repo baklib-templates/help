@@ -8,6 +8,7 @@ import SearchPageController from './search_page_controller'
 import CopyPageController from "./copy_page_controller"
 import PageToolsController from "./page_tools_controller"
 import HeaderSearchController from "./header_search_controller"
+import FaqItemController from "./faq_item_controller"
 
 if (!window.Stimulus) {
   window.Stimulus = Application.start()
@@ -23,3 +24,4 @@ application.register('search-page', SearchPageController)
 application.register("copy-page", CopyPageController)
 application.register("page-tools", PageToolsController)
 application.register("header-search", HeaderSearchController)
+application.register("faq-item", FaqItemController)

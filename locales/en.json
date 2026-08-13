@@ -7,6 +7,14 @@
     }
   },
   "snippets": {
+    "header_user_account": {
+      "user_center": "Account",
+      "profile": "Profile",
+      "signout_loading": "Signing out...",
+      "signin_loading": "Signing in...",
+      "signin": "Sign in",
+      "create_account": "Create account"
+    },
     "feedback_form": {
       "title": "Submit Feedback",
       "message_label": "Message",
