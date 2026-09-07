@@ -224,6 +224,24 @@ summary:has(.menu-active) {
   @apply max-w-full overflow-x-auto;
 }
 
+/* 覆盖 editor-render 表格 word-break: break-all，避免英文单词被拦腰截断 */
+#page-content.ProseMirror .bke-table-container table td,
+#page-content.ProseMirror .bke-table-container table th,
+#page-content.ProseMirror .table-container table td,
+#page-content.ProseMirror .table-container table th,
+#page-content.ProseMirror table td,
+#page-content.ProseMirror table th {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+#page-content.ProseMirror .bke-table-container a,
+#page-content.ProseMirror .table-container a,
+#page-content.ProseMirror table a {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
 #page-content.ProseMirror code {
   @apply text-sm;
 }
