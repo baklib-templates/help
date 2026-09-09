@@ -145,13 +145,19 @@
         "placeholder": "t:schema.custom_html.settings.head_html.placeholder"
       },
       {
+        "id": "enable_tailwind_cdn",
+        "type": "checkbox",
+        "label": "t:schema.custom_html.settings.enable_tailwind_cdn.label",
+        "info": "t:schema.custom_html.settings.enable_tailwind_cdn.info",
+        "default": false
+      },
+      {
         "id": "header_menu_html",
         "type": "html",
         "label": "t:schema.custom_html.settings.header_menu_html.label",
         "info": "t:schema.custom_html.settings.header_menu_html.info",
         "rows": 12,
-        "placeholder": "t:schema.custom_html.settings.header_menu_html.placeholder",
-        "default": "preset:header_menu_html.html"
+        "placeholder": "t:schema.custom_html.settings.header_menu_html.placeholder"
       },
       {
         "id": "footer_menu_html",
@@ -159,8 +165,7 @@
         "label": "t:schema.custom_html.settings.footer_menu_html.label",
         "info": "t:schema.custom_html.settings.footer_menu_html.info",
         "rows": 12,
-        "placeholder": "t:schema.custom_html.settings.footer_menu_html.placeholder",
-        "default": "preset:footer_menu_html.html"
+        "placeholder": "t:schema.custom_html.settings.footer_menu_html.placeholder"
       },
       {
         "id": "contact_html",

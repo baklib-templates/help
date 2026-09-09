@@ -176,15 +176,19 @@
         "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
         "placeholder": "通常、アクセス解析、カスタマーサービスボットなどを挿入するために使用"
       },
+      "enable_tailwind_cdn": {
+        "label": "Tailwind CSS CDN を有効化（実行時レンダリング）",
+        "info": "オンにすると Tailwind v4 ブラウザランタイムを読み込み、カスタムヘッダー/フッター内の未コンパイルなユーティリティクラスを描画します。既定はオフ。外部 CDN が必要です。"
+      },
       "header_menu_html": {
-        "label": "トップナビゲーション領域にHTMLコードを挿入",
-        "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
-        "placeholder": "通常、会社の他のウェブサイトへのナビゲーションリンクを挿入するために使用"
+        "label": "ヘッダー全体を差し替えるHTML",
+        "info": "入力するとテーマ標準ヘッダー（ロゴ・検索・ログイン）を完全に置き換えます。公式サイトと同じ header HTML を貼り付けてください。空欄なら標準ヘッダーを使います。",
+        "placeholder": "公式サイトの <header>...</header> を貼り付け"
       },
       "footer_menu_html": {
-        "label": "フッター領域内にHTMLコードを挿入(footer内、footer_menu_html)",
-        "info": "HTMLタグと限られたTailwindCSSスタイルコードをサポート",
-        "placeholder": "通常、会社の他のウェブサイトへの外部リンク、相互リンク、SEO最適化リンクなどを挿入するために使用"
+        "label": "フッター全体を差し替えるHTML",
+        "info": "入力するとテーマのフッターを完全に置き換えます。公式サイトと同じ footer HTML を貼り付けてください。空欄ならフッターは出しません。",
+        "placeholder": "公式サイトの <footer>...</footer> を貼り付け"
       },
       "contact_html": {
         "label": "サポート連絡（HTML）",

@@ -176,15 +176,19 @@
         "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
         "placeholder": "Souvent utilisé pour insérer des analytics, un bot de support, etc."
       },
+      "enable_tailwind_cdn": {
+        "label": "Activer le CDN Tailwind CSS (rendu à l’exécution)",
+        "info": "Charge le runtime navigateur Tailwind v4 pour les classes utilitaires du header/footer personnalisés absentes du CSS du thème. Désactivé par défaut. Nécessite un CDN externe."
+      },
       "header_menu_html": {
-        "label": "Insérer du HTML dans la zone de navigation supérieure",
-        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
-        "placeholder": "Souvent utilisé pour insérer des liens vers d’autres sites de l’entreprise"
+        "label": "HTML d’en-tête complet",
+        "info": "Si renseigné, cet HTML remplace entièrement l’en-tête du thème (logo, recherche, compte). Collez le même en-tête que le site www. Laissez vide pour l’en-tête intégré.",
+        "placeholder": "Collez un <header>...</header> complet depuis votre site"
       },
       "footer_menu_html": {
-        "label": "Insérer du HTML en bas (à l’intérieur du footer)",
-        "info": "Prend en charge les balises HTML et certaines classes TailwindCSS",
-        "placeholder": "Souvent utilisé pour les liens externes, liens d’amitié et liens d’optimisation SEO"
+        "label": "HTML de pied de page complet",
+        "info": "Si renseigné, cet HTML remplace entièrement le pied de page du thème. Collez le même pied de page que le site www. Laissez vide pour n’afficher aucun pied de page.",
+        "placeholder": "Collez un <footer>...</footer> complet depuis votre site"
       },
       "contact_html": {
         "label": "Contacter le support (HTML)",

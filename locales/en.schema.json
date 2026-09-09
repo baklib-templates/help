@@ -165,15 +165,19 @@
         "info": "Supports HTML tags and limited TailwindCSS style code",
         "placeholder": "Usually used to insert analytics, customer service bot, etc."
       },
+      "enable_tailwind_cdn": {
+        "label": "Enable Tailwind CSS CDN (runtime classes)",
+        "info": "Loads the Tailwind v4 browser runtime so utility classes in custom header/footer HTML (not compiled into the theme CSS) still render. Off by default to protect built-in styles. Requires an external CDN."
+      },
       "header_menu_html": {
-        "label": "Insert HTML code in top navigation area",
-        "info": "Supports HTML tags and limited TailwindCSS style code",
-        "placeholder": "Usually used to insert navigation links to company's other websites"
+        "label": "Custom full header HTML",
+        "info": "When set, this HTML fully replaces the theme header (logo, search, account). Paste the same header as your www site. Leave empty to keep the built-in header. If the HTML uses Tailwind classes, also enable “Enable Tailwind CSS CDN”.",
+        "placeholder": "Paste a full <header>...</header> from your website"
       },
       "footer_menu_html": {
-        "label": "Insert HTML code in bottom area (inside footer, footer_menu_html)",
-        "info": "The entire footer content (nav, copyright, ICP, etc.). Supports HTML and limited TailwindCSS.",
-        "placeholder": "Usually used for footer nav, friendly links, copyright and ICP notice"
+        "label": "Custom full footer HTML",
+        "info": "When set, this HTML fully replaces the theme footer. Paste the same footer as your www site. Leave empty for no theme footer. If the HTML uses Tailwind classes, also enable “Enable Tailwind CSS CDN”.",
+        "placeholder": "Paste a full <footer>...</footer> from your website"
       },
       "contact_html": {
         "label": "Contact support (HTML)",

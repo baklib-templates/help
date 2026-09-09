@@ -1,70 +1,68 @@
-<header class="bg-neutral text-neutral-content print:hidden">
-  {% assign header_menu_html = site.settings.header_menu_html | presence %}
-  {% assign search_input_placeholder = 'layout.theme.search_input_placeholder' | t %}
-  {% assign header_icon_btn = 'inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-field p-1 text-neutral-content/70 hover:bg-neutral-content/10 hover:text-neutral-content' %}
-  {% assign is_home_page = false %}
-  {% if page.path == site.index_path %}
-    {% assign is_home_page = true %}
-  {% endif %}
+{% assign header_menu_html = site.settings.header_menu_html | strip | presence %}
 
-  <nav
-    class="navbar mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-3 sm:px-6"
-    data-controller="header-search"
-    data-header-search-search-url-value="{{ site.search_path }}"
-  >
-    <div class="flex min-w-0 shrink-0 items-center gap-2 lg:gap-4">
-      {% render 'header_logo' %}
-      {% render 'header_drawer' %}
-    </div>
+{% if header_menu_html %}
+  {{ header_menu_html }}
+{% else %}
+  <header class="bg-neutral text-neutral-content print:hidden">
+    {% assign search_input_placeholder = 'layout.theme.search_input_placeholder' | t %}
+    {% assign header_icon_btn = 'inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-field p-1 text-neutral-content/70 hover:bg-neutral-content/10 hover:text-neutral-content' %}
+    {% assign is_home_page = false %}
+    {% if page.path == site.index_path %}
+      {% assign is_home_page = true %}
+    {% endif %}
 
-    {% unless is_home_page %}
-      <div class="flex min-w-0 flex-1 justify-center px-2 sm:px-4">
-        <div class="hidden w-full min-w-0 max-w-xs sm:block lg:max-w-sm">
-          {% form_tag 'search', class: 'w-full' %}
-            <label class="flex w-full min-w-0 items-center gap-2 rounded-field bg-neutral-content/10 py-2 pl-3 pr-3">
-              <span class="pointer-events-none shrink-0 text-neutral-content/60" aria-hidden="true">
-                {% render 'icon', name: 'search', class: 'size-4' %}
-              </span>
-              <span class="sr-only">{{ search_input_placeholder | escape_once }}</span>
-              <input
-                id="header-search-input"
-                type="search"
-                name="{{ form.keywords_field_name }}"
-                value=""
-                placeholder="{{ search_input_placeholder | escape_once }}"
-                autocomplete="off"
-                class="min-w-0 grow border-0 bg-transparent p-0 text-sm leading-tight text-neutral-content placeholder:text-neutral-content/50 focus:outline-none"
-                data-header-search-target="input"
-              >
-              <div class="pointer-events-none hidden shrink-0 items-center gap-0.5 text-xs text-neutral-content/50 md:flex" aria-hidden="true">
-                <span data-header-search-target="metaKeyEl">⌘</span>
-                <span>K</span>
-              </div>
-            </label>
-          {% endform_tag %}
-        </div>
-      </div>
-    {% endunless %}
-
-    <div class="ml-auto flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
-      {% if header_menu_html %}
-        <div class="hidden h-4 w-px bg-neutral-content/20 lg:block" aria-hidden="true"></div>
-        <div class="hidden items-center lg:flex">
-          <div class="flex items-center gap-1">{{ header_menu_html }}</div>
-        </div>
-      {% endif %}
-
-      <div class="shrink-0 sm:hidden">
-        <a
-          href="{{ site.search_path }}"
-          class="{{ header_icon_btn }}"
-          aria-label="{{ search_input_placeholder | escape_once }}"
-        >
-          {% render 'icon', name: 'search', class: 'size-4' %}
-        </a>
+    <nav
+      class="navbar mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-3 sm:px-6"
+      data-controller="header-search"
+      data-header-search-search-url-value="{{ site.search_path }}"
+    >
+      <div class="flex min-w-0 shrink-0 items-center gap-2 lg:gap-4">
+        {% render 'header_logo' %}
+        {% render 'header_drawer' %}
       </div>
 
-      {% render 'header_user_account', header_icon_btn: header_icon_btn %}
-    </div>
-  </nav>
-</header>
+      {% unless is_home_page %}
+        <div class="flex min-w-0 flex-1 justify-center px-2 sm:px-4">
+          <div class="hidden w-full min-w-0 max-w-xs sm:block lg:max-w-sm">
+            {% form_tag 'search', class: 'w-full' %}
+              <label class="flex w-full min-w-0 items-center gap-2 rounded-field bg-neutral-content/10 py-2 pl-3 pr-3">
+                <span class="pointer-events-none shrink-0 text-neutral-content/60" aria-hidden="true">
+                  {% render 'icon', name: 'search', class: 'size-4' %}
+                </span>
+                <span class="sr-only">{{ search_input_placeholder | escape_once }}</span>
+                <input
+                  id="header-search-input"
+                  type="search"
+                  name="{{ form.keywords_field_name }}"
+                  value=""
+                  placeholder="{{ search_input_placeholder | escape_once }}"
+                  autocomplete="off"
+                  class="min-w-0 grow border-0 bg-transparent p-0 text-sm leading-tight text-neutral-content placeholder:text-neutral-content/50 focus:outline-none"
+                  data-header-search-target="input"
+                >
+                <div class="pointer-events-none hidden shrink-0 items-center gap-0.5 text-xs text-neutral-content/50 md:flex" aria-hidden="true">
+                  <span data-header-search-target="metaKeyEl">⌘</span>
+                  <span>K</span>
+                </div>
+              </label>
+            {% endform_tag %}
+          </div>
+        </div>
+      {% endunless %}
+
+      <div class="ml-auto flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
+        <div class="shrink-0 sm:hidden">
+          <a
+            href="{{ site.search_path }}"
+            class="{{ header_icon_btn }}"
+            aria-label="{{ search_input_placeholder | escape_once }}"
+          >
+            {% render 'icon', name: 'search', class: 'size-4' %}
+          </a>
+        </div>
+
+        {% render 'header_user_account', header_icon_btn: header_icon_btn %}
+      </div>
+    </nav>
+  </header>
+{% endif %}

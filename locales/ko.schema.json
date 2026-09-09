@@ -176,15 +176,19 @@
         "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
         "placeholder": "일반적으로 분석, 고객 서비스 봇 등을 삽입하는 데 사용"
       },
+      "enable_tailwind_cdn": {
+        "label": "Tailwind CSS CDN 사용 (런타임 렌더링)",
+        "info": "켜면 Tailwind v4 브라우저 런타임을 로드하여 사용자 지정 헤더/푸터의 미컴파일 유틸리티 클래스를 렌더링합니다. 기본은 꺼짐. 외부 CDN이 필요합니다."
+      },
       "header_menu_html": {
-        "label": "상단 네비게이션 영역에 HTML 코드 삽입",
-        "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
-        "placeholder": "일반적으로 회사의 다른 웹사이트로의 네비게이션 링크를 삽입하는 데 사용"
+        "label": "전체 헤더 HTML 사용자 지정",
+        "info": "입력하면 테마 기본 헤더(로고, 검색, 로그인)를 완전히 대체합니다. 공식 사이트와 동일한 header HTML을 붙여 넣으세요. 비워 두면 기본 헤더를 사용합니다.",
+        "placeholder": "공식 사이트의 <header>...</header> 붙여넣기"
       },
       "footer_menu_html": {
-        "label": "하단 영역에 HTML 코드 삽입(footer 내, footer_menu_html)",
-        "info": "HTML 태그와 제한된 TailwindCSS 스타일 코드 지원",
-        "placeholder": "일반적으로 회사의 다른 웹사이트로의 외부 네비게이션 링크, 친구 링크, SEO 최적화 링크 등을 삽입하는 데 사용"
+        "label": "전체 푸터 HTML 사용자 지정",
+        "info": "입력하면 테마 푸터를 완전히 대체합니다. 공식 사이트와 동일한 footer HTML을 붙여 넣으세요. 비워 두면 푸터를 표시하지 않습니다.",
+        "placeholder": "공식 사이트의 <footer>...</footer> 붙여넣기"
       },
       "contact_html": {
         "label": "지원 문의 (HTML)",

@@ -176,15 +176,19 @@
         "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
         "placeholder": "通常在這裡插入訪問統計、客服機器人等嵌入代碼"
       },
+      "enable_tailwind_cdn": {
+        "label": "啟用 Tailwind CSS CDN（即時渲染）",
+        "info": "開啟後載入 Tailwind v4 瀏覽器執行環境，讓自訂頁首/頁尾中未編進主題 CSS 的工具類生效。預設關閉以免影響主題樣式。需外網 CDN。"
+      },
       "header_menu_html": {
-        "label": "頂部導航區域插入 HTML 代碼",
-        "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
-        "placeholder": "通常在這裡插入公司其他網站的導航連結"
+        "label": "自訂完整頁首 HTML",
+        "info": "填寫後將完全取代主題自帶頂欄（含 Logo、搜尋、登入）。請貼上與官網一致的完整 header HTML；留空則使用主題預設頂欄。若 HTML 含 Tailwind 類名，請同時開啟「啟用 Tailwind CSS CDN」。",
+        "placeholder": "貼上官網完整 <header>...</header>"
       },
       "footer_menu_html": {
-        "label": "底部區域插入 HTML 代碼(footer 內，footer_menu_html)",
-        "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
-        "placeholder": "通常在這裡插入公司其他網站的外部導航連結、友情連結、SEO 優化連結等"
+        "label": "自訂完整頁尾 HTML",
+        "info": "填寫後將完全取代主題頁尾。請貼上與官網一致的完整 footer HTML；留空則不顯示主題頁尾。若 HTML 含 Tailwind 類名，請同時開啟「啟用 Tailwind CSS CDN」。",
+        "placeholder": "貼上官網完整 <footer>...</footer>"
       },
       "contact_html": {
         "label": "聯絡支援（HTML）",

@@ -176,15 +176,19 @@
         "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
         "placeholder": "Üblich für Analytics, Support-Bot etc."
       },
+      "enable_tailwind_cdn": {
+        "label": "Tailwind CSS CDN aktivieren (Laufzeit-Rendering)",
+        "info": "Lädt die Tailwind-v4-Browser-Runtime, damit Utility-Klassen in Header/Footer-HTML (nicht im Theme-CSS) trotzdem greifen. Standardmäßig aus. Benötigt ein externes CDN."
+      },
       "header_menu_html": {
-        "label": "HTML im oberen Navigationsbereich einfügen",
-        "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
-        "placeholder": "Üblich für Navigationslinks zu anderen Firmenwebsites"
+        "label": "Vollständiges Header-HTML",
+        "info": "Wenn gesetzt, ersetzt dieses HTML den Theme-Header vollständig (Logo, Suche, Konto). Fügen Sie denselben Header wie auf der www-Website ein. Leer lassen für den Standard-Header.",
+        "placeholder": "Vollständiges <header>...</header> der Website einfügen"
       },
       "footer_menu_html": {
-        "label": "HTML im unteren Bereich einfügen (innerhalb des Footers)",
-        "info": "Unterstützt HTML-Tags und eingeschränkte TailwindCSS-Klassen",
-        "placeholder": "Üblich für externe Navigation, Partner-Links und SEO-Links"
+        "label": "Vollständiges Footer-HTML",
+        "info": "Wenn gesetzt, ersetzt dieses HTML den Theme-Footer vollständig. Fügen Sie denselben Footer wie auf der www-Website ein. Leer lassen, um keinen Footer anzuzeigen.",
+        "placeholder": "Vollständiges <footer>...</footer> der Website einfügen"
       },
       "contact_html": {
         "label": "Support kontaktieren (HTML)",

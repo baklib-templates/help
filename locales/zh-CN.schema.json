@@ -165,15 +165,19 @@
         "info": "支持HTML标签和有限的TailwindCSS样式代码",
         "placeholder": "通常在这里插入访问统计、客服机器人等嵌入代码"
       },
+      "enable_tailwind_cdn": {
+        "label": "启用 Tailwind CSS CDN（实时渲染）",
+        "info": "开启后加载 Tailwind v4 浏览器运行时，用于自定义页头/页脚里未编进主题 CSS 的工具类。默认关闭，以免影响主题自带样式。依赖外网 CDN。"
+      },
       "header_menu_html": {
-        "label": "顶部导航区域插入 HTML 代码",
-        "info": "支持HTML标签和有限的TailwindCSS样式代码",
-        "placeholder": "通常在这里插入公司其他网站的导航链接"
+        "label": "自定义完整页头 HTML",
+        "info": "填写后将完全替换主题自带顶栏（含 Logo、搜索、登录）。请粘贴与官网一致的完整 header HTML；留空则使用主题默认顶栏。若 HTML 含 Tailwind 类名，请同时开启「启用 Tailwind CSS CDN」。",
+        "placeholder": "粘贴官网完整 <header>...</header>"
       },
       "footer_menu_html": {
-        "label": "底部区域插入 HTML 代码(footer 内，footer_menu_html)",
-        "info": "页脚全部内容由此填充（导航、版权、备案等）。支持 HTML 标签和有限的 TailwindCSS 样式",
-        "placeholder": "通常在这里插入页脚导航、友情链接、版权与备案信息等"
+        "label": "自定义完整页脚 HTML",
+        "info": "填写后将完全替换主题页脚。请粘贴与官网一致的完整 footer HTML；留空则不显示主题页脚。若 HTML 含 Tailwind 类名，请同时开启「启用 Tailwind CSS CDN」。",
+        "placeholder": "粘贴官网完整 <footer>...</footer>"
       },
       "contact_html": {
         "label": "联系支持（HTML）",
