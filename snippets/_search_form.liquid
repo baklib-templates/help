@@ -1,0 +1,14 @@
+{% assign search_id = id | default: 'help-search' %}
+{% assign search_keywords = keywords | default: params.q %}
+{% assign search_placeholder = placeholder %}
+{% if search_placeholder == blank %}{% assign search_placeholder = 'shell.search_placeholder' | t %}{% endif %}
+{% form_tag 'search', class: 'help-search-form', role: 'search' %}
+  <label class="sr-only" for="{{ search_id | escape }}">{{ 'shell.search' | t }}</label>
+  <div class="help-search-field {% if compact %}help-search-field--compact{% endif %}">
+    <span class="shrink-0 text-base-content/40">{% render 'icon', name: 'search', class: 'size-5' %}</span>
+    <input id="{{ search_id | escape }}" type="search" name="{{ form.keywords_field_name }}" value="{{ search_keywords | escape_once }}" placeholder="{{ search_placeholder | escape }}" autocomplete="off" class="min-w-0 flex-1 border-0 bg-transparent text-base text-base-content outline-none placeholder:text-base-content/40" required>
+    <button type="submit" class="{% if compact %}btn btn-ghost btn-square btn-sm{% else %}btn btn-primary h-11 min-h-11 rounded-xl px-5{% endif %}" aria-label="{{ 'shell.search' | t | escape }}">
+      {% if compact %}{% render 'icon', name: 'arrow-right', class: 'size-4' %}{% else %}<span class="hidden sm:inline">{{ 'shell.search' | t }}</span>{% render 'icon', name: 'arrow-right', class: 'size-4' %}{% endif %}
+    </button>
+  </div>
+{% endform_tag %}

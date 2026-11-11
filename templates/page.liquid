@@ -1,82 +1,244 @@
-{% assign home_page = site.pages[site.index_path] %}
-{% assign child_candidates = page.children_in_list | limit: 100 %}
-{% assign child_count = child_candidates | size %}
-{% assign has_children = child_count > 0 %}
+{% assign home_page = site.index_page %}
+{% assign home_style = home_page.template_style | default: 'help_center' %}
+{% assign reading_layout = site.settings.article_layout.value | default: 'auto' %}
+{% if reading_layout == 'auto' %}
+  {% case home_style %}
+    {% when 'support' %}{% assign reading_layout = 'support' %}
+    {% else %}{% assign reading_layout = 'reader' %}
+  {% endcase %}
+{% endif %}
+{% assign page_layout = page.settings.reading_layout.value | default: 'inherit' %}
+{% unless page_layout == 'inherit' %}{% assign reading_layout = page_layout %}{% endunless %}
+{% assign child_count = page.children_in_list | size %}
+{% case home_style %}
+  {% when 'faqs' %}{% assign home_mode = 'faqs' %}
+  {% when 'support' %}{% assign home_mode = 'support' %}
+  {% else %}{% assign home_mode = 'collections' %}
+{% endcase %}
 
-<div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
-  <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
-    <div class="help-layout-with-aside">
-      <main class="help-layout-main min-w-0 bg-base-100 dark:bg-base-100">
-        {% render 'support_page_header', page: page %}
+{% assign support_markup = '' %}
+{% if reading_layout == 'support' %}{% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}{% assign support_markup = support_markup | strip %}{% endif %}
 
-        {% assign page_content = page.settings.content %}
-        {% assign has_content = page_content | present? %}
-        {% if has_content %}
-          <section
-            id="page-content"
-            class="ProseMirror mt-8 flex-grow max-h-min! min-h-0"
-            data-controller="link-target images-viewer"
-          >
-            {{ page_content }}
-          </section>
-        {% endif %}
-
-        {% if has_children %}
-          {% render 'support_child_list', page: page %}
-        {% else %}
-          <section class="{% if has_content %}mt-10{% else %}mt-8{% endif %}">
-            {% render 'feedback_button', page: page %}
-          </section>
-          {% render 'support_related', page: page, limit: 5 %}
-        {% endif %}
-      </main>
-
-      <aside class="help-layout-aside">
-        {% render 'aside_nav', nav_page: home_page, page: page %}
+<div class="help-container py-8 lg:py-12" data-controller="toc" data-reading-layout="{{ reading_layout }}">
+  {% render 'reading_breadcrumb', page: page %}
+  <div class="mt-7 grid gap-10 {% if reading_layout == 'tree' %}lg:grid-cols-[15rem_minmax(0,1fr)] xl:grid-cols-[15rem_minmax(0,1fr)_13rem]{% elsif reading_layout == 'support' and support_markup != blank %}lg:grid-cols-[minmax(0,1fr)_19rem]{% else %}mx-auto max-w-3xl{% endif %}">
+    {% if reading_layout == 'tree' %}
+      <aside class="min-w-0">
+        <details class="help-card p-4 lg:hidden">
+          <summary class="cursor-pointer text-sm font-semibold">{{ 'reading.topics' | t }}</summary>
+          <div class="mt-4">{% render 'reading_navigation', page: page, home_page: home_page %}</div>
+        </details>
+        <div class="hidden lg:sticky lg:top-28 lg:block lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pr-3">
+          {% render 'reading_navigation', page: page, home_page: home_page %}
+        </div>
       </aside>
-    </div>
+    {% endif %}
+
+    <article class="min-w-0">
+      {% render 'article_header', page: page %}
+      {% if reading_layout == 'tree' %}
+        <div class="xl:hidden">{% render 'reading_toc', inline: true %}</div>
+      {% else %}
+        {% render 'reading_toc', inline: true %}
+      {% endif %}
+      {% render 'article_body', page: page %}
+      {% if child_count > 0 %}
+        {% render 'category_content', page: page, home_mode: home_mode %}
+      {% endif %}
+      {% render 'article_footer', page: page %}
+    </article>
+
+    {% if reading_layout == 'tree' %}
+      <aside class="hidden xl:block">
+        <div class="sticky top-28">{% render 'reading_toc' %}</div>
+      </aside>
+    {% elsif reading_layout == 'support' and support_markup != blank %}
+      <aside class="min-w-0"><div class="lg:sticky lg:top-28">{{ support_markup }}</div></aside>
+    {% endif %}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "t:schema.templates.page.name",
-  "description": "t:schema.templates.page.description",
-  "thumb_url": "images/theme/${lang}/page.png",
-  "sub_page_templates": ["page"],
+  "name": "t:schema.page.name",
+  "description": "t:schema.page.description",
+  "sub_page_templates": [
+    "page"
+  ],
+  "context_schema": {
+    "key": "help",
+    "label": "t:schema.context_schema.label",
+    "version": 1,
+    "content_types": [
+      {
+        "key": "article",
+        "label": "t:schema.context_schema.types.article.label",
+        "templates": [
+          "page"
+        ],
+        "fields": [
+          {
+            "key": "topics",
+            "label": "t:schema.context_schema.types.article.fields.topics.label",
+            "type": "tags",
+            "policy": "ai_auto"
+          },
+          {
+            "key": "summary",
+            "label": "t:schema.context_schema.types.article.fields.summary.label",
+            "type": "textarea",
+            "policy": "ai_suggest"
+          },
+          {
+            "key": "question",
+            "label": "t:schema.context_schema.types.article.fields.question.label",
+            "type": "textarea",
+            "policy": "ai_suggest"
+          },
+          {
+            "key": "steps",
+            "label": "t:schema.context_schema.types.article.fields.steps.label",
+            "type": "textarea",
+            "policy": "ai_suggest"
+          }
+        ],
+        "relations": [
+          {
+            "type": "related_to",
+            "label": "t:schema.context_schema.types.article.relations.related_to.label",
+            "inverse": "related_to",
+            "cardinality": "many",
+            "policy": "suggest"
+          }
+        ]
+      }
+    ]
+  },
   "settings": [
-    {
-      "id": "tags",
-      "type": "tag_picker",
-      "multiple": true,
-      "label": "t:schema.templates.page.settings.tags.label",
-      "queryable": true,
-      "to_markdown": true
-    },
-    {
-      "id": "icon",
-      "type": "select",
-      "label": "t:schema.templates.page.settings.icon.label",
-      "info": "t:schema.templates.page.settings.icon.info",
-      "default": "help-circle",
-      "choices_from": "$site.lucide_icons"
-    },
     {
       "id": "title",
       "type": "text",
       "readonly": true,
-      "queryable": true,
-      "label": "t:schema.templates.page.settings.title.label",
-      "info": "t:schema.templates.page.settings.title.info",
+      "label": "t:schema.page.title",
       "to_markdown": true
     },
     {
       "id": "content",
       "type": "richtext",
-      "label": "t:schema.templates.page.settings.content.label",
       "readonly": true,
-      "info": "t:schema.templates.page.settings.content.info",
+      "label": "t:schema.page.content",
       "to_markdown": true
+    },
+    {
+      "id": "description",
+      "type": "textarea",
+      "label": "t:schema.page.summary",
+      "to_markdown": true
+    },
+    {
+      "id": "icon_image",
+      "type": "image_picker",
+      "label": "t:schema.page.icon_image"
+    },
+    {
+      "id": "icon_name",
+      "type": "select",
+      "label": "t:schema.page.icon_name",
+      "default": "book-open",
+      "choices": [
+        {
+          "value": "book-open",
+          "label": "t:schema.page.icons.book_open"
+        },
+        {
+          "value": "file-text",
+          "label": "t:schema.page.icons.file_text"
+        },
+        {
+          "value": "circle-help",
+          "label": "t:schema.page.icons.circle_help"
+        },
+        {
+          "value": "rocket",
+          "label": "t:schema.page.icons.rocket"
+        },
+        {
+          "value": "settings",
+          "label": "t:schema.page.icons.settings"
+        },
+        {
+          "value": "users",
+          "label": "t:schema.page.icons.users"
+        },
+        {
+          "value": "shield-check",
+          "label": "t:schema.page.icons.shield_check"
+        },
+        {
+          "value": "credit-card",
+          "label": "t:schema.page.icons.credit_card"
+        },
+        {
+          "value": "plug",
+          "label": "t:schema.page.icons.plug"
+        },
+        {
+          "value": "layers",
+          "label": "t:schema.page.icons.layers"
+        },
+        {
+          "value": "code",
+          "label": "t:schema.page.icons.code"
+        },
+        {
+          "value": "package",
+          "label": "t:schema.page.icons.package"
+        }
+      ]
+    },
+    {
+      "id": "reading_layout",
+      "type": "select",
+      "label": "t:schema.page.reading_layout",
+      "default": "inherit",
+      "choices": [
+        {
+          "value": "inherit",
+          "label": "t:schema.page.layouts.inherit"
+        },
+        {
+          "value": "tree",
+          "label": "t:schema.page.layouts.tree"
+        },
+        {
+          "value": "reader",
+          "label": "t:schema.page.layouts.reader"
+        },
+        {
+          "value": "support",
+          "label": "t:schema.page.layouts.support"
+        }
+      ]
+    },
+    {
+      "id": "tags",
+      "type": "tag_picker",
+      "multiple": true,
+      "label": "t:schema.page.tags",
+      "queryable": true,
+      "to_markdown": true
+    },
+    {
+      "id": "video_url",
+      "type": "video_picker",
+      "label": "t:schema.page.video",
+      "ratio": "16:9"
+    },
+    {
+      "id": "related_pages",
+      "type": "textarea",
+      "label": "t:schema.page.related_pages",
+      "info": "t:schema.page.related_pages_info"
     }
   ]
 }

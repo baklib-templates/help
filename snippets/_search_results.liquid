@@ -1,0 +1,18 @@
+<ul class="divide-y divide-base-300">
+  {% if show_extends %}
+    {% for link in extends %}<li class="mb-4 rounded-xl border border-primary/15 bg-primary/5 p-5"><p class="mb-2 text-xs font-medium text-primary">{{ 'reading.recommended' | t }}</p><a href="{{ link.url | escape_once }}" class="font-medium hover:text-primary">{{ link.link_text | escape_once }}</a></li>{% endfor %}
+  {% endif %}
+  {% for item in items %}
+    <li class="py-6 first:pt-0">
+      <a href="{{ item.path }}" class="group flex gap-4">
+        <span class="mt-1 text-base-content/35">{% render 'icon', name: 'file-text', class: 'size-5' %}</span>
+        <span class="min-w-0 flex-1">
+          <span class="block text-lg font-medium group-hover:text-primary">{{ item.highlighted_search_title | default: item.link_text }}</span>
+          {% if item.highlighted_search_content != blank %}<span class="mt-2 line-clamp-3 block text-sm leading-7 text-base-content/60">{{ item.highlighted_search_content }}</span>{% endif %}
+          <span class="mt-3 block truncate text-xs text-base-content/40">{% for crumb in item.breadcrumb %}{% unless forloop.first %} / {% endunless %}{{ crumb.link_text | escape_once }}{% endfor %}</span>
+        </span>
+        <span class="mt-1 text-base-content/35">{% render 'icon', name: 'arrow-up-right', class: 'size-4' %}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

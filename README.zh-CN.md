@@ -1,107 +1,43 @@
-# Wiki 帮助中心（`help`）
+# Help 中文说明
 
-[English](README.md) | 简体中文
+面向客户自助服务、电商售后知识与产品支持的 Baklib 帮助中心。使用同一套内容模型与设置契约，提供三种首页变体，不迁移旧版 Wiki / Help 的客户定制。
 
-面向 Baklib **Wiki** 的 **客户自助与帮助中心** 主题（可选 FAQ 式首页）：以内容为先，配套侧栏导航、页内目录、AI 搜索、分享到 LLM、Turbo 无刷新切换等。与偏「产品文档站」的 Docs 主题同族，本主题已弱化纯文档型首页，突出帮助中心场景。
+| 首页变体 | 固定模式 | `auto` 时的文章布局 | `auto` 时的分类布局 | 适用 |
+| --- | --- | --- | --- | --- |
+| `templates/index.help_center.liquid` | `collections` | `reader` | `cards` | 按主题浏览的帮助中心（默认） |
+| `templates/index.faqs.liquid` | `faqs` | `reader` | `faq` | 常见问题与可展开的简短解答 |
+| `templates/index.support.liquid` | `support` | `support` | `list` | 紧凑主栏 + 粘性联系支持侧栏 |
 
-## 环境要求
+建站时通过首页模板样式 `index_style` 选择变体，也可在站点编辑器切换；模板不再提供全站 `home_layout` 设置。每个变体自带固定模式，内页的自动文章/分类搭配由所选首页样式派生。仍可用 `article_layout`、`category_layout` 全局覆盖，或用单页 `reading_layout` 覆盖。三种变体共用导航、搜索、品牌色、无障碍控件与文章反馈。界面语言：英语、简体中文。
 
-- Node.js（用于构建前端资源）
-- Baklib 站点使用 **Wiki** 范围并启用本主题（`config/settings_schema.json` 中 `theme_scope` 为 `wiki`，`theme_name` 为 `help`）
+原「搜索优先」与「产品卡片」两种首页差异已合并进帮助中心变体；如需单独恢复，可新增组织候选变体，不再引入全站布局开关。
 
-## 目录说明
+## 内容
 
-| 路径                            | 说明                                       |
-| ----------------------------- | ---------------------------------------- |
-| `config/settings_schema.json` | 主题元数据、可选语言与编辑器配置项                        |
-| `layout/`                     | 基础布局                                     |
-| `templates/`                  | 页面模板（见下文 **首页模板**），及详情、搜索等              |
-| `snippets/`                   | 片段（页头、页脚、侧栏、页面工具、反馈等）                    |
-| `locales/`                    | 前台文案（`*.json`）与主题编辑器文案（`*.schema.json`）  |
-| `src/`                        | 源码 CSS/JS（Tailwind、esbuild）              |
-| `assets/`                     | 构建后的样式、脚本与主题预览图                          |
-| `statics/`                    | 自定义静态 HTML 示例                            |
+连接知识空间后，其目录成为帮助中心结构，文章标题与正文始终以知识库为真源。请在知识库中创建分类/产品及其帮助文章；没有内容时站点显示准确空状态。
 
-## 首页（`index`）模板
+精选文章、相关文章与 FAQ 来源都填写站内真实路径，媒体使用 Baklib DAM 引用。联系入口仅在配置后出现，AI 搜索仅在站点已开通时出现。模板不内置客户 Logo、虚构服务承诺、订单或工单后端。
 
-在站点编辑器中选择其一作为 Wiki 首页：
+## 构建
 
-| 模板           | 文件                         | 说明 |
-| -------------- | ---------------------------- | ---- |
-| **帮助中心**   | `index.help_center.liquid`   | 首屏与搜索、栏目宫格，可选专题 / 最新 / 热门等区块。 |
-| **常见问题**   | `index.faqs.liquid`          | 分类标签 + 可折叠问答列表。 |
-| **卡片式首页** | `index.card.liquid`          | 大卡片区展示栏目与子文预览（偏 Intercom 风格）。 |
-| **支持站首页** | `index.support.liquid`       | 主区白底：标题、搜索、热门文章；**右侧**浅底 **sticky** 侧栏：常见主题（根与一级栏目 `link_text`）+ **联系支持**（见下）。 |
+需要 Node.js 与 npm：`npm ci` 后执行 `npm run build`，并把生成的 CSS/JS 与源码一起提交。不使用运行时 CSS CDN、外部字体或 Alpine。
 
-### 支持站首页侧栏：`contact_html`
+平台提供 Liquid 渲染、Turbo、Stimulus、站点权限、来源同步、反馈与搜索；本模板直接遵循这些契约。
 
-在 **主题设置 → 自定义 HTML** 中配置 **联系支持（HTML）**（字段 `contact_html`）。内容会渲染在 **支持站首页** 右侧固定侧栏中「联系支持」标题下方（其上方为「常见主题」链接列表）。
+## 快速开始
 
-## 支持的语言
+固定版本内含 [Agent 说明](docs/skill/SKILL.md)、机器可读 [manifest](docs/skill/manifest.yml) 与 [建站知识](docs/setup_knowledge.yml)。Agent 根据客户的首要访问任务推荐首页变体；变体本身是模板样式，不是 `configure_site` 可写字段。阅读相关设置属于普通站点设置，无需改模板代码即可配置。
 
-前台与 schema 已包含：
+[设计手册](docs/skill/references/design-playbook.md) 与七个客户案例（Ulike、Procolored、INFFNI、RingConn、纷享销客、WIBU、PingPong）提供按需设计参考；Agent 建站后用 `read_template` 读取相关案例。案例是设计说明，不是预装皮肤或客户内容。导入新固定版本后生效，既有站点仍使用各自版本。
 
-- `en`、`zh-CN`、`zh-TW`、`ko`、`ja`、`de`、`fr`
+## 校验
 
-新增/修改文案请编辑 `locales/<locale>.json`（前台）与 `locales/<locale>.schema.json`（主题编辑器）。新增语言时请在 [`config/settings_schema.json`](config/settings_schema.json) 的 `theme_info.theme_languages` 中登记。
+在 Baklib Rails 根目录执行：
 
-## 构建资源
-
-```bash
-yarn install
-yarn build
+```sh
+bundle exec rails runner /absolute/path/to/help/scripts/verify.rb
 ```
 
-开发监听：
+脚本默认校验其所在主题，可用 `HELP_THEME_ROOT=/absolute/path/to/help` 指定其他候选。它检查 Liquid、schema 字段、双语文案、片段与 manifest 引用，渲染三种首页变体及文章/分类组合，并验证 FAQ 内容权限与作者/日期/相关/联系设置。平台表单与权限判定使用内存 fixture，不读写业务记录。
 
-```bash
-yarn dev
-```
-
-本地浏览器自动刷新（需要本地 Ruby 环境 + 浏览器 livereload 插件）：
-
-```bash
-bundle install
-bundle exec guard
-```
-
-## 按语言切换的预览图
-
-主题卡片与后台示意图按语言解析。请把不同语言的截图放到 `assets/images/theme/<lang>/`，后台会自动按当前语言加载：
-
-```text
-assets/images/theme/<lang>/
-├── thumb.png            # 主题卡缩略图
-├── index.png            # 主预览图
-├── index-help-center.png
-├── index-faqs.png
-├── index-card.png
-├── index-support.png
-└── page.png
-```
-
-模板 schema 中的 `thumb_url`、`preview_image_urls` 与 `config/settings_schema.json` 中的主题预览图均使用 `images/theme/${lang}/`。`${lang}` 占位会被自动替换：
-
-```json
-"theme_thumb_url": "images/theme/${lang}/thumb.png",
-"theme_preview_images": [
-  "images/theme/${lang}/index.png",
-  "images/theme/${lang}/index-help-center.png",
-  "images/theme/${lang}/index-faqs.png",
-  "images/theme/${lang}/index-card.png",
-  "images/theme/${lang}/index-support.png",
-  "images/theme/${lang}/page.png"
-]
-```
-
-若某语言下缺图，Baklib 会回退到默认语言目录。
-
-## 文档
-
-- 主题使用说明：<https://help.baklib.cn/themes/docs>
-- 设置项参考：<https://help.baklib.cn/themes/docs/settings>
-- Baklib 模板开发指南：<https://dev.baklib.cn/guide/git>
-
-## 许可
-
-见 [LICENSE](LICENSE)（若本目录无 LICENSE 文件，请以父仓库为准）。
+改动后在主题目录执行 `npm run build`。导航、响应式、目录、媒体、搜索、反馈与登录的浏览器验收另行进行，不由该脚本背书。

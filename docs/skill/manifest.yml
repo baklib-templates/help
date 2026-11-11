@@ -1,0 +1,101 @@
+skill:
+  version: 2
+  preset: help
+  writer: wiki_space
+  summary: 面向客户自助服务、电商售后与产品支持的帮助中心。三种首页变体与三种阅读布局配套，附七个真实客户案例的按需设计参考。
+  home:
+    template: index.help_center
+    hero_fields:
+    - hero_title
+    - hero_description
+    slots: 0
+  navigation: {}
+  site_fields:
+  - logo_url
+  - brand_name
+  - tagline
+  - header_link_label
+  - header_link_url
+  - footer_text
+  - article_layout
+  - category_layout
+  - support_title
+  - support_description
+  - support_url
+  - support_email
+  - support_phone
+  - show_author
+  - show_published_at
+  - enable_ai_search
+  - show_related_articles
+  page_types:
+  - template: index.help_center
+    role: 帮助中心首页：搜索首屏、分类卡片、精选知识与服务入口
+    writable:
+    - hero_title
+    - hero_description
+    - hero_image
+    - featured_title
+    - featured_pages
+    - show_featured
+    - show_faqs
+    - faq_source
+  - template: index.faqs
+    role: 常见问题首页：问答优先、随即展开答案，再展示分类与精选知识
+    writable:
+    - hero_title
+    - hero_description
+    - hero_image
+    - featured_title
+    - featured_pages
+    - show_featured
+    - show_faqs
+    - faq_source
+  - template: index.support
+    role: 服务支持首页：紧凑主栏与粘性联系支持侧栏
+    writable:
+    - hero_title
+    - hero_description
+    - hero_image
+    - featured_title
+    - featured_pages
+    - show_featured
+    - show_faqs
+    - faq_source
+  - template: page
+    role: 来源知识库同步的分类与帮助文章
+    writable:
+    - description
+    - icon_image
+    - icon_name
+    - reading_layout
+    - tags
+    - video_url
+    - related_pages
+  - template: search
+    role: 站内授权内容搜索
+    writable: []
+  - template: tag
+    role: 标签关联的帮助文章
+    writable: []
+  limits:
+    channels: 20
+    pages: 100
+  industries: []
+  content_model:
+    hierarchy:
+    - page
+    body_field: content
+    default_access: public
+    source_of_truth: knowledge_base
+    boundaries:
+    - 不提供工单、订单、支付或物流查询系统；服务入口链接到客户已有系统
+  customization:
+    mode: organization_candidate
+    protected:
+    - content_model
+    - source_references
+    - permissions
+    - identity
+    - forms
+    - dam_references

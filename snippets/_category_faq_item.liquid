@@ -1,0 +1,13 @@
+{% assign child_accessible = child | can_access? %}
+{% assign child_count = child.children_in_list | size %}
+{% assign answer = '' %}
+{% if child_accessible and child_count == 0 %}{% assign answer = child.settings.content %}{% endif %}
+{% if answer != blank %}
+  <details class="help-card group px-5 py-4">
+    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium"><span>{{ child.link_text | escape_once }}</span><span class="shrink-0 text-base-content/40 transition group-open:rotate-180">{% render 'icon', name: 'chevron-down', class: 'size-4' %}</span></summary>
+    <div class="mt-5 help-prose ProseMirror text-sm" data-controller="link-target images-viewer">{{ answer }}</div>
+    <a href="{{ child.path }}" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">{{ 'reading.read_article' | t }}{% render 'icon', name: 'arrow-right', class: 'size-4' %}</a>
+  </details>
+{% else %}
+  <a href="{{ child.path }}" class="help-card flex items-center justify-between gap-4 px-5 py-4 font-medium hover:text-primary"><span>{{ child.link_text | escape_once }}</span>{% render 'icon', name: 'arrow-right', class: 'size-4 shrink-0' %}</a>
+{% endif %}

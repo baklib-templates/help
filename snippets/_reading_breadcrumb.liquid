@@ -1,0 +1,11 @@
+<nav aria-label="{{ 'reading.breadcrumb' | t }}" class="overflow-x-auto text-sm text-base-content/55">
+  <ol class="flex min-w-max items-center gap-2">
+    <li><a href="{{ site.index_path }}" class="hover:text-primary">{{ 'reading.home' | t }}</a></li>
+    {% for crumb in page.breadcrumb %}
+      {% unless crumb.path == site.index_path %}
+        <li aria-hidden="true">{% render 'icon', name: 'chevron-right', class: 'size-3.5' %}</li>
+        <li>{% if forloop.last %}<span aria-current="page" class="text-base-content">{{ crumb.link_text | escape_once }}</span>{% else %}<a href="{{ crumb.path }}" class="hover:text-primary">{{ crumb.link_text | escape_once }}</a>{% endif %}</li>
+      {% endunless %}
+    {% endfor %}
+  </ol>
+</nav>

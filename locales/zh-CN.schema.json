@@ -1,219 +1,150 @@
 {
-  "theme_label": "Help",
-  "theme_description": "打造用户愿意阅读的文档体验：结构清晰、检索迅捷，并可接入 AI 问答。将知识库呈现为产品文档、API 指南与帮助中心，无需从零自建文档站。",
-  "recommendations": {
-    "baklib": {
-      "name": "Baklib"
+  "context_schema": {
+    "label": "帮助文章",
+    "types": {
+      "article": {
+        "label": "帮助文章",
+        "fields": {
+          "topics": {
+            "label": "帮助主题"
+          },
+          "summary": {
+            "label": "解答摘要"
+          },
+          "question": {
+            "label": "读者问题"
+          },
+          "steps": {
+            "label": "处理步骤"
+          }
+        },
+        "relations": {
+          "related_to": {
+            "label": "相关解答"
+          }
+        }
+      }
+    }
+  },
+  "page": {
+    "name": "内容页",
+    "description": "统一承载文章与分类，阅读布局可跟随帮助中心或单独设置。",
+    "title": "标题",
+    "content": "正文",
+    "summary": "简介",
+    "icon_image": "自定义图标图片",
+    "icon_name": "图标",
+    "reading_layout": "阅读布局",
+    "tags": "标签",
+    "video": "视频",
+    "related_pages": "相关文章路径",
+    "related_pages_info": "每行一个现有页面路径，例如 /getting-started。仅展示当前访客可访问的页面。",
+    "layouts": {
+      "inherit": "跟随站点设置",
+      "tree": "主题目录",
+      "reader": "专注阅读",
+      "support": "阅读与支持"
     },
-    "fashion": {
-      "name": "时尚"
+    "icons": {
+      "book_open": "书籍",
+      "file_text": "文章",
+      "circle_help": "帮助",
+      "rocket": "快速上手",
+      "settings": "设置",
+      "users": "成员",
+      "shield_check": "安全",
+      "credit_card": "账单",
+      "plug": "集成",
+      "layers": "分层",
+      "code": "代码",
+      "package": "产品"
     }
   },
-  "templates": {
-    "index": {
-      "faqs": {
-        "name": "常见问题中心",
-        "description": "FAQ 风格的首页：可折叠的问题列表 + 分类标签",
-        "settings": {
-          "hero_height": {
-            "label": "Hero 高度"
-          },
-          "hero_pc_image_url": {
-            "label": "PC 背景图片",
-            "info": "建议尺寸：1600×400（或更大，同 4:1 比例），用于桌面端。"
-          },
-          "hero_mobile_image_url": {
-            "label": "移动端背景图片",
-            "info": "建议尺寸：1080×360（或更大，同 3:1 比例），用于手机端。留足上下安全区以避免文字遮挡。"
-          },
-          "hero_title": {
-            "label": "Hero 标题",
-            "default": "常见问题"
-          },
-          "hero_description": {
-            "label": "Hero 描述",
-            "default": "帮助您快速了解与解决常见问题"
-          },
-          "hero_title_color": {
-            "label": "标题字体颜色（亮色模式）"
-          },
-          "hero_title_color_dark": {
-            "label": "标题字体颜色（暗色模式）"
-          },
-          "hero_description_color": {
-            "label": "描述字体颜色（亮色模式）"
-          },
-          "hero_description_color_dark": {
-            "label": "描述字体颜色（暗色模式）"
-          }
-        }
-      },
-      "support": {
-        "name": "极简支持首页",
-        "description": "双栏布局：左侧常见主题与联系支持，右侧搜索与热门文章",
-        "settings": {
-          "hero_title": {
-            "label": "首屏标题",
-            "default": "有什么可以帮您？",
-            "info": "留空则显示站点名称。"
-          },
-          "hero_subtitle": {
-            "label": "首屏副标题",
-            "default": "您可以通过本支持页面浏览公司的 FAQ、常见问题、操作步骤、产品知识等信息。",
-            "info": "显示在标题下方的简短说明（可选）。"
-          },
-          "search_hot_tags": {
-            "label": "热门标签",
-            "info": "显示在搜索框下方。"
-          },
-          "search_hot_keywords": {
-            "label": "热门搜索",
-            "info": "每行一个关键词。"
-          }
-        }
-      },
-      "card": {
-        "name": "卡片式首页",
-        "description": "大卡片区展示栏目与文章预览（Intercom / Bonsai 风格）",
-        "settings": {
-          "hero_title": {
-            "info": "留空则使用站点名称。"
-          },
-          "hero_description": {
-            "default": "👋 需要查找什么？"
-          },
-          "hero_text_color": {
-            "label": "首屏文字颜色",
-            "info": "同时应用于标题与描述。"
-          },
-          "search_hot_tags": {
-            "label": "热门标签",
-            "info": "显示在搜索框下方。"
-          },
-          "search_hot_keywords": {
-            "label": "热门搜索",
-            "info": "每行一个。"
-          },
-          "show_channels_section": {
-            "label": "显示栏目卡片",
-            "info": "为每个顶级栏目生成一张卡片。"
-          },
-          "channels_section_title": {
-            "label": "卡片区块标题",
-            "default": "按主题浏览"
-          },
-          "popular_section_title": {
-            "label": "热门区块标题",
-            "default": "热门文章"
-          }
-        }
-      }
+  "home": {
+    "help_center": {
+      "name": "帮助中心首页",
+      "description": "搜索首屏、分类卡片、精选知识，可选服务联系区。"
     },
-    "page": {
-      "name": "普通页面模版",
-      "description": "内容页面模板",
-      "settings": {
-        "title": {
-          "label": "页面标题",
-          "info": "知识库同步，不可编辑"
-        },
-        "tags": {
-          "label": "页面标签"
-        },
-        "icon": {
-          "label": "页面图标",
-          "info": "在列表与卡片中显示的 Lucide 图标。选项来自站点设置 → Lucide 图标。图标名称查找：<a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
-        },
-        "content": {
-          "label": "页面内容",
-          "info": "同步自数据源，不可编辑"
-        }
-      }
+    "faqs": {
+      "name": "常见问题首页",
+      "description": "先展示可展开的问答，再展示主题分类与精选知识。"
+    },
+    "support": {
+      "name": "服务支持首页",
+      "description": "紧凑主栏配粘性联系支持侧栏。"
+    },
+    "title": {
+      "label": "来源标题",
+      "info": "保留与来源内容同步的标题。"
+    },
+    "content": {
+      "label": "来源正文",
+      "info": "保留来源正文，在所有首页变体中显示。"
+    },
+    "hero_title": {
+      "label": "欢迎标题",
+      "default": "您需要什么帮助？",
+      "info": "显示在搜索框上方的首页主标题。"
+    },
+    "hero_description": {
+      "label": "欢迎说明",
+      "info": "简要介绍帮助中心；留空时使用站点简介。"
+    },
+    "hero_image": {
+      "label": "品牌或产品图片",
+      "info": "可选。选择与您的品牌或产品相关的真实图片。"
+    },
+    "featured_title": {
+      "label": "精选内容标题",
+      "info": "留空时使用默认标题。"
+    },
+    "featured_pages": {
+      "label": "精选文章路径",
+      "info": "每行填写一个真实页面路径；不存在或无权访问的页面会跳过，留空则隐藏此区域。"
+    },
+    "show_featured": {
+      "label": "显示精选内容"
+    },
+    "faq_source": {
+      "label": "问题栏目路径",
+      "info": "填写真实栏目路径，留空时使用首页。下级栏目显示入口，下级文章显示摘要与全文链接。"
+    },
+    "show_faqs": {
+      "label": "显示问题解答",
+      "info": "常见问题首页始终显示此区域；其他变体由此开关控制。"
     }
   },
-  "generic": {
-    "name": "通用设置",
-    "settings": {
-      "logo_url": {
-        "label": "Logo 图片",
-        "info": "若设置了logo，则页头显示 logo，否则显示：网站图标+站点名称"
-      },
-      "show_published_at": {
-        "label": "显示发布时间"
-      },
-      "show_author": {
-        "label": "显示作者"
-      },
-      "enable_ai_chat_search": {
-        "label": "启用 AI Chat 搜索",
-        "info": "开启后，搜索页右侧显示 AI 助手对话框；取消勾选则不提供该功能。仍需站点已开通 AI 搜索能力。"
-      },
-      "ai_search_completed_text": {
-        "label": "AI回答结束语",
-        "info": "AI回答结束后添加一句话"
-      },
-      "show_page_tools_dropdown": {
-        "label": "显示AI复制按钮下拉菜单"
-      }
-    }
-  },
-  "custom_html": {
-    "name": "自定义 HTML 代码",
-    "settings": {
-      "head_html": {
-        "label": "自定义 <head></head> 标签中的 HTML",
-        "info": "支持HTML标签和有限的TailwindCSS样式代码",
-        "placeholder": "通常在这里插入访问统计、客服机器人等嵌入代码"
-      },
-      "enable_tailwind_cdn": {
-        "label": "启用 Tailwind CSS CDN（实时渲染）",
-        "info": "开启后加载 Tailwind v4 浏览器运行时，用于自定义页头/页脚里未编进主题 CSS 的工具类。默认关闭，以免影响主题自带样式。依赖外网 CDN。"
-      },
-      "header_menu_html": {
-        "label": "自定义完整页头 HTML",
-        "info": "填写后将完全替换主题自带顶栏（含 Logo、搜索、登录）。请粘贴与官网一致的完整 header HTML；留空则使用主题默认顶栏。若 HTML 含 Tailwind 类名，请同时开启「启用 Tailwind CSS CDN」。",
-        "placeholder": "粘贴官网完整 <header>...</header>"
-      },
-      "footer_menu_html": {
-        "label": "自定义完整页脚 HTML",
-        "info": "填写后将完全替换主题页脚。请粘贴与官网一致的完整 footer HTML；留空则不显示主题页脚。若 HTML 含 Tailwind 类名，请同时开启「启用 Tailwind CSS CDN」。",
-        "placeholder": "粘贴官网完整 <footer>...</footer>"
-      },
-      "contact_html": {
-        "label": "联系支持（HTML）",
-        "info": "显示在「极简支持首页」左侧栏，例如服务时间、邮箱、在线客服链接。",
-        "placeholder": "我们的支持团队提供全天候帮助。"
-      }
-    }
-  },
-  "lucide_icons": {
-    "name": "Lucide 图标",
-    "settings": {
-      "lucide_icons": {
-        "label": "允许的 Lucide 图标名称",
-        "info": "每行一个 kebab-case 图标名（如 help-circle、package）。图标名称查找：<a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>。页面模板从此列表生成图标下拉选项。图标须与主题 JS bundle 一致；仅在此处添加名称而不更新 bundle 时，前台无法渲染。"
-      }
-    }
-  },
-  "settings": {
-    "weixin_share": {
-      "title": "微信配置",
-      "weixin_app_id": {
-        "label": "开发者ID(AppID)",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>微信公众号/设置与开发/开发接口管理</a>中获取 "
-      },
-      "weixin_app_secret": {
-        "label": "开发者密码(AppSecret)",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>微信公众号/设置与开发/开发接口管理</a>中获取"
-      },
-      "weixin_enabled": {
-        "label": "是否启用微信分享",
-        "info": "提供站点页面微信分享的能力</br>请在微信公众号中配置ip白名单（ip: ${service_ip}）, 配置后将有一段时间的生效延迟。</br>检查是否开启微信分享权限，微信公众号/设置与开发/开发接口管理: <a href='https://mp.weixin.qq.com/cgi-bin/frame'>网页服务/分享接口</a>。</br>分享链接是否为卡片：从卡片形式进入分享卡片形式，链接形式进入分享链接形式；网页初始链接分享可由公司的服务号中或收藏后进行卡片分享（此规则为微信分享限制）。"
-      },
-      "weixin_debug": {
-        "label": "是否开启debug提示",
-        "info": "请仅在配置阶段开启此选项；开启后在访问前端站点时若未正确配置微信分享将自动提示错误信息"
-      }
-    }
+  "theme": {
+    "title": "Help",
+    "description": "从搜索、主题和产品出发，帮助客户找到答案并获得支持。",
+    "brand": "品牌与导航",
+    "reading": "阅读与分类",
+    "support": "联系支持",
+    "content": "内容显示",
+    "logo_url": "品牌标志",
+    "brand_name": "品牌名称",
+    "tagline": "一句话介绍",
+    "header_link_label": "导航按钮文字",
+    "header_link_url": "导航按钮链接",
+    "footer_text": "页脚说明",
+    "article_layout": "文章阅读布局",
+    "category_layout": "分类呈现",
+    "support_title": "支持区标题",
+    "support_description": "支持区说明",
+    "support_url": "支持服务链接",
+    "support_email": "支持邮箱",
+    "support_phone": "支持电话",
+    "show_author": "显示作者",
+    "show_published_at": "显示发布时间",
+    "enable_ai_search": "启用 AI 搜索入口",
+    "show_related_articles": "显示相关内容",
+    "article_layout_auto": "匹配首页变体",
+    "article_layout_tree": "目录导航",
+    "article_layout_reader": "专注阅读",
+    "article_layout_support": "支持侧栏",
+    "category_layout_auto": "匹配首页变体",
+    "category_layout_cards": "分类卡片",
+    "category_layout_list": "文章列表",
+    "category_layout_faq": "折叠问答"
   }
 }

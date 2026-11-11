@@ -1,0 +1,43 @@
+{% assign default_title = 'home.title' | t %}
+{% assign hero_title = home.settings.hero_title | strip | default: home.settings.title | default: default_title %}
+{% assign hero_description = home.settings.hero_description | strip | default: site.settings.tagline %}
+{% assign hero_image = home.settings.hero_image %}
+{% assign category_count = categories | size %}
+{% assign centered = false %}
+{% if mode == 'search' or mode == 'faqs' %}{% assign centered = true %}{% endif %}
+
+<section class="border-b border-base-300 bg-base-200/40" aria-labelledby="home-title">
+  <div class="help-container py-12 md:py-16 {% if mode == 'search' %}lg:py-24{% endif %} {% if hero_image != blank %}grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16{% endif %}">
+    <div class="min-w-0 {% if centered and hero_image == blank %}mx-auto max-w-3xl text-center{% else %}max-w-3xl{% endif %}">
+      <p class="help-eyebrow mb-4 inline-flex items-center gap-2 text-primary">
+        {% render 'icon', name: 'circle-help', class: 'size-4' %}
+        {{ 'home.eyebrow' | t }}
+      </p>
+      <h1 id="home-title" class="text-4xl font-semibold tracking-tight text-base-content sm:text-5xl {% if mode == 'search' %}lg:text-6xl{% endif %} leading-[1.12] text-balance">
+        {{ hero_title | escape_once }}
+      </h1>
+      {% if hero_description != blank %}
+        <p class="mt-5 max-w-2xl text-base leading-7 text-base-content/65 md:text-lg md:leading-8 {% if centered and hero_image == blank %}mx-auto{% endif %}">{{ hero_description | escape_once | newline_to_br }}</p>
+      {% endif %}
+      <div class="mt-8 max-w-2xl {% if centered and hero_image == blank %}mx-auto{% endif %}">
+        {% render 'search_form', id: 'home-search' %}
+      </div>
+      {% if category_count > 0 %}
+        <nav class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm {% if centered and hero_image == blank %}justify-center{% endif %}" aria-label="{{ 'home.quick_links' | t | escape }}">
+          <span class="text-base-content/50">{{ 'home.quick_links' | t }}</span>
+          {% for category in categories limit: 3 %}
+            <a href="{{ category.path }}" class="inline-flex min-h-8 items-center gap-1 text-base-content/75 underline-offset-4 transition hover:text-primary hover:underline">
+              {{ category.link_text | escape_once }}
+              {% render 'icon', name: 'arrow-right', class: 'size-3.5' %}
+            </a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+    </div>
+    {% if hero_image != blank %}
+      <div class="overflow-hidden rounded-3xl border border-base-300 bg-base-100 p-4 md:p-6">
+        <img src="{{ hero_image.url | escape }}" alt="" width="960" height="720" fetchpriority="high" class="aspect-[4/3] w-full rounded-2xl object-contain">
+      </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,101 +1,109 @@
 {
-  "layout": {
-    "theme": {
-      "search_input_placeholder": "搜索...",
-      "search_tags_label": "热门标签",
-      "search_keywords_label": "热门搜索"
-    }
+  "reading": {
+    "home": "帮助中心",
+    "breadcrumb": "当前位置",
+    "topics": "主题目录",
+    "all_topics": "全部主题",
+    "browse_all": "查看全部",
+    "in_this_section": "本节内容",
+    "on_this_page": "本文目录",
+    "product_overview": "产品指南",
+    "product_guides": "了解这款产品",
+    "updated": "更新于",
+    "empty_article": "本文内容正在准备中，你可以浏览其他主题或联系支持团队。",
+    "articles": "篇内容",
+    "read_article": "阅读全文",
+    "pagination": "分页导航",
+    "previous": "上一页",
+    "next": "下一页",
+    "continue_reading": "继续阅读",
+    "previous_article": "上一篇",
+    "next_article": "下一篇",
+    "related": "相关文章",
+    "was_helpful": "这篇内容对你有帮助吗？",
+    "feedback_recorded": "感谢你的反馈，你可以在下方更新评价。",
+    "feedback_message": "告诉我们更多",
+    "feedback_placeholder": "哪些地方可以解释得更清楚？",
+    "submit_feedback": "提交反馈",
+    "feedback_title": "提供反馈",
+    "back_to_article": "返回文章",
+    "feedback_error": "反馈未能保存",
+    "search_eyebrow": "查找答案",
+    "search_title": "搜索帮助中心",
+    "results_for": "搜索结果：",
+    "no_results": "没有找到匹配的内容",
+    "no_results_hint": "试试更简短的关键词，或按主题查找你需要的内容。",
+    "browse_topics": "浏览主题",
+    "start_search": "你想了解什么？",
+    "start_search_hint": "在上方输入问题、功能名称或关键词。",
+    "recommended": "推荐资源",
+    "ai_title": "向 AI 助手提问",
+    "ai_description": "根据帮助中心的内容获取解答。",
+    "ai_question": "描述你的问题",
+    "ai_ask": "询问 AI",
+    "ai_thinking": "正在查找答案…",
+    "ai_completed": "回答已完成。",
+    "ai_error": "暂时无法完成回答，请重试。",
+    "ai_empty": "请输入你的问题。",
+    "ai_disclaimer": "AI 回答可能存在误差，请结合引用的原文确认。",
+    "tagged_articles": "相关标签内容",
+    "no_tagged_articles": "该标签下暂时没有已发布的内容。",
+    "password": "访问密码",
+    "unlock": "继续访问",
+    "restricted_title": "此内容需要访问权限",
+    "restricted_hint": "请使用有权限的账号登录，或输入访问密码继续。",
+    "restricted_signed_in": "当前账号没有访问权限。请联系站点管理员，或使用其他账号登录。",
+    "sign_out": "退出登录",
+    "baklib_sign_in": "使用 Baklib 账号登录",
+    "sso_sign_in": "使用 SSO 登录",
+    "not_found_title": "暂时找不到这个页面",
+    "not_found_hint": "页面链接可能已变更。你可以搜索帮助中心，或返回主题目录。",
+    "error_title": "暂时无法处理此请求"
   },
-  "snippets": {
-    "header_user_account": {
-      "user_center": "个人中心",
-      "profile": "个人信息",
-      "signout_loading": "退出中...",
-      "signin_loading": "登录中...",
-      "signin": "登录",
-      "create_account": "创建账户"
-    },
-    "feedback_form": {
-      "title": "提交反馈",
-      "message_label": "留言",
-      "message_placeholder": "请输入反馈内容",
-      "message_required": "反馈内容不能为空",
-      "submit": "提交",
-      "cancel": "取消"
-    },
-    "feedback_button": {
-      "title_posted": "感谢您的反馈",
-      "title_unposted": "提交反馈"
-    },
-    "page_tools": {
-      "copy_page_label": "复制为 Markdown",
-      "copy_page_description": "将页面以 Markdown 格式复制给 LLMs",
-      "open_in_chatgpt": "在 ChatGPT 中打开",
-      "open_in_claude": "在 Claude 中打开",
-      "ask_about_page": "询问有关此页面的问题",
-      "copy_mcp_label": "复制 MCP 安装命令",
-      "copy_mcp_description": "复制 npx 命令以安装 MCP 服务器",
-      "connect_to_cursor": "连接到 Cursor",
-      "connect_to_cursor_description": "在 Cursor 中安装 MCP Server",
-      "connect_to_vscode": "连接到 VS Code",
-      "connect_to_vscode_description": "在 VS Code 中安装 MCP Server"
-    },
-    "aside_nav": {
-      "tags_title": "标签",
-      "topics_title": "常见主题",
-      "contact_title": "联系支持"
-    }
+  "home": {
+    "title": "您需要什么帮助？",
+    "eyebrow": "知识与支持",
+    "quick_links": "快速访问",
+    "source_content": "介绍",
+    "explore": "探索知识库",
+    "collections_title": "从您关心的主题开始",
+    "collections_description": "按主题查找使用指南和问题解答。",
+    "products_title": "查找产品帮助",
+    "products_description": "选择产品或服务，查阅相关指南与问题解答。",
+    "support_topics_title": "浏览支持主题",
+    "product_help": "查看帮助",
+    "items": "项内容",
+    "empty_title": "暂无可展示的主题",
+    "empty_description": "您可以访问的主题发布后会显示在这里，也可以通过搜索查找内容。",
+    "featured_eyebrow": "精选知识",
+    "featured_title": "从这些内容开始了解",
+    "faq_eyebrow": "问题与解答",
+    "faq_title": "找到问题的答案",
+    "faq_description": "浏览相关主题，或展开文章查看简要说明。",
+    "view_all_answers": "查看全部解答",
+    "browse_topic": "浏览相关内容",
+    "read_answer": "阅读全文",
+    "faq_empty_title": "暂无可展示的解答",
+    "faq_empty_description": "此栏目中您可以访问的文章发布后会显示在这里。",
+    "support_label": "联系支持"
   },
-  "templates": {
-    "search": {
-      "placeholder": "搜索...",
-      "no_results": "没有找到相关结果",
-      "ai_input_placeholder": "跟 AI 聊聊…"
-    },
-    "page": {
-      "llm_prompt_template": "读取 %{url} 的内容，以便我可以询问关于它的问题。",
-      "llm_copying": "复制中...",
-      "llm_copied": "已复制",
-      "pagination_status_prefix": "正在查看第 ",
-      "pagination_status_middle": " 条，共 ",
-      "pagination_status_suffix": " 条",
-      "pagination_prev": "上一页",
-      "pagination_next": "下一页",
-      "related_section_title": "相关文章"
-    },
-    "index": {
-      "faqs": {
-        "tab_all": "全部",
-        "hero_title_default": "常见问题",
-        "hero_description_default": "帮助您快速了解与解决常见问题",
-        "open_in_new_page": "在新页面打开"
-      },
-      "support": {
-        "search_placeholder": "搜索帮助文章...",
-        "popular_section_title": "热门文章"
-      }
-    }
-  },
-  "ai": {
-    "title": "AI 助手",
-    "thinking": "正在思考...",
-    "completed": "AI 回答完毕.",
-    "canceled": "已取消回答",
-    "disclaimer": "内容由 AI 生成，可能存在错误，请自行核实。",
-    "widen": "加宽对话框（占 2/3）",
-    "narrow": "收窄对话框（占 1/3）",
-    "collapse": "折叠对话框",
-    "expand": "展开 AI 助手"
-  },
-  "generic": {
-    "published_at": "发布时间",
-    "feedback_created_at": "上次反馈于",
-    "buttons": {
-      "signout": "退出登录"
-    },
-    "read_more": "查看更多"
-  },
-  "placeholders": {
-    "search": ""
+  "shell": {
+    "close": "关闭",
+    "skip_content": "跳转到正文",
+    "navigation": "导航",
+    "search": "搜索",
+    "toggle_theme": "切换深色模式",
+    "account": "账户",
+    "profile": "个人信息",
+    "sign_out": "退出登录",
+    "sign_in": "登录",
+    "footer_description": "找到答案，继续前行。",
+    "footer_navigation": "页脚导航",
+    "search_placeholder": "搜索问题、文章或关键词…",
+    "support_title": "还需要帮助？",
+    "support_description": "联系支持团队，获得进一步协助。",
+    "contact_support": "联系支持",
+    "email_support": "发送邮件",
+    "view_image": "查看大图"
   }
 }

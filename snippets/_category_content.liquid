@@ -1,0 +1,22 @@
+{% assign category_layout = site.settings.category_layout.value | default: 'auto' %}
+{% if category_layout == 'auto' %}
+  {% if home_mode == 'collections' %}{% assign category_layout = 'cards' %}{% elsif home_mode == 'faqs' %}{% assign category_layout = 'faq' %}{% else %}{% assign category_layout = 'list' %}{% endif %}
+{% endif %}
+<section id="category-content" data-category-layout="{{ category_layout }}" class="mt-10 border-t border-base-300 pt-8">
+  <div class="mb-5 flex items-center justify-between gap-4">
+    <h2 class="text-lg font-semibold">{{ 'reading.in_this_section' | t }}</h2>
+    <span class="text-xs text-base-content/45">{{ page.children_in_list | size }} {{ 'reading.articles' | t }}</span>
+  </div>
+  {% paginate_tag page.children_in_list, as: 'children', per: 18 %}
+    <div class="{% if category_layout == 'cards' %}grid gap-4 sm:grid-cols-2{% elsif category_layout == 'faq' %}space-y-3{% else %}divide-y divide-base-300{% endif %}">
+      {% for child in children %}
+        {% if category_layout == 'faq' %}
+          {% render 'category_faq_item', child: child %}
+        {% else %}
+          {% render 'category_item', item: child, cards: category_layout %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% render 'reading_pagination', paginate: paginate %}
+  {% endpaginate_tag %}
+</section>

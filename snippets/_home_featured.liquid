@@ -1,0 +1,27 @@
+{% if home.settings.show_featured %}
+  {% assign featured_paths = home.settings.featured_pages | reg_split: '/\r?\n/' %}
+  {% assign featured_count = 0 %}
+  {% capture featured_items %}
+    {% for configured_path in featured_paths %}
+      {% assign featured_path = configured_path | strip %}
+      {% if featured_path != blank %}
+        {% assign featured_page = site.pages[featured_path] %}
+        {% assign featured_accessible = featured_page | can_access? %}
+        {% if featured_page != blank and featured_page.id != root.id and featured_accessible %}
+          {% assign featured_count = featured_count | plus: 1 %}
+          {% render 'home_featured_item', item: featured_page %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endcapture %}
+  {% if featured_count > 0 %}
+    {% assign default_featured_title = 'home.featured_title' | t %}
+    <section class="help-section" aria-labelledby="home-featured-title">
+      <div class="mb-7">
+        <p class="help-eyebrow mb-2 text-base-content/45">{{ 'home.featured_eyebrow' | t }}</p>
+        <h2 id="home-featured-title" class="text-2xl font-semibold tracking-tight text-base-content md:text-3xl">{{ home.settings.featured_title | default: default_featured_title | escape_once }}</h2>
+      </div>
+      <div class="grid gap-x-8 md:grid-cols-2">{{ featured_items }}</div>
+    </section>
+  {% endif %}
+{% endif %}

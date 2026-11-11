@@ -1,0 +1,17 @@
+<section class="help-container max-w-xl py-16 lg:py-24">
+  <div class="help-card p-7 sm:p-10">
+    <div class="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">{% render 'icon', name: 'shield-check', class: 'size-6' %}</div>
+    <h1 class="text-2xl font-semibold tracking-tight">{{ 'reading.restricted_title' | t }}</h1>
+    <p class="mb-7 mt-3 text-sm leading-6 text-base-content/60">{% if current_user %}{{ 'reading.restricted_signed_in' | t }}{% else %}{{ 'reading.restricted_hint' | t }}{% endif %}</p>
+    {% if page.password_login_enabled or site.password_login_enabled %}{% render 'reading_password_form', sign_in_form: sign_in_form %}{% endif %}
+    <div class="mt-5 space-y-3">
+      {% if current_user %}
+        {% form_tag 'sign_out' %}<button type="submit" class="help-button w-full">{{ 'reading.sign_out' | t }}</button>{% endform_tag %}
+      {% else %}
+        {% if site.baklib_login_enabled %}{% form_tag 'sign_in_with_baklib', silent: false %}<button type="submit" class="help-button w-full">{{ 'reading.baklib_sign_in' | t }}</button>{% endform_tag %}{% endif %}
+        {% if site.sso_login_enabled %}{% form_tag 'sign_in_with_sso', provider: 'sso' %}<button type="submit" class="help-button w-full">{{ 'reading.sso_sign_in' | t }}</button>{% endform_tag %}{% endif %}
+      {% endif %}
+    </div>
+    <a href="{{ site.index_path }}" class="mt-7 inline-flex items-center gap-2 text-sm text-primary hover:underline">{% render 'icon', name: 'arrow-left', class: 'size-4' %}{{ 'reading.home' | t }}</a>
+  </div>
+</section>

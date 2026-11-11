@@ -1,0 +1,5 @@
+{% if home.settings.content != blank %}
+  <section class="help-section" aria-label="{{ 'home.source_content' | t | escape }}">
+    <div class="help-prose max-w-none">{{ home.settings.content }}</div>
+  </section>
+{% endif %}

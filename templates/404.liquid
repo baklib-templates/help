@@ -1,0 +1,7 @@
+<section class="help-container max-w-2xl py-16 text-center lg:py-24">
+  <p class="mb-5 text-sm font-semibold tracking-widest text-primary">404</p>
+  <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">{{ 'reading.not_found_title' | t }}</h1>
+  <p class="mx-auto mb-8 mt-4 max-w-md text-base leading-7 text-base-content/55">{{ 'reading.not_found_hint' | t }}</p>
+  {% render 'search_form', id: 'not-found-search' %}
+  <a href="{{ site.index_path }}" class="help-button mt-6">{% render 'icon', name: 'arrow-left', class: 'size-4' %}{{ 'reading.home' | t }}</a>
+</section>

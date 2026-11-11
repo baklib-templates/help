@@ -2,223 +2,190 @@
   {
     "name": "theme_info",
     "theme_name": "help",
-    "theme_label": "t:schema.theme_label",
-    "theme_description": "t:schema.theme_description",
-    "theme_version": "2.1.2",
+    "theme_label": "t:schema.theme.title",
+    "theme_description": "t:schema.theme.description",
+    "theme_version": "3.0.1",
     "theme_syntax_version": "v2",
     "theme_scope": "wiki",
     "theme_author": "Baklib",
-    "theme_documentation_url": "https://help.baklib.cn/themes/docs",
-    "theme_support_url": "https://help.baklib.cn/themes/docs/settings",
-    "theme_thumb_url": "images/theme/${lang}/thumb.png",
-    "theme_preview_images": [
-      "images/theme/${lang}/cover.png",
-      "images/theme/${lang}/index-faqs.png",
-      "images/theme/${lang}/index-card.png",
-      "images/theme/${lang}/index-support.png"
-    ],
     "theme_languages": [
       {
-        "name": "中文简体",
+        "name": "简体中文",
         "value": "zh-CN"
-      },
-      {
-        "name": "中文繁體",
-        "value": "zh-TW"
-      },
-      {
-        "name": "한국어",
-        "value": "ko"
       },
       {
         "name": "English",
         "value": "en"
-      },
-      {
-        "name": "日本語",
-        "value": "ja"
-      },
-      {
-        "name": "Deutsch",
-        "value": "de"
-      },
-      {
-        "name": "Français",
-        "value": "fr"
       }
     ],
     "recommendations": {
       "color_schemas": {
-        "baklib": {
-          "name": "t:schema.recommendations.baklib.name",
+        "calm": {
+          "name": "Calm · 沉静",
           "colors": {
-            "--theme-color-base-100": "#F7F5F3",
-            "--theme-color-base-200": "#F3EDE9",
-            "--theme-color-base-300": "#E2DDD9",
-            "--theme-color-base-content": "#4B4743",
-            "--theme-color-primary": "#0F766E",
-            "--theme-color-primary-content": "#F7F5F3",
-            "--theme-color-secondary": "#C2410C",
-            "--theme-color-secondary-content": "#FF842B",
-            "--theme-color-accent": "#0F172A",
-            "--theme-color-accent-content": "#F7F9FA",
-            "--theme-color-neutral": "#E2DDD9",
-            "--theme-color-neutral-content": "#4B4743",
-            "--theme-color-info": "#7CC8FF",
-            "--theme-color-info-content": "#00324F",
-            "--theme-color-success": "#14B8A6",
-            "--theme-color-success-content": "#0C2600",
-            "--theme-color-warning": "#FDBA74",
-            "--theme-color-warning-content": "#6C4C00",
-            "--theme-color-error": "#F82834",
-            "--theme-color-error-content": "#730014"
-          }
-        },
-        "fashion": {
-          "name": "t:schema.recommendations.fashion.name",
-          "colors": {
-            "--theme-color-primary": "#03A9F4",
-            "--theme-color-secondary": "#E91E63",
-            "--theme-color-accent": "#AAAAAA",
-            "--theme-color-info": "#2196F3",
-            "--theme-color-success": "#4CAF50",
-            "--theme-color-warning": "#FFC107"
+            "--theme-color-primary": "#0f766e",
+            "--theme-color-primary-content": "#ffffff",
+            "--theme-color-secondary": "#334155",
+            "--theme-color-accent": "#0f766e",
+            "--theme-color-primary-dark": "#5eead4",
+            "--theme-color-primary-content-dark": "#102523"
           }
         }
       }
     },
-    "miniprogram": true
+    "theme_thumb_url": "images/theme/cover.jpg",
+    "theme_preview_images": [
+      "images/theme/home-collections.jpg",
+      "images/theme/article-reader.jpg",
+      "images/theme/article-mobile.jpg"
+    ]
   },
   {
-    "name": "t:schema.generic.name",
+    "name": "t:schema.theme.brand",
     "settings": [
       {
         "id": "logo_url",
         "type": "image_picker",
+        "label": "t:schema.theme.logo_url",
         "ratio": "3:1",
-        "width": 240,
-        "label": "t:schema.generic.settings.logo_url.label",
-        "info": "t:schema.generic.settings.logo_url.info"
+        "width": 240
+      },
+      {
+        "id": "brand_name",
+        "type": "text",
+        "label": "t:schema.theme.brand_name"
+      },
+      {
+        "id": "tagline",
+        "type": "text",
+        "label": "t:schema.theme.tagline"
+      },
+      {
+        "id": "header_link_label",
+        "type": "text",
+        "label": "t:schema.theme.header_link_label"
+      },
+      {
+        "id": "header_link_url",
+        "type": "text",
+        "label": "t:schema.theme.header_link_url"
+      },
+      {
+        "id": "footer_text",
+        "type": "text",
+        "label": "t:schema.theme.footer_text"
+      }
+    ]
+  },
+  {
+    "name": "t:schema.theme.reading",
+    "settings": [
+      {
+        "id": "article_layout",
+        "type": "select",
+        "label": "t:schema.theme.article_layout",
+        "default": "auto",
+        "choices": [
+          {
+            "value": "auto",
+            "label": "t:schema.theme.article_layout_auto"
+          },
+          {
+            "value": "tree",
+            "label": "t:schema.theme.article_layout_tree"
+          },
+          {
+            "value": "reader",
+            "label": "t:schema.theme.article_layout_reader"
+          },
+          {
+            "value": "support",
+            "label": "t:schema.theme.article_layout_support"
+          }
+        ]
+      },
+      {
+        "id": "category_layout",
+        "type": "select",
+        "label": "t:schema.theme.category_layout",
+        "default": "auto",
+        "choices": [
+          {
+            "value": "auto",
+            "label": "t:schema.theme.category_layout_auto"
+          },
+          {
+            "value": "cards",
+            "label": "t:schema.theme.category_layout_cards"
+          },
+          {
+            "value": "list",
+            "label": "t:schema.theme.category_layout_list"
+          },
+          {
+            "value": "faq",
+            "label": "t:schema.theme.category_layout_faq"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "t:schema.theme.support",
+    "settings": [
+      {
+        "id": "support_title",
+        "type": "text",
+        "label": "t:schema.theme.support_title"
+      },
+      {
+        "id": "support_description",
+        "type": "textarea",
+        "label": "t:schema.theme.support_description"
+      },
+      {
+        "id": "support_url",
+        "type": "text",
+        "label": "t:schema.theme.support_url"
+      },
+      {
+        "id": "support_email",
+        "type": "text",
+        "label": "t:schema.theme.support_email"
+      },
+      {
+        "id": "support_phone",
+        "type": "text",
+        "label": "t:schema.theme.support_phone"
+      }
+    ]
+  },
+  {
+    "name": "t:schema.theme.content",
+    "settings": [
+      {
+        "id": "show_author",
+        "type": "checkbox",
+        "label": "t:schema.theme.show_author",
+        "default": false
       },
       {
         "id": "show_published_at",
         "type": "checkbox",
-        "label": "t:schema.generic.settings.show_published_at.label",
+        "label": "t:schema.theme.show_published_at",
         "default": false
       },
       {
-        "id": "show_author",
+        "id": "enable_ai_search",
         "type": "checkbox",
-        "label": "t:schema.generic.settings.show_author.label",
-        "default": false
-      },
-      {
-        "id": "enable_ai_chat_search",
-        "type": "checkbox",
-        "label": "t:schema.generic.settings.enable_ai_chat_search.label",
-        "info": "t:schema.generic.settings.enable_ai_chat_search.info",
+        "label": "t:schema.theme.enable_ai_search",
         "default": true
       },
       {
-        "id": "ai_search_completed_text",
-        "type": "text",
-        "label": "t:schema.generic.settings.ai_search_completed_text.label",
-        "info": "t:schema.generic.settings.ai_search_completed_text.info"
-      },
-      {
-        "id": "show_page_tools_dropdown",
+        "id": "show_related_articles",
         "type": "checkbox",
-        "label": "t:schema.generic.settings.show_page_tools_dropdown.label",
+        "label": "t:schema.theme.show_related_articles",
         "default": true
-      }
-    ]
-  },
-  {
-    "name": "t:schema.custom_html.name",
-    "settings": [
-      {
-        "id": "head_html",
-        "type": "html",
-        "label": "t:schema.custom_html.settings.head_html.label",
-        "info": "t:schema.custom_html.settings.head_html.info",
-        "rows": 10,
-        "placeholder": "t:schema.custom_html.settings.head_html.placeholder"
-      },
-      {
-        "id": "enable_tailwind_cdn",
-        "type": "checkbox",
-        "label": "t:schema.custom_html.settings.enable_tailwind_cdn.label",
-        "info": "t:schema.custom_html.settings.enable_tailwind_cdn.info",
-        "default": false
-      },
-      {
-        "id": "header_menu_html",
-        "type": "html",
-        "label": "t:schema.custom_html.settings.header_menu_html.label",
-        "info": "t:schema.custom_html.settings.header_menu_html.info",
-        "rows": 12,
-        "placeholder": "t:schema.custom_html.settings.header_menu_html.placeholder"
-      },
-      {
-        "id": "footer_menu_html",
-        "type": "html",
-        "label": "t:schema.custom_html.settings.footer_menu_html.label",
-        "info": "t:schema.custom_html.settings.footer_menu_html.info",
-        "rows": 12,
-        "placeholder": "t:schema.custom_html.settings.footer_menu_html.placeholder"
-      },
-      {
-        "id": "contact_html",
-        "type": "html",
-        "label": "t:schema.custom_html.settings.contact_html.label",
-        "info": "t:schema.custom_html.settings.contact_html.info",
-        "rows": 12,
-        "placeholder": "t:schema.custom_html.settings.contact_html.placeholder",
-        "default": "preset:contact_html.html"
-      }
-    ]
-  },
-  {
-    "name": "t:schema.lucide_icons.name",
-    "settings": [
-      {
-        "id": "lucide_icons",
-        "type": "textarea",
-        "label": "t:schema.lucide_icons.settings.lucide_icons.label",
-        "info": "t:schema.lucide_icons.settings.lucide_icons.info",
-        "rows": 12,
-        "default": "activity\nalert-circle\nanchor\napp-window\narchive\nbanknote\nbarcode\nbell\nbook-open\nbox\nbuilding\nbuilding-2\ncalendar\nchart-bar\nchart-line\nchart-pie\ncheck\ncircle-check\ncircle-x\nclock\ncloud\ncloud-download\ncloud-upload\ncode\ncontainer\ncopy\ncpu\ncredit-card\ndatabase\ndownload\nedit\nexternal-link\neye\nfile-text\nfilter\nfingerprint\nfolder\nfolder-open\ngauge\ngift\nglobe\nhard-drive\nheadphones\nheart\nhelp-circle\nhome\ninfo\nkey\nlanguages\nlayers\nlayout-grid\nlife-buoy\nlink\nlist\nlock\nmail\nmap\nmap-pin\nmap-pinned\nmenu\nmessage-square\nmonitor\nnavigation\nnetwork\npackage\npackage-check\npackage-x\npencil\npercent\nphone\nplane\nplus\nreceipt\nrefresh-cw\nroute\nsearch\nserver\nsettings\nshare-2\nshield\nshield-check\nship\nshopping-cart\nstar\nstore\ntag\nterminal\ntrending-up\ntriangle-alert\ntruck\nupload\nuser\nuser-cog\nusers\nwallet\nwarehouse\nwebhook\nweight\nwifi\nx"
-      }
-    ]
-  },
-  {
-    "name": "t:schema.settings.weixin_share.title",
-    "settings": [
-      {
-        "id": "weixin_app_id",
-        "type": "text",
-        "label": "t:schema.settings.weixin_share.weixin_app_id.label",
-        "info": "t:schema.settings.weixin_share.weixin_app_id.info"
-      },
-      {
-        "id": "weixin_app_secret",
-        "type": "text",
-        "label": "t:schema.settings.weixin_share.weixin_app_secret.label",
-        "info": "t:schema.settings.weixin_share.weixin_app_secret.info"
-      },
-      {
-        "id": "weixin_enabled",
-        "type": "checkbox",
-        "label": "t:schema.settings.weixin_share.weixin_enabled.label",
-        "default": false,
-        "info": "t:schema.settings.weixin_share.weixin_enabled.info"
-      },
-      {
-        "id": "weixin_debug",
-        "type": "checkbox",
-        "label": "t:schema.settings.weixin_share.weixin_debug.label",
-        "default": false,
-        "info": "t:schema.settings.weixin_share.weixin_debug.info"
       }
     ]
   }

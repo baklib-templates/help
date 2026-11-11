@@ -1,0 +1,11 @@
+{% if inline %}
+  <details class="my-7 rounded-xl border border-base-300 bg-base-200/40 px-5 py-4" data-toc-target="panel" hidden>
+    <summary class="cursor-pointer text-sm font-semibold">{{ 'reading.on_this_page' | t }}</summary>
+    <nav aria-label="{{ 'reading.on_this_page' | t }}" class="mt-4 text-sm text-base-content/60"><ol class="space-y-2" data-toc-target="list"></ol></nav>
+  </details>
+{% else %}
+  <nav aria-label="{{ 'reading.on_this_page' | t }}" class="text-sm" data-toc-target="panel" hidden>
+    <h2 class="mb-4 text-xs font-semibold uppercase tracking-wider text-base-content/45">{{ 'reading.on_this_page' | t }}</h2>
+    <ol class="space-y-3 border-l border-base-300 pl-4 text-base-content/60" data-toc-target="list"></ol>
+  </nav>
+{% endif %}

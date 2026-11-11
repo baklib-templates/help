@@ -1,0 +1,12 @@
+<a href="{{ item.path }}" class="group flex items-start gap-4 {% if cards == 'cards' %}help-card h-full p-5 transition hover:border-primary/40 hover:shadow-sm{% else %}py-5{% endif %}">
+  <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/8 text-primary">
+    {% if item.settings.icon_image %}<img src="{{ item.settings.icon_image.url }}" class="size-6 object-contain" alt="" loading="lazy">{% else %}{% render 'icon', name: item.settings.icon_name.value, class: 'size-5' %}{% endif %}
+  </span>
+  <span class="min-w-0 flex-1">
+    <span class="block font-medium leading-6 group-hover:text-primary">{{ item.link_text | escape_once }}</span>
+    {% if item.settings.description != blank %}<span class="mt-1.5 line-clamp-2 block text-sm leading-6 text-base-content/55">{{ item.settings.description | escape_once }}</span>{% endif %}
+    {% assign item_children = item.children_in_list | size %}
+    {% if item_children > 0 %}<span class="mt-3 block text-xs text-base-content/40">{{ item_children }} {{ 'reading.articles' | t }}</span>{% endif %}
+  </span>
+  <span class="mt-1 text-base-content/35 transition group-hover:translate-x-0.5 group-hover:text-primary">{% render 'icon', name: 'chevron-right', class: 'size-4' %}</span>
+</a>

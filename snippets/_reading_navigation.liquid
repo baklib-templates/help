@@ -1,0 +1,40 @@
+<nav aria-label="{{ 'reading.topics' | t }}" class="space-y-7 text-sm">
+  <section>
+    <h2 class="mb-3 text-xs font-semibold uppercase tracking-wider text-base-content/45">{{ 'reading.all_topics' | t }}</h2>
+    <ul class="space-y-1">
+      {% for topic in home_page.children_in_list limit: 30 %}
+        <li><a href="{{ topic.path }}" class="flex items-center gap-2 rounded-lg px-3 py-2 leading-5 hover:bg-base-200 {% if topic.path == page.path %}bg-primary/10 font-semibold text-primary{% else %}text-base-content/70{% endif %}" {% if topic.path == page.path %}aria-current="page"{% endif %}>
+          {% render 'icon', name: topic.settings.icon_name.value, class: 'size-4 shrink-0' %}<span>{{ topic.link_text | escape_once }}</span>
+        </a></li>
+      {% endfor %}
+    </ul>
+    {% assign topic_count = home_page.children_in_list | size %}
+    {% if topic_count > 30 %}<a href="{{ site.index_path }}" class="mt-2 block px-3 text-primary hover:underline">{{ 'reading.browse_all' | t }}</a>{% endif %}
+  </section>
+  {% assign branch = page.parent %}
+  {% if branch and branch.path != home_page.path %}
+    {% assign visible_branch = site.pages[branch.path] %}
+    {% if visible_branch %}
+      <section>
+        <a href="{{ visible_branch.path }}" class="mb-3 flex items-center gap-2 px-3 font-semibold hover:text-primary">{% render 'icon', name: 'arrow-left', class: 'size-4 shrink-0' %}{{ visible_branch.link_text | escape_once }}</a>
+        <ul class="space-y-1 border-l border-base-300 pl-3">
+          {% for sibling in visible_branch.children_in_list limit: 50 %}
+            <li><a href="{{ sibling.path }}" class="block rounded-lg px-3 py-2 leading-5 hover:bg-base-200 {% if sibling.path == page.path %}bg-primary/10 font-semibold text-primary{% else %}text-base-content/65{% endif %}" {% if sibling.path == page.path %}aria-current="page"{% endif %}>{{ sibling.link_text | escape_once }}</a></li>
+          {% endfor %}
+        </ul>
+        {% assign sibling_count = visible_branch.children_in_list | size %}
+        {% if sibling_count > 50 %}<a href="{{ visible_branch.path }}" class="mt-3 block px-3 text-primary hover:underline">{{ 'reading.browse_all' | t }}</a>{% endif %}
+      </section>
+    {% endif %}
+  {% endif %}
+  {% assign child_count = page.children_in_list | size %}
+  {% if child_count > 0 %}
+    <section>
+      <h2 class="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-base-content/45">{{ 'reading.in_this_section' | t }}</h2>
+      <ul class="space-y-1 border-l border-base-300 pl-3">
+        {% for child in page.children_in_list limit: 30 %}<li><a href="{{ child.path }}" class="block rounded-lg px-3 py-2 leading-5 text-base-content/65 hover:bg-base-200 hover:text-primary">{{ child.link_text | escape_once }}</a></li>{% endfor %}
+      </ul>
+      {% if child_count > 30 %}<a href="#category-content" class="mt-3 block px-3 text-primary hover:underline">{{ 'reading.browse_all' | t }}</a>{% endif %}
+    </section>
+  {% endif %}
+</nav>

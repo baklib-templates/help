@@ -1,101 +1,109 @@
 {
-  "layout": {
-    "theme": {
-      "search_input_placeholder": "Search...",
-      "search_tags_label": "Popular Tags",
-      "search_keywords_label": "Popular Searches"
-    }
+  "reading": {
+    "home": "Help center",
+    "breadcrumb": "Breadcrumb",
+    "topics": "Browse topics",
+    "all_topics": "All topics",
+    "browse_all": "Browse all",
+    "in_this_section": "In this section",
+    "on_this_page": "On this page",
+    "product_overview": "Product guide",
+    "product_guides": "Explore this product",
+    "updated": "Updated",
+    "empty_article": "This article is being prepared. Explore another topic or contact our team for help.",
+    "articles": "articles",
+    "read_article": "Read the full article",
+    "pagination": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "continue_reading": "Continue reading",
+    "previous_article": "Previous article",
+    "next_article": "Next article",
+    "related": "Related articles",
+    "was_helpful": "Was this article helpful?",
+    "feedback_recorded": "Thanks for sharing your feedback. You can update it below.",
+    "feedback_message": "Tell us more",
+    "feedback_placeholder": "What could we make clearer?",
+    "submit_feedback": "Send feedback",
+    "feedback_title": "Share your feedback",
+    "back_to_article": "Back to article",
+    "feedback_error": "Your feedback could not be saved",
+    "search_eyebrow": "Find your answer",
+    "search_title": "Search the help center",
+    "results_for": "Results for",
+    "no_results": "No matching articles yet",
+    "no_results_hint": "Try a shorter phrase, check your spelling, or browse topics to find what you need.",
+    "browse_topics": "Browse topics",
+    "start_search": "What can we help you with?",
+    "start_search_hint": "Enter a question, feature name, or a few keywords above.",
+    "recommended": "Recommended resource",
+    "ai_title": "Ask the AI assistant",
+    "ai_description": "Get an answer based on this help center.",
+    "ai_question": "Describe your question",
+    "ai_ask": "Ask AI",
+    "ai_thinking": "Looking for an answer…",
+    "ai_completed": "Answer complete.",
+    "ai_error": "We could not complete the answer. Please try again.",
+    "ai_empty": "Enter a question to get started.",
+    "ai_disclaimer": "AI answers may contain mistakes. Check the linked articles for the full details.",
+    "tagged_articles": "Articles by topic",
+    "no_tagged_articles": "There are no published articles with this tag yet.",
+    "password": "Access password",
+    "unlock": "Continue",
+    "restricted_title": "This content is restricted",
+    "restricted_hint": "Sign in with an authorized account or enter the access password to continue.",
+    "restricted_signed_in": "Your account does not have access to this content. Contact the site administrator or use another account.",
+    "sign_out": "Sign out",
+    "baklib_sign_in": "Sign in with Baklib",
+    "sso_sign_in": "Sign in with SSO",
+    "not_found_title": "We could not find that page",
+    "not_found_hint": "The link may have changed. Search the help center or return to the topics.",
+    "error_title": "Something went wrong"
   },
-  "snippets": {
-    "header_user_account": {
-      "user_center": "Account",
-      "profile": "Profile",
-      "signout_loading": "Signing out...",
-      "signin_loading": "Signing in...",
-      "signin": "Sign in",
-      "create_account": "Create account"
-    },
-    "feedback_form": {
-      "title": "Submit Feedback",
-      "message_label": "Message",
-      "message_placeholder": "Please enter your feedback",
-      "message_required": "Feedback message cannot be empty",
-      "submit": "Submit",
-      "cancel": "Cancel"
-    },
-    "feedback_button": {
-      "title_posted": "Thank you for your feedback",
-      "title_unposted": "Submit Feedback"
-    },
-    "page_tools": {
-      "copy_page_label": "Copy as Markdown",
-      "copy_page_description": "Copy this page as Markdown for LLMs",
-      "open_in_chatgpt": "Open in ChatGPT",
-      "open_in_claude": "Open in Claude",
-      "ask_about_page": "Ask a question about this page",
-      "copy_mcp_label": "Copy MCP install command",
-      "copy_mcp_description": "Copy npx command to install the MCP server",
-      "connect_to_cursor": "Connect to Cursor",
-      "connect_to_cursor_description": "Install MCP Server in Cursor",
-      "connect_to_vscode": "Connect to VS Code",
-      "connect_to_vscode_description": "Install MCP Server in VS Code"
-    },
-    "aside_nav": {
-      "tags_title": "Tags",
-      "topics_title": "Common topics",
-      "contact_title": "Contact support"
-    }
+  "home": {
+    "title": "How can we help?",
+    "eyebrow": "Knowledge & support",
+    "quick_links": "Quick links",
+    "source_content": "Introduction",
+    "explore": "Explore the knowledge base",
+    "collections_title": "Find your starting point",
+    "collections_description": "Browse guides and answers by topic.",
+    "products_title": "Help for your product",
+    "products_description": "Choose a product or service to find its guides and answers.",
+    "support_topics_title": "Explore support topics",
+    "product_help": "Explore support",
+    "items": "items",
+    "empty_title": "No topics to display yet",
+    "empty_description": "Published topics available to you will appear here. You can also use search to find content.",
+    "featured_eyebrow": "Selected knowledge",
+    "featured_title": "A useful place to begin",
+    "faq_eyebrow": "Questions & answers",
+    "faq_title": "Find an answer",
+    "faq_description": "Explore a topic or open an article to read a quick summary.",
+    "view_all_answers": "View all answers",
+    "browse_topic": "Browse this topic",
+    "read_answer": "Read the full article",
+    "faq_empty_title": "No answers to display yet",
+    "faq_empty_description": "Available articles will appear here once they are published in this collection.",
+    "support_label": "Contact support"
   },
-  "templates": {
-    "search": {
-      "placeholder": "Search...",
-      "no_results": "No results found",
-      "ai_input_placeholder": "Chat with AI…"
-    },
-    "page": {
-      "llm_prompt_template": "Read from %{url} so I can ask questions about it.",
-      "llm_copying": "Copying...",
-      "llm_copied": "Copied",
-      "pagination_status_prefix": "Viewing ",
-      "pagination_status_middle": " of ",
-      "pagination_status_suffix": "",
-      "pagination_prev": "Previous",
-      "pagination_next": "Next",
-      "related_section_title": "Related articles"
-    },
-    "index": {
-      "faqs": {
-        "tab_all": "All",
-        "hero_title_default": "Frequently Asked Questions",
-        "hero_description_default": "Helping you quickly understand and resolve common questions",
-        "open_in_new_page": "Open in new page"
-      },
-      "support": {
-        "search_placeholder": "Search help articles...",
-        "popular_section_title": "Popular articles"
-      }
-    }
-  },
-  "ai": {
-    "title": "AI Assistant",
-    "thinking": "Thinking...",
-    "completed": "AI response completed.",
-    "canceled": "Response canceled",
-    "disclaimer": "Content is AI-generated and may contain errors. Please verify.",
-    "widen": "Widen panel (2/3)",
-    "narrow": "Narrow panel (1/3)",
-    "collapse": "Collapse panel",
-    "expand": "Open AI Assistant"
-  },
-  "generic": {
-    "published_at": "Published at",
-    "feedback_created_at": "Last feedback at",
-    "buttons": {
-      "signout": "Sign Out"
-    },
-    "read_more": "View more"
-  },
-  "placeholders": {
-    "search": ""
+  "shell": {
+    "close": "Close",
+    "skip_content": "Skip to content",
+    "navigation": "Navigation",
+    "search": "Search",
+    "toggle_theme": "Toggle dark mode",
+    "account": "Account",
+    "profile": "Your profile",
+    "sign_out": "Sign out",
+    "sign_in": "Sign in",
+    "footer_description": "Find your answer. Keep moving forward.",
+    "footer_navigation": "Footer navigation",
+    "search_placeholder": "Search questions, articles, or keywords…",
+    "support_title": "Need a hand?",
+    "support_description": "Our support team can help you take the next step.",
+    "contact_support": "Contact support",
+    "email_support": "Email support",
+    "view_image": "View image"
   }
 }

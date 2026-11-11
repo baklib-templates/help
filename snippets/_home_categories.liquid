@@ -1,0 +1,32 @@
+{% assign collection_heading = 'home.collections_title' | t %}
+{% assign collection_description = 'home.collections_description' | t %}
+{% assign category_count = categories | size %}
+{% if mode == 'products' %}
+  {% assign collection_heading = 'home.products_title' | t %}
+  {% assign collection_description = 'home.products_description' | t %}
+{% elsif mode == 'support' %}
+  {% assign collection_heading = 'home.support_topics_title' | t %}
+{% endif %}
+
+<section class="help-section" aria-labelledby="home-collections-title">
+  <div class="mb-7 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="help-eyebrow mb-2 text-base-content/45">{{ 'home.explore' | t }}</p>
+      <h2 id="home-collections-title" class="text-2xl font-semibold tracking-tight text-base-content md:text-3xl">{{ collection_heading }}</h2>
+      <p class="mt-2 text-sm leading-6 text-base-content/60 md:text-base">{{ collection_description }}</p>
+    </div>
+  </div>
+  {% if category_count > 0 %}
+    <div class="grid gap-4 {% if mode == 'products' %}sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4{% elsif mode == 'faqs' or mode == 'support' %}sm:grid-cols-2{% else %}md:grid-cols-2 lg:grid-cols-3{% endif %}">
+      {% for category in categories %}
+        {% render 'home_category_card', category: category, mode: mode %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="rounded-2xl border border-dashed border-base-300 bg-base-200/30 px-6 py-12 text-center">
+      <span class="mx-auto mb-4 flex size-12 items-center justify-center rounded-xl border border-base-300 bg-base-100 text-base-content/40">{% render 'icon', name: 'book', class: 'size-6' %}</span>
+      <h3 class="font-medium text-base-content">{{ 'home.empty_title' | t }}</h3>
+      <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-base-content/60">{{ 'home.empty_description' | t }}</p>
+    </div>
+  {% endif %}
+</section>

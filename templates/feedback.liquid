@@ -1,0 +1,5 @@
+<section class="help-container max-w-3xl py-12">
+  <a href="{{ page.path }}" class="text-sm text-primary hover:underline">{{ page.link_text | escape_once }}</a>
+  <h1 class="mb-6 mt-4 text-3xl font-semibold">{{ 'reading.feedback_title' | t }}</h1>
+  {% render 'feedback_form', page: page %}
+</section>

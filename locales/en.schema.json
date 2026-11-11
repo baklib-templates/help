@@ -1,219 +1,150 @@
 {
-  "theme_label": "Help",
-  "theme_description": "Ship documentation your users will actually read—clear information architecture, instant search, and AI-ready Q&A out of the box. Turn your knowledge base into polished product docs, API guides, and help centers without hand-rolling a separate doc site.",
-  "recommendations": {
-    "baklib": {
-      "name": "Baklib"
+  "context_schema": {
+    "label": "Help article",
+    "types": {
+      "article": {
+        "label": "Help article",
+        "fields": {
+          "topics": {
+            "label": "Help topics"
+          },
+          "summary": {
+            "label": "Answer summary"
+          },
+          "question": {
+            "label": "Reader question"
+          },
+          "steps": {
+            "label": "Resolution steps"
+          }
+        },
+        "relations": {
+          "related_to": {
+            "label": "Related answers"
+          }
+        }
+      }
+    }
+  },
+  "page": {
+    "name": "Content page",
+    "description": "Articles and categories, with a reading layout that follows your help center.",
+    "title": "Title",
+    "content": "Content",
+    "summary": "Summary",
+    "icon_image": "Custom icon image",
+    "icon_name": "Icon",
+    "reading_layout": "Reading layout",
+    "tags": "Tags",
+    "video": "Video",
+    "related_pages": "Related article paths",
+    "related_pages_info": "One existing page path per line, for example /getting-started. Only accessible pages are displayed.",
+    "layouts": {
+      "inherit": "Follow site setting",
+      "tree": "Topic navigation",
+      "reader": "Focused reading",
+      "support": "Reading with support"
     },
-    "fashion": {
-      "name": "Fashion"
+    "icons": {
+      "book_open": "Book",
+      "file_text": "Article",
+      "circle_help": "Help",
+      "rocket": "Getting started",
+      "settings": "Settings",
+      "users": "People",
+      "shield_check": "Security",
+      "credit_card": "Billing",
+      "plug": "Integration",
+      "layers": "Layers",
+      "code": "Code",
+      "package": "Product"
     }
   },
-  "templates": {
-    "index": {
-      "faqs": {
-        "name": "FAQ Center",
-        "description": "FAQ-style homepage with collapsible questions and category tabs",
-        "settings": {
-          "hero_height": {
-            "label": "Hero Height"
-          },
-          "hero_pc_image_url": {
-            "label": "Hero Background (Desktop)",
-            "info": "Recommended size: 1600×400 (or larger, 4:1 ratio) for desktop."
-          },
-          "hero_mobile_image_url": {
-            "label": "Hero Background (Mobile)",
-            "info": "Recommended size: 1080×360 (or larger, 3:1 ratio) for mobile. Reserve safe area at top/bottom to avoid covering text."
-          },
-          "hero_title": {
-            "label": "Hero Title",
-            "default": "Frequently Asked Questions"
-          },
-          "hero_description": {
-            "label": "Hero Description",
-            "default": "Helping you quickly understand and resolve common questions"
-          },
-          "hero_title_color": {
-            "label": "Title Color (Light Mode)"
-          },
-          "hero_title_color_dark": {
-            "label": "Title Color (Dark Mode)"
-          },
-          "hero_description_color": {
-            "label": "Description Color (Light Mode)"
-          },
-          "hero_description_color_dark": {
-            "label": "Description Color (Dark Mode)"
-          }
-        }
-      },
-      "support": {
-        "name": "Support Home",
-        "description": "Two-column layout: topics and contact (left), search and popular articles (right)",
-        "settings": {
-          "hero_title": {
-            "label": "Hero Title",
-            "default": "How can we help?",
-            "info": "Leave empty to use the site name instead."
-          },
-          "hero_subtitle": {
-            "label": "Hero Subtitle",
-            "default": "Browse FAQs, common questions, how-to guides, and product knowledge on this support page.",
-            "info": "Optional short text below the title."
-          },
-          "search_hot_tags": {
-            "label": "Popular Tags",
-            "info": "Shown below the search box."
-          },
-          "search_hot_keywords": {
-            "label": "Popular Searches",
-            "info": "One keyword per line."
-          }
-        }
-      },
-      "card": {
-        "name": "Card Home",
-        "description": "Large category cards with article previews (Intercom-style)",
-        "settings": {
-          "hero_title": {
-            "info": "Leave empty to use the site name."
-          },
-          "hero_description": {
-            "default": "👋 What can we help you find?"
-          },
-          "hero_text_color": {
-            "label": "Hero Text Color",
-            "info": "Applies to both the title and description."
-          },
-          "search_hot_tags": {
-            "label": "Popular Tags",
-            "info": "Shown below the search bar."
-          },
-          "search_hot_keywords": {
-            "label": "Popular Searches",
-            "info": "One per line."
-          },
-          "show_channels_section": {
-            "label": "Show Category Cards",
-            "info": "Grid of cards for each top-level section."
-          },
-          "channels_section_title": {
-            "label": "Cards Section Title",
-            "default": "Browse by topic"
-          },
-          "popular_section_title": {
-            "label": "Popular Section Title",
-            "default": "Popular articles"
-          }
-        }
-      }
+  "home": {
+    "help_center": {
+      "name": "Help center",
+      "description": "Search, topic cards, featured knowledge and an optional contact section."
     },
-    "page": {
-      "name": "Basic Page Template",
-      "description": "Content page template",
-      "settings": {
-        "title": {
-          "label": "Page Title",
-          "info": "Synced from knowledge base, not editable"
-        },
-        "tags": {
-          "label": "Page Tags"
-        },
-        "icon": {
-          "label": "Page Icon",
-          "info": "Lucide icon shown in lists and cards. Options come from site settings → Lucide icons. Look up icon names: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>"
-        },
-        "content": {
-          "label": "Page Content",
-          "info": "Synced from data source, not editable"
-        }
-      }
+    "faqs": {
+      "name": "FAQ center",
+      "description": "Questions and expandable answers first, followed by topics and featured knowledge."
+    },
+    "support": {
+      "name": "Support home",
+      "description": "A compact main column with a sticky contact sidebar."
+    },
+    "title": {
+      "label": "Source title",
+      "info": "Preserved from the source content."
+    },
+    "content": {
+      "label": "Source content",
+      "info": "Preserved from the source and displayed in every homepage variant."
+    },
+    "hero_title": {
+      "label": "Welcome heading",
+      "default": "How can we help?",
+      "info": "The main heading above search."
+    },
+    "hero_description": {
+      "label": "Welcome description",
+      "info": "A short introduction. Uses the site tagline when left blank."
+    },
+    "hero_image": {
+      "label": "Brand or product image",
+      "info": "Optional. Choose a real image for your brand or product."
+    },
+    "featured_title": {
+      "label": "Featured section heading",
+      "info": "Leave blank to use the default heading."
+    },
+    "featured_pages": {
+      "label": "Featured article paths",
+      "info": "One real page path per line. Missing or inaccessible pages are skipped. Leave blank to hide the section."
+    },
+    "show_featured": {
+      "label": "Show featured articles"
+    },
+    "faq_source": {
+      "label": "Questions collection path",
+      "info": "Use a real collection path. Leave blank to use home. Child collections are links; child articles show a summary and a link to the full text."
+    },
+    "show_faqs": {
+      "label": "Show questions section",
+      "info": "The FAQ home always displays this section; other variants use this switch."
     }
   },
-  "generic": {
-    "name": "General Settings",
-    "settings": {
-      "logo_url": {
-        "label": "Logo Image",
-        "info": "If logo is set, it will be displayed in header, otherwise: website icon + site name"
-      },
-      "show_published_at": {
-        "label": "Show Publication Time"
-      },
-      "show_author": {
-        "label": "Show Author"
-      },
-      "enable_ai_chat_search": {
-        "label": "Enable AI Chat Search",
-        "info": "When enabled, the search page shows the AI assistant panel. Uncheck to hide it. The site must still have AI search capability enabled."
-      },
-      "ai_search_completed_text": {
-        "label": "AI Completion Text",
-        "info": "Add a sentence after AI completes the answer"
-      },
-      "show_page_tools_dropdown": {
-        "label": "Show Page Tools Dropdown"
-      }
-    }
-  },
-  "custom_html": {
-    "name": "Custom HTML Code",
-    "settings": {
-      "head_html": {
-        "label": "Custom HTML in <head></head> tags",
-        "info": "Supports HTML tags and limited TailwindCSS style code",
-        "placeholder": "Usually used to insert analytics, customer service bot, etc."
-      },
-      "enable_tailwind_cdn": {
-        "label": "Enable Tailwind CSS CDN (runtime classes)",
-        "info": "Loads the Tailwind v4 browser runtime so utility classes in custom header/footer HTML (not compiled into the theme CSS) still render. Off by default to protect built-in styles. Requires an external CDN."
-      },
-      "header_menu_html": {
-        "label": "Custom full header HTML",
-        "info": "When set, this HTML fully replaces the theme header (logo, search, account). Paste the same header as your www site. Leave empty to keep the built-in header. If the HTML uses Tailwind classes, also enable “Enable Tailwind CSS CDN”.",
-        "placeholder": "Paste a full <header>...</header> from your website"
-      },
-      "footer_menu_html": {
-        "label": "Custom full footer HTML",
-        "info": "When set, this HTML fully replaces the theme footer. Paste the same footer as your www site. Leave empty for no theme footer. If the HTML uses Tailwind classes, also enable “Enable Tailwind CSS CDN”.",
-        "placeholder": "Paste a full <footer>...</footer> from your website"
-      },
-      "contact_html": {
-        "label": "Contact support (HTML)",
-        "info": "Shown in the Support Home sidebar (e.g. hours, email, chat links).",
-        "placeholder": "Our support team is available 24/7."
-      }
-    }
-  },
-  "lucide_icons": {
-    "name": "Lucide icons",
-    "settings": {
-      "lucide_icons": {
-        "label": "Allowed Lucide icon names",
-        "info": "One kebab-case icon name per line (e.g. help-circle, package). Look up icon names: <a href='https://lucide.dev/icons/' target='_blank'>lucide.dev/icons</a>. Page templates use this list for the icon dropdown. Icons must match the theme JS bundle; adding names here without updating the bundle will not render on the site."
-      }
-    }
-  },
-  "settings": {
-    "weixin_share": {
-      "title": "WeChat configuration",
-      "weixin_app_id": {
-        "label": "Developer ID (AppID)",
-        "info": "<a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat official account/setting and development/development interface management</a>"
-      },
-      "weixin_app_secret": {
-        "label": "Developer Password (AppSecret)",
-        "info": "Obtain from <a href='https://mp.weixin.qq.com/cgi-bin/frame'>WeChat Official Account / Settings & Development / Development Interface Management</a>"
-      },
-      "weixin_enabled": {
-        "label": "Do you want to enable WeChat sharing",
-        "info": "Provide the ability to share site pages on WeChat</br>Please configure the IP whitelist (ip: ${service_ip}) in the WeChat official account. After configuration, there will be a period of delay in effectiveness. </br>Check whether WeChat sharing permission is enabled, WeChat official account/setting and development/development interface management:<a href='https://mp.weixin.qq.com/cgi-bin/frame> Web service/sharing interface</a>.</br>Whether the sharing link is a card: enter the sharing card form from the card form, and enter the sharing link form from the link form; The initial link sharing on the webpage can be done through the company's service account or by bookmarking and sharing cards (this rule is a WeChat sharing restriction)."
-      },
-      "weixin_debug": {
-        "label": "Do you want to enable debug prompt",
-        "info": "Please only enable this option during the configuration phase; If WeChat sharing is not configured correctly when accessing the front-end site after activation, an error message will be automatically prompted"
-      }
-    }
+  "theme": {
+    "title": "Help & Support Center",
+    "description": "Help customers find answers through search, topics, and products.",
+    "brand": "Brand & navigation",
+    "reading": "Reading & collections",
+    "support": "Contact support",
+    "content": "Content display",
+    "logo_url": "Brand logo",
+    "brand_name": "Brand name",
+    "tagline": "Short introduction",
+    "header_link_label": "Navigation button label",
+    "header_link_url": "Navigation button URL",
+    "footer_text": "Footer note",
+    "article_layout": "Article layout",
+    "category_layout": "Collection layout",
+    "support_title": "Support heading",
+    "support_description": "Support description",
+    "support_url": "Support service URL",
+    "support_email": "Support email",
+    "support_phone": "Support phone",
+    "show_author": "Show author",
+    "show_published_at": "Show publication date",
+    "enable_ai_search": "Enable AI search entry",
+    "show_related_articles": "Show related articles",
+    "article_layout_auto": "Match homepage variant",
+    "article_layout_tree": "Navigation tree",
+    "article_layout_reader": "Focused reading",
+    "article_layout_support": "Support sidebar",
+    "category_layout_auto": "Match homepage variant",
+    "category_layout_cards": "Cards",
+    "category_layout_list": "Article list",
+    "category_layout_faq": "Questions & answers"
   }
 }

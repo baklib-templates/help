@@ -1,52 +1,72 @@
-import Viewer from "viewerjs";
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-
   connect() {
-    const images = this.element.getElementsByTagName('img');
-    const imgArray = Array.from(images)
-    // 为每个图片添加点击事件监听器
-    imgArray.forEach((image) => {
-      image.addEventListener("click", this.openViewer);
+    this.images = [...this.element.querySelectorAll("img")].filter((image) => !image.closest("a, button"));
+    this.originalAttributes = new Map();
+    this.images.forEach((image) => {
+      this.originalAttributes.set(image, ["tabindex", "role", "aria-label"].map((attribute) => image.getAttribute(attribute)));
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.setAttribute("aria-label", `${document.body.dataset.helpUiImageOpenValue || ""}${image.alt ? `: ${image.alt}` : ""}`);
+    });
+    this.onClick = (event) => {
+      const image = event.target.closest("img");
+      if (!this.images.includes(image)) return;
+      this.open(image);
+    };
+    this.onKeydown = (event) => {
+      if (!["Enter", " "].includes(event.key) || !this.images.includes(event.target)) return;
+      event.preventDefault();
+      this.open(event.target);
+    };
+    this.element.addEventListener("click", this.onClick);
+    this.element.addEventListener("keydown", this.onKeydown);
+    this.onBeforeCache = () => this.close(false);
+    document.addEventListener("turbo:before-cache", this.onBeforeCache);
+  }
+
+  disconnect() {
+    this.element.removeEventListener("click", this.onClick);
+    this.element.removeEventListener("keydown", this.onKeydown);
+    document.removeEventListener("turbo:before-cache", this.onBeforeCache);
+    this.close(false);
+    this.originalAttributes.forEach((values, image) => {
+      ["tabindex", "role", "aria-label"].forEach((attribute, index) => {
+        if (values[index] === null) image.removeAttribute(attribute);
+        else image.setAttribute(attribute, values[index]);
+      });
     });
   }
 
-  openViewer = (event) => {
-    const clickedImage = event.currentTarget;
+  open(image) {
+    this.close(false);
+    const dialog = document.createElement("dialog");
+    if (typeof dialog.showModal !== "function") return;
+    dialog.className = "help-image-dialog";
+    const closeLabel = document.body.dataset.helpUiImageCloseValue;
+    dialog.setAttribute("aria-label", image.alt || document.body.dataset.helpUiImageOpenValue);
+    const close = document.createElement("button");
+    close.type = "button";
+    close.textContent = "×";
+    close.setAttribute("aria-label", closeLabel);
+    close.addEventListener("click", () => dialog.close());
+    const preview = document.createElement("img");
+    preview.src = image.currentSrc || image.src;
+    preview.alt = image.alt;
+    dialog.append(close, preview);
+    dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+    dialog.addEventListener("close", () => { if (this.dialog === dialog) this.close(); }, { once: true });
+    document.body.append(dialog);
+    this.dialog = dialog;
+    this.opener = image;
+    dialog.showModal();
+  }
 
-    // 初始化 Viewer.js
-    const viewer = new Viewer(this.element, {
-      toolbar: {
-        // 放大
-        zoomIn: 1,
-        // 缩小
-        zoomOut: 1,
-        // 原始大小
-        oneToOne: 1,
-        // 重置
-        reset: 1,
-        // 上一页
-        prev: 1,
-        // 全屏幻灯片
-        play: {
-          show: 1,
-          size: "large",
-        },
-        // 下一页
-        next: 1,
-        // 向左旋转90
-        rotateLeft: 1,
-        // 向右旋转90
-        rotateRight: 1,
-        // 水平镜像翻转
-        flipHorizontal: 1,
-        // 垂直镜像翻转
-        flipVertical: 1,
-      },
-    });
-
-console.log('openViewer', clickedImage)
-    viewer.view(clickedImage)
+  close(restoreFocus = true) {
+    this.dialog?.remove();
+    this.dialog = null;
+    if (restoreFocus && this.opener?.isConnected) this.opener.focus();
+    this.opener = null;
   }
 }

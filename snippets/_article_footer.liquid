@@ -1,0 +1,12 @@
+<div class="mt-12 border-t border-base-300 pt-8">
+  {% render 'feedback_form', page: page %}
+  {% render 'related_articles', page: page %}
+  {% assign previous = page.prev_page %}
+  {% assign following = page.next_page %}
+  {% if previous or following %}
+    <nav aria-label="{{ 'reading.continue_reading' | t }}" class="mt-8 grid gap-4 sm:grid-cols-2">
+      {% if previous %}<a href="{{ previous.path }}" class="help-card p-5 transition hover:border-primary/40"><span class="mb-2 flex items-center gap-2 text-xs text-base-content/45">{% render 'icon', name: 'arrow-left', class: 'size-3.5' %}{{ 'reading.previous_article' | t }}</span><span class="text-sm font-medium">{{ previous.link_text | escape_once }}</span></a>{% endif %}
+      {% if following %}<a href="{{ following.path }}" class="help-card p-5 text-right transition hover:border-primary/40 sm:col-start-2"><span class="mb-2 flex items-center justify-end gap-2 text-xs text-base-content/45">{{ 'reading.next_article' | t }}{% render 'icon', name: 'arrow-right', class: 'size-3.5' %}</span><span class="text-sm font-medium">{{ following.link_text | escape_once }}</span></a>{% endif %}
+    </nav>
+  {% endif %}
+</div>

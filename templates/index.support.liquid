@@ -1,127 +1,48 @@
-{% assign home_page = site.pages[site.index_path] %}
-{% assign hero_title = page.settings.hero_title | strip %}
-{% assign hero_subtitle = page.settings.hero_subtitle | strip %}
+{% layout 'theme' %}
+{% assign root = site.index_page %}
+{% assign categories = root.children_in_list %}
+{% assign mode = 'support' %}
+{% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}
+{% assign support_markup = support_markup | strip %}
 
-<div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
-  <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
-    <div class="help-layout-with-aside">
-      {% comment %} Main column: headline, search, popular {% endcomment %}
-      <main class="help-layout-main min-w-0 bg-base-100 dark:bg-base-100">
-        <header>
-          <div class="flex flex-col pt-6 md:pt-12 pb-3">
-            {% if hero_title != blank %}
-              <h1 class="text-2xl font-semibold tracking-tight text-base-content dark:text-base-content md:text-3xl lg:text-4xl">
-                {{ hero_title }}
-              </h1>
-            {% else %}
-              <h1 class="text-2xl font-semibold tracking-tight text-base-content dark:text-base-content md:text-3xl lg:text-4xl">
-                {{ site.name }}
-              </h1>
-            {% endif %}
-            {% if hero_subtitle != blank %}
-              <p class="mt-3 max-w-2xl text-sm leading-6 text-base-content/70 dark:text-base-content/50 md:text-base">
-                {{ hero_subtitle }}
-              </p>
-            {% endif %}
+<div data-home-layout="{{ mode | escape }}" data-home-style="support">
+  {% render 'home_hero', home: page, mode: mode, categories: categories %}
 
-            <div class="mt-8 w-full max-w-3xl">
-              {% form_tag 'search', class: 'w-full' %}
-                <div class="relative">
-                  <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-base-content/50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  </span>
-                  <input
-                    type="search"
-                    name="{{ form.keywords_field_name }}"
-                    value="{{ search.keywords | escape_once }}"
-                    placeholder="{{ 'templates.index.support.search_placeholder' | t }}"
-                    autocomplete="off"
-                    class="block w-full rounded-lg border-2 border-primary/40 bg-base-100 py-3 pl-10 pr-4 text-base text-base-content shadow-sm outline-none transition placeholder:text-base-content/50 focus:border-primary focus:ring-2 focus:ring-primary/25 dark:border-primary/50 dark:bg-base-300 dark:text-base-content dark:placeholder:text-base-content/60"
-                  >
-                </div>
-              {% endform_tag %}
-
-              <div class="mt-4 space-y-2 text-sm">
-                {% assign search_hot_tags = page.settings.search_hot_tags %}
-                {% if search_hot_tags.size > 0 %}
-                  <div class="text-base-content/70 dark:text-base-content/50">
-                    <span class="mr-2 font-medium">{{ 'layout.theme.search_tags_label' | t }}:</span>
-                    {% for tag in search_hot_tags %}
-                      <a href="{{ tag.path }}" data-turbo-frame="_top" class="mr-2 inline-block text-primary hover:underline">
-                        {{ tag.name }}
-                      </a>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-
-                {% assign hot_keywords = page.settings.search_hot_keywords | reg_split: "/\n/" %}
-                {% if hot_keywords.size > 0 %}
-                  <div class="text-base-content/70 dark:text-base-content/50">
-                    <span class="mr-2 font-medium">{{ 'layout.theme.search_keywords_label' | t }}:</span>
-                    {% for hot_keyword in hot_keywords %}
-                      <a href="{{ site.index_path }}-/search?q={{ hot_keyword }}" class="mr-2 text-primary hover:underline">
-                        {{ hot_keyword }}
-                      </a>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {% assign popular_collection = site.pages['/'].pages_in_list | order_by: '-visits_count' %}
-        {% render 'support_article_list', collection: popular_collection, per_page: 12 %}
-      </main>
-
-      {% comment %} Right sidebar: topics + contact (sticky on large screens) {% endcomment %}
-      <aside class="help-layout-aside">
-        {% render 'aside_nav', nav_page: home_page, page: page %}
-      </aside>
+  <div class="help-container grid items-start gap-10 py-10 lg:gap-14 lg:py-14 {% if support_markup != blank %}lg:grid-cols-[minmax(0,1fr)_20rem]{% endif %}">
+    <div class="min-w-0">
+      {% render 'home_content', home: page %}
+      {% render 'home_categories', categories: categories, mode: mode %}
+      {% render 'home_featured', home: page, root: root %}
+      {% if page.settings.show_faqs %}
+        {% render 'home_faqs', home: page, root: root %}
+      {% endif %}
     </div>
+    {% if support_markup != blank %}
+      <aside class="lg:sticky lg:top-24" aria-label="{{ 'home.support_label' | t | escape }}">
+        {{ support_markup }}
+      </aside>
+    {% endif %}
   </div>
 </div>
 
 {% schema %}
-  {
-    "name": "t:schema.templates.index.support.name",
-    "description": "t:schema.templates.index.support.description",
-    "thumb_url": "images/theme/${lang}/index-support.png",
-    "preview_image_urls": [
-      "images/theme/${lang}/index-support.png"
-    ],
-    "sub_page_templates": ["page"],
-    "settings": [
-      {
-        "id": "hero_title",
-        "type": "text",
-        "label": "t:schema.templates.index.support.settings.hero_title.label",
-        "default": "t:schema.templates.index.support.settings.hero_title.default",
-        "info": "t:schema.templates.index.support.settings.hero_title.info"
-      },
-      {
-        "id": "hero_subtitle",
-        "type": "textarea",
-        "label": "t:schema.templates.index.support.settings.hero_subtitle.label",
-        "default": "t:schema.templates.index.support.settings.hero_subtitle.default",
-        "info": "t:schema.templates.index.support.settings.hero_subtitle.info",
-        "rows": 2
-      },
-      {
-        "id": "search_hot_tags",
-        "type": "tag_picker",
-        "multiple": true,
-        "label": "t:schema.templates.index.support.settings.search_hot_tags.label",
-        "info": "t:schema.templates.index.support.settings.search_hot_tags.info"
-      },
-      {
-        "id": "search_hot_keywords",
-        "type": "textarea",
-        "label": "t:schema.templates.index.support.settings.search_hot_keywords.label",
-        "info": "t:schema.templates.index.support.settings.search_hot_keywords.info"
-      }
-    ]
-  }
+{
+  "name": "t:schema.home.support.name",
+  "thumb_url": "images/theme/cover.jpg",
+  "preview_image_urls": ["images/theme/cover.jpg"],
+  "description": "t:schema.home.support.description",
+  "sub_page_templates": ["page"],
+  "settings": [
+    { "id": "title", "type": "text", "readonly": true, "queryable": true, "to_markdown": true, "label": "t:schema.home.title.label", "info": "t:schema.home.title.info" },
+    { "id": "content", "type": "richtext", "readonly": true, "to_markdown": true, "label": "t:schema.home.content.label", "info": "t:schema.home.content.info" },
+    { "id": "hero_title", "type": "text", "default": "t:schema.home.hero_title.default", "label": "t:schema.home.hero_title.label", "info": "t:schema.home.hero_title.info" },
+    { "id": "hero_description", "type": "textarea", "rows": 3, "label": "t:schema.home.hero_description.label", "info": "t:schema.home.hero_description.info" },
+    { "id": "hero_image", "type": "image_picker", "ratio": "4:3", "label": "t:schema.home.hero_image.label", "info": "t:schema.home.hero_image.info" },
+    { "id": "featured_title", "type": "text", "label": "t:schema.home.featured_title.label", "info": "t:schema.home.featured_title.info" },
+    { "id": "featured_pages", "type": "textarea", "rows": 6, "label": "t:schema.home.featured_pages.label", "info": "t:schema.home.featured_pages.info" },
+    { "id": "show_featured", "type": "checkbox", "default": true, "label": "t:schema.home.show_featured.label" },
+    { "id": "faq_source", "type": "text", "label": "t:schema.home.faq_source.label", "info": "t:schema.home.faq_source.info" },
+    { "id": "show_faqs", "type": "checkbox", "default": false, "label": "t:schema.home.show_faqs.label", "info": "t:schema.home.show_faqs.info" }
+  ]
+}
 {% endschema %}

@@ -1,68 +1,52 @@
-{% assign header_menu_html = site.settings.header_menu_html | strip | presence %}
-
-{% if header_menu_html %}
-  {{ header_menu_html }}
-{% else %}
-  <header class="bg-neutral text-neutral-content print:hidden">
-    {% assign search_input_placeholder = 'layout.theme.search_input_placeholder' | t %}
-    {% assign header_icon_btn = 'inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-field p-1 text-neutral-content/70 hover:bg-neutral-content/10 hover:text-neutral-content' %}
-    {% assign is_home_page = false %}
-    {% if page.path == site.index_path %}
-      {% assign is_home_page = true %}
-    {% endif %}
-
-    <nav
-      class="navbar mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-3 sm:px-6"
-      data-controller="header-search"
-      data-header-search-search-url-value="{{ site.search_path }}"
-    >
-      <div class="flex min-w-0 shrink-0 items-center gap-2 lg:gap-4">
-        {% render 'header_logo' %}
-        {% render 'header_drawer' %}
-      </div>
-
-      {% unless is_home_page %}
-        <div class="flex min-w-0 flex-1 justify-center px-2 sm:px-4">
-          <div class="hidden w-full min-w-0 max-w-xs sm:block lg:max-w-sm">
-            {% form_tag 'search', class: 'w-full' %}
-              <label class="flex w-full min-w-0 items-center gap-2 rounded-field bg-neutral-content/10 py-2 pl-3 pr-3">
-                <span class="pointer-events-none shrink-0 text-neutral-content/60" aria-hidden="true">
-                  {% render 'icon', name: 'search', class: 'size-4' %}
-                </span>
-                <span class="sr-only">{{ search_input_placeholder | escape_once }}</span>
-                <input
-                  id="header-search-input"
-                  type="search"
-                  name="{{ form.keywords_field_name }}"
-                  value=""
-                  placeholder="{{ search_input_placeholder | escape_once }}"
-                  autocomplete="off"
-                  class="min-w-0 grow border-0 bg-transparent p-0 text-sm leading-tight text-neutral-content placeholder:text-neutral-content/50 focus:outline-none"
-                  data-header-search-target="input"
-                >
-                <div class="pointer-events-none hidden shrink-0 items-center gap-0.5 text-xs text-neutral-content/50 md:flex" aria-hidden="true">
-                  <span data-header-search-target="metaKeyEl">⌘</span>
-                  <span>K</span>
-                </div>
-              </label>
-            {% endform_tag %}
-          </div>
-        </div>
-      {% endunless %}
-
-      <div class="ml-auto flex min-w-0 shrink-0 items-center gap-2 sm:gap-3">
-        <div class="shrink-0 sm:hidden">
-          <a
-            href="{{ site.search_path }}"
-            class="{{ header_icon_btn }}"
-            aria-label="{{ search_input_placeholder | escape_once }}"
-          >
-            {% render 'icon', name: 'search', class: 'size-4' %}
-          </a>
-        </div>
-
-        {% render 'header_user_account', header_icon_btn: header_icon_btn %}
-      </div>
+{% assign brand_name = site.settings.brand_name | default: site.name %}
+{% assign navigation = site.pages['/'].children_in_nav_menu %}
+<header class="help-header">
+  <div class="help-container flex min-h-20 items-center gap-3 sm:gap-5">
+    <a class="flex min-w-0 flex-1 items-center gap-2 text-lg font-semibold tracking-tight sm:gap-3 xl:max-w-60" href="{{ site.index_path }}" aria-label="{{ brand_name | escape_once }}">
+      {% if site.settings.logo_url != blank %}
+        <img src="{{ site.settings.logo_url | escape_once }}" alt="{{ brand_name | escape_once }}" width="132" height="36" class="max-h-9 min-w-0 w-auto max-w-full object-contain object-left sm:max-w-40">
+      {% else %}
+        <span class="flex size-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary sm:size-9">{% render 'icon', name: 'book', class: 'size-5' %}</span>
+        <span class="min-w-0 truncate">{{ brand_name | escape_once }}</span>
+      {% endif %}
+    </a>
+    <nav class="hidden min-w-0 items-center gap-5 text-sm font-medium text-base-content/65 xl:flex" aria-label="{{ 'shell.navigation' | t | escape }}">
+      {% for item in navigation limit: 3 %}
+        <a href="{{ item.path }}" class="max-w-36 truncate transition-colors hover:text-base-content" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>
+      {% endfor %}
     </nav>
-  </header>
-{% endif %}
+    <div class="ml-auto hidden w-60 lg:block">{% render 'search_form', id: 'header-search', compact: true %}</div>
+    <div class="ml-auto flex shrink-0 items-center gap-1 lg:ml-0">
+      <a href="{{ site.search_path }}" class="btn btn-ghost btn-square btn-sm lg:hidden" aria-label="{{ 'shell.search' | t | escape }}">{% render 'icon', name: 'search', class: 'size-5' %}</a>
+      <button type="button" class="btn btn-ghost btn-square btn-sm" data-action="help-ui#toggleTheme" data-help-ui-target="themeToggle" aria-label="{{ 'shell.toggle_theme' | t | escape }}" aria-pressed="false">
+        <span class="help-light-icon">{% render 'icon', name: 'moon', class: 'size-4' %}</span>
+        <span class="help-dark-icon">{% render 'icon', name: 'sun', class: 'size-4' %}</span>
+      </button>
+      {% if current_user %}
+        <details class="relative" data-help-menu>
+          <summary class="btn btn-ghost btn-square btn-sm list-none" aria-label="{{ 'shell.account' | t | escape }}">{% render 'icon', name: 'user', class: 'size-5' %}</summary>
+          <div class="absolute right-0 z-30 mt-3 w-56 rounded-xl border border-base-300 bg-base-100 p-2 shadow-lg">
+            <p class="truncate px-3 py-2 text-sm font-semibold">{{ current_user.name | escape_once }}</p>
+            {% if current_user.profile_url != blank %}<a href="{{ current_user.profile_url }}" class="block rounded-lg px-3 py-2 text-sm hover:bg-base-200">{{ 'shell.profile' | t }}</a>{% endif %}
+            {% form_tag 'sign_out' %}<button type="submit" class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-base-200">{{ 'shell.sign_out' | t }}</button>{% endform_tag %}
+          </div>
+        </details>
+      {% elsif site.baklib_login_enabled %}
+        {% form_tag 'sign_in_with_baklib', silent: false %}<button type="submit" class="btn btn-ghost btn-sm px-3">{{ 'shell.sign_in' | t }}</button>{% endform_tag %}
+      {% elsif site.sso_login_enabled %}
+        {% form_tag 'sign_in_with_sso', provider: 'sso' %}<button type="submit" class="btn btn-ghost btn-sm px-3">{{ 'shell.sign_in' | t }}</button>{% endform_tag %}
+      {% endif %}
+      {% if site.settings.header_link_label != blank and site.settings.header_link_url != blank %}
+        <a href="{{ site.settings.header_link_url | escape_once }}" class="btn btn-sm ml-2 hidden max-w-44 sm:inline-flex"><span class="min-w-0 truncate">{{ site.settings.header_link_label | escape_once }}</span>{% render 'icon', name: 'arrow-up-right', class: 'size-3.5 shrink-0' %}</a>
+      {% endif %}
+      <details class="help-mobile-menu xl:hidden" data-help-menu>
+        <summary class="btn btn-ghost btn-square btn-sm list-none" aria-label="{{ 'shell.navigation' | t | escape }}">{% render 'icon', name: 'menu', class: 'size-5' %}</summary>
+        <nav class="help-mobile-panel" aria-label="{{ 'shell.navigation' | t | escape }}">
+          {% for item in navigation %}<a href="{{ item.path }}" class="block rounded-lg px-3 py-3 text-sm hover:bg-base-200" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>{% endfor %}
+          {% if site.settings.header_link_label != blank and site.settings.header_link_url != blank %}<a href="{{ site.settings.header_link_url | escape_once }}" class="block rounded-lg px-3 py-3 text-sm font-semibold hover:bg-base-200">{{ site.settings.header_link_label | escape_once }}</a>{% endif %}
+          <div class="mt-2 border-t border-base-300 pt-3">{% render 'search_form', id: 'mobile-search', compact: true %}</div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,12 @@
+<header class="mb-8">
+  <div class="mb-5 flex size-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+    {% if page.settings.icon_image %}<img src="{{ page.settings.icon_image.url }}" alt="" class="size-8 object-contain">{% else %}{% render 'icon', name: page.settings.icon_name.value, class: 'size-6' %}{% endif %}
+  </div>
+  <h1 class="text-3xl font-semibold leading-tight tracking-tight text-base-content sm:text-4xl">{{ page.settings.title | default: page.link_text | escape_once }}</h1>
+  {% if page.settings.description != blank %}<p class="mt-4 max-w-2xl text-lg leading-8 text-base-content/60">{{ page.settings.description | escape_once }}</p>{% endif %}
+  <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-base-content/45">
+    {% if site.settings.show_author and page.author %}<span>{{ page.author.name | escape_once }}</span>{% endif %}
+    {% if site.settings.show_published_at and page.published_at %}<time datetime="{{ page.published_at | date: '%Y-%m-%d' }}">{{ page.published_at | date: '%Y-%m-%d' }}</time>{% endif %}
+    {% for tag in page.settings.tags %}<a href="{{ tag.path }}" class="rounded-full bg-base-200 px-2.5 py-1 text-base-content/60 hover:text-primary">{{ tag.name | escape_once }}</a>{% endfor %}
+  </div>
+</header>

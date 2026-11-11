@@ -1,50 +1,9 @@
-{% assign tag_pages = tag.pages %}
-{% assign tag_pages_size = tag_pages | size %}
-
-<div class="relative min-h-[60vh] bg-base-100 dark:bg-base-100">
-  <div class="mx-auto max-w-7xl bg-base-100 px-4 pb-16 pt-8 md:pt-12 dark:bg-base-100" data-controller="link-target">
-    <div class="help-layout-with-aside">
-      <main class="help-layout-main min-w-0 bg-base-100 dark:bg-base-100">
-        <header class="pt-2">
-          <h1 class="text-2xl font-semibold tracking-tight text-base-content md:text-3xl lg:text-4xl">
-            # {{ tag.name }}
-          </h1>
-        </header>
-
-        {% if tag_pages_size > 0 %}
-          <section class="mt-8">
-            {% render 'support_article_list', collection: tag.pages, per_page: 12 %}
-          </section>
-        {% else %}
-          <section class="mt-8">
-            {% assign message = 'templates.search.no_results' | t %}
-            {% render 'empty', message: message %}
-          </section>
-        {% endif %}
-      </main>
-
-      <aside class="help-layout-aside">
-          <div class="rounded-xl border border-base-300 bg-base-200 p-6 shadow-sm dark:border-base-300 dark:bg-base-300/95">
-            <h2 class="text-sm font-semibold uppercase tracking-wide text-base-content/80 dark:text-base-content/70">
-              {{ 'snippets.aside_nav.tags_title' | t }}
-            </h2>
-            <div class="mt-4 flex flex-wrap gap-2" aria-label="{{ 'snippets.aside_nav.tags_title' | t }}">
-              {% for cloud_tag in site.tags %}
-                {% if cloud_tag.path == tag.path %}
-                  <span
-                    class="rounded border border-primary bg-primary px-1 py-0.5 text-xs text-primary-content"
-                    aria-current="page"
-                  >
-                    # {{ cloud_tag.name }}
-                  </span>
-                {% else %}
-                  {% render 'tag', tag: cloud_tag %}
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-
-      </aside>
-    </div>
-  </div>
-</div>
+<section class="help-container max-w-4xl py-10 lg:py-14">
+  <a href="{{ site.index_path }}" class="inline-flex items-center gap-2 text-sm text-base-content/50 hover:text-primary">{% render 'icon', name: 'arrow-left', class: 'size-4' %}{{ 'reading.browse_topics' | t }}</a>
+  <header class="mb-9 mt-7"><p class="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">{{ 'reading.tagged_articles' | t }}</p><h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">{{ tag.name | escape_once }}</h1></header>
+  {% paginate_tag tag.pages, as: 'items', per: 18 %}
+    {% assign item_count = items | size %}
+    {% if item_count > 0 %}<div class="divide-y divide-base-300">{% for item in items %}{% render 'category_item', item: item %}{% endfor %}</div>{% else %}<p class="help-card p-8 text-base-content/55">{{ 'reading.no_tagged_articles' | t }}</p>{% endif %}
+    {% render 'reading_pagination', paginate: paginate %}
+  {% endpaginate_tag %}
+</section>

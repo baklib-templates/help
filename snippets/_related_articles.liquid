@@ -1,0 +1,18 @@
+{% if site.settings.show_related_articles %}
+{% assign related_paths = page.settings.related_pages | reg_split: '/[\r\n]+/' %}
+{% capture related_items %}
+  {% for related_path in related_paths %}
+    {% assign path = related_path | strip %}
+    {% if path != blank %}
+      {% assign related = site.pages[path] %}
+      {% if related and related.path != page.path %}
+        <li><a href="{{ related.path }}" class="flex items-center justify-between gap-4 py-3 text-sm hover:text-primary"><span>{{ related.link_text | escape_once }}</span>{% render 'icon', name: 'arrow-right', class: 'size-4 shrink-0' %}</a></li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% assign related_items = related_items | strip %}
+{% if related_items != blank %}
+  <section class="mt-8 border-t border-base-300 pt-6"><h2 class="mb-2 text-base font-semibold">{{ 'reading.related' | t }}</h2><ul class="divide-y divide-base-300">{{ related_items }}</ul></section>
+{% endif %}
+{% endif %}

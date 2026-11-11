@@ -1,0 +1,50 @@
+{% assign category_icon = category.settings.icon_name.value | default: 'book' %}
+{% assign category_description = category.settings.description | default: category.seo_description %}
+{% assign visible_children = category.children_in_list %}
+{% assign child_count = visible_children | size %}
+
+<article class="help-card group flex h-full flex-col overflow-hidden transition hover:border-primary/40 {% if mode == 'products' %}text-center{% endif %}">
+  <a href="{{ category.path }}" class="flex flex-1 flex-col p-6 {% if mode == 'products' %}items-center pt-8{% elsif mode == 'faqs' or mode == 'support' %}gap-4 sm:flex-row sm:items-start{% endif %}">
+    {% if mode == 'products' %}
+      <span class="mb-5 flex h-32 w-full items-center justify-center rounded-xl bg-base-200/50 p-4 text-primary">
+        {% if category.settings.icon_image != blank %}
+          <img src="{{ category.settings.icon_image.url | escape }}" alt="" width="240" height="160" loading="lazy" class="h-full w-full object-contain">
+        {% else %}
+          {% render 'icon', name: 'package', class: 'size-12' %}
+        {% endif %}
+      </span>
+    {% else %}
+      <span class="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-base-300 bg-base-200/45 text-primary {% if mode != 'faqs' and mode != 'support' %}mb-5{% endif %}">
+        {% if category.settings.icon_image != blank %}
+          <img src="{{ category.settings.icon_image.url | escape }}" alt="" width="48" height="48" loading="lazy" class="size-full object-contain p-1.5">
+        {% else %}
+          {% render 'icon', name: category_icon, class: 'size-5' %}
+        {% endif %}
+      </span>
+    {% endif %}
+    <div class="min-w-0 flex-1">
+      <h3 class="flex items-center gap-3 text-lg font-semibold leading-7 text-base-content {% if mode == 'products' %}justify-center{% endif %}">
+        <span class="min-w-0 break-words">{{ category.link_text | escape_once }}</span>
+        {% if mode != 'products' %}<span class="ml-auto shrink-0 text-base-content/35 transition group-hover:translate-x-1 group-hover:text-primary">{% render 'icon', name: 'arrow-right', class: 'size-4' %}</span>{% endif %}
+      </h3>
+      {% if category_description != blank %}
+        <p class="mt-2 line-clamp-2 text-sm leading-6 text-base-content/60">{{ category_description | strip_html | escape_once }}</p>
+      {% endif %}
+      {% if mode == 'products' %}
+        <span class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-primary">{{ 'home.product_help' | t }}{% render 'icon', name: 'arrow-right', class: 'size-4' %}</span>
+      {% elsif child_count > 0 %}
+        <p class="mt-4 text-xs text-base-content/45">{{ child_count }} {{ 'home.items' | t }}</p>
+      {% endif %}
+    </div>
+  </a>
+  {% if mode == 'collections' and child_count > 0 %}
+    <div class="border-t border-base-300 px-6 py-3">
+      {% for child in visible_children limit: 3 %}
+        <a href="{{ child.path }}" class="flex min-h-10 items-center gap-2 py-2 text-sm leading-5 text-base-content/65 transition hover:text-primary">
+          <span class="shrink-0 text-base-content/35">{% render 'icon', name: 'book', class: 'size-3.5' %}</span>
+          <span class="truncate">{{ child.link_text | escape_once }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+</article>

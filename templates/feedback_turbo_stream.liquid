@@ -1,15 +1,2 @@
 {% layout none %}
-<turbo-stream action="remove" target="js--feedback-modal"></turbo-stream>
-
-<turbo-stream action="append" target="js--body">
-  <template>
-    <dialog id="js--feedback-modal" class="modal">
-      <div class="modal-box">
-        {% render 'feedback_form', page: page %}
-      </div>
-    </dialog>
-    <script>
-      document.getElementById('js--feedback-modal').showModal();
-    </script>
-  </template>
-</turbo-stream>
+<turbo-stream action="replace" target="help-feedback-{{ page.id }}"><template>{% render 'feedback_form', page: page %}</template></turbo-stream>

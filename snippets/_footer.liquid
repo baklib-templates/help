@@ -1,5 +1,12 @@
-{% assign footer_menu_html = site.settings.footer_menu_html | strip | presence %}
-
-{% if footer_menu_html %}
-  {{ footer_menu_html }}
-{% endif %}
+{% assign brand_name = site.settings.brand_name | default: site.name %}
+<footer class="mt-auto border-t border-base-300/70">
+  <div class="help-container flex flex-col gap-5 py-8 text-sm sm:flex-row sm:items-center sm:justify-between">
+    <div class="space-y-1.5">
+      <a href="{{ site.index_path }}" class="font-semibold tracking-tight">{{ brand_name | escape_once }}</a>
+      <p class="text-xs leading-6 text-base-content/55">{% if site.settings.footer_text != blank %}{{ site.settings.footer_text | escape_once }}{% else %}{{ 'shell.footer_description' | t }}{% endif %}</p>
+    </div>
+    <nav class="flex flex-wrap gap-x-6 gap-y-3 text-xs text-base-content/60" aria-label="{{ 'shell.footer_navigation' | t | escape }}">
+      {% for item in site.pages['/'].children_in_nav_menu limit: 4 %}<a href="{{ item.path }}" class="hover:text-base-content">{{ item.link_text | escape_once }}</a>{% endfor %}
+    </nav>
+  </div>
+</footer>

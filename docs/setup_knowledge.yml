@@ -1,0 +1,54 @@
+setup_knowledge:
+  version: 1
+  styles:
+    help_center:
+      label: 帮助中心
+      description: 搜索首屏、分类卡片、精选知识与可选服务入口；适合按主题浏览并兼顾搜索的帮助中心。
+      scenario_keys:
+      - customer_support
+      suitable_for:
+      - 客户在线帮助中心
+      - 电商售后知识与自助支持
+      - 多主题服务知识门户
+      not_suitable_for:
+      - 按章节系统阅读的产品手册与开发文档
+      - 工单受理与处理系统
+      - 订单查询与交易支付
+      content_structure:
+      - 帮助主题或产品分类
+      - 分类下的知识文章与问答
+      - 真实服务联系入口
+    faqs:
+      label: 常见问题
+      description: 问答优先首屏，可就地展开答案；适合访客带着具体问题而来、答案简短的帮助站点。
+      scenario_keys:
+      - customer_support
+      suitable_for:
+      - 常见问题与简短解答
+      - 售后排障问答
+      - 以问题为入口的自助支持
+      not_suitable_for:
+      - 按章节系统阅读的产品手册与开发文档
+      - 工单受理与处理系统
+      - 长篇连续阅读的内容
+      content_structure:
+      - 问题分类或问题栏目
+      - 分类下的简短答案文章
+      - 真实服务联系入口
+    support:
+      label: 服务支持
+      description: 紧凑主栏与粘性联系支持侧栏；适合先了解求助方式、再查少量指引的服务站。
+      scenario_keys:
+      - customer_support
+      suitable_for:
+      - 联系渠道优先的支持站
+      - 少量主题加服务入口
+      - 电商售后与客服分流
+      not_suitable_for:
+      - 按章节系统阅读的产品手册与开发文档
+      - 工单受理与处理系统
+      - 大量知识分类的浏览型门户
+      content_structure:
+      - 少量支持主题
+      - 主题下的帮助文章
+      - 已确认真实的服务地址、邮箱或电话

@@ -1,0 +1,16 @@
+apply: wiki_space
+page_template: page
+ask_path: -/search
+arrangements:
+  - key: original
+    rule: original
+    title: 保留原目录
+    description: 按来源知识库或导入资料的目录建立分类与帮助文章。
+  - key: top_folder
+    rule: top_folder
+    title: 按顶层目录归类
+    description: 每个顶层目录作为帮助分类，文章归入对应分类。
+  - key: flat
+    rule: flat
+    title: 先平铺文章
+    description: 先将文章放在根目录，再按实际内容逐步整理。

@@ -1,0 +1,9 @@
+{% if paginate.total_pages > 1 %}
+  <nav aria-label="{{ 'reading.pagination' | t }}" class="mt-8 flex items-center justify-between gap-4 border-t border-base-300 pt-5">
+    <p class="text-xs text-base-content/50">{{ paginate.from }}–{{ paginate.to }} / {{ paginate.total_count }}</p>
+    <div class="flex gap-2">
+      {% if paginate.prev_page %}<a href="{{ paginate.url_for[paginate.prev_page] }}" class="help-button" data-turbo-action="advance">{{ 'reading.previous' | t }}</a>{% endif %}
+      {% if paginate.next_page %}<a href="{{ paginate.url_for[paginate.next_page] }}" class="help-button" data-turbo-action="advance">{{ 'reading.next' | t }}</a>{% endif %}
+    </div>
+  </nav>
+{% endif %}

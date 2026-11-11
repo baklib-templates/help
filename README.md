@@ -1,107 +1,45 @@
-# Wiki Help Center (`help`)
+# Help
 
-English | [简体中文](README.zh-CN.md)
+A fresh Baklib help center for customer self-service, ecommerce after-sales knowledge, and product support. One content model, one settings contract, and three homepage variants. Earlier Wiki or Help customizations are not migrated.
 
-Baklib **Wiki** theme focused on **customer self-service and help centers** (with optional FAQ-style home): content-first layout, sidebar navigation, in-page TOC, AI search, share-to-LLM tools, and Turbo-powered transitions. It is a sibling of the Docs-oriented wiki theme, with documentation-centric index variants removed in favor of help-oriented layouts.
+| Homepage variant | Fixed mode | Article layout in `auto` | Category layout in `auto` | Use |
+| --- | --- | --- | --- | --- |
+| `templates/index.help_center.liquid` | `collections` | `reader` | `cards` | Topic-based help center (default) |
+| `templates/index.faqs.liquid` | `faqs` | `reader` | `faq` | Common questions with expandable answers |
+| `templates/index.support.liquid` | `support` | `support` | `list` | Compact service hub with a contact sidebar |
 
-## Requirements
+Choose a variant through the homepage template style (`index_style`) when the site is created or in the site editor. There is no global `home_layout` setting: each variant carries a fixed mode, and inner pages derive their automatic article/category layout from the selected style. Override the reading experience globally with `article_layout` and `category_layout`, or for one article with `reading_layout`. All variants share navigation, search, brand colors, accessibility controls, and article feedback. Interface languages: English and Simplified Chinese.
 
-- Node.js (for asset builds)
-- Baklib site using the **Wiki** scope with this theme installed (`theme_scope`: `wiki` in `config/settings_schema.json`)
+The earlier search-first and product-grid homepage treatments are folded into the help center variant. Dedicated variants can be added as organization candidates without reintroducing a global layout switch.
 
-## Repository layout
+## Content
 
-| Path                          | Purpose                                                                 |
-| ----------------------------- | ----------------------------------------------------------------------- |
-| `config/settings_schema.json` | Theme metadata (`theme_name`: `help`), languages, and editor settings   |
-| `layout/`                     | Base layouts                                                            |
-| `templates/`                  | Page templates (see **Homepage templates** below), `page`, `search`, …  |
-| `snippets/`                   | Partials (header, footer, sidebar, page tools, feedback, …)             |
-| `locales/`                    | Runtime UI strings (`*.json`) and theme-editor labels (`*.schema.json`) |
-| `src/`                        | Source CSS/JS (Tailwind, esbuild)                                       |
-| `assets/`                     | Compiled stylesheets, scripts, and theme preview images                 |
-| `statics/`                    | Static custom HTML examples                                             |
+Connect a knowledge space. Its hierarchy becomes the help center structure, while article titles and bodies remain source-owned. Create categories/products and their help articles in the knowledge base. With no content, the site shows an honest empty state.
 
-## Homepage (`index`) templates
+Use real site paths for featured articles, related articles, and the FAQ source. Media uses Baklib DAM references. Contact actions appear only when configured; AI search appears only when the site has an AI provider. No bundled customer logos, fake service claims, orders, or ticket backend.
 
-Choose one in the site editor as the wiki home:
+## Build
 
-| Template                 | File                         | Summary |
-| ------------------------ | ---------------------------- | ------- |
-| **Help Center**          | `index.help_center.liquid`   | Hero + search, channel grid, optional featured topics / latest / popular blocks. |
-| **FAQ Center**           | `index.faqs.liquid`          | Tabbed categories + collapsible FAQ list. |
-| **Card Home**            | `index.card.liquid`          | Large category cards with article previews (Intercom-style). |
-| **Support Home**         | `index.support.liquid`       | Main column (left): headline, search, popular articles on white. Sticky right sidebar (light background): common topics + **Contact support** HTML from site settings (`contact_html`). |
+Node.js and npm are required. Run `npm ci`, then `npm run build`. Commit the generated CSS and JavaScript assets with source changes. No runtime CSS CDN, external fonts, or Alpine dependency.
 
-### Support Home sidebar: `contact_html`
+The application provides Liquid rendering, Turbo, Stimulus, site permissions, source synchronization, feedback, and search. This template uses those contracts directly.
 
-Under **Theme settings → Custom HTML**, set **Contact support (HTML)** (`contact_html`). It renders in the right sticky sidebar of **Support Home** under the “Contact support” heading (together with **Common topics** links above it).
+## AI setup
 
-## Supported locales
+The pinned version includes [Agent instructions](docs/skill/SKILL.md), its machine-readable manifest, and [setup knowledge](docs/setup_knowledge.yml). The Agent recommends a homepage variant from the customer's primary task; the variant itself is a template style, not a `configure_site` field. Reading settings are normal site settings and can be configured without editing template code.
 
-Runtime translations and theme-editor (schema) translations ship for:
+The [design playbook](docs/skill/references/design-playbook.md) and seven customer references cover Ulike, Procolored, INFFNI, RingConn, FXIAOKE, WIBU, and PingPong. The guide supplies a short index; the Agent reads relevant references with `read_template` after site creation. Each reference separates observed layouts, available settings, and candidate customization. These are design instructions, not bundled customer skins or content. Import them with a new pinned theme version; existing installations retain their version.
 
-- `en`, `zh-CN`, `zh-TW`, `ko`, `ja`, `de`, `fr`
+See [中文说明](README.zh-CN.md).
 
-Add or edit keys in `locales/<locale>.json` (UI) and `locales/<locale>.schema.json` (theme-editor labels). When introducing a new locale, register it under `theme_info.theme_languages` in [`config/settings_schema.json`](config/settings_schema.json).
+## Verify
 
-## Build assets
+From the Baklib Rails application root, run:
 
-```bash
-yarn install
-yarn build
+```sh
+bundle exec rails runner /absolute/path/to/help/scripts/verify.rb
 ```
 
-During development:
+The script defaults to the theme containing it. Set `HELP_THEME_ROOT=/absolute/path/to/help` to verify another candidate. It checks all Liquid and schema fields, both locale files, snippet and manifest references, renders every homepage variant plus article/category combinations, and tests FAQ content access plus author/date/related/support settings. It uses in-memory fixtures for platform forms and permission decisions and performs no application model queries or writes.
 
-```bash
-yarn dev
-```
-
-Optional live reload (requires Ruby + livereload browser extension):
-
-```bash
-bundle install
-bundle exec guard
-```
-
-## Per-language preview images
-
-The theme card and screenshots in the Baklib admin are resolved by language. Drop localized previews into `assets/images/theme/<lang>/` so admins see them in their UI language:
-
-```text
-assets/images/theme/<lang>/
-├── thumb.png            # theme card thumbnail
-├── index.png            # primary preview
-├── index-help-center.png
-├── index-faqs.png
-├── index-card.png
-├── index-support.png
-└── page.png
-```
-
-Template `thumb_url` / `preview_image_urls` and theme preview paths in `config/settings_schema.json` all use `images/theme/${lang}/`. The `${lang}` placeholder is resolved automatically:
-
-```json
-"theme_thumb_url": "images/theme/${lang}/thumb.png",
-"theme_preview_images": [
-  "images/theme/${lang}/index.png",
-  "images/theme/${lang}/index-help-center.png",
-  "images/theme/${lang}/index-faqs.png",
-  "images/theme/${lang}/index-card.png",
-  "images/theme/${lang}/index-support.png",
-  "images/theme/${lang}/page.png"
-]
-```
-
-If a localized image is missing, Baklib falls back to the default language directory.
-
-## Documentation
-
-- Theme guide: <https://help.baklib.cn/themes/docs>
-- Settings reference: <https://help.baklib.cn/themes/docs/settings>
-- Baklib template development guide: <https://dev.baklib.cn/guide/git>
-
-## License
-
-See [LICENSE](LICENSE) (or the parent repository if no `LICENSE` file is present).
+Run `npm run build` from the theme directory after changes. Browser checks of navigation, responsive layout, TOC, media, search, feedback and authentication are separate acceptance steps; this script does not certify those integrations.

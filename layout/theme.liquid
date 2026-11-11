@@ -1,47 +1,26 @@
 <!doctype html>
-<html lang="{{ site.language }}" class="scroll-smooth bg-base-100">
+<html lang="{{ site.language | escape }}">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="turbo-prefetch" content="false">
     {% meta_tags %}
-
-    {%- comment -%}
-      Runtime color injection MUST render before application.css.
-      Static tokens live in src/stylesheets/application.css. Brand spec: statics/brand.liquid.
-    {%- endcomment -%}
-    {% render 'theme_runtime_colors' %}
-
-    {{ 'stylesheets/application.css' | asset_url | stylesheet_tag: data-turbo-track: 'reload' }}
+    {% render 'theme_colors' %}
+    <script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('help-theme'); } catch (_) {}
+        document.documentElement.dataset.theme = theme === 'light' || theme === 'dark' ? theme : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      })();
+    </script>
     {{ 'baklib/shared/main.css' | asset_url | stylesheet_tag: data-turbo-track: 'reload' }}
+    {{ 'stylesheets/application.css' | asset_url | stylesheet_tag: data-turbo-track: 'reload' }}
     {{ 'baklib/shared/main.js' | asset_url | script_tag: data-turbo-track: 'reload' }}
     {{ 'javascripts/application.js' | asset_url | script_tag: defer: true, data-turbo-track: 'reload' }}
-
-    {%- comment -%}
-      Optional Play CDN for custom header/footer Tailwind classes not present in the compiled CSS.
-      Preflight is omitted so daisyUI / theme chrome is not reset.
-    {%- endcomment -%}
-    {% if site.settings.enable_tailwind_cdn %}
-      <style type="text/tailwindcss">
-        @import "tailwindcss/theme.css" layer(theme);
-        @import "tailwindcss/utilities.css" layer(utilities);
-      </style>
-      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    {% endif %}
-
-    {% assign head_html = site.settings.head_html | presence %}
-    {% if head_html %}
-      <!-- start head_html -->
-      {{ head_html }}
-      <!-- end head_html -->
-    {% endif %}
-    {% weixin_share_tag app_id: site.settings.weixin_app_id, app_secret: site.settings.weixin_app_secret, debug: site.settings.weixin_debug, enabled: site.settings.weixin_enabled %}
-
-
   </head>
-  <body id="js--body" class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-base-100 tracking-wide text-base-content antialiased" x-data="{ isHomePage: false }" x-init="isHomePage = location.pathname === '{{ site.index_path }}'">
+  <body data-controller="help-ui" data-help-ui-image-close-value="{{ 'shell.close' | t | escape }}" data-help-ui-image-open-value="{{ 'shell.view_image' | t | escape }}">
+    <a class="help-skip-link" href="#main-content">{{ 'shell.skip_content' | t }}</a>
     {% render 'header', page: page %}
-    {{ content_for_layout }}
-    {% render 'footer', page: page %}
+    <main id="main-content" tabindex="-1">{{ content_for_layout }}</main>
+    {% render 'footer' %}
   </body>
 </html>

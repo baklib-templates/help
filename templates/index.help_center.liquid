@@ -1,0 +1,46 @@
+{% layout 'theme' %}
+{% assign root = site.index_page %}
+{% assign categories = root.children_in_list %}
+{% assign mode = 'collections' %}
+{% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}
+{% assign support_markup = support_markup | strip %}
+
+<div data-home-layout="{{ mode | escape }}" data-home-style="help_center">
+  {% render 'home_hero', home: page, mode: mode, categories: categories %}
+
+  <div class="help-container py-10 md:py-14">
+    {% render 'home_content', home: page %}
+    {% render 'home_categories', categories: categories, mode: mode %}
+    {% render 'home_featured', home: page, root: root %}
+    {% if page.settings.show_faqs %}
+      {% render 'home_faqs', home: page, root: root %}
+    {% endif %}
+    {% if support_markup != blank %}
+      <section class="help-section" aria-label="{{ 'home.support_label' | t | escape }}">
+        {{ support_markup }}
+      </section>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:schema.home.help_center.name",
+  "thumb_url": "images/theme/cover.jpg",
+  "preview_image_urls": ["images/theme/home-collections.jpg"],
+  "description": "t:schema.home.help_center.description",
+  "sub_page_templates": ["page"],
+  "settings": [
+    { "id": "title", "type": "text", "readonly": true, "queryable": true, "to_markdown": true, "label": "t:schema.home.title.label", "info": "t:schema.home.title.info" },
+    { "id": "content", "type": "richtext", "readonly": true, "to_markdown": true, "label": "t:schema.home.content.label", "info": "t:schema.home.content.info" },
+    { "id": "hero_title", "type": "text", "default": "t:schema.home.hero_title.default", "label": "t:schema.home.hero_title.label", "info": "t:schema.home.hero_title.info" },
+    { "id": "hero_description", "type": "textarea", "rows": 3, "label": "t:schema.home.hero_description.label", "info": "t:schema.home.hero_description.info" },
+    { "id": "hero_image", "type": "image_picker", "ratio": "4:3", "label": "t:schema.home.hero_image.label", "info": "t:schema.home.hero_image.info" },
+    { "id": "featured_title", "type": "text", "label": "t:schema.home.featured_title.label", "info": "t:schema.home.featured_title.info" },
+    { "id": "featured_pages", "type": "textarea", "rows": 6, "label": "t:schema.home.featured_pages.label", "info": "t:schema.home.featured_pages.info" },
+    { "id": "show_featured", "type": "checkbox", "default": true, "label": "t:schema.home.show_featured.label" },
+    { "id": "faq_source", "type": "text", "label": "t:schema.home.faq_source.label", "info": "t:schema.home.faq_source.info" },
+    { "id": "show_faqs", "type": "checkbox", "default": false, "label": "t:schema.home.show_faqs.label", "info": "t:schema.home.show_faqs.info" }
+  ]
+}
+{% endschema %}
