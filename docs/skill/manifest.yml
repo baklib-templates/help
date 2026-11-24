@@ -17,6 +17,7 @@ skill:
   - header_link_label
   - header_link_url
   - footer_text
+  - show_primary_nav
   - article_layout
   - category_layout
   - support_title
@@ -28,6 +29,7 @@ skill:
   - show_published_at
   - enable_ai_search
   - show_related_articles
+  - show_feedback_form
   page_types:
   - template: index.help_center
     role: 帮助中心首页：搜索首屏、分类卡片、精选知识与服务入口
@@ -70,7 +72,6 @@ skill:
     - icon_name
     - reading_layout
     - tags
-    - video_url
     - related_pages
   - template: search
     role: 站内授权内容搜索

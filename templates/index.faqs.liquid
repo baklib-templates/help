@@ -1,22 +1,120 @@
 {% layout 'theme' %}
 {% assign root = site.index_page %}
 {% assign categories = root.children_in_list %}
+{% assign category_count = categories | size %}
 {% assign mode = 'faqs' %}
+{% assign hero_title = page.settings.hero_title | strip | default: page.settings.title %}
+{% if hero_title == blank %}{% assign hero_title = 'home.title' | t %}{% endif %}
+{% assign hero_description = page.settings.hero_description | strip | default: site.settings.tagline %}
+{% assign hero_image = page.settings.hero_image %}
+{% assign topic_path = params.topic | default: '' | strip %}
+{% assign faq_root = root %}
+{% assign configured_source = page.settings.faq_source | strip %}
+{% if configured_source != blank %}
+  {% assign configured_page = site.pages[configured_source] %}
+  {% if configured_page != blank %}{% assign faq_root = configured_page %}{% endif %}
+{% endif %}
+{% if topic_path == 'all' %}
+  {% assign faq_root = root %}
+{% elsif topic_path != blank %}
+  {% assign topic_page = site.pages[topic_path] %}
+  {% if topic_page != blank %}{% assign faq_root = topic_page %}{% endif %}
+{% endif %}
+{% assign faq_items = faq_root.children_in_list %}
 {% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}
 {% assign support_markup = support_markup | strip %}
 
 <div data-home-layout="{{ mode | escape }}" data-home-style="faqs">
-  {% render 'home_hero', home: page, mode: mode, categories: categories %}
+  <section class="border-b border-base-300 bg-base-200" aria-labelledby="home-title">
+    <div class="help-container py-12 text-center md:py-16">
+      <p class="help-eyebrow mb-4 inline-flex items-center gap-2 text-primary">
+        {% render 'icon', name: 'circle-help', class: 'size-4' %}
+        {{ 'home.faq_eyebrow' | t }}
+      </p>
+      <h1 id="home-title" class="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-balance text-base-content sm:text-5xl">{{ hero_title | escape_once }}</h1>
+      {% if hero_description != blank %}
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-base-content/65">{{ hero_description | escape_once | newline_to_br }}</p>
+      {% endif %}
+      <div class="mx-auto mt-8 max-w-2xl text-left">{% render 'search_form', id: 'home-search' %}</div>
+      {% if hero_image != blank %}
+        <img src="{{ hero_image.url | escape }}" alt="" width="1200" height="360" fetchpriority="high" class="mx-auto mt-8 aspect-[10/3] w-full max-w-5xl rounded-3xl border border-base-300 object-cover">
+      {% endif %}
+    </div>
+  </section>
 
   <div class="help-container py-10 md:py-14">
     {% render 'home_content', home: page %}
-    {% render 'home_faqs', home: page, root: root %}
-    {% render 'home_categories', categories: categories, mode: mode %}
+
+    <section class="help-section" aria-labelledby="home-faq-board-title">
+      <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 id="home-faq-board-title" class="text-2xl font-semibold tracking-tight">{{ 'home.faq_title' | t }}</h2>
+          <p class="mt-2 text-sm leading-6 text-base-content/60">{{ 'home.faq_description' | t }}</p>
+        </div>
+        {% if faq_root.path != blank and faq_root.path != '/' and faq_root.path != site.index_path %}
+          <a href="{{ faq_root.path }}" class="inline-flex min-h-10 items-center gap-2 text-sm font-medium text-primary underline-offset-4 hover:underline">{{ faq_root.link_text | escape_once }}{% render 'icon', name: 'arrow-right', class: 'size-4' %}</a>
+        {% endif %}
+      </div>
+
+      {% if category_count > 0 %}
+        <div class="mb-6 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="{{ 'reading.all_topics' | t | escape }}">
+          <a href="{{ site.index_path }}?topic=all" class="help-button shrink-0 rounded-full {% if topic_path == 'all' or topic_path == blank and faq_root.path == root.path %}border-primary bg-primary/10 text-primary{% endif %}" {% if topic_path == 'all' %}aria-current="page"{% endif %}>{{ 'reading.all_topics' | t }}</a>
+          {% for category in categories %}
+            <a href="{{ site.index_path }}?topic={{ category.path | url_encode }}" class="help-button shrink-0 rounded-full {% if topic_path == category.path %}border-primary bg-primary/10 text-primary{% endif %}" {% if topic_path == category.path %}aria-current="page"{% endif %}>{{ category.link_text | escape_once }}</a>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="rounded-2xl border border-dashed border-base-300 bg-base-200/30 px-6 py-12 text-center">
+          <h3 class="font-medium">{{ 'home.empty_title' | t }}</h3>
+          <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-base-content/60">{{ 'home.empty_description' | t }}</p>
+        </div>
+      {% endif %}
+
+      {% paginate_tag faq_items, as: 'faq_page_items', per: 20 %}
+        {% assign faq_page_count = faq_page_items | size %}
+        {% if faq_page_count > 0 %}
+          <div class="overflow-hidden rounded-2xl border border-base-300 bg-base-100">
+            {% for item in faq_page_items %}
+              {% assign item_children = item.children_in_list %}
+              {% assign item_child_count = item_children | size %}
+              {% assign item_accessible = item | can_access? %}
+              {% assign answer = '' %}
+              {% if item_accessible and item_child_count == 0 %}
+                {% assign answer = item.settings.content | default: item.settings.description %}
+              {% endif %}
+              {% if item_child_count > 0 or answer == blank %}
+                <a href="{{ item.path }}" class="flex items-center gap-4 border-b border-base-300 px-5 py-5 last:border-b-0 hover:bg-base-200/40 sm:px-6">
+                  <span class="min-w-0 flex-1 font-medium leading-6">{{ item.link_text | escape_once }}</span>
+                  <span class="shrink-0 text-sm text-base-content/50">{% if item_child_count > 0 %}{{ 'home.browse_topic' | t }}{% else %}{{ 'home.read_answer' | t }}{% endif %}</span>
+                  {% render 'icon', name: 'chevron-down', class: 'size-4 shrink-0 -rotate-90 text-base-content/40' %}
+                </a>
+              {% else %}
+                <details class="group border-b border-base-300 last:border-b-0" {% if forloop.first %}open{% endif %}>
+                  <summary class="flex list-none items-center gap-4 px-5 py-5 marker:hidden sm:px-6 [&::-webkit-details-marker]:hidden">
+                    <span class="min-w-0 flex-1 font-medium leading-6">{{ item.link_text | escape_once }}</span>
+                    <span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-base-200 text-base-content/50 transition group-open:rotate-180">{% render 'icon', name: 'chevron-down', class: 'size-4' %}</span>
+                  </summary>
+                  <div class="px-5 pb-6 sm:px-6">
+                    <div class="help-prose max-w-3xl text-sm">{{ answer }}</div>
+                    <a href="{{ item.path }}" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">{{ 'reading.read_article' | t }}{% render 'icon', name: 'arrow-right', class: 'size-4' %}</a>
+                  </div>
+                </details>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% render 'reading_pagination', paginate: paginate %}
+        {% else %}
+          <div class="rounded-2xl border border-dashed border-base-300 bg-base-200/30 p-8">
+            <p class="font-medium">{{ 'home.faq_empty_title' | t }}</p>
+            <p class="mt-2 text-sm leading-6 text-base-content/60">{{ 'home.faq_empty_description' | t }}</p>
+          </div>
+        {% endif %}
+      {% endpaginate_tag %}
+    </section>
+
     {% render 'home_featured', home: page, root: root %}
     {% if support_markup != blank %}
-      <section class="help-section" aria-label="{{ 'home.support_label' | t | escape }}">
-        {{ support_markup }}
-      </section>
+      <section class="help-section" aria-label="{{ 'home.support_label' | t | escape }}">{{ support_markup }}</section>
     {% endif %}
   </div>
 </div>

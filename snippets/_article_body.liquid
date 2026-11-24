@@ -1,12 +1,7 @@
-{% if page.settings.video_url %}
-  <figure class="mb-8 overflow-hidden rounded-2xl border border-base-300 bg-base-200">
-    <video class="aspect-video w-full" src="{{ page.settings.video_url.url }}" controls playsinline preload="metadata" aria-label="{{ page.link_text | escape_once }}"></video>
-  </figure>
-{% endif %}
 <div id="article-content" class="help-prose ProseMirror max-w-none" data-toc-target="content" data-controller="link-target images-viewer">
   {{ page.settings.content }}
 </div>
 {% assign child_count = page.children_in_list | size %}
-{% if page.settings.content == blank and page.settings.video_url == blank and child_count == 0 %}
+{% if page.settings.content == blank and child_count == 0 %}
   <p class="rounded-xl bg-base-200 p-6 text-sm text-base-content/55">{{ 'reading.empty_article' | t }}</p>
 {% endif %}

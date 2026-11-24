@@ -1,9 +1,16 @@
+{% if site.settings.show_feedback_form %}
 {% assign feedback_title = 'reading.was_helpful' | t %}
 {% assign feedback_title = site.plugins.feedback.useful_label | default: feedback_title %}
+{% assign feedback_class = 'help-card bg-base-200/40 p-5 sm:p-6' %}
+{% assign feedback_legend_class = 'mb-4 text-sm font-semibold' %}
+{% if plain %}
+  {% assign feedback_class = '' %}
+  {% assign feedback_legend_class = 'mb-4 text-base font-semibold' %}
+{% endif %}
 <div id="help-feedback-{{ page.id }}">
-  {% form_tag 'feedback', page, class: 'help-card bg-base-200/40 p-5 sm:p-6' %}
+  {% form_tag 'feedback', page, class: feedback_class %}
     <fieldset>
-      <legend class="mb-4 text-sm font-semibold">{{ feedback_title | escape_once }}</legend>
+      <legend class="{{ feedback_legend_class }}">{{ feedback_title | escape_once }}</legend>
       {% if success %}<p class="mb-4 text-sm text-success" role="status">{{ success | escape_once }}</p>{% elsif page.visitor_posted_feedback %}<p class="mb-4 text-xs text-base-content/55">{{ 'reading.feedback_recorded' | t }}</p>{% endif %}
       <div id="help-feedback-errors" role="alert" class="mb-3 text-sm text-error"></div>
       <div class="flex flex-wrap gap-3">
@@ -26,3 +33,4 @@
     </fieldset>
   {% endform_tag %}
 </div>
+{% endif %}

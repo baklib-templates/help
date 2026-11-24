@@ -27,7 +27,7 @@ Gen 3 页使用大幅产品横幅、面包屑、型号标题和 Shop Now 链接�
 | 产品照片与产品横幅 | 首页可配置正式 DAM 引用的 `hero_image`；普通页 `icon_image` 由页面设置配置，不能宣称已通过当前 `seed_content` 写入。型号横幅和大图卡比例仍需候选定制。 |
 | 黑页头、四联系渠道、购买链接 | 品牌基础设置可复用，具体色彩与版式需候选实现。当前只有一个 `support_url` 加邮箱、电话；聊天和表单同时独立展示需要新增清楚的数据配置。购买、工单及订单功能只能链接到客户已有系统。 |
 
-普通页 `description`、`icon_image`、`icon_name`、`reading_layout`、`tags`、`video_url`、`related_pages` 均受当前页面设置/工具边界约束，不能因 manifest 列出了字段就认为知识库 Agent 已能写入。保留来源正文与权限，在固定版本的组织候选内实现超出配置的结构，预览真实内容后验收。
+普通页 `description`、`icon_image`、`icon_name`、`reading_layout`、`tags`、`related_pages` 均受当前页面设置/工具边界约束，不能因 manifest 列出了字段就认为知识库 Agent 已能写入。保留来源正文与权限，在固定版本的组织候选内实现超出配置的结构，预览真实内容后验收。
 
 ## 移动适配建议（本次未实测）
 

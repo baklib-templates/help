@@ -47,7 +47,7 @@
 - `configure_site` 可写字段以 manifest 的 `site_fields` 为准，包括品牌、文章/分类布局、真实支持地址及作者/日期显示；首页变体由 `index_style` 选择，不在其中。
 - `seed_content` 为首页写 `hero_title`、`hero_description`、`hero_image`、`featured_title`、`featured_pages`、`show_featured`、`faq_source`、`show_faqs`。三个变体字段相同。字段 `featured_pages` 是本站真实路径，每行一个；`faq_source` 是已有分类路径。
 - `create_channels` / `seed_content` 为普通内容写入知识库，然后同步到站点。不得直接覆盖页面只读 `title`、`content`。
-- 当前 Agent 的知识库写入接口不写普通页的展示字段。`description`、`icon_image`、`icon_name`、`reading_layout`、`tags`、`video_url`、`related_pages` 在页面设置中编辑；不要宣称已通过 `seed_content` 修改这些字段。单页 `reading_layout=inherit` 继承所选首页样式的自动搭配。
+- 当前 Agent 的知识库写入接口不写普通页的展示字段。`description`、`icon_image`、`icon_name`、`reading_layout`、`tags`、`related_pages` 在页面设置中编辑；不要宣称已通过 `seed_content` 修改这些字段。单页 `reading_layout=inherit` 继承所选首页样式的自动搭配。
 - 产品支持用一级知识分类表示产品、子页表示指南或问题，不虚构商品、订单或库存数据。
 - 选择 `index.faqs` 时需要真正的问题与解答：若问题位于某个分类下，创建内容后用 `read_page` 取得该分类的真实路径，再以 `seed_content(path: "/", fields: ...)` 写入 `faq_source`。不要猜路径。`faq_source` 留空时读取首页直属子页；有子页的分类只显示入口，不会展开为答案。无内容时保留准确空状态。
 - 先 `find_assets` 查询当前组织的 DAM，再将返回的正式 `asset-编号` 写入图片或视频字段。禁止伪造素材地址。

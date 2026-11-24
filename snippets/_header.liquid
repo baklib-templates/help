@@ -10,11 +10,13 @@
         <span class="min-w-0 truncate">{{ brand_name | escape_once }}</span>
       {% endif %}
     </a>
-    <nav class="hidden min-w-0 items-center gap-5 text-sm font-medium text-base-content/65 xl:flex" aria-label="{{ 'shell.navigation' | t | escape }}">
-      {% for item in navigation limit: 3 %}
-        <a href="{{ item.path }}" class="max-w-36 truncate transition-colors hover:text-base-content" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>
-      {% endfor %}
-    </nav>
+    {% unless site.settings.show_primary_nav == false %}
+      <nav class="hidden min-w-0 items-center gap-5 text-sm font-medium text-base-content/65 xl:flex" aria-label="{{ 'shell.navigation' | t | escape }}">
+        {% for item in navigation limit: 5 %}
+          <a href="{{ item.path }}" class="max-w-36 truncate transition-colors hover:text-base-content" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>
+        {% endfor %}
+      </nav>
+    {% endunless %}
     <div class="ml-auto hidden w-60 lg:block">{% render 'search_form', id: 'header-search', compact: true %}</div>
     <div class="ml-auto flex shrink-0 items-center gap-1 lg:ml-0">
       <a href="{{ site.search_path }}" class="btn btn-ghost btn-square btn-sm lg:hidden" aria-label="{{ 'shell.search' | t | escape }}">{% render 'icon', name: 'search', class: 'size-5' %}</a>
@@ -42,7 +44,9 @@
       <details class="help-mobile-menu xl:hidden" data-help-menu>
         <summary class="btn btn-ghost btn-square btn-sm list-none" aria-label="{{ 'shell.navigation' | t | escape }}">{% render 'icon', name: 'menu', class: 'size-5' %}</summary>
         <nav class="help-mobile-panel" aria-label="{{ 'shell.navigation' | t | escape }}">
-          {% for item in navigation %}<a href="{{ item.path }}" class="block rounded-lg px-3 py-3 text-sm hover:bg-base-200" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>{% endfor %}
+          {% unless site.settings.show_primary_nav == false %}
+            {% for item in navigation %}<a href="{{ item.path }}" class="block rounded-lg px-3 py-3 text-sm hover:bg-base-200" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>{% endfor %}
+          {% endunless %}
           {% if site.settings.header_link_label != blank and site.settings.header_link_url != blank %}<a href="{{ site.settings.header_link_url | escape_once }}" class="block rounded-lg px-3 py-3 text-sm font-semibold hover:bg-base-200">{{ site.settings.header_link_label | escape_once }}</a>{% endif %}
           <div class="mt-2 border-t border-base-300 pt-3">{% render 'search_form', id: 'mobile-search', compact: true %}</div>
         </nav>

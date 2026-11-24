@@ -58,22 +58,32 @@
       {
         "id": "tagline",
         "type": "text",
-        "label": "t:schema.theme.tagline"
+        "label": "t:schema.theme.tagline",
+        "default": "t:schema.theme.tagline_default"
       },
       {
         "id": "header_link_label",
         "type": "text",
-        "label": "t:schema.theme.header_link_label"
+        "label": "t:schema.theme.header_link_label",
+        "default": "t:schema.theme.header_link_label_default"
       },
       {
         "id": "header_link_url",
         "type": "text",
-        "label": "t:schema.theme.header_link_url"
+        "label": "t:schema.theme.header_link_url",
+        "default": "https://example.com"
       },
       {
         "id": "footer_text",
         "type": "text",
-        "label": "t:schema.theme.footer_text"
+        "label": "t:schema.theme.footer_text",
+        "default": "t:schema.theme.footer_text_default"
+      },
+      {
+        "id": "show_primary_nav",
+        "type": "checkbox",
+        "label": "t:schema.theme.show_primary_nav",
+        "default": true
       }
     ]
   },
@@ -136,27 +146,33 @@
       {
         "id": "support_title",
         "type": "text",
-        "label": "t:schema.theme.support_title"
+        "label": "t:schema.theme.support_title",
+        "default": "t:schema.theme.support_title_default"
       },
       {
         "id": "support_description",
         "type": "textarea",
-        "label": "t:schema.theme.support_description"
+        "rows": 3,
+        "label": "t:schema.theme.support_description",
+        "default": "t:schema.theme.support_description_default"
       },
       {
         "id": "support_url",
         "type": "text",
-        "label": "t:schema.theme.support_url"
+        "label": "t:schema.theme.support_url",
+        "default": "https://example.com/contact"
       },
       {
         "id": "support_email",
         "type": "text",
-        "label": "t:schema.theme.support_email"
+        "label": "t:schema.theme.support_email",
+        "default": "support@example.com"
       },
       {
         "id": "support_phone",
         "type": "text",
-        "label": "t:schema.theme.support_phone"
+        "label": "t:schema.theme.support_phone",
+        "default": "400-000-0000"
       }
     ]
   },
@@ -186,6 +202,12 @@
         "type": "checkbox",
         "label": "t:schema.theme.show_related_articles",
         "default": true
+      },
+      {
+        "id": "show_feedback_form",
+        "type": "checkbox",
+        "label": "t:schema.theme.show_feedback_form",
+        "default": false
       }
     ]
   }

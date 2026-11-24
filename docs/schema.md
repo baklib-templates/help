@@ -12,6 +12,7 @@
 | `header_link_label` | text | 可写 |
 | `header_link_url` | text | 可写 |
 | `footer_text` | text | 可写 |
+| `show_primary_nav` | checkbox | 可写 |
 | `article_layout` | select | 可写 |
 | `category_layout` | select | 可写 |
 | `support_title` | text | 可写 |
@@ -23,6 +24,7 @@
 | `show_published_at` | checkbox | 可写 |
 | `enable_ai_search` | checkbox | 可写 |
 | `show_related_articles` | checkbox | 可写 |
+| `show_feedback_form` | checkbox | 可写 |
 
 ## `index.help_center` / `index.faqs` / `index.support`
 
@@ -52,7 +54,6 @@
 | `icon_name` | select | 可写 |
 | `reading_layout` | select | 可写 |
 | `tags` | tag_picker | 可写 |
-| `video_url` | video_picker | 可写 |
 | `related_pages` | textarea | 可写 |
 
 `search`、`tag`、`feedback`、`403`、`404`、`error` 以及反馈流没有设置项。

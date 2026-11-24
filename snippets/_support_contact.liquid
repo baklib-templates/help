@@ -1,14 +1,35 @@
 {%- if site.settings.support_url != blank or site.settings.support_email != blank or site.settings.support_phone != blank -%}
-  <section class="help-card {% if compact %}p-6{% else %}flex flex-col gap-6 p-7 sm:flex-row sm:items-center sm:justify-between md:p-9{% endif %}">
-    <div class="{% if compact %}mb-6{% else %}max-w-xl{% endif %}">
-      <span class="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-base-200 text-base-content/70">{% render 'icon', name: 'headphones', class: 'size-5' %}</span>
-      <h2 class="text-xl font-semibold tracking-tight">{% if site.settings.support_title != blank %}{{ site.settings.support_title | escape_once }}{% else %}{{ 'shell.support_title' | t }}{% endif %}</h2>
-      <p class="mt-2 text-sm leading-7 text-base-content/60">{% if site.settings.support_description != blank %}{{ site.settings.support_description | escape_once }}{% else %}{{ 'shell.support_description' | t }}{% endif %}</p>
-    </div>
-    <div class="flex shrink-0 {% if compact %}flex-col{% else %}flex-wrap{% endif %} gap-3">
-      {% if site.settings.support_url != blank %}<a href="{{ site.settings.support_url | escape_once }}" class="help-button">{{ 'shell.contact_support' | t }}{% render 'icon', name: 'arrow-up-right', class: 'size-4' %}</a>{% endif %}
-      {% if site.settings.support_email != blank %}<a href="mailto:{{ site.settings.support_email | escape_once }}" class="help-button">{% render 'icon', name: 'mail', class: 'size-4' %}{{ 'shell.email_support' | t }}</a>{% endif %}
-      {% if site.settings.support_phone != blank %}<a href="tel:{{ site.settings.support_phone | escape_once }}" class="help-button">{% render 'icon', name: 'phone', class: 'size-4' %}{{ site.settings.support_phone | escape_once }}</a>{% endif %}
-    </div>
+  <section class="rounded-2xl bg-base-200 p-6">
+    <h2 class="help-eyebrow">{% if site.settings.support_title != blank %}{{ site.settings.support_title | escape_once }}{% else %}{{ 'shell.support_title' | t }}{% endif %}</h2>
+    <p class="mt-3 text-sm leading-6 text-base-content/60">{% if site.settings.support_description != blank %}{{ site.settings.support_description | escape_once }}{% else %}{{ 'shell.support_description' | t }}{% endif %}</p>
+    <ul class="mt-5 space-y-5">
+      {% if site.settings.support_email != blank %}
+        <li>
+          <a href="mailto:{{ site.settings.support_email | escape_once }}" class="flex items-start gap-3 text-base-content hover:text-primary">
+            {% render 'icon', name: 'mail', class: 'mt-0.5 size-5 shrink-0 text-base-content/55' %}
+            <span class="min-w-0">
+              <span class="block text-sm font-semibold">{{ 'shell.email_support' | t }}</span>
+              <span class="mt-1 block text-sm font-normal text-base-content/70">{{ site.settings.support_email | escape_once }}</span>
+            </span>
+          </a>
+        </li>
+      {% endif %}
+      {% if site.settings.support_url != blank %}
+        <li>
+          <a href="{{ site.settings.support_url | escape_once }}" class="flex items-start gap-3 text-sm font-semibold text-base-content hover:text-primary">
+            {% render 'icon', name: 'message-circle', class: 'size-5 shrink-0 text-base-content/55' %}
+            <span>{{ 'shell.contact_support' | t }}</span>
+          </a>
+        </li>
+      {% endif %}
+      {% if site.settings.support_phone != blank %}
+        <li>
+          <a href="tel:{{ site.settings.support_phone | escape_once }}" class="flex items-start gap-3 text-sm font-semibold text-base-content hover:text-primary">
+            {% render 'icon', name: 'phone', class: 'size-5 shrink-0 text-base-content/55' %}
+            <span>{{ site.settings.support_phone | escape_once }}</span>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
   </section>
 {%- endif -%}

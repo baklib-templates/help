@@ -6,7 +6,7 @@
 {% assign centered = false %}
 {% if mode == 'search' or mode == 'faqs' %}{% assign centered = true %}{% endif %}
 
-<section class="border-b border-base-300 bg-base-200/40" aria-labelledby="home-title">
+<section class="border-b border-base-300 bg-base-200" aria-labelledby="home-title">
   <div class="help-container py-12 md:py-16 {% if mode == 'search' %}lg:py-24{% endif %} {% if hero_image != blank %}grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16{% endif %}">
     <div class="min-w-0 {% if centered and hero_image == blank %}mx-auto max-w-3xl text-center{% else %}max-w-3xl{% endif %}">
       <p class="help-eyebrow mb-4 inline-flex items-center gap-2 text-primary">

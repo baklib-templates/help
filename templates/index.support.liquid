@@ -1,25 +1,82 @@
 {% layout 'theme' %}
 {% assign root = site.index_page %}
 {% assign categories = root.children_in_list %}
+{% assign category_count = categories | size %}
 {% assign mode = 'support' %}
+{% assign hero_title = page.settings.hero_title | strip | default: page.settings.title %}
+{% if hero_title == blank %}{% assign hero_title = 'home.title' | t %}{% endif %}
+{% assign hero_description = page.settings.hero_description | strip | default: site.settings.tagline %}
+{% assign hero_image = page.settings.hero_image %}
 {% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}
 {% assign support_markup = support_markup | strip %}
+{% assign show_aside = false %}
+{% if category_count > 0 or support_markup != blank or hero_image != blank %}{% assign show_aside = true %}{% endif %}
 
 <div data-home-layout="{{ mode | escape }}" data-home-style="support">
-  {% render 'home_hero', home: page, mode: mode, categories: categories %}
-
-  <div class="help-container grid items-start gap-10 py-10 lg:gap-14 lg:py-14 {% if support_markup != blank %}lg:grid-cols-[minmax(0,1fr)_20rem]{% endif %}">
+  <div class="help-container grid items-start gap-10 py-10 lg:py-14 {% if show_aside %}lg:grid-cols-[minmax(0,1fr)_20rem]{% endif %}">
     <div class="min-w-0">
+      <header class="rounded-2xl bg-base-200 p-6 pb-8">
+        <p class="help-eyebrow mb-3 inline-flex items-center gap-2 text-primary">{% render 'icon', name: 'headphones', class: 'size-4' %}{{ 'home.support_label' | t }}</p>
+        <h1 id="home-title" class="max-w-3xl text-3xl font-semibold tracking-tight text-base-content md:text-4xl">{{ hero_title | escape_once }}</h1>
+        {% if hero_description != blank %}
+          <p class="mt-3 max-w-2xl text-base leading-7 text-base-content/65">{{ hero_description | escape_once | newline_to_br }}</p>
+        {% endif %}
+        <div class="mt-6 max-w-3xl">{% render 'search_form', id: 'home-search' %}</div>
+      </header>
+
       {% render 'home_content', home: page %}
-      {% render 'home_categories', categories: categories, mode: mode %}
+
+      <section class="help-section" aria-labelledby="support-topics-title">
+        <h2 id="support-topics-title" class="text-lg font-semibold">{{ 'home.support_topics_title' | t }}</h2>
+        {% if category_count > 0 %}
+          <ul class="mt-6 divide-y divide-base-300 border-y border-base-300">
+            {% for category in categories %}
+              {% assign category_accessible = category | can_access? %}
+              {% assign excerpt = '' %}
+              {% if category_accessible %}
+                {% assign excerpt = category.settings.description | default: category.settings.content | strip_html | truncate: 160 %}
+              {% endif %}
+              {% assign child_count = category.children_in_list | size %}
+              <li class="flex gap-4 py-6">
+                <span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-content">{% render 'icon', name: category.settings.icon_name.value | default: 'book', class: 'size-4' %}</span>
+                <div class="min-w-0 flex-1">
+                  <a href="{{ category.path }}" class="text-base font-medium text-primary hover:underline md:text-lg">{{ category.link_text | escape_once }}</a>
+                  {% if excerpt != blank %}<p class="mt-2 line-clamp-2 text-sm leading-6 text-base-content/65">{{ excerpt | escape_once }}</p>{% endif %}
+                  {% if child_count > 0 %}<p class="mt-2 text-xs text-base-content/45">{{ child_count }} {{ 'home.items' | t }}</p>{% endif %}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="mt-6 rounded-2xl border border-dashed border-base-300 bg-base-200/30 px-6 py-12 text-center">
+            <h3 class="font-medium">{{ 'home.empty_title' | t }}</h3>
+            <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-base-content/60">{{ 'home.empty_description' | t }}</p>
+          </div>
+        {% endif %}
+      </section>
+
       {% render 'home_featured', home: page, root: root %}
       {% if page.settings.show_faqs %}
         {% render 'home_faqs', home: page, root: root %}
       {% endif %}
     </div>
-    {% if support_markup != blank %}
-      <aside class="lg:sticky lg:top-24" aria-label="{{ 'home.support_label' | t | escape }}">
-        {{ support_markup }}
+
+    {% if show_aside %}
+      <aside class="min-w-0 space-y-4 lg:sticky lg:top-24" aria-label="{{ 'home.support_label' | t | escape }}">
+        {% if hero_image != blank %}
+          <img src="{{ hero_image.url | escape }}" alt="" width="640" height="480" class="aspect-[4/3] w-full rounded-2xl object-cover">
+        {% endif %}
+        {% if category_count > 0 %}
+          <nav class="rounded-2xl bg-base-200 p-6" aria-label="{{ 'reading.all_topics' | t | escape }}">
+            <h2 class="text-xs font-semibold uppercase tracking-wider text-base-content/45">{{ 'reading.all_topics' | t }}</h2>
+            <ul class="mt-3 space-y-1">
+              {% for category in categories %}
+                <li><a href="{{ category.path }}" class="block rounded-lg px-3 py-2 text-sm text-primary hover:bg-base-100">{{ category.link_text | escape_once }}</a></li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+        {% if support_markup != blank %}{{ support_markup }}{% endif %}
       </aside>
     {% endif %}
   </div>

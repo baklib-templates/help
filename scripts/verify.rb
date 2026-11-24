@@ -251,11 +251,8 @@ module HelpVerification
         page = fixture_page('settings' => {'reading_layout' => {'value' => mode}})
         doc = Nokogiri::HTML.fragment(render('templates/page.liquid', {'page' => page}))
         check("#{mode}: empty leaf has no category and shows its empty state") { doc.at_css('#category-content').nil? && doc.text.include?(translation('reading.empty_article')) }
-        page['settings']['video_url'] = {'url' => '/dam/guide.mp4'}
-        doc = Nokogiri::HTML.fragment(render('templates/page.liquid', {'page' => page}))
-        check("#{mode}: video-only articles are not empty") { doc.at_css("video[src='/dam/guide.mp4'][controls][playsinline]") && !doc.text.include?(translation('reading.empty_article')) }
       end
-      puts "PASS #{cases} category combinations across #{HOME_STYLES.size} homepage styles, 3 depths, source body preservation and empty/video-only leaves"
+      puts "PASS #{cases} category combinations across #{HOME_STYLES.size} homepage styles, 3 depths, source body preservation and empty leaves"
     end
 
     def pagination
@@ -308,6 +305,13 @@ module HelpVerification
         page['settings']['related_pages'] = '/related'
         html = render('snippets/_related_articles.liquid', {'page' => page}, site: site)
         check('Related checkbox must control related output') { html.include?('RELATED_SENTINEL') == enabled }
+        site = fixture_site({'show_feedback_form' => enabled})
+        html = render('snippets/_feedback_form.liquid', {'page' => page}, site: site)
+        check('Feedback checkbox must control the feedback form') { html.include?('help-feedback-') == enabled }
+        site = fixture_site({'show_primary_nav' => enabled})
+        site['index_page']['children_in_nav_menu'] = [fixture_page('path' => '/product', 'link_text' => 'NAV_SENTINEL')]
+        html = render('snippets/_header.liquid', {'page' => page}, site: site)
+        check('Primary nav checkbox must control top-level links') { html.include?('NAV_SENTINEL') == enabled }
         site['settings']['article_layout'] = {'value' => 'support'}
         site['settings']['support_email'] = enabled ? 'support@example.test' : ''
         html = render('templates/page.liquid', {'page' => page}, site: site)
