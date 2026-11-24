@@ -1,4 +1,4 @@
-{% assign home_page = site.index_page %}
+{% assign home_page = site.pages['/'] %}
 {% assign home_style = home_page.template_style | default: 'help_center' %}
 {% assign reading_layout = site.settings.article_layout.value | default: 'auto' %}
 {% if reading_layout == 'auto' %}

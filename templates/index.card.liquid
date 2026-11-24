@@ -1,5 +1,5 @@
 {% layout 'theme' %}
-{% assign channel_pages = site.index_page.children_in_nav_menu %}
+{% assign channel_pages = page.children_in_nav_menu %}
 {% assign hero_title = page.settings.hero_title | strip | default: page.settings.title | default: site.name %}
 {% assign hero_description = page.settings.hero_description | strip %}
 {% assign hero_height = page.settings.hero_height | default: 400 | plus: 0 %}
