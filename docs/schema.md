@@ -13,6 +13,7 @@
 | `header_link_url` | text | 可写 |
 | `footer_text` | text | 可写 |
 | `show_primary_nav` | checkbox | 可写 |
+| `primary_nav_menu` | textarea | 可写 |
 | `article_layout` | select | 可写 |
 | `category_layout` | select | 可写 |
 | `support_title` | text | 可写 |
@@ -60,6 +61,7 @@
 | `featured_title` | text | 可写 |
 | `featured_pages` | textarea | 可写 |
 | `show_featured` | checkbox | 可写 |
+| `show_channels_section` | checkbox | 可写 |
 | `faq_source` | text | 可写 |
 | `show_faqs` | checkbox | 可写 |
 

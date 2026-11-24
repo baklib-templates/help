@@ -5,12 +5,21 @@
 {% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}
 {% assign support_markup = support_markup | strip %}
 
+{% assign show_channels = true %}
+{% if page.settings.show_channels_section == false %}{% assign show_channels = false %}{% endif %}
+
 <div data-home-layout="{{ mode | escape }}" data-home-style="help_center">
-  {% render 'home_hero', home: page, mode: mode, categories: categories %}
+  {% if show_channels %}
+    {% render 'home_hero', home: page, mode: mode, categories: categories %}
+  {% else %}
+    {% render 'home_hero', home: page, mode: mode %}
+  {% endif %}
 
   <div class="help-container py-10 md:py-14">
     {% render 'home_content', home: page %}
-    {% render 'home_categories', categories: categories, mode: mode %}
+    {% if show_channels %}
+      {% render 'home_categories', categories: categories, mode: mode %}
+    {% endif %}
     {% render 'home_featured', home: page, root: root %}
     {% if page.settings.show_faqs %}
       {% render 'home_faqs', home: page, root: root %}
@@ -39,6 +48,7 @@
     { "id": "featured_title", "type": "text", "label": "t:schema.home.featured_title.label", "info": "t:schema.home.featured_title.info" },
     { "id": "featured_pages", "type": "textarea", "rows": 6, "label": "t:schema.home.featured_pages.label", "info": "t:schema.home.featured_pages.info" },
     { "id": "show_featured", "type": "checkbox", "default": true, "label": "t:schema.home.show_featured.label" },
+    { "id": "show_channels_section", "type": "checkbox", "default": true, "label": "t:schema.home.show_channels.label", "info": "t:schema.home.show_channels.info" },
     { "id": "faq_source", "type": "text", "label": "t:schema.home.faq_source.label", "info": "t:schema.home.faq_source.info" },
     { "id": "show_faqs", "type": "checkbox", "default": false, "label": "t:schema.home.show_faqs.label", "info": "t:schema.home.show_faqs.info" }
   ]

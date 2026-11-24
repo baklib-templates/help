@@ -1,5 +1,37 @@
 {% assign brand_name = site.settings.brand_name | default: site.name %}
-{% assign navigation = site.pages['/'].children_in_nav_menu %}
+{% assign primary_nav_lines = site.settings.primary_nav_menu | reg_split: '/\r?\n/' %}
+{% capture primary_nav_desktop %}
+  {% for line in primary_nav_lines %}
+    {% assign item = line | strip %}
+    {% assign parts = item | split: '[' %}
+    {% assign part_count = parts | size %}
+    {% if part_count > 1 %}
+      {% assign nav_href = parts | last | strip %}
+      {% assign nav_suffix = '[' | append: nav_href %}
+      {% assign nav_title = item | remove_last: nav_suffix | strip %}
+      {% if nav_title != blank and nav_href != blank %}
+        <a href="{{ nav_href | escape_once }}" class="max-w-36 truncate transition-colors hover:text-base-content" {% if nav_href == page.path %}aria-current="page"{% endif %}>{{ nav_title | escape_once }}</a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% capture primary_nav_mobile %}
+  {% for line in primary_nav_lines %}
+    {% assign item = line | strip %}
+    {% assign parts = item | split: '[' %}
+    {% assign part_count = parts | size %}
+    {% if part_count > 1 %}
+      {% assign nav_href = parts | last | strip %}
+      {% assign nav_suffix = '[' | append: nav_href %}
+      {% assign nav_title = item | remove_last: nav_suffix | strip %}
+      {% if nav_title != blank and nav_href != blank %}
+        <a href="{{ nav_href | escape_once }}" class="block rounded-lg px-3 py-3 text-sm hover:bg-base-200" {% if nav_href == page.path %}aria-current="page"{% endif %}>{{ nav_title | escape_once }}</a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% assign primary_nav_desktop = primary_nav_desktop | strip %}
+{% assign primary_nav_mobile = primary_nav_mobile | strip %}
 <header class="help-header">
   <div class="help-container flex min-h-20 items-center gap-3 sm:gap-5">
     <a class="flex min-w-0 flex-1 items-center gap-2 text-lg font-semibold tracking-tight sm:gap-3 xl:max-w-60" href="{{ site.index_path }}" aria-label="{{ brand_name | escape_once }}">
@@ -10,13 +42,11 @@
         <span class="min-w-0 truncate">{{ brand_name | escape_once }}</span>
       {% endif %}
     </a>
-    {% unless site.settings.show_primary_nav == false %}
+    {% if site.settings.show_primary_nav != false and primary_nav_desktop != blank %}
       <nav class="hidden min-w-0 items-center gap-5 text-sm font-medium text-base-content/65 xl:flex" aria-label="{{ 'shell.navigation' | t | escape }}">
-        {% for item in navigation limit: 5 %}
-          <a href="{{ item.path }}" class="max-w-36 truncate transition-colors hover:text-base-content" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>
-        {% endfor %}
+        {{ primary_nav_desktop }}
       </nav>
-    {% endunless %}
+    {% endif %}
     <div class="ml-auto hidden w-60 lg:block">{% render 'search_form', id: 'header-search', compact: true %}</div>
     <div class="ml-auto flex shrink-0 items-center gap-1 lg:ml-0">
       <a href="{{ site.search_path }}" class="btn btn-ghost btn-square btn-sm lg:hidden" aria-label="{{ 'shell.search' | t | escape }}">{% render 'icon', name: 'search', class: 'size-5' %}</a>
@@ -44,9 +74,7 @@
       <details class="help-mobile-menu xl:hidden" data-help-menu>
         <summary class="btn btn-ghost btn-square btn-sm list-none" aria-label="{{ 'shell.navigation' | t | escape }}">{% render 'icon', name: 'menu', class: 'size-5' %}</summary>
         <nav class="help-mobile-panel" aria-label="{{ 'shell.navigation' | t | escape }}">
-          {% unless site.settings.show_primary_nav == false %}
-            {% for item in navigation %}<a href="{{ item.path }}" class="block rounded-lg px-3 py-3 text-sm hover:bg-base-200" {% if item.path == page.path %}aria-current="page"{% endif %}>{{ item.link_text | escape_once }}</a>{% endfor %}
-          {% endunless %}
+          {% if site.settings.show_primary_nav != false and primary_nav_mobile != blank %}{{ primary_nav_mobile }}{% endif %}
           {% if site.settings.header_link_label != blank and site.settings.header_link_url != blank %}<a href="{{ site.settings.header_link_url | escape_once }}" class="block rounded-lg px-3 py-3 text-sm font-semibold hover:bg-base-200">{{ site.settings.header_link_label | escape_once }}</a>{% endif %}
           <div class="mt-2 border-t border-base-300 pt-3">{% render 'search_form', id: 'mobile-search', compact: true %}</div>
         </nav>

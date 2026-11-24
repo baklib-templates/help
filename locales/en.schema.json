@@ -127,6 +127,10 @@
     "show_featured": {
       "label": "Show featured articles"
     },
+    "show_channels": {
+      "label": "Show topics",
+      "info": "Turn this off to hide the topic section on the homepage."
+    },
     "faq_source": {
       "label": "Questions collection path",
       "info": "Use a real collection path. Leave blank to use home. Child collections are links; child articles show a summary and a link to the full text."
@@ -152,6 +156,8 @@
     "header_link_url": "Navigation button URL",
     "footer_text": "Footer note",
     "show_primary_nav": "Show top-level navigation",
+    "primary_nav_menu": "Top-level navigation",
+    "primary_nav_menu_info": "One item per line, formatted as Title[URL. Leave empty to hide the menu.",
     "footer_text_default": "Find your answer. Keep moving forward.",
     "article_layout": "Article layout",
     "category_layout": "Collection layout",

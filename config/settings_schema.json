@@ -84,6 +84,14 @@
         "type": "checkbox",
         "label": "t:schema.theme.show_primary_nav",
         "default": true
+      },
+      {
+        "id": "primary_nav_menu",
+        "type": "textarea",
+        "rows": 6,
+        "label": "t:schema.theme.primary_nav_menu",
+        "info": "t:schema.theme.primary_nav_menu_info",
+        "default": ""
       }
     ]
   },

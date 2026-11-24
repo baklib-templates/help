@@ -9,8 +9,14 @@
 {% assign hero_image = page.settings.hero_image %}
 {% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}
 {% assign support_markup = support_markup | strip %}
+{% assign show_channels = true %}
+{% if page.settings.show_channels_section == false %}{% assign show_channels = false %}{% endif %}
 {% assign show_aside = false %}
-{% if category_count > 0 or support_markup != blank or hero_image != blank %}{% assign show_aside = true %}{% endif %}
+{% if support_markup != blank or hero_image != blank %}
+  {% assign show_aside = true %}
+{% elsif show_channels and category_count > 0 %}
+  {% assign show_aside = true %}
+{% endif %}
 
 <div data-home-layout="{{ mode | escape }}" data-home-style="support">
   <div class="help-container grid items-start gap-10 py-10 lg:py-14 {% if show_aside %}lg:grid-cols-[minmax(0,1fr)_20rem]{% endif %}">
@@ -26,6 +32,7 @@
 
       {% render 'home_content', home: page %}
 
+      {% if show_channels %}
       <section class="help-section" aria-labelledby="support-topics-title">
         <h2 id="support-topics-title" class="text-lg font-semibold">{{ 'home.support_topics_title' | t }}</h2>
         {% if category_count > 0 %}
@@ -54,6 +61,7 @@
           </div>
         {% endif %}
       </section>
+      {% endif %}
 
       {% render 'home_featured', home: page, root: root %}
       {% if page.settings.show_faqs %}
@@ -66,7 +74,7 @@
         {% if hero_image != blank %}
           <img src="{{ hero_image.url | escape }}" alt="" width="640" height="480" class="aspect-[4/3] w-full rounded-2xl object-cover">
         {% endif %}
-        {% if category_count > 0 %}
+        {% if show_channels and category_count > 0 %}
           <nav class="rounded-2xl bg-base-200 p-6" aria-label="{{ 'reading.all_topics' | t | escape }}">
             <h2 class="text-xs font-semibold uppercase tracking-wider text-base-content/45">{{ 'reading.all_topics' | t }}</h2>
             <ul class="mt-3 space-y-1">
@@ -98,6 +106,7 @@
     { "id": "featured_title", "type": "text", "label": "t:schema.home.featured_title.label", "info": "t:schema.home.featured_title.info" },
     { "id": "featured_pages", "type": "textarea", "rows": 6, "label": "t:schema.home.featured_pages.label", "info": "t:schema.home.featured_pages.info" },
     { "id": "show_featured", "type": "checkbox", "default": true, "label": "t:schema.home.show_featured.label" },
+    { "id": "show_channels_section", "type": "checkbox", "default": true, "label": "t:schema.home.show_channels.label", "info": "t:schema.home.show_channels.info" },
     { "id": "faq_source", "type": "text", "label": "t:schema.home.faq_source.label", "info": "t:schema.home.faq_source.info" },
     { "id": "show_faqs", "type": "checkbox", "default": false, "label": "t:schema.home.show_faqs.label", "info": "t:schema.home.show_faqs.info" }
   ]

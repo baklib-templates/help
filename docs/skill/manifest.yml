@@ -18,6 +18,7 @@ skill:
   - header_link_url
   - footer_text
   - show_primary_nav
+  - primary_nav_menu
   - article_layout
   - category_layout
   - support_title
@@ -40,6 +41,7 @@ skill:
     - featured_title
     - featured_pages
     - show_featured
+    - show_channels_section
     - show_faqs
     - faq_source
   - template: index.faqs
@@ -51,6 +53,7 @@ skill:
     - featured_title
     - featured_pages
     - show_featured
+    - show_channels_section
     - show_faqs
     - faq_source
   - template: index.support
@@ -62,6 +65,7 @@ skill:
     - featured_title
     - featured_pages
     - show_featured
+    - show_channels_section
     - show_faqs
     - faq_source
   - template: index.card

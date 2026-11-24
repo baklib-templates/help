@@ -56,14 +56,14 @@
         {% endif %}
       </div>
 
-      {% if category_count > 0 %}
+      {% if page.settings.show_channels_section != false and category_count > 0 %}
         <div class="mb-6 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="{{ 'reading.all_topics' | t | escape }}">
           <a href="{{ site.index_path }}?topic=all" class="help-button shrink-0 rounded-full {% if topic_path == 'all' or topic_path == blank and faq_root.path == root.path %}border-primary bg-primary/10 text-primary{% endif %}" {% if topic_path == 'all' %}aria-current="page"{% endif %}>{{ 'reading.all_topics' | t }}</a>
           {% for category in categories %}
             <a href="{{ site.index_path }}?topic={{ category.path | url_encode }}" class="help-button shrink-0 rounded-full {% if topic_path == category.path %}border-primary bg-primary/10 text-primary{% endif %}" {% if topic_path == category.path %}aria-current="page"{% endif %}>{{ category.link_text | escape_once }}</a>
           {% endfor %}
         </div>
-      {% else %}
+      {% elsif page.settings.show_channels_section != false %}
         <div class="rounded-2xl border border-dashed border-base-300 bg-base-200/30 px-6 py-12 text-center">
           <h3 class="font-medium">{{ 'home.empty_title' | t }}</h3>
           <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-base-content/60">{{ 'home.empty_description' | t }}</p>
@@ -135,6 +135,7 @@
     { "id": "featured_title", "type": "text", "label": "t:schema.home.featured_title.label", "info": "t:schema.home.featured_title.info" },
     { "id": "featured_pages", "type": "textarea", "rows": 6, "label": "t:schema.home.featured_pages.label", "info": "t:schema.home.featured_pages.info" },
     { "id": "show_featured", "type": "checkbox", "default": true, "label": "t:schema.home.show_featured.label" },
+    { "id": "show_channels_section", "type": "checkbox", "default": true, "label": "t:schema.home.show_channels.label", "info": "t:schema.home.show_channels.info" },
     { "id": "faq_source", "type": "text", "label": "t:schema.home.faq_source.label", "info": "t:schema.home.faq_source.info" },
     { "id": "show_faqs", "type": "checkbox", "default": false, "label": "t:schema.home.show_faqs.label", "info": "t:schema.home.show_faqs.info" }
   ]

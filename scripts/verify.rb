@@ -315,10 +315,10 @@ module HelpVerification
         site = fixture_site({'show_feedback_form' => enabled})
         html = render('snippets/_feedback_form.liquid', {'page' => page}, site: site)
         check('Feedback checkbox must control the feedback form') { html.include?('help-feedback-') == enabled }
-        site = fixture_site({'show_primary_nav' => enabled})
-        site['index_page']['children_in_nav_menu'] = [fixture_page('path' => '/product', 'link_text' => 'NAV_SENTINEL')]
+        site = fixture_site({'show_primary_nav' => enabled, 'primary_nav_menu' => "NAV_SENTINEL[/product\n帮助[中心[/guide"})
         html = render('snippets/_header.liquid', {'page' => page}, site: site)
-        check('Primary nav checkbox must control top-level links') { html.include?('NAV_SENTINEL') == enabled }
+        check('Primary nav checkbox must control custom menu links') { html.include?('NAV_SENTINEL') == enabled && html.include?('href="/product"') == enabled }
+        check('Primary nav keeps the full link after the first bracket') { !enabled || html.include?('帮助[中心') && html.include?('href="/guide"') }
         site['settings']['article_layout'] = {'value' => 'support'}
         site['settings']['support_email'] = enabled ? 'support@example.test' : ''
         html = render('templates/page.liquid', {'page' => page}, site: site)

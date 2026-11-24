@@ -127,6 +127,10 @@
     "show_featured": {
       "label": "显示精选内容"
     },
+    "show_channels": {
+      "label": "显示主题栏目",
+      "info": "关闭后，首页不再展示主题栏目。"
+    },
     "faq_source": {
       "label": "问题栏目路径",
       "info": "填写真实栏目路径，留空时使用首页。下级栏目显示入口，下级文章显示摘要与全文链接。"
@@ -152,6 +156,8 @@
     "header_link_url": "导航按钮链接",
     "footer_text": "页脚说明",
     "show_primary_nav": "显示一级导航",
+    "primary_nav_menu": "一级导航",
+    "primary_nav_menu_info": "每行一条，格式为“标题[链接”。留空则不显示。",
     "footer_text_default": "找到答案，继续前行。",
     "article_layout": "文章阅读布局",
     "category_layout": "分类呈现",
