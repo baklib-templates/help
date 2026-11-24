@@ -64,6 +64,20 @@ skill:
     - show_featured
     - show_faqs
     - faq_source
+  - template: index.card
+    role: 卡片式首页：首屏搜索、一级栏目卡片和热门文章
+    writable:
+    - hero_height
+    - hero_pc_image_url
+    - hero_mobile_image_url
+    - hero_title
+    - hero_description
+    - hero_text_color
+    - search_hot_tags
+    - search_hot_keywords
+    - show_channels_section
+    - channels_section_title
+    - popular_section_title
   - template: page
     role: 来源知识库同步的分类与帮助文章
     writable:

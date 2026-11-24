@@ -85,7 +85,12 @@
     "read_answer": "阅读全文",
     "faq_empty_title": "暂无可展示的解答",
     "faq_empty_description": "此栏目中您可以访问的文章发布后会显示在这里。",
-    "support_label": "联系支持"
+    "support_label": "联系支持",
+    "search_tags": "热门标签",
+    "search_keywords": "热门搜索",
+    "read_more": "查看更多",
+    "card_channels_title": "按主题浏览",
+    "card_popular_title": "热门文章"
   },
   "shell": {
     "close": "关闭",

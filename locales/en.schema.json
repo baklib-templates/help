@@ -72,6 +72,29 @@
       "name": "Support home",
       "description": "A compact main column with a sticky contact sidebar."
     },
+    "card": {
+      "name": "Card home",
+      "description": "Large cards preview each topic and its articles.",
+      "hero_height": "Hero height",
+      "hero_pc_image": "Desktop hero image",
+      "hero_pc_image_info": "A wide image works best. Leave empty to show no background image.",
+      "hero_mobile_image": "Mobile hero image",
+      "hero_mobile_image_info": "Uses the desktop image when empty.",
+      "hero_title_info": "Uses the page title when empty, then the site name.",
+      "hero_description_default": "What are you looking for?",
+      "hero_text_color": "Hero text color",
+      "hero_text_color_info": "Used for both the title and the description.",
+      "search_hot_tags": "Popular tags",
+      "search_hot_tags_info": "Shown below the search field.",
+      "search_hot_keywords": "Popular searches",
+      "search_hot_keywords_info": "One keyword per line.",
+      "show_channels": "Show topic cards",
+      "show_channels_info": "Creates one card for each top-level topic.",
+      "channels_title": "Card section title",
+      "channels_title_default": "Browse by topic",
+      "popular_title": "Popular section title",
+      "popular_title_default": "Popular articles"
+    },
     "title": {
       "label": "Source title",
       "info": "Preserved from the source content."

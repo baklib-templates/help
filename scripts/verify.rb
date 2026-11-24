@@ -221,7 +221,14 @@ module HelpVerification
         check("#{style}: optional featured content is omitted") { empty.at_css('#home-featured-title').nil? }
         check("#{style}: FAQ homepage displays its empty state") { style != 'faqs' || empty.text.include?(translation('home.faq_empty_title')) }
       end
-      puts "PASS #{HOME_STYLES.size * 2} populated/empty homepage cases, real destinations, configured FAQ sources and support actions"
+      card_site = fixture_site({}, {}, home_style: 'card')
+      card_home = card_site['index_page']
+      card_topic = fixture_page('id' => 6, 'path' => '/product', 'link_text' => 'Card topic', 'children_in_list' => [fixture_page('id' => 7, 'path' => '/product/answer', 'link_text' => 'Card answer')])
+      card_home['children_in_nav_menu'] = [card_topic]
+      card_home['settings'] = {'hero_title' => 'CARD_TITLE', 'content' => '<p>CARD_BODY</p>', 'show_channels_section' => true}
+      card_doc = Nokogiri::HTML.fragment(render('templates/index.card.liquid', {'page' => card_home}, site: card_site))
+      check('Card homepage keeps its title, source body and topic card') { card_doc.css('h1').length == 1 && card_doc.at_css('h1').text.strip == 'CARD_TITLE' && card_doc.text.include?('CARD_BODY') && card_doc.at_css("a[href='/product']") && card_doc.at_css("[data-home-style='card']") }
+      puts "PASS #{HOME_STYLES.size * 2} populated/empty homepage cases, configured FAQ sources, support actions and the card homepage"
     end
 
     def categories

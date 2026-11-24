@@ -26,6 +26,26 @@
 | `show_related_articles` | checkbox | 可写 |
 | `show_feedback_form` | checkbox | 可写 |
 
+## `index.card`
+
+卡片首页使用独立字段。来源标题和正文仍然只读。
+
+| id | 类型 | 能否改 |
+| --- | --- | --- |
+| `title` | text | 只读 |
+| `content` | richtext | 只读 |
+| `hero_height` | range | 可写 |
+| `hero_pc_image_url` | image_picker | 可写 |
+| `hero_mobile_image_url` | image_picker | 可写 |
+| `hero_title` | text | 可写 |
+| `hero_description` | text | 可写 |
+| `hero_text_color` | color | 可写 |
+| `search_hot_tags` | tag_picker | 可写 |
+| `search_hot_keywords` | textarea | 可写 |
+| `show_channels_section` | checkbox | 可写 |
+| `channels_section_title` | text | 可写 |
+| `popular_section_title` | text | 可写 |
+
 ## `index.help_center` / `index.faqs` / `index.support`
 
 三个首页变体共用以下字段表，各自有独立的 `name`、`description` 与预览图；渲染模式在模板内固定，不提供 `home_layout` 设置。

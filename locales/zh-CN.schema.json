@@ -72,6 +72,29 @@
       "name": "服务支持首页",
       "description": "紧凑主栏配粘性联系支持侧栏。"
     },
+    "card": {
+      "name": "卡片式首页",
+      "description": "大卡片展示栏目和文章预览。",
+      "hero_height": "首屏高度",
+      "hero_pc_image": "桌面首屏图片",
+      "hero_pc_image_info": "建议宽图。未设置时不显示背景图。",
+      "hero_mobile_image": "手机首屏图片",
+      "hero_mobile_image_info": "未设置时使用桌面首屏图片。",
+      "hero_title_info": "留空时使用页面标题，再留空则使用站点名称。",
+      "hero_description_default": "需要查找什么？",
+      "hero_text_color": "首屏文字颜色",
+      "hero_text_color_info": "同时用于标题和说明。",
+      "search_hot_tags": "热门标签",
+      "search_hot_tags_info": "显示在搜索框下方。",
+      "search_hot_keywords": "热门搜索",
+      "search_hot_keywords_info": "每行一个关键词。",
+      "show_channels": "显示栏目卡片",
+      "show_channels_info": "为每个一级栏目生成一张卡片。",
+      "channels_title": "卡片区块标题",
+      "channels_title_default": "按主题浏览",
+      "popular_title": "热门区块标题",
+      "popular_title_default": "热门文章"
+    },
     "title": {
       "label": "来源标题",
       "info": "保留与来源内容同步的标题。"

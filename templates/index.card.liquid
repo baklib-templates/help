@@ -1,0 +1,187 @@
+{% layout 'theme' %}
+{% assign channel_pages = site.index_page.children_in_nav_menu %}
+{% assign hero_title = page.settings.hero_title | strip | default: page.settings.title | default: site.name %}
+{% assign hero_description = page.settings.hero_description | strip %}
+{% assign hero_height = page.settings.hero_height | default: 400 | plus: 0 %}
+{% assign hero_pc = page.settings.hero_pc_image_url %}
+{% assign hero_mobile = page.settings.hero_mobile_image_url %}
+{% if hero_pc.url != blank %}{% assign hero_pc_image_url = hero_pc.url %}{% elsif hero_pc != blank %}{% assign hero_pc_image_url = hero_pc %}{% endif %}
+{% if hero_mobile.url != blank %}{% assign hero_mobile_image_url = hero_mobile.url %}{% elsif hero_mobile != blank %}{% assign hero_mobile_image_url = hero_mobile %}{% else %}{% assign hero_mobile_image_url = hero_pc_image_url %}{% endif %}
+{% assign channels_title = page.settings.channels_section_title | strip %}
+{% if channels_title == blank %}{% assign channels_title = 'home.card_channels_title' | t %}{% endif %}
+{% assign popular_title = page.settings.popular_section_title | strip %}
+{% if popular_title == blank %}{% assign popular_title = 'home.card_popular_title' | t %}{% endif %}
+{% capture support_markup %}{% render 'support_contact', compact: true %}{% endcapture %}
+{% assign support_markup = support_markup | strip %}
+
+<div data-home-layout="cards" data-home-style="card">
+  <style>
+    .index-card-hero-bg {
+      height: clamp(220px, var(--hero-height), 600px);
+      background-image: var(--hero-bg-image-mobile);
+      background-position: center;
+      background-size: cover;
+    }
+    @media (min-width: 768px) {
+      .index-card-hero-bg {
+        height: clamp(260px, var(--hero-height), 600px);
+        background-image: var(--hero-bg-image-pc);
+      }
+    }
+  </style>
+
+  <div class="relative isolate">
+    {% if hero_pc_image_url != blank %}
+      <div
+        class="index-card-hero-bg absolute inset-x-0 top-0 z-0 bg-center bg-cover"
+        style="
+          --hero-height: {{ hero_height }}px;
+          --hero-bg-image-pc: linear-gradient(to bottom, transparent 0%, var(--color-base-100) 100%), url('{{ hero_pc_image_url | escape_once }}');
+          --hero-bg-image-mobile: linear-gradient(to bottom, transparent 0%, var(--color-base-100) 100%), url('{{ hero_mobile_image_url | escape_once }}');
+        "
+      ></div>
+    {% endif %}
+
+    <div class="relative z-10 px-4">
+      <section class="mx-auto max-w-6xl">
+        <div class="relative pt-10 md:pt-24" style="--hero-text-color: {{ page.settings.hero_text_color | default: '#111827' | escape_once }};">
+          <h1 class="text-center text-2xl font-bold text-[color:var(--hero-text-color)] md:text-4xl">{{ hero_title | escape_once }}</h1>
+          {% if hero_description != blank %}
+            <p class="mt-3 text-center text-sm leading-6 text-[color:var(--hero-text-color)] md:text-base">{{ hero_description | escape_once }}</p>
+          {% endif %}
+        </div>
+
+        <div class="relative pb-10 pt-10 md:pt-12">
+          <div class="mx-auto w-full md:w-1/2">
+            {% assign search_id = 'home-search' %}
+            {% form_tag 'search', class: 'w-full', role: 'search' %}
+              <label class="sr-only" for="{{ search_id }}">{{ 'shell.search' | t }}</label>
+              <div class="relative rounded-full border border-base-300 bg-base-100/95 shadow-lg backdrop-blur">
+                <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5 text-base-content/40">{% render 'icon', name: 'search', class: 'size-5' %}</span>
+                <input id="{{ search_id }}" type="search" name="{{ form.keywords_field_name }}" value="{{ params.q | escape_once }}" placeholder="{{ 'shell.search_placeholder' | t }}" autocomplete="off" class="block h-12 w-full rounded-full bg-transparent pr-6 pl-12 text-base outline-none placeholder:text-base-content/40">
+              </div>
+            {% endform_tag %}
+
+            {% assign search_hot_tags = page.settings.search_hot_tags %}
+            {% assign hot_keywords = page.settings.search_hot_keywords | reg_split: "/\n/" %}
+            {% assign hot_tag_count = search_hot_tags | size %}
+            {% assign hot_keyword_count = hot_keywords | size %}
+            {% if hot_tag_count > 0 or hot_keyword_count > 0 %}
+              <div class="mt-4 space-y-2 text-sm">
+                {% if hot_tag_count > 0 %}
+                  <div class="text-base-content/70">
+                    <span class="mr-2 font-medium">{{ 'home.search_tags' | t }}:</span>
+                    {% for tag in search_hot_tags %}
+                      <a href="{{ tag.path }}" data-turbo-frame="_top" class="mr-2 text-primary hover:underline">{{ tag.name | escape_once }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+                {% if hot_keyword_count > 0 %}
+                  <div class="text-base-content/70">
+                    <span class="mr-2 font-medium">{{ 'home.search_keywords' | t }}:</span>
+                    {% for hot_keyword in hot_keywords %}
+                      <a href="{{ site.search_path }}?q={{ hot_keyword | url_encode }}" class="mr-2 text-primary hover:underline">{{ hot_keyword | escape_once }}</a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+
+      <div class="mx-auto max-w-6xl pb-12">
+        {% render 'home_content', home: page %}
+
+        {% if page.settings.show_channels_section != false %}
+          <section class="mt-12">
+            <h2 class="mb-6 text-center text-xl font-bold text-base-content md:text-2xl">{{ channels_title | escape_once }}</h2>
+            {% assign channel_count = channel_pages | size %}
+            {% if channel_count > 0 %}
+              <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {% for channel_page in channel_pages %}
+                  <article class="flex h-full flex-col overflow-hidden rounded-xl border border-base-300 bg-base-100 shadow-sm transition hover:border-primary/40 hover:shadow-md">
+                    <div class="flex flex-1 flex-col p-6">
+                      <a href="{{ channel_page.path }}" class="group block outline-none">
+                        <div class="flex items-start gap-4">
+                          <span class="shrink-0 text-primary">{% render 'icon', name: channel_page.settings.icon_name.value | default: 'book', class: 'size-11' %}</span>
+                          <h3 class="min-w-0 flex-1 text-lg font-semibold text-base-content transition group-hover:text-primary">{{ channel_page.link_text | escape_once }}</h3>
+                        </div>
+                      </a>
+                      {% assign card_children = channel_page.children_in_list %}
+                      <ul class="mt-5 flex-1 space-y-2 border-t border-base-300 pt-4">
+                        {% for sub_page in card_children limit: 5 %}
+                          <li class="truncate"><a href="{{ sub_page.path }}" class="text-sm text-base-content/80 transition hover:text-primary">{{ sub_page.link_text | escape_once }}</a></li>
+                        {% endfor %}
+                      </ul>
+                      <div class="mt-5 border-t border-base-300 pt-4">
+                        <a href="{{ channel_page.path }}" class="text-sm font-medium text-primary hover:underline">{{ 'home.read_more' | t }}</a>
+                      </div>
+                    </div>
+                  </article>
+                {% endfor %}
+              </div>
+            {% else %}
+              <div class="rounded-2xl border border-dashed border-base-300 bg-base-200/30 px-6 py-12 text-center">
+                <h3 class="font-medium">{{ 'home.empty_title' | t }}</h3>
+                <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-base-content/60">{{ 'home.empty_description' | t }}</p>
+              </div>
+            {% endif %}
+          </section>
+        {% endif %}
+
+        {% assign popular_pages = '' %}
+        {% assign popular_source = site.index_page.pages_in_list %}
+        {% if popular_source != blank %}
+          {% assign popular_pages = popular_source | order_by: '-visits_count' %}
+        {% endif %}
+        {% assign popular_count = popular_pages | size %}
+        {% if popular_count > 0 %}
+          <section class="mt-12">
+            <h2 class="mb-6 text-center text-xl font-bold text-base-content md:text-2xl">{{ popular_title | escape_once }}</h2>
+            <div class="grid grid-cols-1 gap-3 rounded-xl border border-base-300 bg-base-100 p-4 md:grid-cols-2">
+              {% for pop_page in popular_pages limit: 8 %}
+                <a class="group flex items-center justify-between rounded-lg px-2 py-2 transition hover:bg-base-200" href="{{ pop_page.path }}">
+                  <span class="flex min-w-0 items-center gap-2">
+                    {% render 'icon', name: 'sparkles', class: 'size-5 shrink-0 text-base-content/50 transition group-hover:text-primary' %}
+                    <span class="truncate text-base-content/80 transition group-hover:text-primary">{{ pop_page.link_text | escape_once }}</span>
+                  </span>
+                  {% render 'icon', name: 'arrow-right', class: 'size-5 shrink-0 text-base-content/50 transition group-hover:translate-x-1 group-hover:text-primary' %}
+                </a>
+              {% endfor %}
+            </div>
+          </section>
+        {% endif %}
+
+        {% if support_markup != blank %}
+          <section class="mt-12" aria-label="{{ 'home.support_label' | t | escape }}">{{ support_markup }}</section>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:schema.home.card.name",
+  "description": "t:schema.home.card.description",
+  "thumb_url": "images/theme/index-card.png",
+  "preview_image_urls": ["images/theme/index-card.png"],
+  "sub_page_templates": ["page"],
+  "settings": [
+    { "id": "title", "type": "text", "readonly": true, "queryable": true, "to_markdown": true, "label": "t:schema.home.title.label", "info": "t:schema.home.title.info" },
+    { "id": "content", "type": "richtext", "readonly": true, "to_markdown": true, "label": "t:schema.home.content.label", "info": "t:schema.home.content.info" },
+    { "id": "hero_height", "type": "range", "label": "t:schema.home.card.hero_height", "min": 200, "max": 600, "step": 10, "unit": "px", "default": 400 },
+    { "id": "hero_pc_image_url", "type": "image_picker", "ratio": "4:1", "width": 400, "label": "t:schema.home.card.hero_pc_image", "info": "t:schema.home.card.hero_pc_image_info" },
+    { "id": "hero_mobile_image_url", "type": "image_picker", "ratio": "3:2", "width": 200, "label": "t:schema.home.card.hero_mobile_image", "info": "t:schema.home.card.hero_mobile_image_info" },
+    { "id": "hero_title", "type": "text", "label": "t:schema.home.hero_title.label", "info": "t:schema.home.card.hero_title_info" },
+    { "id": "hero_description", "type": "text", "label": "t:schema.home.hero_description.label", "default": "t:schema.home.card.hero_description_default" },
+    { "id": "hero_text_color", "type": "color", "label": "t:schema.home.card.hero_text_color", "info": "t:schema.home.card.hero_text_color_info", "default": "#111827" },
+    { "id": "search_hot_tags", "type": "tag_picker", "multiple": true, "label": "t:schema.home.card.search_hot_tags", "info": "t:schema.home.card.search_hot_tags_info" },
+    { "id": "search_hot_keywords", "type": "textarea", "label": "t:schema.home.card.search_hot_keywords", "info": "t:schema.home.card.search_hot_keywords_info" },
+    { "id": "show_channels_section", "type": "checkbox", "label": "t:schema.home.card.show_channels", "info": "t:schema.home.card.show_channels_info", "default": true },
+    { "id": "channels_section_title", "type": "text", "label": "t:schema.home.card.channels_title", "default": "t:schema.home.card.channels_title_default" },
+    { "id": "popular_section_title", "type": "text", "label": "t:schema.home.card.popular_title", "default": "t:schema.home.card.popular_title_default" }
+  ]
+}
+{% endschema %}

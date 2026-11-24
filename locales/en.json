@@ -85,7 +85,12 @@
     "read_answer": "Read the full article",
     "faq_empty_title": "No answers to display yet",
     "faq_empty_description": "Available articles will appear here once they are published in this collection.",
-    "support_label": "Contact support"
+    "support_label": "Contact support",
+    "search_tags": "Popular tags",
+    "search_keywords": "Popular searches",
+    "read_more": "Read more",
+    "card_channels_title": "Browse by topic",
+    "card_popular_title": "Popular articles"
   },
   "shell": {
     "close": "Close",
